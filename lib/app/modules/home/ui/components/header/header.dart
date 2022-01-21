@@ -96,7 +96,7 @@ class Header extends StatelessWidget {
                 child: Row(
                   children: [
                     const CircleAvatar(
-                      backgroundImage: CachedNetworkImageProvider(
+                      backgroundImage: NetworkImage(
                         "http://uploaddeimagens.com.br/images/003/636/566/original/unnamed.png?1642545325",
                       ),
                     ),

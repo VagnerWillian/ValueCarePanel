@@ -12,7 +12,7 @@ class PageTitleDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MediaQuery.of(context).size.width<1262?Container():Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 20),
       child: RichText(
           text: TextSpan(
               children: <TextSpan>[
