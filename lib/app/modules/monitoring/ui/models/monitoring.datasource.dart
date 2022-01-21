@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/classification.entity.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/symptoms.entity.dart';
 import 'package:value_panel/app/modules/monitoring/infra/models/classification.model.dart';
 import 'package:value_panel/app/shared/utils.dart';
-import 'package:websafe_svg/websafe_svg.dart';
 
 class MonitoringDataSource extends DataGridSource {
 
@@ -70,7 +68,7 @@ class MonitoringDataSource extends DataGridSource {
                           end: Alignment.bottomLeft,
                         ),
                         borderRadius: BorderRadius.circular(10)),
-                        child: Center(child: WebsafeSvg.asset('assets/images/symptoms/${dataGridCell.value[0].label}.svg', color: Colors.white))),
+                        child: Center(child: SvgPicture.asset('assets/images/symptoms/${dataGridCell.value[0].label}.svg', color: Colors.white))),
                   ),
                   const SizedBox(width: 5,),
                   Flexible(

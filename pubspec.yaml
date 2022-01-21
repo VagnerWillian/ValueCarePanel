@@ -66,7 +66,6 @@ dependencies:
   syncfusion_flutter_core: ^19.4.43+1
   syncfusion_flutter_datagrid: ^19.4.43
   flare_flutter: ^3.0.2
-  websafe_svg: ^2.1.0+1
 
 dev_dependencies:
   flutter_test:
