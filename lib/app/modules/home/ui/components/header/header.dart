@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_network/image_network.dart';
 import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
 import 'package:value_panel/app/shared/utils.dart';
 
@@ -95,9 +96,16 @@ class Header extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 child: Row(
                   children: [
-                    const CircleAvatar(
-                      backgroundImage: NetworkImage(
-                        "http://uploaddeimagens.com.br/images/003/636/566/original/unnamed.png?1642545325",
+                    Container(
+                      width: 40,
+                      height: 40,
+                      child: ImageNetwork(
+                        borderRadius: BorderRadius.circular(100),
+                        height: 40,
+                        width: 40,
+                        onLoading: Container(),
+                        imageCache: const CachedNetworkImageProvider("http://uploaddeimagens.com.br/images/003/636/566/original/unnamed.png?1642545325"),
+                        image: "http://uploaddeimagens.com.br/images/003/636/566/original/unnamed.png?1642545325",
                       ),
                     ),
                     const SizedBox(
@@ -120,16 +128,17 @@ class Header extends StatelessWidget {
           ),
           Row(
             children: [
-              Container(
+              SizedBox(
                 width: 55,
                 height: 55,
-                decoration: BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.circular(10),
-                    image: const DecorationImage(
-                        fit: BoxFit.cover,
-                        image: CachedNetworkImageProvider(
-                            "https://scontent.fcgh2-1.fna.fbcdn.net/v/t39.30808-6/245410771_6248413855234066_1511106356855879518_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeEQrYWnkeQGFJjwheIedrjRBzkanLAii94HORqcsCKL3tfaQO4xO4VuEeFtTLZOnFqXjBbs9YI5gKJbmwD2X_F6&_nc_ohc=o1Lvis_Ugv0AX_45R49&_nc_oc=AQlMCNKjhh7Qo4pFqGk5GlKni9pBObwrbpeb2fz5jTt976RpYa5UGwjui3Ggj1O-XN3kk2u8RN2Kx76HCwZ-fxDI&tn=OIj9QLucynffXxEJ&_nc_ht=scontent.fcgh2-1.fna&oh=00_AT-e7EXNrauj6F322g6VW13ma19g_olhJn94o3H5IsgtpQ&oe=61EA8273"))),
+                child: ImageNetwork(
+                  borderRadius: BorderRadius.circular(10),
+                  height: 55,
+                  width: 55,
+                  onLoading: Container(),
+                  imageCache: const CachedNetworkImageProvider("https://scontent.fcgh2-1.fna.fbcdn.net/v/t39.30808-6/245410771_6248413855234066_1511106356855879518_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeEQrYWnkeQGFJjwheIedrjRBzkanLAii94HORqcsCKL3tfaQO4xO4VuEeFtTLZOnFqXjBbs9YI5gKJbmwD2X_F6&_nc_ohc=o1Lvis_Ugv0AX_45R49&_nc_oc=AQlMCNKjhh7Qo4pFqGk5GlKni9pBObwrbpeb2fz5jTt976RpYa5UGwjui3Ggj1O-XN3kk2u8RN2Kx76HCwZ-fxDI&tn=OIj9QLucynffXxEJ&_nc_ht=scontent.fcgh2-1.fna&oh=00_AT-e7EXNrauj6F322g6VW13ma19g_olhJn94o3H5IsgtpQ&oe=61EA8273"),
+                  image: "https://scontent.fcgh2-1.fna.fbcdn.net/v/t39.30808-6/245410771_6248413855234066_1511106356855879518_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeEQrYWnkeQGFJjwheIedrjRBzkanLAii94HORqcsCKL3tfaQO4xO4VuEeFtTLZOnFqXjBbs9YI5gKJbmwD2X_F6&_nc_ohc=o1Lvis_Ugv0AX_45R49&_nc_oc=AQlMCNKjhh7Qo4pFqGk5GlKni9pBObwrbpeb2fz5jTt976RpYa5UGwjui3Ggj1O-XN3kk2u8RN2Kx76HCwZ-fxDI&tn=OIj9QLucynffXxEJ&_nc_ht=scontent.fcgh2-1.fna&oh=00_AT-e7EXNrauj6F322g6VW13ma19g_olhJn94o3H5IsgtpQ&oe=61EA8273",
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
