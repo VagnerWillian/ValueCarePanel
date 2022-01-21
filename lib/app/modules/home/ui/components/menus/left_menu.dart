@@ -18,13 +18,15 @@ class LeftMenu extends StatefulWidget {
 
 class _LeftMenuState extends State<LeftMenu> {
 
-  late int index;
+  int index = 0;
   bool isExpanded = true;
 
   @override
   void initState() {
     super.initState();
-    index = 0;
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      animationToPage(1);
+    });
   }
 
   @override

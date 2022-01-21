@@ -18,9 +18,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
-      Modular.to.navigate('/monitoramento/');
-    });
+
   }
 
   @override

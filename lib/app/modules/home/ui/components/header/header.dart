@@ -96,7 +96,7 @@ class Header extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 child: Row(
                   children: [
-                    Container(
+                    SizedBox(
                       width: 40,
                       height: 40,
                       child: ImageNetwork(
