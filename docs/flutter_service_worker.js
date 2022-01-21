@@ -3,7 +3,7 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "3782545a6741e3a92c0dc2f7b757bd2c",
+  "assets/AssetManifest.json": "8003e0334df5dce37d8ae88c4eaebc3f",
 "assets/assets/anims/loading.flr": "51eb608bfe80ffe1b004dfc551fbae77",
 "assets/assets/images/classifications/Emerg%25C3%25AAncia.svg": "94f70ace313b2fb3e46b17b9089bbebf",
 "assets/assets/images/classifications/N%25C3%25A3o%2520Urgente.svg": "9f9f87bd99fe7552ab2c4604f3fbc0e2",
@@ -29,7 +29,6 @@ const RESOURCES = {
 "assets/assets/images/symptoms/Dificuldade%2520de%2520concentra%25C3%25A7%25C3%25A3o,%2520esquecimento,%2520cabe%25C3%25A7a%2520vazia.svg": "bd1914ceb7c72ec1b1d23542612edfc3",
 "assets/assets/images/symptoms/Dor%2520nas%2520articula%25C3%25A7%25C3%25B5es.svg": "b69e73c69c054d5ed64a6218f1e44c8d",
 "assets/assets/images/symptoms/dor%2520no%2520corpo.svg": "f976aad25fc19833b7abac5145d9aa72",
-"assets/assets/images/symptoms/Dores%2520de%2520cabe%25C3%25A7a.svg": "3b5cb4864875e6888d837c3f9e581718",
 "assets/assets/images/symptoms/Falta%2520de%2520ar.svg": "62ebb17574d9415a345759ff1aa82702",
 "assets/assets/images/symptoms/Febre.svg": "96bba732aa81d646aea343da7341f53e",
 "assets/assets/images/symptoms/insonia.svg": "6a6734984953c74861084ee353ade329",
@@ -57,8 +56,8 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "98ecc8585287571eec592b848699acc9",
-"/": "98ecc8585287571eec592b848699acc9",
+"index.html": "893ab2121e6d9108851698dd1f9c4a34",
+"/": "893ab2121e6d9108851698dd1f9c4a34",
 "main.dart.js": "1581e65cfe451767b4c25c04ee0881c0",
 "manifest.json": "a6bf733c5ff7cd5775faad23095ee26a",
 "version.json": "03f5412e45d2df3d844a7cbea420b6f4"
