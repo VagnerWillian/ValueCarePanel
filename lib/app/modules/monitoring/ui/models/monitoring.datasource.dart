@@ -10,6 +10,7 @@ import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_da
 import 'package:value_panel/app/modules/monitoring/domain/entities/symptoms.entity.dart';
 import 'package:value_panel/app/modules/monitoring/infra/models/classification.model.dart';
 import 'package:value_panel/app/shared/utils.dart';
+import 'package:websafe_svg/websafe_svg.dart';
 
 class MonitoringDataSource extends DataGridSource {
 
@@ -69,7 +70,7 @@ class MonitoringDataSource extends DataGridSource {
                           end: Alignment.bottomLeft,
                         ),
                         borderRadius: BorderRadius.circular(10)),
-                        child: Center(child: SvgPicture.asset('assets/images/symptoms/${dataGridCell.value[0].label}.svg', color: Colors.white))),
+                        child: Center(child: WebsafeSvg.asset('assets/images/symptoms/${dataGridCell.value[0].label}.svg', color: Colors.white))),
                   ),
                   const SizedBox(width: 5,),
                   Flexible(

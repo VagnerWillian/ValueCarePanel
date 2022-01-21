@@ -159,7 +159,7 @@ class _LeftMenuState extends State<LeftMenu> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Image.network('assets/images/others/drag.svg',),
+                        SvgPicture.asset('assets/images/others/drag.svg',),
                         const SizedBox(height: 10,),
                         Text("Conheça o Analytics", style: GoogleFonts.cairo(fontWeight: FontWeight.bold,
                           textStyle: const TextStyle(fontSize: 25, color: Colors.white)
