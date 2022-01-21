@@ -16,6 +16,7 @@ class AppWidget extends StatelessWidget {
       locale: const Locale('pt', 'BR'),
       title: 'Painel de administração • Value Care',
       theme: ThemeData(fontFamily: 'Cairo'),
+      initialRoute: '/monitoramento/',
     ).modular();
   }
 }
