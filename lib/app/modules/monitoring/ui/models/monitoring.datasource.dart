@@ -68,7 +68,7 @@ class MonitoringDataSource extends DataGridSource {
                           end: Alignment.bottomLeft,
                         ),
                         borderRadius: BorderRadius.circular(10)),
-                        child: Center(child: SvgPicture.network('assets/images/symptoms/${dataGridCell.value[0].label}.svg', color: Colors.white))),
+                        child: Center(child: SvgPicture.asset('assets/images/symptoms/${dataGridCell.value[0].label}.svg', color: Colors.white))),
                   ),
                   const SizedBox(width: 5,),
                   Flexible(
