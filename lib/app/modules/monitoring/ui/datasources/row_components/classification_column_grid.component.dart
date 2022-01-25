@@ -1,0 +1,61 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:value_panel/app/modules/monitoring/domain/entities/classification.entity.dart';
+import 'package:value_panel/app/shared/utils.dart';
+
+class ClassificationColumnGrid extends StatefulWidget {
+  final ClassificationEntity value;
+  const ClassificationColumnGrid({Key? key, required this.value}) : super(key: key);
+
+  @override
+  _ClassificationColumnGridState createState() => _ClassificationColumnGridState();
+}
+
+class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
+
+  late ClassificationEntity selectedClassification;
+
+  @override
+  void initState() {
+    selectedClassification = classifications.singleWhere((c) => c.id==widget.value.id);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        margin: const EdgeInsets.all(15),
+        decoration: BoxDecoration(
+            color: selectedClassification.color!.withOpacity(0.1),
+            borderRadius: BorderRadius.circular(10)
+        ),
+        width: 150,
+        height: 80,
+        child: DropdownButton<ClassificationEntity>(
+          borderRadius: BorderRadius.circular(5),
+          value: selectedClassification,
+          underline: Container(),
+          isExpanded: true,
+          iconEnabledColor: selectedClassification.color,
+          items: classifications.map((c) {
+            return DropdownMenuItem<ClassificationEntity>(
+                value: c,
+                child: Wrap(
+                  alignment: WrapAlignment.center,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    SvgPicture.asset("assets/images/classifications/${c.label}.svg", color: c.color, width: 20,),
+                    const SizedBox(width: 10),
+                    Text(c.label, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 10, color: c.color), overflow: TextOverflow.fade, softWrap: true,)
+                  ],
+                ));
+          }).toList(),
+          onChanged: (v)=> setState(() => selectedClassification=v!),
+        ),
+      ),
+    );
+  }
+}

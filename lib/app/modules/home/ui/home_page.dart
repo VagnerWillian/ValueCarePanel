@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:value_panel/app/modules/home/ui/components/header/header.dart';
-import 'package:value_panel/app/modules/home/ui/components/menus/left_menu.dart';
+import 'package:value_panel/app/modules/home/ui/components/header/header.component.dart';
+import 'package:value_panel/app/modules/home/ui/components/menus/left_menu.component.dart';
 import 'package:value_panel/app/modules/home/ui/home_store.dart';
 import 'package:value_panel/app/modules/home/ui/models/menu.model.dart';
 

@@ -7,8 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+import 'package:value_panel/app/modules/monitoring/ui/datasources/monitoring.datasource.dart';
 import 'package:value_panel/app/modules/monitoring/ui/models/date_selector.model.dart';
-import 'package:value_panel/app/modules/monitoring/ui/models/monitoring.datasource.dart';
 import 'package:value_panel/app/modules/monitoring/ui/monitoring_store.dart';
 import 'package:value_panel/app/shared/utils.dart';
 import 'package:value_panel/app/shared/widgets/custom/gradient.button.dart';
@@ -22,9 +22,8 @@ class MonitoringPage extends StatefulWidget {
   MonitoringPageState createState() => MonitoringPageState();
 }
 class MonitoringPageState extends State<MonitoringPage> {
-  final MonitoringStore store = Modular.get();
 
-  final List<String> columnNames = ["ID", "Data", "Sintomas", "Paciente", "Score", "Classificação", "Data solicitação", "Encaminhar"];
+  final MonitoringStore store = Modular.get();
 
   @override
   void initState() {
@@ -120,8 +119,10 @@ class MonitoringPageState extends State<MonitoringPage> {
               ],
             ),
             const SizedBox(height: 40,),
-            Observer(builder: (_) =>
-            store.loadingMonitoringItems ? Center(child: SizedBox(
+            Observer(builder: (_) {
+              MonitoringDataSource _adapter = MonitoringDataSource(monitoringItems: store.monitoringDataItems);
+
+              return store.loadingMonitoringItems ? Center(child: SizedBox(
               width: 250, height: 250,
               child: FlareActor(
                 'assets/anims/loading.flr',
@@ -146,10 +147,10 @@ class MonitoringPageState extends State<MonitoringPage> {
                   columnWidthMode: ColumnWidthMode.fill,
                   gridLinesVisibility: GridLinesVisibility.none,
                   headerGridLinesVisibility: store.loadingMonitoringItems ? GridLinesVisibility.none : GridLinesVisibility.horizontal,
-                  source: MonitoringDataSource(monitoringItems: store.monitoringDataItems, columnNames: columnNames),
+                  source: _adapter,
                   rowHeight: 65,
                   isScrollbarAlwaysShown: true,
-                  columns: columnNames.map((e) {
+                  columns: _adapter.columnNames.map((e) {
                     return GridColumn(
                         columnName: e,
                         label: Container(
@@ -161,7 +162,8 @@ class MonitoringPageState extends State<MonitoringPage> {
                   }).toList(),
                 ),
               ),
-            )),
+            );
+            }),
           ],
         ),
       ),

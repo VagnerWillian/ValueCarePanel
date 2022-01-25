@@ -1,16 +1,17 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/classification.entity.dart';
 
-class Classification implements ClassificationEntity{
+class Classification extends Equatable implements ClassificationEntity{
 
   @override
-  late String label;
+  late final String label;
 
   @override
-  late int id;
+  late final String id;
 
   @override
-  late Color color;
+  Color? color;
 
   Classification({required this.label, required this.id, required this.color});
 
@@ -19,10 +20,15 @@ class Classification implements ClassificationEntity{
     id = json['id'];
   }
 
-  Map<String, dynamic> toJson() {
+  @override
+  Map<String, dynamic> get toJson {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['label'] = label;
     data['id'] = id;
     return data;
+
   }
+
+  @override
+  List<Object?> get props => [id];
 }

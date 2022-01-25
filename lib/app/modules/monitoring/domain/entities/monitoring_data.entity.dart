@@ -1,12 +1,13 @@
-import 'package:value_panel/app/modules/monitoring/domain/entities/symptoms.entity.dart';
+import 'package:value_panel/app/modules/monitoring/infra/models/classification.model.dart';
+import 'package:value_panel/app/modules/monitoring/infra/models/symptom.model.dart';
 
 abstract class MonitoringDataEntity {
   int? id;
   String? data;
-  List<SymptomEntity>? sintomas;
+  List<Symptom>? sintomas;
   String? paciente;
   String? score;
-  String? classificacao;
+  Classification? classificacao;
   String? dataSolicitada;
   bool? encaminhar;
 
@@ -21,7 +22,5 @@ abstract class MonitoringDataEntity {
         this.classificacao,
         this.dataSolicitada,
         this.encaminhar});
-
-  Map<String, dynamic> get toJson;
 
 }

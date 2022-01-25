@@ -4,13 +4,17 @@
     "data": "2021-01-19 19:30:00",
     "sintomas": [
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 19:30:00"
       }
     ],
     "paciente": "João Paulo Pereira Santos de Andrade",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 19:30:00",
     "encaminhar": true
   },
@@ -19,17 +23,22 @@
     "data": "2021-01-19 18:15:00",
     "sintomas": [
       {
+        "id": "2",
         "label": "Falta de ar",
         "date_report": "2021-01-19 06:15:00"
       },
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 07:00:00"
       }
     ],
     "paciente": "Vagner Willian",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 07:00:00",
     "encaminhar": true
   },
@@ -38,17 +47,22 @@
     "data": "2021-01-19 14:30:00",
     "sintomas": [
       {
+        "id": "3",
         "label": "Dores de Cabeça",
         "date_report": "2021-01-19 14:30:00"
       },
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 17:00:00"
       }
     ],
     "paciente": "Beatriz Veloso Silva",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 14:30:00",
     "encaminhar": false
   },
@@ -57,17 +71,22 @@
     "data": "2021-01-19 13:45:00",
     "sintomas": [
       {
+        "id": "3",
         "label": "Dores de Cabeça",
         "date_report": "2021-01-19 13:45:00"
       },
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 16:00:00"
       }
     ],
     "paciente": "Marcos Araujo de Paula",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 16:00:00",
     "encaminhar": false
   },
@@ -76,13 +95,17 @@
     "data": "2021-01-19 19:30:00",
     "sintomas": [
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 19:30:00"
       }
     ],
     "paciente": "João Paulo Pereira Santos de Andrade",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 19:30:00",
     "encaminhar": true
   },
@@ -91,17 +114,22 @@
     "data": "2021-01-19 18:15:00",
     "sintomas": [
       {
+        "id": "2",
         "label": "Falta de ar",
         "date_report": "2021-01-19 06:15:00"
       },
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 07:00:00"
       }
     ],
     "paciente": "Vagner Willian",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 07:00:00",
     "encaminhar": true
   },
@@ -110,17 +138,22 @@
     "data": "2021-01-19 14:30:00",
     "sintomas": [
       {
+        "id": "3",
         "label": "Dores de Cabeça",
         "date_report": "2021-01-19 14:30:00"
       },
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 17:00:00"
       }
     ],
     "paciente": "Beatriz Veloso Silva",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 14:30:00",
     "encaminhar": false
   },
@@ -129,17 +162,22 @@
     "data": "2021-01-19 13:45:00",
     "sintomas": [
       {
+        "id": "3",
         "label": "Dores de Cabeça",
         "date_report": "2021-01-19 13:45:00"
       },
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 16:00:00"
       }
     ],
     "paciente": "Marcos Araujo de Paula",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 16:00:00",
     "encaminhar": false
   },
@@ -148,13 +186,17 @@
     "data": "2021-01-19 19:30:00",
     "sintomas": [
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 19:30:00"
       }
     ],
     "paciente": "João Paulo Pereira Santos de Andrade",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 19:30:00",
     "encaminhar": true
   },
@@ -163,17 +205,22 @@
     "data": "2021-01-19 18:15:00",
     "sintomas": [
       {
+        "id": "2",
         "label": "Falta de ar",
         "date_report": "2021-01-19 06:15:00"
       },
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 07:00:00"
       }
     ],
     "paciente": "Vagner Willian",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Pouco Urgente",
+      "id": "2"
+    },
     "dataSolicitada": "2021-01-19 07:00:00",
     "encaminhar": true
   },
@@ -182,17 +229,22 @@
     "data": "2021-01-19 14:30:00",
     "sintomas": [
       {
+        "id": "3",
         "label": "Dores de Cabeça",
         "date_report": "2021-01-19 14:30:00"
       },
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 17:00:00"
       }
     ],
     "paciente": "Beatriz Veloso Silva",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 14:30:00",
     "encaminhar": false
   },
@@ -201,17 +253,22 @@
     "data": "2021-01-19 13:45:00",
     "sintomas": [
       {
+        "id": "3",
         "label": "Dores de Cabeça",
         "date_report": "2021-01-19 13:45:00"
       },
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 16:00:00"
       }
     ],
     "paciente": "Marcos Araujo de Paula",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 16:00:00",
     "encaminhar": false
   },
@@ -220,13 +277,17 @@
     "data": "2021-01-19 19:30:00",
     "sintomas": [
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 19:30:00"
       }
     ],
     "paciente": "João Paulo Pereira Santos de Andrade",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 19:30:00",
     "encaminhar": true
   },
@@ -235,17 +296,22 @@
     "data": "2021-01-19 18:15:00",
     "sintomas": [
       {
+        "id": "2",
         "label": "Falta de ar",
         "date_report": "2021-01-19 06:15:00"
       },
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 07:00:00"
       }
     ],
     "paciente": "Vagner Willian",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 07:00:00",
     "encaminhar": true
   },
@@ -254,17 +320,22 @@
     "data": "2021-01-19 14:30:00",
     "sintomas": [
       {
+        "id": "3",
         "label": "Dores de Cabeça",
         "date_report": "2021-01-19 14:30:00"
       },
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 17:00:00"
       }
     ],
     "paciente": "Beatriz Veloso Silva",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 14:30:00",
     "encaminhar": false
   },
@@ -273,17 +344,22 @@
     "data": "2021-01-19 13:45:00",
     "sintomas": [
       {
+        "id": "3",
         "label": "Dores de Cabeça",
         "date_report": "2021-01-19 13:45:00"
       },
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 16:00:00"
       }
     ],
     "paciente": "Marcos Araujo de Paula",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 16:00:00",
     "encaminhar": false
   },
@@ -292,13 +368,17 @@
     "data": "2021-01-19 19:30:00",
     "sintomas": [
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 19:30:00"
       }
     ],
     "paciente": "João Paulo Pereira Santos de Andrade",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 19:30:00",
     "encaminhar": true
   },
@@ -307,17 +387,22 @@
     "data": "2021-01-19 18:15:00",
     "sintomas": [
       {
+        "id": "2",
         "label": "Falta de ar",
         "date_report": "2021-01-19 06:15:00"
       },
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 07:00:00"
       }
     ],
     "paciente": "Vagner Willian",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 07:00:00",
     "encaminhar": true
   },
@@ -326,17 +411,22 @@
     "data": "2021-01-19 14:30:00",
     "sintomas": [
       {
+        "id": "3",
         "label": "Dores de Cabeça",
         "date_report": "2021-01-19 14:30:00"
       },
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 17:00:00"
       }
     ],
     "paciente": "Beatriz Veloso Silva",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 14:30:00",
     "encaminhar": false
   },
@@ -345,17 +435,22 @@
     "data": "2021-01-19 13:45:00",
     "sintomas": [
       {
+        "id": "3",
         "label": "Dores de Cabeça",
         "date_report": "2021-01-19 13:45:00"
       },
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 16:00:00"
       }
     ],
     "paciente": "Marcos Araujo de Paula",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 16:00:00",
     "encaminhar": false
   },
@@ -364,13 +459,17 @@
     "data": "2021-01-19 19:30:00",
     "sintomas": [
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 19:30:00"
       }
     ],
     "paciente": "João Paulo Pereira Santos de Andrade",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 19:30:00",
     "encaminhar": true
   },
@@ -379,17 +478,22 @@
     "data": "2021-01-19 18:15:00",
     "sintomas": [
       {
+        "id": "2",
         "label": "Falta de ar",
         "date_report": "2021-01-19 06:15:00"
       },
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 07:00:00"
       }
     ],
     "paciente": "Vagner Willian",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 07:00:00",
     "encaminhar": true
   },
@@ -398,17 +502,22 @@
     "data": "2021-01-19 14:30:00",
     "sintomas": [
       {
+        "id": "3",
         "label": "Dores de Cabeça",
         "date_report": "2021-01-19 14:30:00"
       },
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 17:00:00"
       }
     ],
     "paciente": "Beatriz Veloso Silva",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 14:30:00",
     "encaminhar": false
   },
@@ -417,17 +526,22 @@
     "data": "2021-01-19 13:45:00",
     "sintomas": [
       {
+        "id": "3",
         "label": "Dores de Cabeça",
         "date_report": "2021-01-19 13:45:00"
       },
       {
+        "id": "1",
         "label": "Febre",
         "date_report": "2021-01-19 16:00:00"
       }
     ],
     "paciente": "Marcos Araujo de Paula",
     "score": "52",
-    "classificacao": "Urgente",
+    "classificacao": {
+      "label":"Urgente",
+      "id": "1"
+    },
     "dataSolicitada": "2021-01-19 16:00:00",
     "encaminhar": false
   }

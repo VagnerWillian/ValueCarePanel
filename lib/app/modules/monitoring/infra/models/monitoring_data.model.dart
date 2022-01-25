@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
-import 'package:value_panel/app/modules/monitoring/domain/entities/symptoms.entity.dart';
+import 'package:value_panel/app/modules/monitoring/infra/models/classification.model.dart';
 import 'package:value_panel/app/modules/monitoring/infra/models/symptom.model.dart';
 
 class MonitoringData implements MonitoringDataEntity {
@@ -8,7 +8,7 @@ class MonitoringData implements MonitoringDataEntity {
   final datePattern = DateFormat("dd/MM/yyyy", "pt_BR");
 
   @override
-  String? classificacao;
+  Classification? classificacao;
 
   @override
   String? data;
@@ -29,7 +29,7 @@ class MonitoringData implements MonitoringDataEntity {
   String? score;
 
   @override
-  List<SymptomEntity>? sintomas;
+  List<Symptom>? sintomas;
 
   @override
   String get idString => "#$id";
@@ -50,7 +50,7 @@ class MonitoringData implements MonitoringDataEntity {
     sintomas = (json['sintomas'] as List).map((s) => Symptom.fromJson(s)).toList();
     paciente = json['paciente'];
     score = json['score'];
-    classificacao = json['classificacao'];
+    classificacao = Classification.fromJson(json['classificacao']);
     dataSolicitada = datePattern.format(DateTime.parse(json['dataSolicitada']));
     encaminhar = json['encaminhar'];
   }
@@ -63,7 +63,7 @@ class MonitoringData implements MonitoringDataEntity {
     data['sintomas'] = sintomas?.map((e) => e.toJson).toList();
     data['paciente'] = paciente;
     data['score'] = score;
-    data['classificacao'] = classificacao;
+    data['classificacao'] = classificacao?.toJson;
     data['dataSolicitada'] = dataSolicitada;
     data['encaminhar'] = encaminhar;
     return data;
