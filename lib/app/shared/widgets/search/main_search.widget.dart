@@ -4,7 +4,8 @@ import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.da
 import 'package:value_panel/app/shared/utils.dart';
 
 class MainSearch extends StatelessWidget {
-  const MainSearch({Key? key}) : super(key: key);
+  final Function onTextChanged;
+  const MainSearch({Key? key, required this.onTextChanged}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +33,7 @@ class MainSearch extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(left: 15),
               child: TextFormField(
+                onChanged: (str)=>onTextChanged(str),
                 style: GoogleFonts.cairo(textStyle: const TextStyle(fontSize: 14, color: Colors.grey)),
                 decoration: InputDecoration(
                     border: InputBorder.none, hintText: "Pesquise aqui", hintStyle: GoogleFonts.cairo(textStyle: TextStyle(fontSize: 14, color: Colors.grey))),

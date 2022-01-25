@@ -25,6 +25,15 @@ abstract class _MonitoringStoreBase with Store {
     required this.downloadArchiveUseCase
   });
 
+  // GETS
+  int get rowsPerPage => monitoringDataItems.length<10?monitoringDataItems.length:10;
+
+  //OTHERS
+  List<MonitoringDataEntity> backupList = [];
+
+
+  // OBSERVABLES
+
   @observable
   DateSelector? dateSelector;
 
@@ -34,6 +43,7 @@ abstract class _MonitoringStoreBase with Store {
   @observable
   ObservableList<MonitoringDataEntity> monitoringDataItems = ObservableList<MonitoringDataEntity>();
 
+  // ACTIONS
   @action
   void setDateSelector(DateSelector value)=>dateSelector=value;
 
@@ -48,6 +58,8 @@ abstract class _MonitoringStoreBase with Store {
     monitoringDataItems.addAll(items);
   }
 
+
+  // FUNCTIONS AND VOIDS
   Future onChangedSelectorDate(DateSelector dateSelector) async {
     setDateSelector(dateSelector);
     addAllMonitoringItems([]);
@@ -60,10 +72,39 @@ abstract class _MonitoringStoreBase with Store {
       return failure;
     }, (List<MonitoringDataEntity> data) {
       addAllMonitoringItems(data);
+      backupList = data;
       return data;
     });
     setLoadingMonitoringItems(false);
   }
+
+  /////////////////////////// SEARCH ///////////////////////////////////////////////////
+    onChangedSearchText(String text){
+    if(text.isNotEmpty) {
+      List<MonitoringDataEntity> searchList = monitoringDataItems.where((m) {
+        String? id = m.id.toString().toLowerCase();
+        String? name = m.paciente?.toLowerCase();
+        return name!.contains(text.toLowerCase())||id.contains(text.toLowerCase());
+      }).toList();
+      if(searchList.isNotEmpty){
+        addAllMonitoringItems(searchList);
+      }else{
+        addAllMonitoringItems(backupList);
+      }
+    }else{
+      addAllMonitoringItems(backupList);
+    }
+  }
+
+
+
+
+
+
+
+
+
+  ////////////////////////////////////////////////////////////////////////////////////////
 
   ////////////////////////// EXPORTAR RELATORIO ///////////////////////////////////////
   bool get enableGenerateReportDoc => !loadingMonitoringItems&&dateSelector!=null;

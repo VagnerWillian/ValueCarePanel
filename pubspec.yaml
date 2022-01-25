@@ -55,6 +55,7 @@ dependencies:
   jiffy: ^5.0.0
   intl: ^0.17.0
   either_dart: ^0.1.4
+  syncfusion_localizations: ^19.4.47
 
   #UI
   hexcolor: ^2.0.5

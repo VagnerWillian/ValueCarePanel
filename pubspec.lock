@@ -725,7 +725,7 @@ packages:
       name: syncfusion_flutter_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "19.4.43+1"
+    version: "19.4.47"
   syncfusion_flutter_datagrid:
     dependency: "direct main"
     description:
@@ -733,6 +733,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "19.4.43"
+  syncfusion_localizations:
+    dependency: "direct main"
+    description:
+      name: syncfusion_localizations
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "19.4.47"
   synchronized:
     dependency: transitive
     description:
