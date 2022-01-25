@@ -1,4 +1,3 @@
-import 'package:value_panel/app/modules/monitoring/infra/models/classification.model.dart';
 import 'package:value_panel/app/modules/monitoring/infra/models/symptom.model.dart';
 
 abstract class MonitoringDataEntity {
@@ -7,7 +6,7 @@ abstract class MonitoringDataEntity {
   List<Symptom>? sintomas;
   String? paciente;
   String? score;
-  Classification? classificacao;
+  int? classificacao;
   String? dataSolicitada;
   bool? encaminhar;
 

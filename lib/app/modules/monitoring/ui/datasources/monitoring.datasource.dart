@@ -80,7 +80,7 @@ class MonitoringDataSource extends DataGridSource {
       DataGridCell<List<SymptomEntity>>(columnName: columnNames[2], value: m.sintomas),
       DataGridCell<String>(columnName: columnNames[3], value: m.paciente),
       DataGridCell<String>(columnName: columnNames[4], value: m.score),
-      DataGridCell<ClassificationEntity>(columnName: columnNames[5], value: m.classificacao),
+      DataGridCell<int>(columnName: columnNames[5], value: m.classificacao),
       DataGridCell<String>(columnName: columnNames[6], value: m.dataSolicitada),
       DataGridCell<bool>(columnName: columnNames[7], value: m.encaminhar),
     ])).toList(growable: false);

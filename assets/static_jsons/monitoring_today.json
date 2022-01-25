@@ -1,6 +1,6 @@
 [
   {
-    "id": 1234,
+    "id": 1,
     "data": "2021-01-19 19:30:00",
     "sintomas": [
       {
@@ -11,15 +11,12 @@
     ],
     "paciente": "João Paulo Pereira Santos de Andrade",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 19:30:00",
     "encaminhar": true
   },
   {
-    "id": 5678,
+    "id": 2,
     "data": "2021-01-19 18:15:00",
     "sintomas": [
       {
@@ -35,15 +32,12 @@
     ],
     "paciente": "Vagner Willian",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 07:00:00",
     "encaminhar": true
   },
   {
-    "id": 9101,
+    "id": 3,
     "data": "2021-01-19 14:30:00",
     "sintomas": [
       {
@@ -59,15 +53,12 @@
     ],
     "paciente": "Beatriz Veloso Silva",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 14:30:00",
     "encaminhar": false
   },
   {
-    "id": 11121,
+    "id": 4,
     "data": "2021-01-19 13:45:00",
     "sintomas": [
       {
@@ -83,15 +74,12 @@
     ],
     "paciente": "Marcos Araujo de Paula",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 16:00:00",
     "encaminhar": false
   },
   {
-    "id": 1234,
+    "id": 5,
     "data": "2021-01-19 19:30:00",
     "sintomas": [
       {
@@ -102,15 +90,12 @@
     ],
     "paciente": "João Paulo Pereira Santos de Andrade",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 19:30:00",
     "encaminhar": true
   },
   {
-    "id": 5678,
+    "id": 6,
     "data": "2021-01-19 18:15:00",
     "sintomas": [
       {
@@ -126,15 +111,12 @@
     ],
     "paciente": "Vagner Willian",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 07:00:00",
     "encaminhar": true
   },
   {
-    "id": 9101,
+    "id": 7,
     "data": "2021-01-19 14:30:00",
     "sintomas": [
       {
@@ -150,15 +132,12 @@
     ],
     "paciente": "Beatriz Veloso Silva",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 14:30:00",
     "encaminhar": false
   },
   {
-    "id": 11121,
+    "id": 8,
     "data": "2021-01-19 13:45:00",
     "sintomas": [
       {
@@ -174,15 +153,12 @@
     ],
     "paciente": "Marcos Araujo de Paula",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 16:00:00",
     "encaminhar": false
   },
   {
-    "id": 1234,
+    "id": 9,
     "data": "2021-01-19 19:30:00",
     "sintomas": [
       {
@@ -193,15 +169,12 @@
     ],
     "paciente": "João Paulo Pereira Santos de Andrade",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 19:30:00",
     "encaminhar": true
   },
   {
-    "id": 5678,
+    "id": 10,
     "data": "2021-01-19 18:15:00",
     "sintomas": [
       {
@@ -217,15 +190,12 @@
     ],
     "paciente": "Vagner Willian",
     "score": "52",
-    "classificacao": {
-      "label":"Pouco Urgente",
-      "id": "2"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 07:00:00",
     "encaminhar": true
   },
   {
-    "id": 9101,
+    "id": 11,
     "data": "2021-01-19 14:30:00",
     "sintomas": [
       {
@@ -241,15 +211,12 @@
     ],
     "paciente": "Beatriz Veloso Silva",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 14:30:00",
     "encaminhar": false
   },
   {
-    "id": 11121,
+    "id": 12,
     "data": "2021-01-19 13:45:00",
     "sintomas": [
       {
@@ -265,15 +232,12 @@
     ],
     "paciente": "Marcos Araujo de Paula",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 16:00:00",
     "encaminhar": false
   },
   {
-    "id": 1234,
+    "id": 13,
     "data": "2021-01-19 19:30:00",
     "sintomas": [
       {
@@ -284,15 +248,12 @@
     ],
     "paciente": "João Paulo Pereira Santos de Andrade",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 19:30:00",
     "encaminhar": true
   },
   {
-    "id": 5678,
+    "id": 14,
     "data": "2021-01-19 18:15:00",
     "sintomas": [
       {
@@ -308,15 +269,33 @@
     ],
     "paciente": "Vagner Willian",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 07:00:00",
     "encaminhar": true
   },
   {
-    "id": 9101,
+    "id": 15,
+    "data": "2021-01-19 07:15:00",
+    "sintomas": [
+      {
+        "id": "2",
+        "label": "Falta de ar",
+        "date_report": "2021-01-19 06:15:00"
+      },
+      {
+        "id": "1",
+        "label": "Febre",
+        "date_report": "2021-01-19 07:00:00"
+      }
+    ],
+    "paciente": "Paciente A",
+    "score": "89",
+    "classificacao": 1,
+    "dataSolicitada": "2021-01-19 07:00:00",
+    "encaminhar": true
+  },
+  {
+    "id": 16,
     "data": "2021-01-19 14:30:00",
     "sintomas": [
       {
@@ -332,15 +311,12 @@
     ],
     "paciente": "Beatriz Veloso Silva",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 14:30:00",
     "encaminhar": false
   },
   {
-    "id": 11121,
+    "id": 17,
     "data": "2021-01-19 13:45:00",
     "sintomas": [
       {
@@ -356,15 +332,12 @@
     ],
     "paciente": "Marcos Araujo de Paula",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 16:00:00",
     "encaminhar": false
   },
   {
-    "id": 1234,
+    "id": 18,
     "data": "2021-01-19 19:30:00",
     "sintomas": [
       {
@@ -375,15 +348,12 @@
     ],
     "paciente": "João Paulo Pereira Santos de Andrade",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 19:30:00",
     "encaminhar": true
   },
   {
-    "id": 5678,
+    "id": 19,
     "data": "2021-01-19 18:15:00",
     "sintomas": [
       {
@@ -399,15 +369,12 @@
     ],
     "paciente": "Vagner Willian",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 07:00:00",
     "encaminhar": true
   },
   {
-    "id": 9101,
+    "id": 20,
     "data": "2021-01-19 14:30:00",
     "sintomas": [
       {
@@ -423,15 +390,12 @@
     ],
     "paciente": "Beatriz Veloso Silva",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 14:30:00",
     "encaminhar": false
   },
   {
-    "id": 11121,
+    "id": 21,
     "data": "2021-01-19 13:45:00",
     "sintomas": [
       {
@@ -447,15 +411,12 @@
     ],
     "paciente": "Marcos Araujo de Paula",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 16:00:00",
     "encaminhar": false
   },
   {
-    "id": 1234,
+    "id": 22,
     "data": "2021-01-19 19:30:00",
     "sintomas": [
       {
@@ -466,15 +427,12 @@
     ],
     "paciente": "João Paulo Pereira Santos de Andrade",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 19:30:00",
     "encaminhar": true
   },
   {
-    "id": 5678,
+    "id": 23,
     "data": "2021-01-19 18:15:00",
     "sintomas": [
       {
@@ -490,15 +448,12 @@
     ],
     "paciente": "Vagner Willian",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 07:00:00",
     "encaminhar": true
   },
   {
-    "id": 9101,
+    "id": 24,
     "data": "2021-01-19 14:30:00",
     "sintomas": [
       {
@@ -514,15 +469,12 @@
     ],
     "paciente": "Beatriz Veloso Silva",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 14:30:00",
     "encaminhar": false
   },
   {
-    "id": 11121,
+    "id": 25,
     "data": "2021-01-19 13:45:00",
     "sintomas": [
       {
@@ -538,10 +490,7 @@
     ],
     "paciente": "Marcos Araujo de Paula",
     "score": "52",
-    "classificacao": {
-      "label":"Urgente",
-      "id": "1"
-    },
+    "classificacao": 1,
     "dataSolicitada": "2021-01-19 16:00:00",
     "encaminhar": false
   }

@@ -5,7 +5,7 @@ import 'package:value_panel/app/modules/monitoring/domain/entities/classificatio
 import 'package:value_panel/app/shared/utils.dart';
 
 class ClassificationColumnGrid extends StatefulWidget {
-  final ClassificationEntity value;
+  final int value;
   const ClassificationColumnGrid({Key? key, required this.value}) : super(key: key);
 
   @override
@@ -18,7 +18,7 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
 
   @override
   void initState() {
-    selectedClassification = classifications.singleWhere((c) => c.id==widget.value.id);
+    selectedClassification = classifications.singleWhere((c) => c.id==widget.value);
     super.initState();
   }
 

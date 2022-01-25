@@ -8,7 +8,7 @@ class Classification extends Equatable implements ClassificationEntity{
   late final String label;
 
   @override
-  late final String id;
+  late final int id;
 
   @override
   Color? color;

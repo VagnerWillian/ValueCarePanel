@@ -190,7 +190,7 @@ class MonitoringPageState extends State<MonitoringPage> {
         allowSorting: true,
         columnWidthMode: ColumnWidthMode.fill,
         gridLinesVisibility: GridLinesVisibility.none,
-        headerGridLinesVisibility: store.loadingMonitoringItems ? GridLinesVisibility.none : GridLinesVisibility.horizontal,
+        headerGridLinesVisibility: GridLinesVisibility.horizontal,
         source: dataSource,
         headerRowHeight: _rowHeight,
         rowHeight: _rowHeight,
