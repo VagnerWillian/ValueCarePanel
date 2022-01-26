@@ -1,497 +1,443 @@
 [
   {
+    "id": 49,
+    "data": "1990-02-11 00:14",
+    "score": "32",
+    "paciente": "Allen Schultz",
+    "sintomas": [
+      {
+        "id": "93",
+        "label": "Insonia",
+        "date_report": "1989-07-16 20:23"
+      },
+      {
+        "id": "24",
+        "label": "Não sente cheiro",
+        "date_report": "1992-05-03 03:53"
+      }
+    ],
+    "encaminhar": false,
+    "classificacao": 3,
+    "dataSolicitada": "1994-08-11 01:43"
+  },
+  {
     "id": 1,
-    "data": "2021-01-19 19:30:00",
+    "data": "1990-03-17 08:20",
+    "score": "68",
+    "paciente": "Hull Hines",
     "sintomas": [
       {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 19:30:00"
+        "id": "52",
+        "label": "Taquicardia",
+        "date_report": "1990-04-11 07:42"
+      },
+      {
+        "id": "98",
+        "label": "Chiado no Peito",
+        "date_report": "1991-12-17 02:51"
       }
     ],
-    "paciente": "João Paulo Pereira Santos de Andrade",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 19:30:00",
-    "encaminhar": true
+    "encaminhar": false,
+    "classificacao": 0,
+    "dataSolicitada": "1991-08-31 15:21"
   },
   {
-    "id": 2,
-    "data": "2021-01-19 18:15:00",
+    "id": 46,
+    "data": "1990-06-27 17:30",
+    "score": "53",
+    "paciente": "Palmer Leon",
     "sintomas": [
+      {
+        "id": "87",
+        "label": "Não sente cheiro",
+        "date_report": "1992-02-29 03:59"
+      },
+      {
+        "id": "56",
+        "label": "Não sente cheiro",
+        "date_report": "1994-03-18 09:31"
+      }
+    ],
+    "encaminhar": false,
+    "classificacao": 4,
+    "dataSolicitada": "1989-04-03 07:05"
+  },
+  {
+    "id": 73,
+    "data": "1993-02-04 07:13",
+    "score": "92",
+    "paciente": "Larsen Keller",
+    "sintomas": [
+      {
+        "id": "18",
+        "label": "Intestino Preso",
+        "date_report": "1990-08-27 13:54"
+      },
+      {
+        "id": "15",
+        "label": "Não sente cheiro",
+        "date_report": "1992-12-19 05:23"
+      }
+    ],
+    "encaminhar": false,
+    "classificacao": 4,
+    "dataSolicitada": "1993-07-10 00:32"
+  },
+  {
+    "id": 46,
+    "data": "1991-08-08 13:42",
+    "score": "81",
+    "paciente": "Manuela Hart",
+    "sintomas": [
+      {
+        "id": "83",
+        "label": "Tremores",
+        "date_report": "1991-07-03 19:49"
+      },
+      {
+        "id": "83",
+        "label": "Dor nas Articulações",
+        "date_report": "1988-10-27 17:40"
+      }
+    ],
+    "encaminhar": false,
+    "classificacao": 1,
+    "dataSolicitada": "1994-05-16 06:44"
+  },
+  {
+    "id": 90,
+    "data": "1989-04-14 22:41",
+    "score": "5",
+    "paciente": "Rodgers Green",
+    "sintomas": [
+      {
+        "id": "47",
+        "label": "Falta de Ar",
+        "date_report": "1988-12-16 07:04"
+      },
+      {
+        "id": "15",
+        "label": "Não sente cheiro",
+        "date_report": "1991-11-17 16:16"
+      }
+    ],
+    "encaminhar": true,
+    "classificacao": 3,
+    "dataSolicitada": "1993-06-24 07:40"
+  },
+  {
+    "id": 83,
+    "data": "1991-08-18 16:32",
+    "score": "52",
+    "paciente": "Lea Mcintosh",
+    "sintomas": [
+      {
+        "id": "69",
+        "label": "Lesões",
+        "date_report": "1991-07-17 07:22"
+      },
+      {
+        "id": "20",
+        "label": "Cansaço Fadiga",
+        "date_report": "1992-03-23 21:22"
+      }
+    ],
+    "encaminhar": false,
+    "classificacao": 4,
+    "dataSolicitada": "1992-08-05 16:37"
+  },
+  {
+    "id": 88,
+    "data": "1992-08-04 03:37",
+    "score": "40",
+    "paciente": "Franks Serrano",
+    "sintomas": [
+      {
+        "id": "32",
+        "label": "Lesões",
+        "date_report": "1988-07-22 09:35"
+      },
+      {
+        "id": "57",
+        "label": "Diarréia",
+        "date_report": "1992-03-11 05:17"
+      }
+    ],
+    "encaminhar": false,
+    "classificacao": 1,
+    "dataSolicitada": "1988-10-06 09:18"
+  },
+  {
+    "id": 53,
+    "data": "1990-03-18 23:20",
+    "score": "43",
+    "paciente": "Mendez Allen",
+    "sintomas": [
+      {
+        "id": "24",
+        "label": 1,
+        "date_report": "1990-07-13 20:14"
+      },
+      {
+        "id": "11",
+        "label": "Cansaço Fadiga",
+        "date_report": "1990-01-16 18:36"
+      }
+    ],
+    "encaminhar": true,
+    "classificacao": 0,
+    "dataSolicitada": "1988-01-14 12:23"
+  },
+  {
+    "id": 91,
+    "data": "1989-10-16 00:00",
+    "score": "7",
+    "paciente": "Donaldson Mosley",
+    "sintomas": [
+      {
+        "id": "20",
+        "label": "Intestino Preso",
+        "date_report": "1990-01-07 17:11"
+      },
+      {
+        "id": "49",
+        "label": "Dor no Corpo",
+        "date_report": "1990-09-28 05:58"
+      }
+    ],
+    "encaminhar": false,
+    "classificacao": 0,
+    "dataSolicitada": "1989-04-30 07:34"
+  },
+  {
+    "id": 42,
+    "data": "1993-01-02 12:22",
+    "score": "73",
+    "paciente": "Lynch Olson",
+    "sintomas": [
+      {
+        "id": "86",
+        "label": "Tremores",
+        "date_report": "1991-08-17 13:08"
+      },
+      {
+        "id": "42",
+        "label": "Cansaço Fadiga",
+        "date_report": "1990-03-22 05:58"
+      }
+    ],
+    "encaminhar": true,
+    "classificacao": 3,
+    "dataSolicitada": "1989-10-27 21:07"
+  },
+  {
+    "id": 77,
+    "data": "1994-04-20 22:40",
+    "score": "75",
+    "paciente": "Estella Christensen",
+    "sintomas": [
+      {
+        "id": "13",
+        "label": "Intestino Preso",
+        "date_report": "1989-06-18 19:32"
+      },
       {
         "id": "2",
-        "label": "Falta de ar",
-        "date_report": "2021-01-19 06:15:00"
-      },
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 07:00:00"
+        "label": "Cansaço Fadiga",
+        "date_report": "1989-03-06 15:12"
       }
     ],
-    "paciente": "Vagner Willian",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 07:00:00",
-    "encaminhar": true
+    "encaminhar": true,
+    "classificacao": 4,
+    "dataSolicitada": "1991-11-03 07:57"
   },
   {
-    "id": 3,
-    "data": "2021-01-19 14:30:00",
+    "id": 32,
+    "data": "1992-11-14 19:09",
+    "score": "48",
+    "paciente": "Cameron Short",
+    "sintomas": [
+      {
+        "id": "75",
+        "label": "Não sente cheiro",
+        "date_report": "1989-01-19 18:11"
+      },
+      {
+        "id": "29",
+        "label": "Tosse",
+        "date_report": "1988-12-02 14:28"
+      }
+    ],
+    "encaminhar": false,
+    "classificacao": 2,
+    "dataSolicitada": "1989-01-27 17:32"
+  },
+  {
+    "id": 50,
+    "data": "1994-04-26 12:32",
+    "score": "41",
+    "paciente": "Boyle Witt",
+    "sintomas": [
+      {
+        "id": "10",
+        "label": "Taquicardia",
+        "date_report": "1993-11-16 04:46"
+      },
+      {
+        "id": "22",
+        "label": "Dor nas Articulações",
+        "date_report": "1993-12-21 05:18"
+      }
+    ],
+    "encaminhar": true,
+    "classificacao": 1,
+    "dataSolicitada": "1990-03-18 16:55"
+  },
+  {
+    "id": 78,
+    "data": "1990-12-10 03:51",
+    "score": "24",
+    "paciente": "Stephanie Pace",
+    "sintomas": [
+      {
+        "id": "31",
+        "label": 1,
+        "date_report": "1990-11-21 13:54"
+      },
+      {
+        "id": "5",
+        "label": "Intestino Preso",
+        "date_report": "1991-06-24 01:13"
+      }
+    ],
+    "encaminhar": false,
+    "classificacao": 0,
+    "dataSolicitada": "1992-09-02 17:53"
+  },
+  {
+    "id": 34,
+    "data": "1989-07-31 18:52",
+    "score": "38",
+    "paciente": "Hammond Oneal",
+    "sintomas": [
+      {
+        "id": "34",
+        "label": "Lesões",
+        "date_report": "1988-05-02 01:01"
+      },
+      {
+        "id": "36",
+        "label": "Dor no Corpo",
+        "date_report": "1989-05-18 10:59"
+      }
+    ],
+    "encaminhar": false,
+    "classificacao": 4,
+    "dataSolicitada": "1989-06-16 08:44"
+  },
+  {
+    "id": 71,
+    "data": "1992-11-05 22:20",
+    "score": "34",
+    "paciente": "Ellison Rollins",
+    "sintomas": [
+      {
+        "id": "67",
+        "label": "Não sente cheiro",
+        "date_report": "1994-07-31 06:48"
+      },
+      {
+        "id": "50",
+        "label": "Lesões",
+        "date_report": "1994-08-05 12:33"
+      }
+    ],
+    "encaminhar": false,
+    "classificacao": 3,
+    "dataSolicitada": "1991-02-21 09:31"
+  },
+  {
+    "id": 45,
+    "data": "1994-01-02 10:50",
+    "score": "80",
+    "paciente": "Nina Tyler",
+    "sintomas": [
+      {
+        "id": "57",
+        "label": "Lesões",
+        "date_report": "1990-08-04 16:46"
+      },
+      {
+        "id": "14",
+        "label": "Tosse",
+        "date_report": "1988-07-28 02:48"
+      }
+    ],
+    "encaminhar": false,
+    "classificacao": 3,
+    "dataSolicitada": "1989-03-03 05:31"
+  },
+  {
+    "id": 65,
+    "data": "1991-07-04 18:10",
+    "score": "16",
+    "paciente": "Reilly Mckenzie",
     "sintomas": [
       {
         "id": "3",
-        "label": "Dores de Cabeça",
-        "date_report": "2021-01-19 14:30:00"
+        "label": "Dor nas Articulações",
+        "date_report": "1993-05-27 08:30"
       },
       {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 17:00:00"
+        "id": "84",
+        "label": "Cansaço Fadiga",
+        "date_report": "1989-03-13 22:23"
       }
     ],
-    "paciente": "Beatriz Veloso Silva",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 14:30:00",
-    "encaminhar": false
+    "encaminhar": false,
+    "classificacao": 2,
+    "dataSolicitada": "1994-08-30 08:11"
   },
   {
-    "id": 4,
-    "data": "2021-01-19 13:45:00",
+    "id": 48,
+    "data": "1991-01-25 19:46",
+    "score": "50",
+    "paciente": "Yvonne Francis",
     "sintomas": [
       {
-        "id": "3",
-        "label": "Dores de Cabeça",
-        "date_report": "2021-01-19 13:45:00"
+        "id": "27",
+        "label": "Não sente cheiro",
+        "date_report": "1994-05-13 19:52"
       },
       {
-        "id": "1",
+        "id": "51",
         "label": "Febre",
-        "date_report": "2021-01-19 16:00:00"
+        "date_report": "1992-02-28 19:55"
       }
     ],
-    "paciente": "Marcos Araujo de Paula",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 16:00:00",
-    "encaminhar": false
+    "encaminhar": false,
+    "classificacao": 4,
+    "dataSolicitada": "1990-01-10 22:54"
   },
   {
-    "id": 5,
-    "data": "2021-01-19 19:30:00",
+    "id": 100,
+    "data": "1990-10-22 04:03",
+    "score": "30",
+    "paciente": "Oneill Horton",
     "sintomas": [
       {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 19:30:00"
-      }
-    ],
-    "paciente": "João Paulo Pereira Santos de Andrade",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 19:30:00",
-    "encaminhar": true
-  },
-  {
-    "id": 6,
-    "data": "2021-01-19 18:15:00",
-    "sintomas": [
-      {
-        "id": "2",
-        "label": "Falta de ar",
-        "date_report": "2021-01-19 06:15:00"
+        "id": "20",
+        "label": 1,
+        "date_report": "1990-10-02 15:43"
       },
       {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 07:00:00"
+        "id": "49",
+        "label": "Insonia",
+        "date_report": "1993-07-11 02:05"
       }
     ],
-    "paciente": "Vagner Willian",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 07:00:00",
-    "encaminhar": true
-  },
-  {
-    "id": 7,
-    "data": "2021-01-19 14:30:00",
-    "sintomas": [
-      {
-        "id": "3",
-        "label": "Dores de Cabeça",
-        "date_report": "2021-01-19 14:30:00"
-      },
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 17:00:00"
-      }
-    ],
-    "paciente": "Beatriz Veloso Silva",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 14:30:00",
-    "encaminhar": false
-  },
-  {
-    "id": 8,
-    "data": "2021-01-19 13:45:00",
-    "sintomas": [
-      {
-        "id": "3",
-        "label": "Dores de Cabeça",
-        "date_report": "2021-01-19 13:45:00"
-      },
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 16:00:00"
-      }
-    ],
-    "paciente": "Marcos Araujo de Paula",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 16:00:00",
-    "encaminhar": false
-  },
-  {
-    "id": 9,
-    "data": "2021-01-19 19:30:00",
-    "sintomas": [
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 19:30:00"
-      }
-    ],
-    "paciente": "João Paulo Pereira Santos de Andrade",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 19:30:00",
-    "encaminhar": true
-  },
-  {
-    "id": 10,
-    "data": "2021-01-19 18:15:00",
-    "sintomas": [
-      {
-        "id": "2",
-        "label": "Falta de ar",
-        "date_report": "2021-01-19 06:15:00"
-      },
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 07:00:00"
-      }
-    ],
-    "paciente": "Vagner Willian",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 07:00:00",
-    "encaminhar": true
-  },
-  {
-    "id": 11,
-    "data": "2021-01-19 14:30:00",
-    "sintomas": [
-      {
-        "id": "3",
-        "label": "Dores de Cabeça",
-        "date_report": "2021-01-19 14:30:00"
-      },
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 17:00:00"
-      }
-    ],
-    "paciente": "Beatriz Veloso Silva",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 14:30:00",
-    "encaminhar": false
-  },
-  {
-    "id": 12,
-    "data": "2021-01-19 13:45:00",
-    "sintomas": [
-      {
-        "id": "3",
-        "label": "Dores de Cabeça",
-        "date_report": "2021-01-19 13:45:00"
-      },
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 16:00:00"
-      }
-    ],
-    "paciente": "Marcos Araujo de Paula",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 16:00:00",
-    "encaminhar": false
-  },
-  {
-    "id": 13,
-    "data": "2021-01-19 19:30:00",
-    "sintomas": [
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 19:30:00"
-      }
-    ],
-    "paciente": "João Paulo Pereira Santos de Andrade",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 19:30:00",
-    "encaminhar": true
-  },
-  {
-    "id": 14,
-    "data": "2021-01-19 18:15:00",
-    "sintomas": [
-      {
-        "id": "2",
-        "label": "Falta de ar",
-        "date_report": "2021-01-19 06:15:00"
-      },
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 07:00:00"
-      }
-    ],
-    "paciente": "Vagner Willian",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 07:00:00",
-    "encaminhar": true
-  },
-  {
-    "id": 15,
-    "data": "2021-01-19 07:15:00",
-    "sintomas": [
-      {
-        "id": "2",
-        "label": "Falta de ar",
-        "date_report": "2021-01-19 06:15:00"
-      },
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 07:00:00"
-      }
-    ],
-    "paciente": "Paciente A",
-    "score": "89",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 07:00:00",
-    "encaminhar": true
-  },
-  {
-    "id": 16,
-    "data": "2021-01-19 14:30:00",
-    "sintomas": [
-      {
-        "id": "3",
-        "label": "Dores de Cabeça",
-        "date_report": "2021-01-19 14:30:00"
-      },
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 17:00:00"
-      }
-    ],
-    "paciente": "Beatriz Veloso Silva",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 14:30:00",
-    "encaminhar": false
-  },
-  {
-    "id": 17,
-    "data": "2021-01-19 13:45:00",
-    "sintomas": [
-      {
-        "id": "3",
-        "label": "Dores de Cabeça",
-        "date_report": "2021-01-19 13:45:00"
-      },
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 16:00:00"
-      }
-    ],
-    "paciente": "Marcos Araujo de Paula",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 16:00:00",
-    "encaminhar": false
-  },
-  {
-    "id": 18,
-    "data": "2021-01-19 19:30:00",
-    "sintomas": [
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 19:30:00"
-      }
-    ],
-    "paciente": "João Paulo Pereira Santos de Andrade",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 19:30:00",
-    "encaminhar": true
-  },
-  {
-    "id": 19,
-    "data": "2021-01-19 18:15:00",
-    "sintomas": [
-      {
-        "id": "2",
-        "label": "Falta de ar",
-        "date_report": "2021-01-19 06:15:00"
-      },
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 07:00:00"
-      }
-    ],
-    "paciente": "Vagner Willian",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 07:00:00",
-    "encaminhar": true
-  },
-  {
-    "id": 20,
-    "data": "2021-01-19 14:30:00",
-    "sintomas": [
-      {
-        "id": "3",
-        "label": "Dores de Cabeça",
-        "date_report": "2021-01-19 14:30:00"
-      },
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 17:00:00"
-      }
-    ],
-    "paciente": "Beatriz Veloso Silva",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 14:30:00",
-    "encaminhar": false
-  },
-  {
-    "id": 21,
-    "data": "2021-01-19 13:45:00",
-    "sintomas": [
-      {
-        "id": "3",
-        "label": "Dores de Cabeça",
-        "date_report": "2021-01-19 13:45:00"
-      },
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 16:00:00"
-      }
-    ],
-    "paciente": "Marcos Araujo de Paula",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 16:00:00",
-    "encaminhar": false
-  },
-  {
-    "id": 22,
-    "data": "2021-01-19 19:30:00",
-    "sintomas": [
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 19:30:00"
-      }
-    ],
-    "paciente": "João Paulo Pereira Santos de Andrade",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 19:30:00",
-    "encaminhar": true
-  },
-  {
-    "id": 23,
-    "data": "2021-01-19 18:15:00",
-    "sintomas": [
-      {
-        "id": "2",
-        "label": "Falta de ar",
-        "date_report": "2021-01-19 06:15:00"
-      },
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 07:00:00"
-      }
-    ],
-    "paciente": "Vagner Willian",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 07:00:00",
-    "encaminhar": true
-  },
-  {
-    "id": 24,
-    "data": "2021-01-19 14:30:00",
-    "sintomas": [
-      {
-        "id": "3",
-        "label": "Dores de Cabeça",
-        "date_report": "2021-01-19 14:30:00"
-      },
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 17:00:00"
-      }
-    ],
-    "paciente": "Beatriz Veloso Silva",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 14:30:00",
-    "encaminhar": false
-  },
-  {
-    "id": 25,
-    "data": "2021-01-19 13:45:00",
-    "sintomas": [
-      {
-        "id": "3",
-        "label": "Dores de Cabeça",
-        "date_report": "2021-01-19 13:45:00"
-      },
-      {
-        "id": "1",
-        "label": "Febre",
-        "date_report": "2021-01-19 16:00:00"
-      }
-    ],
-    "paciente": "Marcos Araujo de Paula",
-    "score": "52",
-    "classificacao": 1,
-    "dataSolicitada": "2021-01-19 16:00:00",
-    "encaminhar": false
+    "encaminhar": true,
+    "classificacao": 3,
+    "dataSolicitada": "1994-07-03 05:42"
   }
 ]
