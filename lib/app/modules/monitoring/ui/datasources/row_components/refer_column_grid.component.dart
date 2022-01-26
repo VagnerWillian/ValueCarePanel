@@ -20,6 +20,12 @@ class _ReferColumnGridState extends State<ReferColumnGrid> {
   }
 
   @override
+  void didUpdateWidget(covariant ReferColumnGrid oldWidget) {
+    checkStatus = widget.check;
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
         alignment: Alignment.center,

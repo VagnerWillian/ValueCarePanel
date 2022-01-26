@@ -23,10 +23,24 @@ class MonitoringDataSource extends DataGridSource {
   @override
   List<DataGridRow> get rows =>  dataGridRows;
 
+
   MonitoringDataSource({required this.monitoringItems, required this.rowsPerPage}) {
     if(monitoringItems.isNotEmpty){
-      _paginedMonitoringItems = monitoringItems.getRange(0, rowsPerPage).toList(growable: false);
+      // _paginedMonitoringItems = monitoringItems.getRange(0, 25).toList(growable: false);
     }
+  }
+
+  void buildPaginatedDataGridRows() {
+    dataGridRows = _paginedMonitoringItems.map<DataGridRow>((m) => DataGridRow(cells: [
+      DataGridCell<String>(columnName: columnNames[0], value: m.idString),
+      DataGridCell<String>(columnName: columnNames[1], value: m.data),
+      DataGridCell<List<SymptomEntity>>(columnName: columnNames[2], value: m.sintomas),
+      DataGridCell<String>(columnName: columnNames[3], value: m.paciente),
+      DataGridCell<String>(columnName: columnNames[4], value: m.score),
+      DataGridCell<int>(columnName: columnNames[5], value: m.classificacao),
+      DataGridCell<String>(columnName: columnNames[6], value: m.dataSolicitada),
+      DataGridCell<bool>(columnName: columnNames[7], value: m.encaminhar),
+    ])).toList(growable: false);
   }
 
   @override
@@ -72,18 +86,4 @@ class MonitoringDataSource extends DataGridSource {
 
     return true;
   }
-
-  void buildPaginatedDataGridRows() {
-    dataGridRows = _paginedMonitoringItems.map<DataGridRow>((m) => DataGridRow(cells: [
-      DataGridCell<String>(columnName: columnNames[0], value: m.idString),
-      DataGridCell<String>(columnName: columnNames[1], value: m.data),
-      DataGridCell<List<SymptomEntity>>(columnName: columnNames[2], value: m.sintomas),
-      DataGridCell<String>(columnName: columnNames[3], value: m.paciente),
-      DataGridCell<String>(columnName: columnNames[4], value: m.score),
-      DataGridCell<int>(columnName: columnNames[5], value: m.classificacao),
-      DataGridCell<String>(columnName: columnNames[6], value: m.dataSolicitada),
-      DataGridCell<bool>(columnName: columnNames[7], value: m.encaminhar),
-    ])).toList(growable: false);
-  }
-
 }

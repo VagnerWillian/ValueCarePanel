@@ -157,7 +157,7 @@ class MonitoringPageState extends State<MonitoringPage> {
                           ),
                           child: SfDataPager(
                             delegate: _monitoringDataSource,
-                            pageCount: store.monitoringDataItems.length / store.rowsPerPage,
+                            pageCount: (_monitoringDataSource.monitoringItems.length / store.rowsPerPage)<=0?1:_monitoringDataSource.monitoringItems.length / store.rowsPerPage,
                             direction: Axis.horizontal,
                             pageItemBuilder: (str){
                               if(str=="First"){

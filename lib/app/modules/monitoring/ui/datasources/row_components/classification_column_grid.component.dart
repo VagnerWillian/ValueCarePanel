@@ -23,6 +23,12 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
   }
 
   @override
+  void didUpdateWidget(covariant ClassificationColumnGrid oldWidget) {
+    selectedClassification = classifications.singleWhere((c) => c.id==widget.value);
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(

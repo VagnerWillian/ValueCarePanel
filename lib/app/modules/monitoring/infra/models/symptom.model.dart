@@ -3,14 +3,18 @@ import 'package:value_panel/app/modules/monitoring/domain/entities/symptoms.enti
 class Symptom implements SymptomEntity{
 
   @override
+  int? id;
+
+  @override
   String? dateReport;
 
   @override
   String? label;
 
-  Symptom({this.label, this.dateReport});
+  Symptom({this.id, this.label, this.dateReport});
 
   Symptom.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
     label = json['label'];
     dateReport = json['date_report'];
   }
@@ -18,6 +22,7 @@ class Symptom implements SymptomEntity{
   @override
   Map<String, dynamic> get toJson {
     final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
     data['label'] = label;
     data['date_report'] = dateReport;
     return data;
