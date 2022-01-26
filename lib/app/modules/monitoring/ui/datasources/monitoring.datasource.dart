@@ -24,11 +24,7 @@ class MonitoringDataSource extends DataGridSource {
   List<DataGridRow> get rows =>  dataGridRows;
 
 
-  MonitoringDataSource({required this.monitoringItems, required this.rowsPerPage}) {
-    if(monitoringItems.isNotEmpty){
-      // _paginedMonitoringItems = monitoringItems.getRange(0, 25).toList(growable: false);
-    }
-  }
+  MonitoringDataSource({required this.monitoringItems, required this.rowsPerPage});
 
   void buildPaginatedDataGridRows() {
     dataGridRows = _paginedMonitoringItems.map<DataGridRow>((m) => DataGridRow(cells: [
@@ -76,6 +72,9 @@ class MonitoringDataSource extends DataGridSource {
   Future<bool> handlePageChange(int oldPageIndex, int newPageIndex) async {
     int startIndex = newPageIndex * rowsPerPage;
     int endIndex = startIndex + rowsPerPage;
+    if(endIndex>monitoringItems.length) {
+      endIndex = monitoringItems.length;
+    }
     if (startIndex < monitoringItems.length && endIndex <= monitoringItems.length) {
       _paginedMonitoringItems = monitoringItems.getRange(startIndex, endIndex).toList(growable: false);
       buildPaginatedDataGridRows();

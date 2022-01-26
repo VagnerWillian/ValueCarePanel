@@ -67,6 +67,7 @@ dependencies:
   cached_network_image: ^3.2.0
   syncfusion_flutter_core: ^19.4.43+1
   syncfusion_flutter_datagrid: ^19.4.43
+  syncfusion_flutter_datepicker: ^19.4.47
   flare_flutter: ^3.0.2
   image_network: ^2.3.0
 

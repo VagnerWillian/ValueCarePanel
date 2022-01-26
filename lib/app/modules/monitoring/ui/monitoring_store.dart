@@ -23,10 +23,13 @@ abstract class _MonitoringStoreBase with Store {
     required this.fetchMonitoringDataFromIntervalDatesUseCase,
     required this.fetchReportDocSrcUseCase,
     required this.downloadArchiveUseCase
-  });
+  }){
+    addAllMonitoringItems([]);
+  }
 
   // GETS
   int get rowsPerPage => monitoringDataItems.length<10?monitoringDataItems.length:10;
+  double get pageCount => (monitoringDataItems.length | rowsPerPage)<=0 ? 1: (monitoringDataItems.length / rowsPerPage).ceilToDouble();
 
   //OTHERS
   List<MonitoringDataEntity> backupList = [];
@@ -65,10 +68,14 @@ abstract class _MonitoringStoreBase with Store {
     addAllMonitoringItems([]);
     setLoadingMonitoringItems(true);
     Either<MonitoringError, List<MonitoringDataEntity>> response = await fetchMonitoringDataFromIntervalDatesUseCase(
-      startDate: dateSelector.startDate,
-      endDate: dateSelector.endDate
+      startDate: dateSelector.startDate!,
+      endDate: dateSelector.endDate!
     );
     response.fold((MonitoringError failure) {
+      if(failure is MonitoringRepositoryError){
+        print("Message error: ${failure.message}");
+        print("Code error: ${failure.statusCode}");
+      }
       return failure;
     }, (List<MonitoringDataEntity> data) {
       addAllMonitoringItems(data);
@@ -118,8 +125,8 @@ abstract class _MonitoringStoreBase with Store {
 
   Future exportReportDoc()async{
     Either<MonitoringError, String> responseSrcOfDoc = await fetchReportDocSrcUseCase(
-      startDate: dateSelector!.startDate,
-      endDate: dateSelector!.endDate
+      startDate: dateSelector!.startDate!,
+      endDate: dateSelector!.endDate!
     );
     responseSrcOfDoc.fold((MonitoringError failure) {
       // TODO IMPLEMENTAR TRATAMENTO DE FALHA
@@ -128,34 +135,5 @@ abstract class _MonitoringStoreBase with Store {
       downloadReportDocFromSrc(url: url);
     });
   }
-  //////////////////////////////////////////////////////////////////////////////////////
 
-  // Pre Dates Logic
-  List<DateSelector> get preDates {
-    final DateTime today = DateTime.now();
-
-    // This week
-    final DateTime startWeek = Jiffy(today).startOf(Units.WEEK).dateTime;
-
-    // This Month
-    final DateTime startMonthNow = Jiffy(today).startOf(Units.MONTH).dateTime;
-
-    // Previous Month
-    final DateTime startPreviousMonth = Jiffy(startMonthNow).subtract(months: 1).dateTime;
-    final DateTime endPreviousMonth = Jiffy(startPreviousMonth).endOf(Units.MONTH).dateTime;
-
-    final DateSelector todaySelector = DateSelector(label: "Hoje", startDate: today, endDate: today);
-    final DateSelector thisWeekSelector = DateSelector(label: "Esta semana", startDate: startWeek, endDate: today);
-    final DateSelector thisMonthSelector = DateSelector(label: "Este Mês", startDate: startMonthNow, endDate: today);
-    final DateSelector previousMonthSelector = DateSelector(label: "Mês Anterior", startDate: startPreviousMonth, endDate: endPreviousMonth);
-
-    final List<DateSelector> dates = [
-      todaySelector,
-      thisWeekSelector,
-      thisMonthSelector,
-      previousMonthSelector
-    ];
-
-    return dates;
-  }
 }

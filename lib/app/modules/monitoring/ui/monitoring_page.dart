@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
 import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+import 'package:value_panel/app/modules/monitoring/ui/components/selector_date.component.dart';
 import 'package:value_panel/app/modules/monitoring/ui/datasources/monitoring.datasource.dart';
-import 'package:value_panel/app/modules/monitoring/ui/models/date_selector.model.dart';
 import 'package:value_panel/app/modules/monitoring/ui/monitoring_store.dart';
 import 'package:value_panel/app/shared/utils.dart';
 import 'package:value_panel/app/shared/widgets/custom/gradient.button.dart';
@@ -28,7 +27,7 @@ class MonitoringPageState extends State<MonitoringPage> {
 
   @override
   void initState() {
-    store.onChangedSelectorDate(store.preDates[0]);
+    // store.onChangedSelectorDate(store.preDates[0], setDataRange: null);
     super.initState();
   }
 
@@ -68,33 +67,7 @@ class MonitoringPageState extends State<MonitoringPage> {
                         Icon(LineAwesomeIcons.calendar, color: primaryColor,),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Observer(
-                            builder: (_) =>
-                                DropdownButton<DateSelector>(
-                                  underline: Container(),
-                                  borderRadius: BorderRadius.circular(10),
-                                  value: store.dateSelector,
-                                  items: store.preDates.map((d) {
-                                    final startDatePattern = DateFormat("d 'de' MMMM", "pt_BR");
-                                    final endDatePattern = DateFormat("d 'de' MMMM ',' y'", "pt_BR");
-
-                                    return DropdownMenuItem<DateSelector>(
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            d.label, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12), textAlign: TextAlign.start,),
-                                          Text("${startDatePattern.format(d.startDate)} • ${endDatePattern.format(d.endDate)}",
-                                              style: const TextStyle(color: Colors.grey, fontSize: 10), textAlign: TextAlign.start),
-                                        ],
-                                      ),
-                                      value: d,
-                                    );
-                                  }).toList(),
-                                  onChanged: (v) => store.onChangedSelectorDate(v!),
-                                ),
-                          ),
+                          child: SelectorDateWidget(onChangedSelectorDate: store.onChangedSelectorDate),
                         ),
                       ],
                     )
@@ -157,7 +130,7 @@ class MonitoringPageState extends State<MonitoringPage> {
                           ),
                           child: SfDataPager(
                             delegate: _monitoringDataSource,
-                            pageCount: (_monitoringDataSource.monitoringItems.length / store.rowsPerPage)<=0?1:_monitoringDataSource.monitoringItems.length / store.rowsPerPage,
+                            pageCount: store.pageCount,
                             direction: Axis.horizontal,
                             pageItemBuilder: (str){
                               if(str=="First"){
@@ -220,4 +193,6 @@ class MonitoringPageState extends State<MonitoringPage> {
       }
       return null;
   }
+
+ 
 }
