@@ -131,6 +131,7 @@ class MonitoringPageState extends State<MonitoringPage> {
                           child: SfDataPager(
                             delegate: _monitoringDataSource,
                             pageCount: store.pageCount,
+                            controller: store.controllerDataPager,
                             direction: Axis.horizontal,
                             pageItemBuilder: (str){
                               if(str=="First"){

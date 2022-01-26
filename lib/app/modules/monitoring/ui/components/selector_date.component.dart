@@ -19,7 +19,7 @@ class _SelectorDateWidgetState extends State<SelectorDateWidget> {
   @override
   void initState() {
     preDates = preDatesLogic();
-    selectedDate = preDates.first;
+    setSelectedDate(preDates.first);
     super.initState();
   }
 

@@ -2,6 +2,7 @@ import 'package:either_dart/either.dart';
 import 'package:flutter/foundation.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:mobx/mobx.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/download_archive.usecase.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/fetch_employees_from_interval_dates.usecase.dart';
@@ -18,6 +19,8 @@ abstract class _MonitoringStoreBase with Store {
   final FetchMonitoringDataFromIntervalDatesUseCase fetchMonitoringDataFromIntervalDatesUseCase;
   final FetchReportDocSrcUseCase fetchReportDocSrcUseCase;
   final DownloadArchiveUseCase downloadArchiveUseCase;
+
+  final DataPagerController controllerDataPager = DataPagerController();
 
   _MonitoringStoreBase({
     required this.fetchMonitoringDataFromIntervalDatesUseCase,
@@ -87,7 +90,10 @@ abstract class _MonitoringStoreBase with Store {
 
   /////////////////////////// SEARCH ///////////////////////////////////////////////////
     onChangedSearchText(String text){
-    if(text.isNotEmpty) {
+      if(controllerDataPager.selectedPageIndex!=0){
+        controllerDataPager.firstPage();
+      }
+      if(text.isNotEmpty) {
       List<MonitoringDataEntity> searchList = monitoringDataItems.where((m) {
         String? id = m.id.toString().toLowerCase();
         String? name = m.paciente?.toLowerCase();
