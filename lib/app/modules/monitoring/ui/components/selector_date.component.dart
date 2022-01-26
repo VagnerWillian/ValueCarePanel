@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:value_panel/app/modules/monitoring/ui/models/date_selector.model.dart';
+import 'package:value_panel/app/shared/utils.dart';
 
 class SelectorDateWidget extends StatefulWidget {
   final Function onChangedSelectorDate;
@@ -47,45 +49,67 @@ class _SelectorDateWidgetState extends State<SelectorDateWidget> {
           value: d,
         );
       }).toList(),
-      onChanged: (v)=>onChangedDate(v),
+      onChanged: (v) => onChangedDate(v),
     );
   }
 
   Future<void> onChangedDate(DateSelector? v) async {
     {
-           if (v!.dynamic) {
-             PickerDateRange? dateRange = await showDialog(
-                barrierColor: Colors.white70,
-                 context: context,
-                 builder: (_) => Dialog(
-                       child: SizedBox(
-                         width: 300,
-                         height: 300,
-                         child: SfDateRangePicker(
-                           showActionButtons: true,
-                           initialDisplayDate: DateTime.now(),
-                           selectionMode: DateRangePickerSelectionMode.extendableRange,
-                           confirmText: "Confirmar",
-                           cancelText: "Cancelar",
-                           onSubmit: (value) => Modular.to.pop(value),
-                           onCancel: () => Modular.to.pop(),
-                         ),
-                       ),
-                     ));
+      if (v!.dynamic) {
+        PickerDateRange? dateRange = await showDialog(
+            barrierColor: Colors.white70,
+            context: context,
+            builder: (_) => Dialog(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: SizedBox(
+                      width: 450,
+                      height: 450,
+                      child: SfDateRangePicker(
+                        rangeSelectionColor: secondColor.withOpacity(0.3),
+                        selectionColor: secondColor,
+                        endRangeSelectionColor: primaryColor,
+                        startRangeSelectionColor: primaryColor,
+                        todayHighlightColor: primaryColor,
+                        rangeTextStyle: GoogleFonts.cairo(color: Colors.white, fontWeight: FontWeight.bold),
+                        yearCellStyle: DateRangePickerYearCellStyle(
+                            textStyle: GoogleFonts.cairo(color: primaryColor, fontWeight: FontWeight.bold,),
+                            todayTextStyle: GoogleFonts.cairo(color: primaryColor, fontWeight: FontWeight.bold,),
+                        ),
+                        monthCellStyle: DateRangePickerMonthCellStyle(
+                            textStyle: GoogleFonts.cairo(color: primaryColor, fontWeight: FontWeight.bold),
+                            todayTextStyle: GoogleFonts.cairo(color: primaryColor, fontWeight: FontWeight.bold,),
+                        ),
+                        selectionTextStyle: GoogleFonts.cairo(color: Colors.white, fontWeight: FontWeight.bold),
+                        headerStyle: DateRangePickerHeaderStyle(
+                          textStyle: GoogleFonts.cairo(color: primaryColor, fontWeight: FontWeight.bold, fontSize: 30)
+                        ),
+                        showActionButtons: true,
+                        selectionMode: DateRangePickerSelectionMode.extendableRange,
+                        confirmText: "Confirmar",
+                        cancelText: "Cancelar",
+                        onSubmit: (value) => Modular.to.pop(value),
+                        onCancel: () => Modular.to.pop(),
+                      ),
+                    ),
+                  ),
+                ));
 
-             if (dateRange == null) {
-               setSelectedDate(selectedDate = preDates.first);
-             } else {
-               preDates.replaceRange(preDates.length - 1, preDates.length, [DateSelector(label: "Selecionar outro período...", startDate: dateRange.startDate, endDate: dateRange.endDate, dynamic: true)]);
-               setSelectedDate(selectedDate = preDates.last);
-             }
-           } else {
-              setSelectedDate(selectedDate = v);
-           }
-         }
+        if (dateRange == null) {
+          // setSelectedDate(selectedDate = preDates.first);
+        } else {
+          preDates.replaceRange(preDates.length - 1, preDates.length,
+              [DateSelector(label: "Selecionar outro período...", startDate: dateRange.startDate??dateRange.endDate, endDate: dateRange.endDate??dateRange.startDate, dynamic: true)]);
+          setSelectedDate(selectedDate = preDates.last);
+        }
+      } else {
+        setSelectedDate(selectedDate = v);
+      }
+    }
   }
 
-  void setSelectedDate(DateSelector dateSelector){
+  void setSelectedDate(DateSelector dateSelector) {
     widget.onChangedSelectorDate(dateSelector);
     setState(() {
       selectedDate = dateSelector;

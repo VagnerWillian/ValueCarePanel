@@ -16,6 +16,7 @@ class MonitoringDataSource extends DataGridSource {
   List<DataGridRow>  dataGridRows = [];
   List<MonitoringDataEntity>  _paginedMonitoringItems = [];
   List<MonitoringDataEntity>  monitoringItems = [];
+
   final int rowsPerPage;
 
   final List<String> columnNames = ["ID", "Data", "Sintomas", "Paciente", "Score", "Classificação", "Data solicitação", "Encaminhar"];
