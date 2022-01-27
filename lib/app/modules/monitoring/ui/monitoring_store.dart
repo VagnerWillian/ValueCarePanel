@@ -26,11 +26,15 @@ abstract class _MonitoringStoreBase with Store {
     required this.fetchReportDocSrcUseCase,
     required this.downloadArchiveUseCase,
     required this.updateMonitoringItemUseCase
-  });
+  }){
+    monitoringDataSource = MonitoringDataSource(updateMonitoringItem: updateMonitoringItem, onChangedRefer: (){});
+  }
 
   //OTHERS
   List<MonitoringDataEntity> backupList = [];
   final DataPagerController dataPagerController = DataPagerController();
+  late MonitoringDataSource monitoringDataSource;
+
   // OBSERVABLES
 
   @observable
@@ -42,8 +46,6 @@ abstract class _MonitoringStoreBase with Store {
   @observable
   bool loadingUpdateMonitoringItem = false;
 
-  @observable
-  MonitoringDataSource monitoringDataSource = MonitoringDataSource(monitoringItems: [], updateMonitoringItem: (){}, onChangedRefer: (){});
 
   // ACTIONS
   @action
@@ -57,11 +59,6 @@ abstract class _MonitoringStoreBase with Store {
   @action
   void setLoadingUpdateMonitoringItem(bool value) {
     loadingUpdateMonitoringItem=value;
-  }
-
-  @action
-  void setDataSource(List<MonitoringDataEntity> values){
-    monitoringDataSource = MonitoringDataSource(monitoringItems: values, updateMonitoringItem: updateMonitoringItem, onChangedRefer: (){});
   }
 
   // FUNCTIONS AND VOIDS
@@ -80,7 +77,7 @@ abstract class _MonitoringStoreBase with Store {
       return failure;
     }, (List<MonitoringDataEntity> data) {
       backupList = data;
-      setDataSource(data);
+      monitoringDataSource.updateList(data);
       return data;
     });
     setLoadingMonitoringItems(false);
@@ -111,12 +108,11 @@ abstract class _MonitoringStoreBase with Store {
         String? name = m.paciente?.toLowerCase();
         return name!.contains(text.toLowerCase())||id.contains(text.toLowerCase());
       }).toList();
-        setDataSource(searchList);
+        monitoringDataSource.updateList(searchList);
       }else{
-        setDataSource(backupList);
-    }
+        monitoringDataSource.updateList(backupList);
+      }
       setLoadingMonitoringItems(false);
-      dataPagerController.firstPage();
     }
 
   ////////////////////////////////////////////////////////////////////////////////////////

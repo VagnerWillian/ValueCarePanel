@@ -67,14 +67,6 @@ mixin _$MonitoringStore on _MonitoringStoreBase, Store {
     return super.monitoringDataSource;
   }
 
-  @override
-  set monitoringDataSource(MonitoringDataSource value) {
-    _$monitoringDataSourceAtom.reportWrite(value, super.monitoringDataSource,
-        () {
-      super.monitoringDataSource = value;
-    });
-  }
-
   final _$_MonitoringStoreBaseActionController =
       ActionController(name: '_MonitoringStoreBase');
 
@@ -112,23 +104,11 @@ mixin _$MonitoringStore on _MonitoringStoreBase, Store {
   }
 
   @override
-  void setDataSource(List<MonitoringDataEntity> values) {
-    final _$actionInfo = _$_MonitoringStoreBaseActionController.startAction(
-        name: '_MonitoringStoreBase.setDataSource');
-    try {
-      return super.setDataSource(values);
-    } finally {
-      _$_MonitoringStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
 dateSelector: ${dateSelector},
 loadingMonitoringItems: ${loadingMonitoringItems},
 loadingUpdateMonitoringItem: ${loadingUpdateMonitoringItem},
-monitoringDataSource: ${monitoringDataSource}
     ''';
   }
 }

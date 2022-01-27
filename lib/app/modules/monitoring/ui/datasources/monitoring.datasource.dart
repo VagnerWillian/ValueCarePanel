@@ -26,10 +26,7 @@ class MonitoringDataSource extends DataGridSource {
   List<DataGridRow>  dataGridRows = [];
 
 
-  MonitoringDataSource({required this.monitoringItems, required this.updateMonitoringItem, required this.onChangedRefer}){
-    rowsPerPage = monitoringItems.length<10?monitoringItems.length:10;
-    pageCount = (monitoringItems.length | rowsPerPage)<=0 ? 1: (monitoringItems.length / rowsPerPage).ceilToDouble();
-  }
+  MonitoringDataSource({required this.updateMonitoringItem, required this.onChangedRefer});
 
   void buildPaginatedDataGridRows() {
     dataGridRows = _paginatedMonitoringItems.map<DataGridRow>((m) => DataGridRow(cells: [
@@ -71,6 +68,12 @@ class MonitoringDataSource extends DataGridSource {
             child: Text(dataGridCell.value.toString()),
           );
         }).toList());
+  }
+
+  updateList(List<MonitoringDataEntity> values){
+    monitoringItems = values;
+    rowsPerPage = monitoringItems.length<10?monitoringItems.length:10;
+    pageCount = (monitoringItems.length | rowsPerPage)<=0 ? 1: (monitoringItems.length / rowsPerPage).ceilToDouble();
   }
 
   @override

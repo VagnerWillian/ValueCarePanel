@@ -118,7 +118,8 @@ class MonitoringPageState extends State<MonitoringPage> {
                     ),
                   ], color: Colors.white, borderRadius: const BorderRadius.only(topRight: Radius.circular(10), topLeft: Radius.circular(10))),
                   child: Observer(
-                    builder: (_) => store.loadingMonitoringItems
+                    builder: (_) {
+                      return store.loadingMonitoringItems
                         ? Center(
                             child: SizedBox(
                             width: 250,
@@ -130,35 +131,10 @@ class MonitoringPageState extends State<MonitoringPage> {
                             ),
                           ))
                         : Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                            _buildDataGrid(dataSource: store.monitoringDataSource),
-                            SfDataPagerTheme(
-                              data: SfDataPagerThemeData(
-                                  selectedItemColor: primaryColor,
-                                  itemBorderRadius: BorderRadius.circular(5),
-                                  selectedItemTextStyle: GoogleFonts.cairo(fontWeight: FontWeight.bold, color: Colors.white),
-                                  itemTextStyle: GoogleFonts.cairo(fontWeight: FontWeight.w800, color: Colors.black)),
-                              child: IgnorePointer(
-                                ignoring: store.loadingUpdateMonitoringItem,
-                                child: SfDataPager(
-                                  controller: store.dataPagerController,
-                                  delegate: store.monitoringDataSource,
-                                  pageCount: store.monitoringDataSource.pageCount,
-                                  direction: Axis.horizontal,
-                                  pageItemBuilder: (str) {
-                                    if (str == "First") {
-                                      return Icon(LineAwesomeIcons.step_backward, color: primaryColor, size: 18);
-                                    } else if (str == "Last") {
-                                      return Icon(LineAwesomeIcons.step_forward, color: primaryColor, size: 18);
-                                    } else if (str == "Previous") {
-                                      return Icon(LineAwesomeIcons.angle_left, color: primaryColor, size: 18);
-                                    } else if (str == "Next") {
-                                      return Icon(LineAwesomeIcons.angle_right, color: primaryColor, size: 18);
-                                    }
-                                  },
-                                ),
-                              ),
-                            )
-                          ]),
+                            _buildDataGrid(),
+                            _buildGridPages()
+                          ]);
+                    },
                   )),
             )
           ],
@@ -167,7 +143,7 @@ class MonitoringPageState extends State<MonitoringPage> {
     );
   }
 
-  Widget _buildDataGrid({required MonitoringDataSource dataSource}) {
+  Widget _buildDataGrid() {
     const double _rowHeight = 65.0;
     return Expanded(
       child: SfDataGrid(
@@ -176,11 +152,11 @@ class MonitoringPageState extends State<MonitoringPage> {
         columnWidthMode: ColumnWidthMode.fill,
         gridLinesVisibility: GridLinesVisibility.none,
         headerGridLinesVisibility: GridLinesVisibility.horizontal,
-        source: dataSource,
+        source: store.monitoringDataSource,
         headerRowHeight: _rowHeight,
         rowHeight: _rowHeight,
         isScrollbarAlwaysShown: true,
-        columns: dataSource.columnNames.map((e) {
+        columns: store.monitoringDataSource.columnNames.map((e) {
           return GridColumn(
               columnName: e,
               label: Container(
@@ -194,6 +170,34 @@ class MonitoringPageState extends State<MonitoringPage> {
       ),
     );
   }
+
+  Widget _buildGridPages()=>SfDataPagerTheme(
+    data: SfDataPagerThemeData(
+        selectedItemColor: primaryColor,
+        itemBorderRadius: BorderRadius.circular(5),
+        selectedItemTextStyle: GoogleFonts.cairo(fontWeight: FontWeight.bold, color: Colors.white),
+        itemTextStyle: GoogleFonts.cairo(fontWeight: FontWeight.w800, color: Colors.black)),
+    child: IgnorePointer(
+      ignoring: store.loadingUpdateMonitoringItem,
+      child: SfDataPager(
+        controller: store.dataPagerController,
+        delegate: store.monitoringDataSource,
+        pageCount: store.monitoringDataSource.pageCount,
+        direction: Axis.horizontal,
+        pageItemBuilder: (str) {
+          if (str == "First") {
+            return Icon(LineAwesomeIcons.step_backward, color: primaryColor, size: 18);
+          } else if (str == "Last") {
+            return Icon(LineAwesomeIcons.step_forward, color: primaryColor, size: 18);
+          } else if (str == "Previous") {
+            return Icon(LineAwesomeIcons.angle_left, color: primaryColor, size: 18);
+          } else if (str == "Next") {
+            return Icon(LineAwesomeIcons.angle_right, color: primaryColor, size: 18);
+          }
+        },
+      ),
+    ),
+  );
 
   generateReportDoc() {
     if (store.enableGenerateReportDoc) {
