@@ -116,9 +116,7 @@ abstract class _MonitoringStoreBase with Store {
         setDataSource(backupList);
     }
       setLoadingMonitoringItems(false);
-      if(dataPagerController.selectedPageIndex!=0){
-        dataPagerController.firstPage();
-      }
+      dataPagerController.firstPage();
     }
 
   ////////////////////////////////////////////////////////////////////////////////////////
