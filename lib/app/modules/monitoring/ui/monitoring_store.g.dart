@@ -41,19 +41,37 @@ mixin _$MonitoringStore on _MonitoringStoreBase, Store {
     });
   }
 
-  final _$monitoringDataItemsAtom =
-      Atom(name: '_MonitoringStoreBase.monitoringDataItems');
+  final _$loadingUpdateMonitoringItemAtom =
+      Atom(name: '_MonitoringStoreBase.loadingUpdateMonitoringItem');
 
   @override
-  ObservableList<MonitoringDataEntity> get monitoringDataItems {
-    _$monitoringDataItemsAtom.reportRead();
-    return super.monitoringDataItems;
+  bool get loadingUpdateMonitoringItem {
+    _$loadingUpdateMonitoringItemAtom.reportRead();
+    return super.loadingUpdateMonitoringItem;
   }
 
   @override
-  set monitoringDataItems(ObservableList<MonitoringDataEntity> value) {
-    _$monitoringDataItemsAtom.reportWrite(value, super.monitoringDataItems, () {
-      super.monitoringDataItems = value;
+  set loadingUpdateMonitoringItem(bool value) {
+    _$loadingUpdateMonitoringItemAtom
+        .reportWrite(value, super.loadingUpdateMonitoringItem, () {
+      super.loadingUpdateMonitoringItem = value;
+    });
+  }
+
+  final _$monitoringDataSourceAtom =
+      Atom(name: '_MonitoringStoreBase.monitoringDataSource');
+
+  @override
+  MonitoringDataSource get monitoringDataSource {
+    _$monitoringDataSourceAtom.reportRead();
+    return super.monitoringDataSource;
+  }
+
+  @override
+  set monitoringDataSource(MonitoringDataSource value) {
+    _$monitoringDataSourceAtom.reportWrite(value, super.monitoringDataSource,
+        () {
+      super.monitoringDataSource = value;
     });
   }
 
@@ -83,11 +101,22 @@ mixin _$MonitoringStore on _MonitoringStoreBase, Store {
   }
 
   @override
-  void addAllMonitoringItems(List<MonitoringDataEntity> items) {
+  void setLoadingUpdateMonitoringItem(bool value) {
     final _$actionInfo = _$_MonitoringStoreBaseActionController.startAction(
-        name: '_MonitoringStoreBase.addAllMonitoringItems');
+        name: '_MonitoringStoreBase.setLoadingUpdateMonitoringItem');
     try {
-      return super.addAllMonitoringItems(items);
+      return super.setLoadingUpdateMonitoringItem(value);
+    } finally {
+      _$_MonitoringStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDataSource(List<MonitoringDataEntity> values) {
+    final _$actionInfo = _$_MonitoringStoreBaseActionController.startAction(
+        name: '_MonitoringStoreBase.setDataSource');
+    try {
+      return super.setDataSource(values);
     } finally {
       _$_MonitoringStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -98,7 +127,8 @@ mixin _$MonitoringStore on _MonitoringStoreBase, Store {
     return '''
 dateSelector: ${dateSelector},
 loadingMonitoringItems: ${loadingMonitoringItems},
-monitoringDataItems: ${monitoringDataItems}
+loadingUpdateMonitoringItem: ${loadingUpdateMonitoringItem},
+monitoringDataSource: ${monitoringDataSource}
     ''';
   }
 }

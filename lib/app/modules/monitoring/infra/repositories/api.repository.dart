@@ -22,5 +22,11 @@ class APIRepository implements MonitoringRepository{
     throw UnimplementedError();
   }
 
+  @override
+  Future<Either<MonitoringError, bool>> updateMonitoringItem({required MonitoringDataEntity monitoringDataEntity}) {
+    // TODO: implement updateMonitoringItem
+    throw UnimplementedError();
+  }
+
 
 }

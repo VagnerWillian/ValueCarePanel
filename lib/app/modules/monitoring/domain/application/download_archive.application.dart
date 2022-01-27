@@ -6,8 +6,6 @@ class DownloadArchive implements DownloadArchiveUseCase{
 
   @override
   Future call({required String url})async{
-    html.AnchorElement anchorElement =  html.AnchorElement(href: url);
-    anchorElement.download = url;
-    anchorElement.click();
+    html.window.open(url, 'new tab');
   }
 }

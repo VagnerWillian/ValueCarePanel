@@ -3,10 +3,12 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:value_panel/app/modules/monitoring/domain/application/download_archive.application.dart';
 import 'package:value_panel/app/modules/monitoring/domain/application/fetch_employees_from_interval_dates.application.dart';
 import 'package:value_panel/app/modules/monitoring/domain/application/fetch_report_doc_src.application.dart';
+import 'package:value_panel/app/modules/monitoring/domain/application/update_monitoring_item.application.dart';
 import 'package:value_panel/app/modules/monitoring/domain/repositories/repository.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/download_archive.usecase.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/fetch_employees_from_interval_dates.usecase.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/fetch_report_doc_src.usecase.dart.dart';
+import 'package:value_panel/app/modules/monitoring/domain/usecases/update_monitoring_item.usecase.dart';
 import 'package:value_panel/app/modules/monitoring/infra/repositories/api.repository.dart';
 import 'package:value_panel/app/modules/monitoring/infra/repositories/json_generator.repository.dart';
 import 'package:value_panel/app/modules/monitoring/ui/monitoring_page.dart';
@@ -19,12 +21,14 @@ class MonitoringModule extends Module {
     Bind.lazySingleton((i) => MonitoringStore(
         fetchMonitoringDataFromIntervalDatesUseCase: i.get<FetchMonitoringDataFromIntervalDatesUseCase>(),
         fetchReportDocSrcUseCase: i.get<FetchReportDocSrcUseCase>(),
-        downloadArchiveUseCase: i.get<DownloadArchiveUseCase>()
+        downloadArchiveUseCase: i.get<DownloadArchiveUseCase>(),
+        updateMonitoringItemUseCase: i.get<UpdateMonitoringItemUseCase>(),
     )),
 
     // UseCases
     Bind.lazySingleton((i) => FetchEmployeesFromIntervalDates(monitoringRepository: i.get<MonitoringRepository>())),
     Bind.lazySingleton((i) => FetchReportDocSrc(monitoringRepository: i.get<MonitoringRepository>())),
+    Bind.lazySingleton((i) => UpdateMonitoringItem(i.get<MonitoringRepository>())),
     Bind.lazySingleton((i) => DownloadArchive()),
 
     // Repositories

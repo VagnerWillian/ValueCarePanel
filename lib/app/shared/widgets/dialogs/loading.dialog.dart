@@ -27,6 +27,8 @@ class _LoadingDialogState extends State<LoadingDialog> {
           case ConnectionState.done:
             Navigator.pop(context);
             return loading();
+          default:
+            return loading();
         }
       }
     );

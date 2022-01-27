@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jiffy/jiffy.dart';
@@ -22,6 +23,7 @@ class _SelectorDateWidgetState extends State<SelectorDateWidget> {
   void initState() {
     preDates = preDatesLogic();
     setSelectedDate(preDates.first);
+    onChangedDate(preDates.first);
     super.initState();
   }
 
@@ -42,7 +44,7 @@ class _SelectorDateWidgetState extends State<SelectorDateWidget> {
                 style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
                 textAlign: TextAlign.start,
               ),
-              Text(d.startDate == null ? "Nenhuma data selecionada" : d.description,
+              d.startDate == null ? Container():Text(d.startDate == null ? "Nenhuma data selecionada" : d.description,
                   style: const TextStyle(color: Colors.grey, fontSize: 10), textAlign: TextAlign.start),
             ],
           ),
@@ -54,7 +56,6 @@ class _SelectorDateWidgetState extends State<SelectorDateWidget> {
   }
 
   Future<void> onChangedDate(DateSelector? v) async {
-    {
       if (v!.dynamic) {
         PickerDateRange? dateRange = await showDialog(
             barrierColor: Colors.white70,
@@ -96,24 +97,22 @@ class _SelectorDateWidgetState extends State<SelectorDateWidget> {
                   ),
                 ));
 
-        if (dateRange == null) {
-          // setSelectedDate(selectedDate = preDates.first);
-        } else {
+        if (dateRange != null) {
           preDates.replaceRange(preDates.length - 1, preDates.length,
               [DateSelector(label: "Selecionar outro período...", startDate: dateRange.startDate??dateRange.endDate, endDate: dateRange.endDate??dateRange.startDate, dynamic: true)]);
-          setSelectedDate(selectedDate = preDates.last);
+          setSelectedDate(preDates.last);
         }
       } else {
-        setSelectedDate(selectedDate = v);
+        preDates.replaceRange(preDates.length - 1, preDates.length, [DateSelector(label: "Selecionar período...", startDate: null, endDate: null, dynamic: true)]);
+        setSelectedDate(v);
       }
-    }
   }
 
   void setSelectedDate(DateSelector dateSelector) {
-    widget.onChangedSelectorDate(dateSelector);
     setState(() {
       selectedDate = dateSelector;
     });
+    widget.onChangedSelectorDate(dateSelector);
   }
 
   List<DateSelector> preDatesLogic() {

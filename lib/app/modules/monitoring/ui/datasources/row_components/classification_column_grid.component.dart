@@ -1,12 +1,16 @@
+import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/classification.entity.dart';
+import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
+import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
 import 'package:value_panel/app/shared/utils.dart';
 
 class ClassificationColumnGrid extends StatefulWidget {
-  final int value;
-  const ClassificationColumnGrid({Key? key, required this.value}) : super(key: key);
+  final MonitoringDataEntity value;
+  final Function onChangedClassification;
+  const ClassificationColumnGrid({Key? key, required this.value, required this.onChangedClassification}) : super(key: key);
 
   @override
   _ClassificationColumnGridState createState() => _ClassificationColumnGridState();
@@ -15,23 +19,32 @@ class ClassificationColumnGrid extends StatefulWidget {
 class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
 
   late ClassificationEntity selectedClassification;
+  bool loading = false;
 
   @override
   void initState() {
-    selectedClassification = classifications.singleWhere((c) => c.id==widget.value);
+    selectedClassification = classifications.singleWhere((c) => c.id==widget.value.classificacao);
+    loading = false;
     super.initState();
   }
 
   @override
   void didUpdateWidget(covariant ClassificationColumnGrid oldWidget) {
-    selectedClassification = classifications.singleWhere((c) => c.id==widget.value);
+    selectedClassification = classifications.singleWhere((c) => c.id==widget.value.classificacao);
+    loading = false;
     super.didUpdateWidget(oldWidget);
   }
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
+      child: loading?
+         SizedBox(width: 20, height: 20,
+          child: CircularProgressIndicator(
+              color: secondColor,
+          ),
+        )
+      :Container(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         margin: const EdgeInsets.all(15),
         decoration: BoxDecoration(
@@ -59,9 +72,21 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
                   ],
                 ));
           }).toList(),
-          onChanged: (v)=> setState(() => selectedClassification=v!),
+          onChanged: (v)=> setClassification(v!),
         ),
       ),
     );
+  }
+
+  Future setClassification(ClassificationEntity classificationEntity)async{
+    setState(() => loading = true);
+    Either<MonitoringError, bool> response = await widget.onChangedClassification(widget.value);
+    if(response.isRight){
+      setState(() {
+        selectedClassification = classificationEntity;
+        widget.value.classificacao = classificationEntity.id;
+      });
+    }
+    setState(() => loading=false);
   }
 }

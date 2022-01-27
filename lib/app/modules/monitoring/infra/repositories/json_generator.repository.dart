@@ -9,7 +9,7 @@ import 'package:value_panel/app/shared/custom_dio/custom.dio.dart';
 
 class JsonGeneratorRepository implements MonitoringRepository{
 
-  CustomDio _customDio;
+  final CustomDio _customDio;
   JsonGeneratorRepository(this._customDio);
 
   final _header = {"Authorization":"Bearer ldhkns7svaq3wfb1faf6r4dfsa1bd8hua71d6lm6"};
@@ -32,6 +32,19 @@ class JsonGeneratorRepository implements MonitoringRepository{
     try{
       var response = await _customDio.client.get("https://api.json-generator.com/templates/-Yly0aK_l3oM/data", options: Options(headers: _header));
       return Right(response.data['url']);
+    }on DioError catch(e){
+      return Left(MonitoringRepositoryError(statusCode: e.response?.statusCode));
+    }catch(e){
+      return Left(MonitoringRepositoryError(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<MonitoringError, bool>> updateMonitoringItem({required MonitoringDataEntity monitoringDataEntity}) async{
+    try{
+      await Future.delayed(const Duration(seconds: 2));
+      // var response = await _customDio.client.post("https://api.json-generator.com/templates/-Yly0aK_l3oM/data", options: Options(headers: _header));
+      return const Right(true);
     }on DioError catch(e){
       return Left(MonitoringRepositoryError(statusCode: e.response?.statusCode));
     }catch(e){

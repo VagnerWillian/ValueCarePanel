@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
-import 'package:value_panel/app/modules/monitoring/domain/entities/classification.entity.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/symptoms.entity.dart';
 import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/classification_column_grid.component.dart';
@@ -13,28 +12,33 @@ import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components
 
 class MonitoringDataSource extends DataGridSource {
 
-  List<DataGridRow>  dataGridRows = [];
-  List<MonitoringDataEntity>  _paginedMonitoringItems = [];
+  final Function updateMonitoringItem;
+  final Function onChangedRefer;
+
+  List<MonitoringDataEntity>  _paginatedMonitoringItems = [];
   List<MonitoringDataEntity>  monitoringItems = [];
-
-  final int rowsPerPage;
-
   final List<String> columnNames = ["ID", "Data", "Sintomas", "Paciente", "Score", "Classificação", "Data solicitação", "Encaminhar"];
+  int rowsPerPage = 10;
+  double pageCount = 1;
 
   @override
   List<DataGridRow> get rows =>  dataGridRows;
+  List<DataGridRow>  dataGridRows = [];
 
 
-  MonitoringDataSource({required this.monitoringItems, required this.rowsPerPage});
+  MonitoringDataSource({required this.monitoringItems, required this.updateMonitoringItem, required this.onChangedRefer}){
+    rowsPerPage = monitoringItems.length<10?monitoringItems.length:10;
+    pageCount = (monitoringItems.length | rowsPerPage)<=0 ? 1: (monitoringItems.length / rowsPerPage).ceilToDouble();
+  }
 
   void buildPaginatedDataGridRows() {
-    dataGridRows = _paginedMonitoringItems.map<DataGridRow>((m) => DataGridRow(cells: [
+    dataGridRows = _paginatedMonitoringItems.map<DataGridRow>((m) => DataGridRow(cells: [
       DataGridCell<String>(columnName: columnNames[0], value: m.idString),
       DataGridCell<String>(columnName: columnNames[1], value: m.data),
       DataGridCell<List<SymptomEntity>>(columnName: columnNames[2], value: m.sintomas),
       DataGridCell<String>(columnName: columnNames[3], value: m.paciente),
       DataGridCell<String>(columnName: columnNames[4], value: m.score),
-      DataGridCell<int>(columnName: columnNames[5], value: m.classificacao),
+      DataGridCell<MonitoringDataEntity>(columnName: columnNames[5], value: m),
       DataGridCell<String>(columnName: columnNames[6], value: m.dataSolicitada),
       DataGridCell<bool>(columnName: columnNames[7], value: m.encaminhar),
     ])).toList(growable: false);
@@ -55,7 +59,7 @@ class MonitoringDataSource extends DataGridSource {
           }else if(dataGridCell.columnName==columnNames[4]){
             return ScoreColumnGrid(value: dataGridCell.value);
           }else if(dataGridCell.columnName==columnNames[5]){
-            return ClassificationColumnGrid(value: dataGridCell.value);
+            return ClassificationColumnGrid(value: dataGridCell.value, onChangedClassification: updateMonitoringItem);
           }else if(dataGridCell.columnName==columnNames[6]){
             return DateColumnGrid(value: dataGridCell.value);
           }else if(dataGridCell.columnName==columnNames[7]){
@@ -77,13 +81,15 @@ class MonitoringDataSource extends DataGridSource {
       endIndex = monitoringItems.length;
     }
     if (startIndex < monitoringItems.length && endIndex <= monitoringItems.length) {
-      _paginedMonitoringItems = monitoringItems.getRange(startIndex, endIndex).toList(growable: false);
+      _paginatedMonitoringItems = monitoringItems.getRange(startIndex, endIndex).toList(growable: false);
       buildPaginatedDataGridRows();
       notifyListeners();
     } else {
-      _paginedMonitoringItems = [];
+      _paginatedMonitoringItems = [];
     }
 
     return true;
   }
+
+////////////////////////////////////////////////////////////////////////////////////////
 }

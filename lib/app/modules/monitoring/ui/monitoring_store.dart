@@ -1,13 +1,13 @@
 import 'package:either_dart/either.dart';
-import 'package:flutter/foundation.dart';
-import 'package:jiffy/jiffy.dart';
 import 'package:mobx/mobx.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/download_archive.usecase.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/fetch_employees_from_interval_dates.usecase.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/fetch_report_doc_src.usecase.dart.dart';
+import 'package:value_panel/app/modules/monitoring/domain/usecases/update_monitoring_item.usecase.dart';
 import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
+import 'package:value_panel/app/modules/monitoring/ui/datasources/monitoring.datasource.dart';
 import 'package:value_panel/app/modules/monitoring/ui/models/date_selector.model.dart';
 
 part 'monitoring_store.g.dart';
@@ -19,25 +19,18 @@ abstract class _MonitoringStoreBase with Store {
   final FetchMonitoringDataFromIntervalDatesUseCase fetchMonitoringDataFromIntervalDatesUseCase;
   final FetchReportDocSrcUseCase fetchReportDocSrcUseCase;
   final DownloadArchiveUseCase downloadArchiveUseCase;
-
-  final DataPagerController controllerDataPager = DataPagerController();
+  final UpdateMonitoringItemUseCase updateMonitoringItemUseCase;
 
   _MonitoringStoreBase({
     required this.fetchMonitoringDataFromIntervalDatesUseCase,
     required this.fetchReportDocSrcUseCase,
-    required this.downloadArchiveUseCase
-  }){
-    addAllMonitoringItems([]);
-  }
-
-  // GETS
-  int get rowsPerPage => monitoringDataItems.length<10?monitoringDataItems.length:10;
-  double get pageCount => (monitoringDataItems.length | rowsPerPage)<=0 ? 1: (monitoringDataItems.length / rowsPerPage).ceilToDouble();
+    required this.downloadArchiveUseCase,
+    required this.updateMonitoringItemUseCase
+  });
 
   //OTHERS
   List<MonitoringDataEntity> backupList = [];
-
-
+  final DataPagerController dataPagerController = DataPagerController();
   // OBSERVABLES
 
   @observable
@@ -47,7 +40,10 @@ abstract class _MonitoringStoreBase with Store {
   bool loadingMonitoringItems = false;
 
   @observable
-  ObservableList<MonitoringDataEntity> monitoringDataItems = ObservableList<MonitoringDataEntity>();
+  bool loadingUpdateMonitoringItem = false;
+
+  @observable
+  MonitoringDataSource monitoringDataSource = MonitoringDataSource(monitoringItems: [], updateMonitoringItem: (){}, onChangedRefer: (){});
 
   // ACTIONS
   @action
@@ -59,16 +55,18 @@ abstract class _MonitoringStoreBase with Store {
   }
 
   @action
-  void addAllMonitoringItems(List<MonitoringDataEntity> items){
-    monitoringDataItems.clear();
-    monitoringDataItems.addAll(items);
+  void setLoadingUpdateMonitoringItem(bool value) {
+    loadingUpdateMonitoringItem=value;
   }
 
+  @action
+  void setDataSource(List<MonitoringDataEntity> values){
+    monitoringDataSource = MonitoringDataSource(monitoringItems: values, updateMonitoringItem: updateMonitoringItem, onChangedRefer: (){});
+  }
 
   // FUNCTIONS AND VOIDS
   Future onChangedSelectorDate(DateSelector dateSelector) async {
     setDateSelector(dateSelector);
-    addAllMonitoringItems([]);
     setLoadingMonitoringItems(true);
     Either<MonitoringError, List<MonitoringDataEntity>> response = await fetchMonitoringDataFromIntervalDatesUseCase(
       startDate: dateSelector.startDate!,
@@ -81,41 +79,48 @@ abstract class _MonitoringStoreBase with Store {
       }
       return failure;
     }, (List<MonitoringDataEntity> data) {
-      addAllMonitoringItems(data);
       backupList = data;
+      setDataSource(data);
       return data;
     });
     setLoadingMonitoringItems(false);
   }
 
+  Future updateMonitoringItem(MonitoringDataEntity monitoringDataEntity) async {
+    setLoadingUpdateMonitoringItem(true);
+    Either<MonitoringError, bool> response = await updateMonitoringItemUseCase(monitoringDataEntity: monitoringDataEntity);
+    response.fold((MonitoringError failure) {
+      if(failure is MonitoringRepositoryError){
+        print("Message error: ${failure.message}");
+        print("Code error: ${failure.statusCode}");
+      }
+      return failure;
+    }, (bool data) {
+      return data;
+    });
+    setLoadingUpdateMonitoringItem(false);
+    return response;
+  }
+
   /////////////////////////// SEARCH ///////////////////////////////////////////////////
-    onChangedSearchText(String text){
-      if(controllerDataPager.selectedPageIndex!=0){
-        controllerDataPager.firstPage();
+    onChangedSearchText(String text)async{
+      setLoadingMonitoringItems(true);
+      if(dataPagerController.selectedPageIndex!=0){
+        dataPagerController.firstPage();
       }
       if(text.isNotEmpty) {
-      List<MonitoringDataEntity> searchList = monitoringDataItems.where((m) {
+        List<MonitoringDataEntity> searchList = backupList.where((m) {
         String? id = m.id.toString().toLowerCase();
         String? name = m.paciente?.toLowerCase();
         return name!.contains(text.toLowerCase())||id.contains(text.toLowerCase());
       }).toList();
-      if(searchList.isNotEmpty){
-        addAllMonitoringItems(searchList);
+        setDataSource(searchList);
       }else{
-        addAllMonitoringItems(backupList);
-      }
-    }else{
-      addAllMonitoringItems(backupList);
+        setDataSource(backupList);
     }
-  }
+      setLoadingMonitoringItems(false);
 
-
-
-
-
-
-
-
+    }
 
   ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -129,7 +134,7 @@ abstract class _MonitoringStoreBase with Store {
     }
   }
 
-  Future exportReportDoc()async{
+  Future<Either<MonitoringError, String>> exportReportDoc()async{
     Either<MonitoringError, String> responseSrcOfDoc = await fetchReportDocSrcUseCase(
       startDate: dateSelector!.startDate!,
       endDate: dateSelector!.endDate!
@@ -140,6 +145,7 @@ abstract class _MonitoringStoreBase with Store {
     }, (String url) {
       downloadReportDocFromSrc(url: url);
     });
+    return responseSrcOfDoc;
   }
 
 }
