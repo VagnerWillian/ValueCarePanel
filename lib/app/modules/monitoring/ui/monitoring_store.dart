@@ -105,9 +105,6 @@ abstract class _MonitoringStoreBase with Store {
   /////////////////////////// SEARCH ///////////////////////////////////////////////////
     onChangedSearchText(String text)async{
       setLoadingMonitoringItems(true);
-      if(dataPagerController.selectedPageIndex!=0){
-        dataPagerController.firstPage();
-      }
       if(text.isNotEmpty) {
         List<MonitoringDataEntity> searchList = backupList.where((m) {
         String? id = m.id.toString().toLowerCase();
@@ -119,7 +116,9 @@ abstract class _MonitoringStoreBase with Store {
         setDataSource(backupList);
     }
       setLoadingMonitoringItems(false);
-
+      if(dataPagerController.selectedPageIndex!=0){
+        dataPagerController.firstPage();
+      }
     }
 
   ////////////////////////////////////////////////////////////////////////////////////////
