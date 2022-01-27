@@ -113,6 +113,7 @@ abstract class _MonitoringStoreBase with Store {
         monitoringDataSource.updateList(backupList);
       }
       setLoadingMonitoringItems(false);
+      dataPagerController.firstPage();
     }
 
   ////////////////////////////////////////////////////////////////////////////////////////

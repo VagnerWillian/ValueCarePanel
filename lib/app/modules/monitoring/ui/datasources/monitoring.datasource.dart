@@ -74,7 +74,6 @@ class MonitoringDataSource extends DataGridSource {
     monitoringItems = values;
     rowsPerPage = monitoringItems.length<10?monitoringItems.length:10;
     pageCount = (monitoringItems.length | rowsPerPage)<=0 ? 1: (monitoringItems.length / rowsPerPage).ceilToDouble();
-
     buildPaginatedDataGridRows();
     notifyListeners();
   }
