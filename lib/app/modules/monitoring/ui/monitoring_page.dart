@@ -147,15 +147,13 @@ class MonitoringPageState extends State<MonitoringPage> {
     const double _rowHeight = 65.0;
     return Expanded(
       child: SfDataGrid(
-        shrinkWrapRows: true,
-        allowSorting: true,
         columnWidthMode: ColumnWidthMode.fill,
         gridLinesVisibility: GridLinesVisibility.none,
         headerGridLinesVisibility: GridLinesVisibility.horizontal,
         source: store.monitoringDataSource,
         headerRowHeight: _rowHeight,
         rowHeight: _rowHeight,
-        isScrollbarAlwaysShown: true,
+        // isScrollbarAlwaysShown: true,
         columns: store.monitoringDataSource.columnNames.map((e) {
           return GridColumn(
               columnName: e,
