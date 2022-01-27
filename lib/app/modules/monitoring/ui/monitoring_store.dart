@@ -27,7 +27,7 @@ abstract class _MonitoringStoreBase with Store {
     required this.downloadArchiveUseCase,
     required this.updateMonitoringItemUseCase
   }){
-    monitoringDataSource = MonitoringDataSource(updateMonitoringItem: updateMonitoringItem, onChangedRefer: (){});
+    monitoringDataSource = MonitoringDataSource(updateMonitoringItem: updateMonitoringItem);
   }
 
   //OTHERS

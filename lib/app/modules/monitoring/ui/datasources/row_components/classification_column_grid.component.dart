@@ -9,8 +9,8 @@ import 'package:value_panel/app/shared/utils.dart';
 
 class ClassificationColumnGrid extends StatefulWidget {
   final MonitoringDataEntity value;
-  final Function onChangedClassification;
-  const ClassificationColumnGrid({Key? key, required this.value, required this.onChangedClassification}) : super(key: key);
+  final Function updateMonitoringItem;
+  const ClassificationColumnGrid({Key? key, required this.value, required this.updateMonitoringItem}) : super(key: key);
 
   @override
   _ClassificationColumnGridState createState() => _ClassificationColumnGridState();
@@ -80,12 +80,14 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
 
   Future setClassification(ClassificationEntity classificationEntity)async{
     setState(() => loading = true);
-    Either<MonitoringError, bool> response = await widget.onChangedClassification(widget.value);
+    widget.value.classificacao = classificationEntity.id;
+    Either<MonitoringError, bool> response = await widget.updateMonitoringItem(widget.value);
     if(response.isRight){
       setState(() {
         selectedClassification = classificationEntity;
-        widget.value.classificacao = classificationEntity.id;
       });
+    }else{
+
     }
     setState(() => loading=false);
   }

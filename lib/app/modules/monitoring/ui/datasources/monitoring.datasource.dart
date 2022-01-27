@@ -13,7 +13,6 @@ import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components
 class MonitoringDataSource extends DataGridSource {
 
   final Function updateMonitoringItem;
-  final Function onChangedRefer;
 
   List<MonitoringDataEntity>  _paginatedMonitoringItems = [];
   List<MonitoringDataEntity>  monitoringItems = [];
@@ -26,7 +25,7 @@ class MonitoringDataSource extends DataGridSource {
   List<DataGridRow>  dataGridRows = [];
 
 
-  MonitoringDataSource({required this.updateMonitoringItem, required this.onChangedRefer});
+  MonitoringDataSource({required this.updateMonitoringItem});
 
   void buildPaginatedDataGridRows() {
     dataGridRows = _paginatedMonitoringItems.map<DataGridRow>((m) => DataGridRow(cells: [
@@ -37,7 +36,7 @@ class MonitoringDataSource extends DataGridSource {
       DataGridCell<String>(columnName: columnNames[4], value: m.score),
       DataGridCell<MonitoringDataEntity>(columnName: columnNames[5], value: m),
       DataGridCell<String>(columnName: columnNames[6], value: m.dataSolicitada),
-      DataGridCell<bool>(columnName: columnNames[7], value: m.encaminhar),
+      DataGridCell<MonitoringDataEntity>(columnName: columnNames[7], value: m),
     ])).toList(growable: false);
   }
 
@@ -56,11 +55,11 @@ class MonitoringDataSource extends DataGridSource {
           }else if(dataGridCell.columnName==columnNames[4]){
             return ScoreColumnGrid(value: dataGridCell.value);
           }else if(dataGridCell.columnName==columnNames[5]){
-            return ClassificationColumnGrid(value: dataGridCell.value, onChangedClassification: updateMonitoringItem);
+            return ClassificationColumnGrid(value: dataGridCell.value, updateMonitoringItem: updateMonitoringItem);
           }else if(dataGridCell.columnName==columnNames[6]){
             return DateColumnGrid(value: dataGridCell.value);
           }else if(dataGridCell.columnName==columnNames[7]){
-            return ReferColumnGrid(check: dataGridCell.value);
+            return ReferColumnGrid(value: dataGridCell.value, updateMonitoringItem: updateMonitoringItem);
           }
           return Container(
             alignment: Alignment.center,

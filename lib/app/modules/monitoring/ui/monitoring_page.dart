@@ -7,7 +7,6 @@ import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.da
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:value_panel/app/modules/monitoring/ui/components/selector_date.component.dart';
-import 'package:value_panel/app/modules/monitoring/ui/datasources/monitoring.datasource.dart';
 import 'package:value_panel/app/modules/monitoring/ui/monitoring_store.dart';
 import 'package:value_panel/app/shared/utils.dart';
 import 'package:value_panel/app/shared/widgets/custom/gradient.button.dart';
@@ -153,7 +152,6 @@ class MonitoringPageState extends State<MonitoringPage> {
         source: store.monitoringDataSource,
         headerRowHeight: _rowHeight,
         rowHeight: _rowHeight,
-        // isScrollbarAlwaysShown: true,
         columns: store.monitoringDataSource.columnNames.map((e) {
           return GridColumn(
               columnName: e,
