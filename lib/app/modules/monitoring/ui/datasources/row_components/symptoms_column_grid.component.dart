@@ -40,6 +40,7 @@ class SymptomsColumnGrid extends StatelessWidget {
           const SizedBox(width: 5,),
           Flexible(
             child: RichText(
+              maxLines: 3,
               text: TextSpan(
                   children: <TextSpan>[
                     TextSpan(text: value[0].label,
