@@ -68,7 +68,7 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
                   children: [
                     SvgPicture.asset("assets/images/classifications/${c.label}.svg", color: c.color, width: 20,),
                     const SizedBox(width: 10),
-                    Expanded(child: Text(c.label, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 10, color: c.color), overflow: TextOverflow.fade, softWrap: true,))
+                    Text(c.label, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 10, color: c.color), overflow: TextOverflow.fade, softWrap: true,)
                   ],
                 ));
           }).toList(),
