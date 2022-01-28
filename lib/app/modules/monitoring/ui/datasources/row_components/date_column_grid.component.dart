@@ -8,10 +8,6 @@ class DateColumnGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      padding: const EdgeInsets.all(16.0),
-      child: Text(value, style: GoogleFonts.openSans(fontSize: 12, fontWeight: FontWeight.normal)),
-    );
+    return Center(child: Text(value, style: GoogleFonts.openSans(fontSize: 12, fontWeight: FontWeight.normal)));
   }
 }

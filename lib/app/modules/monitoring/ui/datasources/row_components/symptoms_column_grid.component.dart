@@ -13,9 +13,9 @@ class SymptomsColumnGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.center,
-      padding: const EdgeInsets.all(10.0),
+      margin: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

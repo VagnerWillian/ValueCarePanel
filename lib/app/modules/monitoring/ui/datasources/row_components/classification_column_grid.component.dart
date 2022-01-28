@@ -46,13 +46,13 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
         )
       :Container(
         padding: const EdgeInsets.symmetric(horizontal: 10),
-        margin: const EdgeInsets.all(15),
+        margin: const EdgeInsets.symmetric(vertical: 15),
         decoration: BoxDecoration(
             color: selectedClassification.color!.withOpacity(0.1),
             borderRadius: BorderRadius.circular(10)
         ),
-        width: 150,
         height: 80,
+        width: 150,
         child: DropdownButton<ClassificationEntity>(
           borderRadius: BorderRadius.circular(5),
           value: selectedClassification,
@@ -68,7 +68,7 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
                   children: [
                     SvgPicture.asset("assets/images/classifications/${c.label}.svg", color: c.color, width: 20,),
                     const SizedBox(width: 10),
-                    Text(c.label, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 10, color: c.color), overflow: TextOverflow.fade, softWrap: true,)
+                    Expanded(child: Text(c.label, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 10, color: c.color), overflow: TextOverflow.fade, softWrap: true,))
                   ],
                 ));
           }).toList(),

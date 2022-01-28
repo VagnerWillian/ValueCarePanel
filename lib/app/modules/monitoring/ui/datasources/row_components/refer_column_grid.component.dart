@@ -42,15 +42,12 @@ class _ReferColumnGridState extends State<ReferColumnGrid> {
               ),
             ),
         )
-        : Container(
-            alignment: Alignment.center,
-            padding: const EdgeInsets.all(16.0),
-            child: Checkbox(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-              onChanged: (v) => setClassification(v!),
-              value: checkStatus,
-              fillColor: MaterialStateProperty.all(primaryColor),
-            ));
+        : Checkbox(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+          onChanged: (v) => setClassification(v!),
+          value: checkStatus,
+          fillColor: MaterialStateProperty.all(primaryColor),
+        );
   }
 
   Future setClassification(bool check) async {

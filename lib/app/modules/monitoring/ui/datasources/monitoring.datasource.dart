@@ -9,14 +9,28 @@ import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components
 import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/refer_column_grid.component.dart';
 import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/score_column_grid.component.dart';
 import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/symptoms_column_grid.component.dart';
+class ColumnConfig{
+  String label;
+  double minWidth, maxWidth;
 
+  ColumnConfig(this.label, this.minWidth, this.maxWidth);
+}
 class MonitoringDataSource extends DataGridSource {
 
   final Function updateMonitoringItem;
 
-  List<MonitoringDataEntity>  _paginatedMonitoringItems = [];
-  List<MonitoringDataEntity>  monitoringItems = [];
-  final List<String> columnNames = ["ID", "Data", "Sintomas", "Paciente", "Score", "Classificação", "Data solicitação", "Encaminhar"];
+  List<MonitoringDataEntity>  _paginatedMonitoringItems = [], monitoringItems = [];
+  final List<ColumnConfig> columnNames = [
+    ColumnConfig("ID", 60, double.nan),
+    ColumnConfig("Data", 70, double.nan),
+    ColumnConfig("Sintomas", 160, double.nan),
+    ColumnConfig("Paciente", 100, double.nan),
+    ColumnConfig("Score", 30, double.nan),
+    ColumnConfig("Classificação", 150, double.nan),
+    ColumnConfig("Data Solicitação", 70, double.nan),
+    ColumnConfig("Encaminhar", 20, double.nan),
+  ];
+
   int rowsPerPage = 10;
   double pageCount = 1;
 
@@ -29,14 +43,14 @@ class MonitoringDataSource extends DataGridSource {
 
   void buildPaginatedDataGridRows() {
     dataGridRows = _paginatedMonitoringItems.map<DataGridRow>((m) => DataGridRow(cells: [
-      DataGridCell<String>(columnName: columnNames[0], value: m.idString),
-      DataGridCell<String>(columnName: columnNames[1], value: m.data),
-      DataGridCell<List<SymptomEntity>>(columnName: columnNames[2], value: m.sintomas),
-      DataGridCell<String>(columnName: columnNames[3], value: m.paciente),
-      DataGridCell<String>(columnName: columnNames[4], value: m.score),
-      DataGridCell<MonitoringDataEntity>(columnName: columnNames[5], value: m),
-      DataGridCell<String>(columnName: columnNames[6], value: m.dataSolicitada),
-      DataGridCell<MonitoringDataEntity>(columnName: columnNames[7], value: m),
+      DataGridCell<String>(columnName: columnNames[0].label, value: m.idString),
+      DataGridCell<String>(columnName: columnNames[1].label, value: m.data),
+      DataGridCell<List<SymptomEntity>>(columnName: columnNames[2].label, value: m.sintomas),
+      DataGridCell<String>(columnName: columnNames[3].label, value: m.paciente),
+      DataGridCell<String>(columnName: columnNames[4].label, value: m.score),
+      DataGridCell<MonitoringDataEntity>(columnName: columnNames[5].label, value: m),
+      DataGridCell<String>(columnName: columnNames[6].label, value: m.dataSolicitada),
+      DataGridCell<MonitoringDataEntity>(columnName: columnNames[7].label, value: m),
     ])).toList(growable: false);
   }
 
@@ -44,21 +58,21 @@ class MonitoringDataSource extends DataGridSource {
   DataGridRowAdapter? buildRow(DataGridRow row) {
     return DataGridRowAdapter(
         cells: row.getCells().map<Widget>((dataGridCell) {
-          if(dataGridCell.columnName==columnNames[0]){
+          if(dataGridCell.columnName==columnNames[0].label){
             return IDColumnGrid(value: dataGridCell.value);
-          }else if(dataGridCell.columnName==columnNames[1]){
+          }else if(dataGridCell.columnName==columnNames[1].label){
             return DateColumnGrid(value: dataGridCell.value);
-          }else if(dataGridCell.columnName==columnNames[2]){
+          }else if(dataGridCell.columnName==columnNames[2].label){
             return SymptomsColumnGrid(value: dataGridCell.value);
-          }else if(dataGridCell.columnName==columnNames[3]){
+          }else if(dataGridCell.columnName==columnNames[3].label){
             return PatientNameColumnGrid(value: dataGridCell.value);
-          }else if(dataGridCell.columnName==columnNames[4]){
+          }else if(dataGridCell.columnName==columnNames[4].label){
             return ScoreColumnGrid(value: dataGridCell.value);
-          }else if(dataGridCell.columnName==columnNames[5]){
+          }else if(dataGridCell.columnName==columnNames[5].label){
             return ClassificationColumnGrid(value: dataGridCell.value, updateMonitoringItem: updateMonitoringItem);
-          }else if(dataGridCell.columnName==columnNames[6]){
+          }else if(dataGridCell.columnName==columnNames[6].label){
             return DateColumnGrid(value: dataGridCell.value);
-          }else if(dataGridCell.columnName==columnNames[7]){
+          }else if(dataGridCell.columnName==columnNames[7].label){
             return ReferColumnGrid(value: dataGridCell.value, updateMonitoringItem: updateMonitoringItem);
           }
           return Container(

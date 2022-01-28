@@ -36,73 +36,7 @@ class MonitoringPageState extends State<MonitoringPage> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const PageTitleDescription(title: "Classificação", subtitle: "Classifique os pacientes aqui"),
-                Expanded(
-                    flex: 2,
-                    child: Observer(
-                      builder:(_)=> IgnorePointer(
-                        ignoring: store.loadingUpdateMonitoringItem,
-                        child: MainSearch(
-                          onTextChanged: store.onChangedSearchText,
-                        ),
-                      ),
-                    )),
-                Container(
-                    height: 60,
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    decoration: BoxDecoration(boxShadow: [
-                      BoxShadow(
-                        color: Colors.blueGrey.withOpacity(0.2),
-                        spreadRadius: 5,
-                        blurRadius: 80,
-                        offset: const Offset(0, 0), // changes position of shadow
-                      ),
-                    ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
-                    child: Row(
-                      children: [
-                        Icon(
-                          LineAwesomeIcons.calendar,
-                          color: primaryColor,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: SelectorDateWidget(onChangedSelectorDate: store.onChangedSelectorDate),
-                        ),
-                      ],
-                    )),
-                Observer(
-                  builder: (_) => GradientButton(
-                    height: 50,
-                    onPressed: generateReportDoc(),
-                    gradient: LinearGradient(
-                      colors: store.loadingMonitoringItems ? [Colors.grey, Colors.grey] : gradientColors,
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                    ),
-                    borderRadius: BorderRadius.circular(10),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          LineAwesomeIcons.pie_chart,
-                          color: Colors.white,
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          "Gerar Relatório",
-                          style: GoogleFonts.cairo(fontWeight: FontWeight.bold, color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            ),
+            _buildHeader(),
             const SizedBox(
               height: 40,
             ),
@@ -142,24 +76,100 @@ class MonitoringPageState extends State<MonitoringPage> {
     );
   }
 
+  Widget _buildHeader()=>Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+      const PageTitleDescription(title: "Classificação", subtitle: "Classifique os pacientes aqui"),
+      Expanded(
+          flex: 2,
+          child: Observer(
+            builder:(_)=> IgnorePointer(
+              ignoring: store.loadingUpdateMonitoringItem,
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  minWidth: 100.0,
+                ),
+                child:MainSearch(
+                  onTextChanged: store.onChangedSearchText,
+                ),
+              ),
+            ),
+          )),
+      Container(
+          height: 60,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(
+              color: Colors.blueGrey.withOpacity(0.2),
+              spreadRadius: 5,
+              blurRadius: 80,
+              offset: const Offset(0, 0), // changes position of shadow
+            ),
+          ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
+          child: Row(
+            children: [
+              Icon(
+                LineAwesomeIcons.calendar,
+                color: primaryColor,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: SelectorDateWidget(onChangedSelectorDate: store.onChangedSelectorDate),
+              ),
+            ],
+          )),
+      Observer(
+        builder: (_) => GradientButton(
+          height: 50,
+          onPressed: generateReportDoc(),
+          gradient: LinearGradient(
+            colors: store.loadingMonitoringItems ? [Colors.grey, Colors.grey] : gradientColors,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+          borderRadius: BorderRadius.circular(10),
+          child: Row(
+            children: [
+              const Icon(
+                LineAwesomeIcons.pie_chart,
+                color: Colors.white,
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              Text(
+                "Gerar Relatório",
+                style: GoogleFonts.cairo(fontWeight: FontWeight.bold, color: Colors.white),
+              ),
+            ],
+          ),
+        ),
+      )
+    ],
+  );
+
   Widget _buildDataGrid() {
     const double _rowHeight = 65.0;
     return Expanded(
       child: SfDataGrid(
+        shrinkWrapRows: true,
         columnWidthMode: ColumnWidthMode.fill,
         gridLinesVisibility: GridLinesVisibility.none,
         headerGridLinesVisibility: GridLinesVisibility.horizontal,
         source: store.monitoringDataSource,
-        headerRowHeight: _rowHeight,
         rowHeight: _rowHeight,
         columns: store.monitoringDataSource.columnNames.map((e) {
           return GridColumn(
-              columnName: e,
+              minimumWidth: e.minWidth,
+              maximumWidth: e.maxWidth,
+              columnName: e.label,
               label: Container(
-                  padding: const EdgeInsets.all(16.0),
                   alignment: Alignment.center,
                   child: Text(
-                    e,
+                    e.label,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14),
                   )));
         }).toList(),

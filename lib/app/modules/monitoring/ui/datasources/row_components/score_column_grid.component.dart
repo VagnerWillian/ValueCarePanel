@@ -9,9 +9,7 @@ class ScoreColumnGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      padding: const EdgeInsets.all(16.0),
+    return Center(
       child: Text(value, style: GoogleFonts.openSans(fontSize: 15, fontWeight: FontWeight.bold, color: primaryColor)),
     );
   }
