@@ -58,15 +58,6 @@ mixin _$MonitoringStore on _MonitoringStoreBase, Store {
     });
   }
 
-  final _$monitoringDataSourceAtom =
-      Atom(name: '_MonitoringStoreBase.monitoringDataSource');
-
-  @override
-  MonitoringDataSource get monitoringDataSource {
-    _$monitoringDataSourceAtom.reportRead();
-    return super.monitoringDataSource;
-  }
-
   final _$_MonitoringStoreBaseActionController =
       ActionController(name: '_MonitoringStoreBase');
 
@@ -108,7 +99,7 @@ mixin _$MonitoringStore on _MonitoringStoreBase, Store {
     return '''
 dateSelector: ${dateSelector},
 loadingMonitoringItems: ${loadingMonitoringItems},
-loadingUpdateMonitoringItem: ${loadingUpdateMonitoringItem},
+loadingUpdateMonitoringItem: ${loadingUpdateMonitoringItem}
     ''';
   }
 }

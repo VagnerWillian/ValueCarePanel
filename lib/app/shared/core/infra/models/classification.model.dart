@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:value_panel/app/modules/monitoring/domain/entities/classification.entity.dart';
+import 'package:value_panel/app/shared/core/domain/entities/classification.entity.dart';
 
 class Classification extends Equatable implements ClassificationEntity{
 

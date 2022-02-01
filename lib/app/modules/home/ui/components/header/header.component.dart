@@ -136,8 +136,8 @@ class Header extends StatelessWidget {
                   height: 55,
                   width: 55,
                   onLoading: Container(),
-                  imageCache: const CachedNetworkImageProvider("https://scontent.fcgh2-1.fna.fbcdn.net/v/t39.30808-6/272146181_6804132162995563_4295433218327981100_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeHDfIB_JsWJgrP2bfzY9JXJAmNn7C2wg9ACY2fsLbCD0NIygBVN32obmAUpcHDqPW3VtoTZ1pOjcF2aqc9AzOHo&_nc_ohc=tptlIx1Mn_QAX8E867M&_nc_ht=scontent.fcgh2-1.fna&oh=00_AT9DTR0GOX686StmVDOzdZFOtj3BrNzfznKV47tpwxUqBw&oe=61F47C35"),
-                  image: "https://scontent.fcgh2-1.fna.fbcdn.net/v/t39.30808-6/272146181_6804132162995563_4295433218327981100_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeHDfIB_JsWJgrP2bfzY9JXJAmNn7C2wg9ACY2fsLbCD0NIygBVN32obmAUpcHDqPW3VtoTZ1pOjcF2aqc9AzOHo&_nc_ohc=tptlIx1Mn_QAX8E867M&_nc_ht=scontent.fcgh2-1.fna&oh=00_AT9DTR0GOX686StmVDOzdZFOtj3BrNzfznKV47tpwxUqBw&oe=61F47C35",
+                  imageCache: const CachedNetworkImageProvider("https://uploaddeimagens.com.br/images/003/700/538/original/272146181_6804132162995563_4295433218327981100_n.jpg"),
+                  image: "https://uploaddeimagens.com.br/images/003/700/538/original/272146181_6804132162995563_4295433218327981100_n.jpg",
                 ),
               ),
               Padding(

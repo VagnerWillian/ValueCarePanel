@@ -2,24 +2,24 @@ import 'package:value_panel/app/modules/monitoring/infra/models/symptom.model.da
 
 abstract class MonitoringDataEntity {
   int? id;
-  String? data;
-  List<Symptom>? sintomas;
-  String? paciente;
+  String? date;
+  List<Symptom>? symptoms;
+  String? patient;
   String? score;
-  int? classificacao;
-  String? dataSolicitada;
-  bool? encaminhar;
+  int? classification;
+  String? solicitationDate;
+  bool? forward;
 
-  String get idString => "#$id";
+  String get idString;
 
   MonitoringDataEntity(
       {this.id,
-        this.data,
-        this.sintomas,
-        this.paciente,
+        this.date,
+        this.symptoms,
+        this.patient,
         this.score,
-        this.classificacao,
-        this.dataSolicitada,
-        this.encaminhar});
+        this.classification,
+        this.solicitationDate,
+        this.forward});
 
 }

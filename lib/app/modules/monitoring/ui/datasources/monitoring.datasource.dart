@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
-import 'package:value_panel/app/modules/monitoring/domain/entities/symptoms.entity.dart';
 import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/classification_column_grid.component.dart';
 import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/date_column_grid.component.dart';
 import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/id_column_grid.component.dart';
@@ -9,6 +8,7 @@ import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components
 import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/refer_column_grid.component.dart';
 import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/score_column_grid.component.dart';
 import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/symptoms_column_grid.component.dart';
+import 'package:value_panel/app/shared/core/domain/entities/symptoms.entity.dart';
 class ColumnConfig{
   String label;
   double minWidth, maxWidth;
@@ -25,7 +25,7 @@ class MonitoringDataSource extends DataGridSource {
     ColumnConfig("Data", 70, double.nan),
     ColumnConfig("Sintomas", 160, double.nan),
     ColumnConfig("Paciente", 100, double.nan),
-    ColumnConfig("Score", 30, double.nan),
+    ColumnConfig("Score", 30, 60),
     ColumnConfig("Classificação", 150, double.nan),
     ColumnConfig("Data Solicitação", 70, double.nan),
     ColumnConfig("Encaminhar", 20, double.nan),
@@ -44,12 +44,12 @@ class MonitoringDataSource extends DataGridSource {
   void buildPaginatedDataGridRows() {
     dataGridRows = _paginatedMonitoringItems.map<DataGridRow>((m) => DataGridRow(cells: [
       DataGridCell<String>(columnName: columnNames[0].label, value: m.idString),
-      DataGridCell<String>(columnName: columnNames[1].label, value: m.data),
-      DataGridCell<List<SymptomEntity>>(columnName: columnNames[2].label, value: m.sintomas),
-      DataGridCell<String>(columnName: columnNames[3].label, value: m.paciente),
+      DataGridCell<String>(columnName: columnNames[1].label, value: m.date),
+      DataGridCell<List<SymptomEntity>>(columnName: columnNames[2].label, value: m.symptoms),
+      DataGridCell<String>(columnName: columnNames[3].label, value: m.patient),
       DataGridCell<String>(columnName: columnNames[4].label, value: m.score),
       DataGridCell<MonitoringDataEntity>(columnName: columnNames[5].label, value: m),
-      DataGridCell<String>(columnName: columnNames[6].label, value: m.dataSolicitada),
+      DataGridCell<String>(columnName: columnNames[6].label, value: m.solicitationDate),
       DataGridCell<MonitoringDataEntity>(columnName: columnNames[7].label, value: m),
     ])).toList(growable: false);
   }

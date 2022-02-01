@@ -1,6 +1,6 @@
 import 'package:mobx/mobx.dart';
-import 'package:value_panel/app/shared/domain/entities/hospital.entity.dart';
-import 'package:value_panel/app/shared/domain/entities/user.entity.dart';
+import 'package:value_panel/app/shared/core/domain/entities/hospital.entity.dart';
+import 'package:value_panel/app/shared/core/domain/entities/user.entity.dart';
 
 part 'home_store.g.dart';
 

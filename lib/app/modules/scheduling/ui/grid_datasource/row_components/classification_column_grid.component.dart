@@ -3,14 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:value_panel/app/shared/core/domain/entities/classification.entity.dart';
-import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
-import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
 import 'package:value_panel/app/shared/utils.dart';
 
 class ClassificationColumnGrid extends StatefulWidget {
-  final MonitoringDataEntity value;
-  final Function updateMonitoringItem;
-  const ClassificationColumnGrid({Key? key, required this.value, required this.updateMonitoringItem}) : super(key: key);
+  final int value;
+  const ClassificationColumnGrid({Key? key, required this.value}) : super(key: key);
 
   @override
   _ClassificationColumnGridState createState() => _ClassificationColumnGridState();
@@ -23,14 +20,14 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
 
   @override
   void initState() {
-    selectedClassification = classifications.singleWhere((c) => c.id==widget.value.classification);
+    selectedClassification = classifications.singleWhere((c) => c.id==widget.value);
     loading = false;
     super.initState();
   }
 
   @override
   void didUpdateWidget(covariant ClassificationColumnGrid oldWidget) {
-    selectedClassification = classifications.singleWhere((c) => c.id==widget.value.classification);
+    selectedClassification = classifications.singleWhere((c) => c.id==widget.value);
     loading = false;
     super.didUpdateWidget(oldWidget);
   }
@@ -58,37 +55,27 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
           value: selectedClassification,
           underline: Container(),
           isExpanded: true,
+          icon: Container(),
+          iconDisabledColor: Colors.transparent,
           iconEnabledColor: selectedClassification.color,
           items: classifications.map((c) {
             return DropdownMenuItem<ClassificationEntity>(
                 value: c,
-                child: Wrap(
-                  alignment: WrapAlignment.center,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  children: [
-                    SvgPicture.asset("assets/images/classifications/${c.label}.svg", color: c.color, width: 20,),
-                    const SizedBox(width: 10),
-                    Text(c.label, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 10, color: c.color), overflow: TextOverflow.fade, softWrap: true,)
-                  ],
+                child: Center(
+                  child: Wrap(
+                    alignment: WrapAlignment.center,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      SvgPicture.asset("assets/images/classifications/${c.label}.svg", color: c.color, width: 20,),
+                      const SizedBox(width: 10),
+                      Text(c.label, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 10, color: c.color), overflow: TextOverflow.fade, softWrap: true,)
+                    ],
+                  ),
                 ));
           }).toList(),
-          onChanged: (v)=> setClassification(v!),
+          onChanged: null,
         ),
       ),
     );
-  }
-
-  Future setClassification(ClassificationEntity classificationEntity)async{
-    setState(() => loading = true);
-    widget.value.classification = classificationEntity.id;
-    Either<MonitoringError, bool> response = await widget.updateMonitoringItem(widget.value);
-    if(response.isRight){
-      setState(() {
-        selectedClassification = classificationEntity;
-      });
-    }else{
-
-    }
-    setState(() => loading=false);
   }
 }

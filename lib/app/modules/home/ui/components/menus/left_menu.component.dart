@@ -18,7 +18,7 @@ class LeftMenu extends StatefulWidget {
 
 class _LeftMenuState extends State<LeftMenu> {
 
-  int index = 1;
+  int index = 2;
   bool isExpanded = true;
 
   @override
@@ -182,11 +182,12 @@ class _LeftMenuState extends State<LeftMenu> {
 
   void animationToPage(int page){
     if(page==0){
-      Modular.to.navigate('/dashboard/');
+      Modular.to.navigate(DASHBOARD_ROUTE);
     }else if(page==1){
-      Modular.to.navigate('/monitoramento/');
+      Modular.to.navigate(MONITORING_ROUTE);
+    }else if(page==2){
+      Modular.to.navigate(SCHEDULING_ROUTE);
     }
-    // widget.controller.animateToPage(page, duration: const Duration(seconds: 1), curve: Curves.fastLinearToSlowEaseIn);
     setIndex(page);
   }
 }

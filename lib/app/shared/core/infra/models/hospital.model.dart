@@ -1,4 +1,4 @@
-import 'package:value_panel/app/shared/domain/entities/hospital.entity.dart';
+import 'package:value_panel/app/shared/core/domain/entities/hospital.entity.dart';
 
 class HospitalModel implements HospitalEntity{
 

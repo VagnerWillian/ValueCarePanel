@@ -7,64 +7,64 @@ class MonitoringData implements MonitoringDataEntity {
   final datePattern = DateFormat("dd/MM/yyyy", "pt_BR");
 
   @override
-  int? classificacao;
+  int? classification;
 
   @override
-  String? data;
+  String? date;
 
   @override
-  String? dataSolicitada;
+  String? solicitationDate;
 
   @override
-  bool? encaminhar;
+  bool? forward;
 
   @override
   int? id;
 
   @override
-  String? paciente;
+  String? patient;
 
   @override
   String? score;
 
   @override
-  List<Symptom>? sintomas;
+  List<Symptom>? symptoms;
 
   @override
   String get idString => "#$id";
 
   MonitoringData(
       {required this.id,
-      required this.data,
-      required this.sintomas,
-      required this.paciente,
+      required this.date,
+      required this.symptoms,
+      required this.patient,
       required this.score,
-      required this.classificacao,
-      required this.dataSolicitada,
-      required this.encaminhar});
+      required this.classification,
+      required this.solicitationDate,
+      required this.forward});
 
   MonitoringData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    data = datePattern.format(DateTime.parse(json['data']));
-    sintomas = (json['sintomas'] as List).map((s) => Symptom.fromJson(s)).toList();
-    paciente = json['paciente'];
+    date = datePattern.format(DateTime.parse(json['data']));
+    symptoms = (json['sintomas'] as List).map((s) => Symptom.fromJson(s)).toList();
+    patient = json['paciente'];
     score = json['score'];
-    classificacao = json['classificacao'];
-    dataSolicitada = datePattern.format(DateTime.parse(json['dataSolicitada']));
-    encaminhar = json['encaminhar'];
+    classification = json['classificacao'];
+    solicitationDate = datePattern.format(DateTime.parse(json['dataSolicitada']));
+    forward = json['encaminhar'];
   }
 
   @override
   Map<String, dynamic> get toJson {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['data'] = this.data;
-    data['sintomas'] = sintomas?.map((e) => e.toJson).toList();
-    data['paciente'] = paciente;
+    data['data'] = this.date;
+    data['sintomas'] = symptoms?.map((e) => e.toJson).toList();
+    data['paciente'] = patient;
     data['score'] = score;
-    data['classificacao'] = classificacao;
-    data['dataSolicitada'] = dataSolicitada;
-    data['encaminhar'] = encaminhar;
+    data['classificacao'] = classification;
+    data['dataSolicitada'] = solicitationDate;
+    data['encaminhar'] = forward;
     return data;
   }
 }

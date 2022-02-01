@@ -1,13 +1,13 @@
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
-import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
-import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
+import 'package:value_panel/app/modules/scheduling/domain/entities/scheduling_data.entity.dart';
+import 'package:value_panel/app/modules/scheduling/errors/scheduling.errors.dart';
 import 'package:value_panel/app/shared/utils.dart';
 
 class ReferColumnGrid extends StatefulWidget {
-  final MonitoringDataEntity value;
-  final Function updateMonitoringItem;
-  const ReferColumnGrid({Key? key, required this.value, required this.updateMonitoringItem}) : super(key: key);
+  final SchedulingDataEntity value;
+  final Function updateSchedulingItem;
+  const ReferColumnGrid({Key? key, required this.value, required this.updateSchedulingItem}) : super(key: key);
 
   @override
   _ReferColumnGridState createState() => _ReferColumnGridState();
@@ -19,13 +19,13 @@ class _ReferColumnGridState extends State<ReferColumnGrid> {
 
   @override
   void initState() {
-    checkStatus = widget.value.forward!;
+    checkStatus = widget.value.confirmation!;
     super.initState();
   }
 
   @override
   void didUpdateWidget(covariant ReferColumnGrid oldWidget) {
-    checkStatus = widget.value.forward!;
+    checkStatus = widget.value.confirmation!;
     loading = false;
     super.didUpdateWidget(oldWidget);
   }
@@ -42,18 +42,22 @@ class _ReferColumnGridState extends State<ReferColumnGrid> {
               ),
             ),
         )
-        : Checkbox(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-          onChanged: (v) => setClassification(v!),
-          value: checkStatus,
-          fillColor: MaterialStateProperty.all(primaryColor),
+        : IgnorePointer(
+          ignoring: checkStatus ,
+          child: Checkbox(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+            onChanged: (v) => setClassification(v!),
+            value: checkStatus,
+            checkColor: checkStatus?primaryColor:Colors.transparent,
+            fillColor: MaterialStateProperty.all(checkStatus?primaryColor.withOpacity(0.1):primaryColor),
+          ),
         );
   }
 
   Future setClassification(bool check) async {
     setState(() => loading = true);
-    widget.value.forward = check;
-    Either<MonitoringError, bool> response = await widget.updateMonitoringItem(widget.value);
+    widget.value.confirmation = check;
+    Either<SchedulingError, bool> response = await widget.updateSchedulingItem(widget.value);
     if (response.isRight) {
       setState(() {
         checkStatus = check;

@@ -105,7 +105,7 @@ abstract class _MonitoringStoreBase with Store {
       if(text.isNotEmpty) {
         List<MonitoringDataEntity> searchList = backupList.where((m) {
         String? id = m.idString.toLowerCase();
-        String? name = m.paciente?.toLowerCase();
+        String? name = m.patient?.toLowerCase();
         return name!.contains(text.toLowerCase())||id.contains(text.toLowerCase());
       }).toList();
         monitoringDataSource.updateList(searchList);
