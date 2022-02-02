@@ -1,6 +1,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:either_dart/either.dart';
+import 'package:flutter/services.dart';
 import 'package:value_panel/app/modules/scheduling/domain/entities/scheduling_data.entity.dart';
 import 'package:value_panel/app/modules/scheduling/domain/repositories/repository.dart';
 import 'package:value_panel/app/modules/scheduling/errors/scheduling.errors.dart';
@@ -17,6 +18,11 @@ class JsonGeneratorRepository implements SchedulingRepository{
   @override
   Future<Either<SchedulingError, List<SchedulingDataEntity>>> fetchSchedulingItemsFromIntervalDates({required DateTime startDate, required DateTime endDate}) async {
     try{
+     /* await Future.delayed(Duration(seconds: 2));
+      String data = await rootBundle.loadString('assets/jsons_static/scheduling_today.json');
+      var jsonResult = json.decode(data);
+      List<SchedulingData> e = (jsonResult['result'] as List).map((e) => SchedulingData.fromJson(e)).toList();
+      return Right(e);*/
       var response = await _customDio.client.get("https://api.json-generator.com/templates/4SAzQe1yEACA/data", options: Options(headers: _header));
       List<SchedulingDataEntity> schedulingDataItems = (response.data as List).map((i) => SchedulingData.fromJson(i)).toList();
       return Right(schedulingDataItems);

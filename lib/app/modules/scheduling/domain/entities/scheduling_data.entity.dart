@@ -10,6 +10,8 @@ abstract class SchedulingDataEntity {
   bool? confirmation;
 
   String get idString;
+  DateTime get dateSolicitedInDateTime;
+  DateTime get appointmentDateInDateTime;
 
   SchedulingDataEntity(
       {this.id,

@@ -62,6 +62,8 @@ class _ReferColumnGridState extends State<ReferColumnGrid> {
       setState(() {
         checkStatus = check;
       });
+    }else{
+      widget.value.confirmation = checkStatus;
     }
     setState(() => loading = false);
   }

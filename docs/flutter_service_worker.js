@@ -3,7 +3,7 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "9e6caeeee7f5f8c78ee6b34335f22f27",
+  "assets/AssetManifest.json": "5de9b6eb8f8e6f88d4840f753600bd99",
 "assets/assets/anims/loading.flr": "51eb608bfe80ffe1b004dfc551fbae77",
 "assets/assets/images/classifications/Emerg%25C3%25AAncia.svg": "94f70ace313b2fb3e46b17b9089bbebf",
 "assets/assets/images/classifications/N%25C3%25A3o%2520Urgente.svg": "9f9f87bd99fe7552ab2c4604f3fbc0e2",
@@ -43,6 +43,7 @@ const RESOURCES = {
 "assets/assets/images/symptoms/Tremores.svg": "cdb1483a70c8aef844a23052e1f125b8",
 "assets/assets/static_jsons/monitoring_today.json": "59805d7822e3c16dbd460b45359f01e7",
 "assets/assets/static_jsons/report_doc.json": "947498c807fd11f4e3eddc7414daa7e2",
+"assets/assets/static_jsons/scheduling_today.json": "9c8ef54612ffb34052865b5bdfe10520",
 "assets/FontManifest.json": "4ccb1be16bf30df330c1d7077d164108",
 "assets/fonts/MaterialIcons-Regular.otf": "4e6447691c9509f7acdbf8a931a85ca1",
 "assets/NOTICES": "f1de6c07e07d81b590a35cef9e886b21",
@@ -57,9 +58,9 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "d0f43f33f2235d976c35c82709b52303",
-"/": "d0f43f33f2235d976c35c82709b52303",
-"main.dart.js": "0a3edf39539bf1b61085430151c0cdf9",
+"index.html": "8eec658b68b568e43f7b7a61d74bde49",
+"/": "8eec658b68b568e43f7b7a61d74bde49",
+"main.dart.js": "42ff7c821a245730c3f41207cbb1130a",
 "manifest.json": "a6bf733c5ff7cd5775faad23095ee26a",
 "version.json": "03f5412e45d2df3d844a7cbea420b6f4"
 };

@@ -1,6 +1,8 @@
+import 'package:intl/intl.dart';
 import 'package:value_panel/app/modules/scheduling/domain/entities/scheduling_data.entity.dart';
 
 class SchedulingData implements SchedulingDataEntity{
+  final datePattern = DateFormat("dd/MM/yyyy", "pt_BR");
 
   @override
   int? classification;
@@ -32,6 +34,12 @@ class SchedulingData implements SchedulingDataEntity{
   @override
   String get idString => "#$id";
 
+  @override
+  DateTime get dateSolicitedInDateTime => DateTime.parse(dateSolicited!);
+
+  @override
+  DateTime get appointmentDateInDateTime => DateTime.parse(appointmentDate!);
+
   SchedulingData(
       {id,
         paciente,
@@ -46,8 +54,8 @@ class SchedulingData implements SchedulingDataEntity{
   SchedulingData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     patient = json['paciente'];
-    solicitationDate = json['dataSolicitacao'];
-    contactDate = json['dataContato'];
+    solicitationDate = datePattern.format(DateTime.parse(json['dataSolicitacao']));
+    contactDate = datePattern.format(DateTime.parse(json['dataContato']));
     score = json['score'];
     classification = json['classificacao'];
     dateSolicited = json['dataSolicitada'];

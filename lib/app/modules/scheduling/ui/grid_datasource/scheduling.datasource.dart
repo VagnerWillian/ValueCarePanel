@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:value_panel/app/modules/scheduling/domain/entities/scheduling_data.entity.dart';
+import 'package:value_panel/app/modules/scheduling/ui/grid_datasource/row_components/appointment_date_column_grid.component.dart';
 import 'package:value_panel/app/modules/scheduling/ui/grid_datasource/row_components/classification_column_grid.component.dart';
 import 'package:value_panel/app/modules/scheduling/ui/grid_datasource/row_components/date_contact_column_grid.component.dart';
 import 'package:value_panel/app/modules/scheduling/ui/grid_datasource/row_components/id_column_grid.component.dart';
 import 'package:value_panel/app/modules/scheduling/ui/grid_datasource/row_components/patient_name_column_grid.component.dart';
 import 'package:value_panel/app/modules/scheduling/ui/grid_datasource/row_components/refer_column_grid.component.dart';
 import 'package:value_panel/app/modules/scheduling/ui/grid_datasource/row_components/score_column_grid.component.dart';
-import 'package:value_panel/app/modules/scheduling/ui/grid_datasource/row_components/symptoms_column_grid.component.dart';
-import 'package:value_panel/app/shared/core/domain/entities/symptoms.entity.dart';
-import 'package:value_panel/app/shared/core/infra/models/classification.model.dart';
+import 'package:value_panel/app/modules/scheduling/ui/grid_datasource/row_components/solicited_date_column_grid.component.dart';
 class ColumnConfig{
   String label;
   double minWidth, maxWidth;
@@ -51,8 +50,8 @@ class SchedulingDataSource extends DataGridSource {
       DataGridCell<String>(columnName: columnNames[3].label, value: m.solicitationDate),
       DataGridCell<String>(columnName: columnNames[4].label, value: m.score),
       DataGridCell<int>(columnName: columnNames[5].label, value: m.classification),
-      DataGridCell<String>(columnName: columnNames[6].label, value: m.dateSolicited),
-      DataGridCell<String>(columnName: columnNames[7].label, value: m.appointmentDate),
+      DataGridCell<SchedulingDataEntity>(columnName: columnNames[6].label, value: m),
+      DataGridCell<SchedulingDataEntity>(columnName: columnNames[7].label, value: m),
       DataGridCell<SchedulingDataEntity>(columnName: columnNames[8].label, value: m),
     ])).toList(growable: false);
   }
@@ -74,9 +73,9 @@ class SchedulingDataSource extends DataGridSource {
           }else if(dataGridCell.columnName==columnNames[5].label){
             return ClassificationColumnGrid(value: dataGridCell.value);
           }else if(dataGridCell.columnName==columnNames[6].label){
-            return Container();
+            return SolicitedDateColumnGrid(schedulingDataEntity: dataGridCell.value, updateSchedulingItem: updateSchedulingItem);
           }else if(dataGridCell.columnName==columnNames[7].label){
-            return Container();
+            return AppointmentDateColumnGrid(schedulingDataEntity: dataGridCell.value, updateSchedulingItem: updateSchedulingItem);
           } else if(dataGridCell.columnName==columnNames[8].label){
             return ReferColumnGrid(value: dataGridCell.value, updateSchedulingItem: updateSchedulingItem);
           }
