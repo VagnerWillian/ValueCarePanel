@@ -6,11 +6,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
-import 'package:value_panel/app/modules/monitoring/ui/components/selector_date.component.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
+import 'package:value_panel/app/modules/monitoring/ui/models/date_selector.model.dart';
 import 'package:value_panel/app/modules/monitoring/ui/monitoring_store.dart';
 import 'package:value_panel/app/shared/utils.dart';
 import 'package:value_panel/app/shared/widgets/custom/gradient.button.dart';
+import 'package:value_panel/app/shared/widgets/dialogs/another_error.dialog.dart';
 import 'package:value_panel/app/shared/widgets/dialogs/loading.dialog.dart';
+import 'package:value_panel/app/shared/widgets/dialogs/repository_error.dialog.dart';
 import 'package:value_panel/app/shared/widgets/page_title_description.widget.dart';
 import 'package:value_panel/app/shared/widgets/search/main_search.widget.dart';
 
@@ -22,6 +26,13 @@ class MonitoringPage extends StatefulWidget {
 
 class MonitoringPageState extends State<MonitoringPage> {
   final MonitoringStore store = Modular.get();
+
+  @override
+  void initState() {
+    store.setDateSelector(store.preDates.first);
+    onChangedDate(store.preDates.first);
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -115,7 +126,32 @@ class MonitoringPageState extends State<MonitoringPage> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: SelectorDateWidget(onChangedSelectorDate: store.onChangedSelectorDate),
+                child: Observer(
+                  builder:(_)=>DropdownButton<DateSelector>(
+                    underline: Container(),
+                    borderRadius: BorderRadius.circular(10),
+                    value: store.dateSelector!,
+                    items: store.preDates.map((d) {
+                      return DropdownMenuItem<DateSelector>(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              d.label,
+                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                              textAlign: TextAlign.start,
+                            ),
+                            d.startDate == null ? Container():Text(d.startDate == null ? "Nenhuma data selecionada" : d.description,
+                                style: const TextStyle(color: Colors.grey, fontSize: 10), textAlign: TextAlign.start),
+                          ],
+                        ),
+                        value: d,
+                      );
+                    }).toList(),
+                    onChanged: (v) => onChangedDate(v),
+                  ),
+                ),
               ),
             ],
           )),
@@ -205,16 +241,79 @@ class MonitoringPageState extends State<MonitoringPage> {
     ),
   );
 
+  Future<void> onChangedDate(DateSelector? v) async {
+    if (v!.dynamic) {
+      PickerDateRange? dateRange = await showDialog(
+          barrierColor: Colors.white70,
+          context: context,
+          builder: (_) => Dialog(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: SizedBox(
+                width: 450,
+                height: 450,
+                child: SfDateRangePicker(
+                  rangeSelectionColor: secondColor.withOpacity(0.3),
+                  selectionColor: secondColor,
+                  endRangeSelectionColor: primaryColor,
+                  startRangeSelectionColor: primaryColor,
+                  todayHighlightColor: primaryColor,
+                  rangeTextStyle: GoogleFonts.cairo(color: Colors.white, fontWeight: FontWeight.bold),
+                  yearCellStyle: DateRangePickerYearCellStyle(
+                    textStyle: GoogleFonts.cairo(color: primaryColor, fontWeight: FontWeight.bold,),
+                    todayTextStyle: GoogleFonts.cairo(color: primaryColor, fontWeight: FontWeight.bold,),
+                  ),
+                  monthCellStyle: DateRangePickerMonthCellStyle(
+                    textStyle: GoogleFonts.cairo(color: primaryColor, fontWeight: FontWeight.bold),
+                    todayTextStyle: GoogleFonts.cairo(color: primaryColor, fontWeight: FontWeight.bold,),
+                  ),
+                  selectionTextStyle: GoogleFonts.cairo(color: Colors.white, fontWeight: FontWeight.bold),
+                  headerStyle: DateRangePickerHeaderStyle(
+                      textStyle: GoogleFonts.cairo(color: primaryColor, fontWeight: FontWeight.bold, fontSize: 30)
+                  ),
+                  showActionButtons: true,
+                  selectionMode: DateRangePickerSelectionMode.extendableRange,
+                  confirmText: "Confirmar",
+                  cancelText: "Cancelar",
+                  onSubmit: (value) => Modular.to.pop(value),
+                  onCancel: () => Modular.to.pop(),
+                ),
+              ),
+            ),
+          ));
+
+      if (dateRange != null) {
+        store.preDates.replaceRange(store.preDates.length - 1, store.preDates.length,
+            [DateSelector(label: "Selecionar outro período...", startDate: dateRange.startDate??dateRange.endDate, endDate: dateRange.endDate??dateRange.startDate, dynamic: true)]);
+            store.onChangedSelectorDate(store.preDates.last, onError);
+      }
+    } else {
+      store.preDates.replaceRange(store.preDates.length - 1, store.preDates.length, [DateSelector(label: "Selecionar período...", startDate: null, endDate: null, dynamic: true)]);
+      store.onChangedSelectorDate(v, onError);
+    }
+  }
+
   generateReportDoc() {
     if (store.enableGenerateReportDoc) {
-      return () {
+      return () async{
         showDialog(
             barrierColor: dialogBackgroundColor,
             barrierDismissible: false,
             context: context,
-            builder: (_) => LoadingDialog(future: store.exportReportDoc()));
+            builder: (_) => const LoadingDialog());
+        await store.exportReportDoc(onError);
+        Modular.to.pop();
       };
     }
     return null;
+  }
+
+  Future onError(MonitoringError failure)async{
+    if(failure is MonitoringRepositoryError){
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>RepositoryErrorDialog(repositoryError: failure));
+    }else if(failure is MonitoringUnknownError){
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>AnotherErrorDialog(unknownError: failure));
+    }
   }
 }

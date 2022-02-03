@@ -11,7 +11,7 @@ class APIRepository implements MonitoringRepository{
   APIRepository(this._customDio);
 
   @override
-  Future<Either<MonitoringError, List<MonitoringDataEntity>>> fetchEmployeesFromIntervalDates({required DateTime startDate, required DateTime endDate}) {
+  Future<Either<MonitoringError, List<MonitoringDataEntity>>> fetchMonitoringFromIntervalDates({required DateTime startDate, required DateTime endDate}) {
     // TODO: implement fetchEmployeesFromIntervalDates
     throw UnimplementedError();
   }

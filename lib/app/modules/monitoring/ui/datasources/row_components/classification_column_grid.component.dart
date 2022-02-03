@@ -6,6 +6,8 @@ import 'package:value_panel/app/shared/core/domain/entities/classification.entit
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
 import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
 import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/shared/widgets/dialogs/another_error.dialog.dart';
+import 'package:value_panel/app/shared/widgets/dialogs/repository_error.dialog.dart';
 
 class ClassificationColumnGrid extends StatefulWidget {
   final MonitoringDataEntity value;
@@ -81,7 +83,7 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
   Future setClassification(ClassificationEntity classificationEntity)async{
     setState(() => loading = true);
     widget.value.classification = classificationEntity.id;
-    Either<MonitoringError, bool> response = await widget.updateMonitoringItem(widget.value);
+    Either<MonitoringError, bool> response = await widget.updateMonitoringItem(widget.value, onError);
     if(response.isRight){
       setState(() {
         selectedClassification = classificationEntity;
@@ -90,5 +92,13 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
 
     }
     setState(() => loading=false);
+  }
+
+  void onError(MonitoringError failure)async{
+    if(failure is MonitoringRepositoryError){
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>RepositoryErrorDialog(repositoryError: failure));
+    }else if(failure is MonitoringUnknownError){
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>AnotherErrorDialog(unknownError: failure));
+    }
   }
 }

@@ -18,11 +18,6 @@ class JsonGeneratorRepository implements SchedulingRepository{
   @override
   Future<Either<SchedulingError, List<SchedulingDataEntity>>> fetchSchedulingItemsFromIntervalDates({required DateTime startDate, required DateTime endDate}) async {
     try{
-     /* await Future.delayed(Duration(seconds: 2));
-      String data = await rootBundle.loadString('assets/jsons_static/scheduling_today.json');
-      var jsonResult = json.decode(data);
-      List<SchedulingData> e = (jsonResult['result'] as List).map((e) => SchedulingData.fromJson(e)).toList();
-      return Right(e);*/
       var response = await _customDio.client.get("https://api.json-generator.com/templates/4SAzQe1yEACA/data", options: Options(headers: _header));
       List<SchedulingDataEntity> schedulingDataItems = (response.data as List).map((i) => SchedulingData.fromJson(i)).toList();
       return Right(schedulingDataItems);
@@ -50,7 +45,7 @@ class JsonGeneratorRepository implements SchedulingRepository{
     try{
       await Future.delayed(const Duration(seconds: 2));
       // var response = await _customDio.client.post("https://api.json-generator.com/templates/-Yly0aK_l3oM/data", options: Options(headers: _header));
-      return const Right(true);
+      return Left(SchedulingRepositoryError(message: "e.toString()"));
     }on DioError catch(e){
       return Left(SchedulingRepositoryError(statusCode: e.response?.statusCode));
     }catch(e){

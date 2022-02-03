@@ -1,4 +1,5 @@
 import 'package:value_panel/app/shared/errors/repository.error.dart';
+import 'package:value_panel/app/shared/errors/unknown.error.dart';
 
 class SchedulingError{}
 
@@ -39,7 +40,7 @@ class DownloadArchiveError extends SchedulingError{
   DownloadArchiveError({required this.message});
 }
 
-class SchedulingUnknownError extends SchedulingError{
+class SchedulingUnknownError extends SchedulingError implements UnknownError{
 
   @override
   late String message;

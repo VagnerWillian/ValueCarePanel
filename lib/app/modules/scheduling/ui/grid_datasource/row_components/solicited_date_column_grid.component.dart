@@ -7,6 +7,8 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:value_panel/app/modules/scheduling/domain/entities/scheduling_data.entity.dart';
 import 'package:value_panel/app/modules/scheduling/errors/scheduling.errors.dart';
 import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/shared/widgets/dialogs/another_error.dialog.dart';
+import 'package:value_panel/app/shared/widgets/dialogs/repository_error.dialog.dart';
 
 class SolicitedDateColumnGrid extends StatefulWidget {
   final SchedulingDataEntity schedulingDataEntity;
@@ -121,7 +123,7 @@ class _SolicitedDateColumnGridState extends State<SolicitedDateColumnGrid> {
   void onChangedDate(DateTime value) async {
     setState(() => loading = true);
     widget.schedulingDataEntity.dateSolicited = value.toString();
-    Either<SchedulingError, bool> response = await widget.updateSchedulingItem(widget.schedulingDataEntity);
+    Either<SchedulingError, bool> response = await widget.updateSchedulingItem(widget.schedulingDataEntity , onError);
     if (response.isRight) {
       setState(() {
         selectedDate = value;
@@ -130,5 +132,13 @@ class _SolicitedDateColumnGridState extends State<SolicitedDateColumnGrid> {
       widget.schedulingDataEntity.dateSolicited = selectedDate.toString();
     }
     setState(() => loading = false);
+  }
+
+  void onError(SchedulingError failure)async{
+    if(failure is SchedulingRepositoryError){
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>RepositoryErrorDialog(repositoryError: failure));
+    }else if(failure is SchedulingUnknownError){
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>AnotherErrorDialog(unknownError: failure));
+    }
   }
 }

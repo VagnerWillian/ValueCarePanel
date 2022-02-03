@@ -1,4 +1,6 @@
 import 'package:either_dart/either.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:mobx/mobx.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
@@ -28,6 +30,7 @@ abstract class _MonitoringStoreBase with Store {
     required this.updateMonitoringItemUseCase
   }){
     monitoringDataSource = MonitoringDataSource(updateMonitoringItem: updateMonitoringItem);
+    preDatesLogic();
   }
 
   //OTHERS
@@ -46,6 +49,8 @@ abstract class _MonitoringStoreBase with Store {
   @observable
   bool loadingUpdateMonitoringItem = false;
 
+  @observable
+  ObservableList<DateSelector> preDates = ObservableList<DateSelector>();
 
   // ACTIONS
   @action
@@ -61,8 +66,11 @@ abstract class _MonitoringStoreBase with Store {
     loadingUpdateMonitoringItem=value;
   }
 
+  @action
+  addPreDates(DateSelector value)=>preDates.add(value);
+
   // FUNCTIONS AND VOIDS
-  Future onChangedSelectorDate(DateSelector dateSelector) async {
+  Future onChangedSelectorDate(DateSelector dateSelector, Function onError) async {
     setDateSelector(dateSelector);
     setLoadingMonitoringItems(true);
     Either<MonitoringError, List<MonitoringDataEntity>> response = await fetchMonitoringDataFromIntervalDatesUseCase(
@@ -70,10 +78,7 @@ abstract class _MonitoringStoreBase with Store {
       endDate: dateSelector.endDate!
     );
     response.fold((MonitoringError failure) {
-      if(failure is MonitoringRepositoryError){
-        print("Message error: ${failure.message}");
-        print("Code error: ${failure.statusCode}");
-      }
+      onError(failure);
       return failure;
     }, (List<MonitoringDataEntity> data) {
       backupList = data;
@@ -83,14 +88,11 @@ abstract class _MonitoringStoreBase with Store {
     setLoadingMonitoringItems(false);
   }
 
-  Future updateMonitoringItem(MonitoringDataEntity monitoringDataEntity) async {
+  Future updateMonitoringItem(MonitoringDataEntity monitoringDataEntity, Function onError) async {
     setLoadingUpdateMonitoringItem(true);
     Either<MonitoringError, bool> response = await updateMonitoringItemUseCase(monitoringDataEntity: monitoringDataEntity);
     response.fold((MonitoringError failure) {
-      if(failure is MonitoringRepositoryError){
-        print("Message error: ${failure.message}");
-        print("Code error: ${failure.statusCode}");
-      }
+      onError(failure);
       return failure;
     }, (bool data) {
       return data;
@@ -116,11 +118,9 @@ abstract class _MonitoringStoreBase with Store {
       dataPagerController.firstPage();
     }
 
-  ////////////////////////////////////////////////////////////////////////////////////////
-
   ////////////////////////// EXPORTAR RELATORIO ///////////////////////////////////////
   bool get enableGenerateReportDoc => !loadingMonitoringItems&&dateSelector!=null;
-  void downloadReportDocFromSrc({required String url}) {
+  void downloadReportDocFromSrc({required String url, on}) {
     try{
       downloadArchiveUseCase(url: url);
     }catch(e){
@@ -128,18 +128,42 @@ abstract class _MonitoringStoreBase with Store {
     }
   }
 
-  Future<Either<MonitoringError, String>> exportReportDoc()async{
+  Future<Either<MonitoringError, String>> exportReportDoc(Function onError)async{
     Either<MonitoringError, String> responseSrcOfDoc = await fetchReportDocSrcUseCase(
       startDate: dateSelector!.startDate!,
       endDate: dateSelector!.endDate!
     );
-    responseSrcOfDoc.fold((MonitoringError failure) {
-      // TODO IMPLEMENTAR TRATAMENTO DE FALHA
+    await responseSrcOfDoc.fold((MonitoringError failure) async{
+      await onError(failure);
       return failure;
     }, (String url) {
       downloadReportDocFromSrc(url: url);
     });
     return responseSrcOfDoc;
+  }
+
+  ///////////////////////////////////// PRE-DATES LOGIC //////////////////////////
+  void preDatesLogic() {
+    final DateTime today = DateTime.now();
+
+    // This week
+    final DateTime startWeek = Jiffy(today).startOf(Units.WEEK).dateTime;
+
+    // This Month
+    final DateTime startMonthNow = Jiffy(today).startOf(Units.MONTH).dateTime;
+
+    // Previous Month
+    final DateTime startPreviousMonth = Jiffy(startMonthNow).subtract(months: 1).dateTime;
+    final DateTime endPreviousMonth = Jiffy(startPreviousMonth).endOf(Units.MONTH).dateTime;
+
+    final DateSelector todaySelector = DateSelector(label: "Hoje", startDate: today, endDate: today);
+    final DateSelector thisWeekSelector = DateSelector(label: "Esta semana", startDate: startWeek, endDate: today);
+    final DateSelector thisMonthSelector = DateSelector(label: "Este Mês", startDate: startMonthNow, endDate: today);
+    final DateSelector previousMonthSelector = DateSelector(label: "Mês Anterior", startDate: startPreviousMonth, endDate: endPreviousMonth);
+    final DateSelector anotherDate = DateSelector(label: "Selecionar período...", startDate: null, endDate: null, dynamic: true);
+
+    final List<DateSelector> dates = [todaySelector, thisWeekSelector, thisMonthSelector, previousMonthSelector, anotherDate];
+    dates.map((v) => addPreDates(v)).toList();
   }
 
 }

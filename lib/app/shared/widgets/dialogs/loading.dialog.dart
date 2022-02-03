@@ -3,38 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:value_panel/app/shared/utils.dart';
 
-class LoadingDialog extends StatefulWidget {
-  Future future;
-  LoadingDialog({Key? key, required this.future}) : super(key: key);
+class LoadingDialog extends StatelessWidget {
+  const LoadingDialog({Key? key}) : super(key: key);
 
-  @override
-  State<LoadingDialog> createState() => _LoadingDialogState();
-}
-
-class _LoadingDialogState extends State<LoadingDialog> {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: widget.future,
-      builder: (context, snapshot) {
-        switch(snapshot.connectionState){
-          case ConnectionState.waiting:
-            return loading();
-          case ConnectionState.none:
-            return loading();
-          case ConnectionState.active:
-            return loading();
-          case ConnectionState.done:
-            Navigator.pop(context);
-            return loading();
-          default:
-            return loading();
-        }
-      }
-    );
-  }
-
-  Widget loading()=> Dialog(
+    return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Container(
         padding: const EdgeInsets.all(20),
@@ -55,4 +29,5 @@ class _LoadingDialogState extends State<LoadingDialog> {
         ),
       ),
     );
+  }
 }

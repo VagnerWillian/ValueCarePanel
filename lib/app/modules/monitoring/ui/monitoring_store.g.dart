@@ -58,6 +58,21 @@ mixin _$MonitoringStore on _MonitoringStoreBase, Store {
     });
   }
 
+  final _$preDatesAtom = Atom(name: '_MonitoringStoreBase.preDates');
+
+  @override
+  ObservableList<DateSelector> get preDates {
+    _$preDatesAtom.reportRead();
+    return super.preDates;
+  }
+
+  @override
+  set preDates(ObservableList<DateSelector> value) {
+    _$preDatesAtom.reportWrite(value, super.preDates, () {
+      super.preDates = value;
+    });
+  }
+
   final _$_MonitoringStoreBaseActionController =
       ActionController(name: '_MonitoringStoreBase');
 
@@ -95,11 +110,23 @@ mixin _$MonitoringStore on _MonitoringStoreBase, Store {
   }
 
   @override
+  dynamic addPreDates(DateSelector value) {
+    final _$actionInfo = _$_MonitoringStoreBaseActionController.startAction(
+        name: '_MonitoringStoreBase.addPreDates');
+    try {
+      return super.addPreDates(value);
+    } finally {
+      _$_MonitoringStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 dateSelector: ${dateSelector},
 loadingMonitoringItems: ${loadingMonitoringItems},
-loadingUpdateMonitoringItem: ${loadingUpdateMonitoringItem}
+loadingUpdateMonitoringItem: ${loadingUpdateMonitoringItem},
+preDates: ${preDates}
     ''';
   }
 }

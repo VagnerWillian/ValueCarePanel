@@ -1,4 +1,5 @@
 import 'package:value_panel/app/shared/errors/repository.error.dart';
+import 'package:value_panel/app/shared/errors/unknown.error.dart';
 
 class MonitoringError{}
 
@@ -39,7 +40,7 @@ class DownloadArchiveError extends MonitoringError{
   DownloadArchiveError({required this.message});
 }
 
-class MonitoringUnknownError extends MonitoringError{
+class MonitoringUnknownError extends MonitoringError implements UnknownError{
 
   @override
   late String message;

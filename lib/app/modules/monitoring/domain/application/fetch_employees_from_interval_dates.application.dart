@@ -12,6 +12,6 @@ class FetchEmployeesFromIntervalDates implements FetchMonitoringDataFromInterval
 
   @override
   Future<Either<MonitoringError, List<MonitoringDataEntity>>> call({required DateTime startDate, required DateTime endDate}){
-    return monitoringRepository.fetchEmployeesFromIntervalDates(startDate: startDate, endDate: endDate);
+    return monitoringRepository.fetchMonitoringFromIntervalDates(startDate: startDate, endDate: endDate);
   }
 }
