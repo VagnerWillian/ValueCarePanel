@@ -296,7 +296,7 @@ class MonitoringPageState extends State<MonitoringPage> {
   }
 
   generateReportDoc() {
-    if (store.loadingMonitoringItems) {
+    if (!store.loadingMonitoringItems) {
       return () async{
         showDialog(
             barrierColor: dialogBackgroundColor,

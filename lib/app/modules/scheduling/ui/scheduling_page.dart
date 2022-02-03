@@ -295,7 +295,7 @@ class SchedulingPageState extends State<SchedulingPage> {
   }
 
   generateReportDoc() {
-    if (store.loadingSchedulingItems) {
+    if (!store.loadingSchedulingItems) {
       return () async{
         showDialog(
             barrierColor: dialogBackgroundColor,
