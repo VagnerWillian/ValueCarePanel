@@ -2,6 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:value_panel/app/modules/dashboard/dashboard_module.dart';
 import 'package:value_panel/app/modules/monitoring/monitoring_module.dart';
 import 'package:value_panel/app/modules/scheduling/scheduling_module.dart';
+import 'package:value_panel/app/modules/users/users_module.dart';
 import 'package:value_panel/app/shared/utils.dart';
 import '../home/ui/home_store.dart';
 
@@ -19,6 +20,7 @@ class HomeModule extends Module {
      ModuleRoute(DASHBOARD_ROUTE, module: DashboardModule(), transition: TransitionType.fadeIn),
      ModuleRoute(MONITORING_ROUTE, module: MonitoringModule(), transition: TransitionType.fadeIn),
      ModuleRoute(SCHEDULING_ROUTE, module: SchedulingModule(), transition: TransitionType.fadeIn),
+     ModuleRoute(USERS_ROUTE, module: UsersModule(), transition: TransitionType.fadeIn),
    ]),
  ];
 }

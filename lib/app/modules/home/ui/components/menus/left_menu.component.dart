@@ -187,6 +187,8 @@ class _LeftMenuState extends State<LeftMenu> {
       Modular.to.navigate(MONITORING_ROUTE);
     }else if(page==2){
       Modular.to.navigate(SCHEDULING_ROUTE);
+    }else if(page==6){
+      Modular.to.navigate(USERS_ROUTE);
     }
     setIndex(page);
   }

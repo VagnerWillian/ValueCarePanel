@@ -43,7 +43,7 @@ class MonitoringPageState extends State<MonitoringPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
