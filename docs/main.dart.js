@@ -103319,7 +103319,7 @@ $1(a){var s,r=null,q=this.a,p=q.E2()
 q=q.d
 s=q.xw$
 s.a.bs(s)
-q=!q.x?A.b([B.aS,B.aS],t.W):$.Br()
+q=q.x?A.b([B.aS,B.aS],t.W):$.Br()
 return A.aQe(A.c5(10),A.cG(A.b([B.kx,B.ct,A.bl("Gerar Relat\xf3rio",r,r,r,r,r,A.b6(B.k,r,B.r,r),r,r)],t.p),B.D,B.P,B.B),new A.l4(B.hf,B.eR,B.a1,q,r,r),50,p)},
 $S:121}
 A.aqf.prototype={
