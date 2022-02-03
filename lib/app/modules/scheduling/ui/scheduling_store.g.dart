@@ -58,6 +58,21 @@ mixin _$SchedulingStore on _SchedulingStoreBase, Store {
     });
   }
 
+  final _$preDatesAtom = Atom(name: '_SchedulingStoreBase.preDates');
+
+  @override
+  ObservableList<DateSelector> get preDates {
+    _$preDatesAtom.reportRead();
+    return super.preDates;
+  }
+
+  @override
+  set preDates(ObservableList<DateSelector> value) {
+    _$preDatesAtom.reportWrite(value, super.preDates, () {
+      super.preDates = value;
+    });
+  }
+
   final _$_SchedulingStoreBaseActionController =
       ActionController(name: '_SchedulingStoreBase');
 
@@ -95,11 +110,23 @@ mixin _$SchedulingStore on _SchedulingStoreBase, Store {
   }
 
   @override
+  dynamic addPreDates(DateSelector value) {
+    final _$actionInfo = _$_SchedulingStoreBaseActionController.startAction(
+        name: '_SchedulingStoreBase.addPreDates');
+    try {
+      return super.addPreDates(value);
+    } finally {
+      _$_SchedulingStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 dateSelector: ${dateSelector},
 loadingSchedulingItems: ${loadingSchedulingItems},
-loadingUpdateSchedulingItem: ${loadingUpdateSchedulingItem}
+loadingUpdateSchedulingItem: ${loadingUpdateSchedulingItem},
+preDates: ${preDates}
     ''';
   }
 }

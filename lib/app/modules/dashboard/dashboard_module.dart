@@ -1,5 +1,5 @@
-import 'package:value_panel/app/modules/dashboard/dashboard_page.dart';
-import 'package:value_panel/app/modules/dashboard/dashboard_store.dart';
+import 'package:value_panel/app/modules/dashboard/ui/dashboard_page.dart';
+import 'package:value_panel/app/modules/dashboard/ui/dashboard_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class DashboardModule extends Module {

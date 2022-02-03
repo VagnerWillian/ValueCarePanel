@@ -15,7 +15,8 @@ final Color primaryColor = HexColor("#4B05C5");
 final Color secondColor = HexColor("#425AD2");
 final Color terciaryColor = HexColor("#7E1FE1");
 final Color greyColor = HexColor("#A5A5A5");
-final Color dialogBackgroundColor = Colors.white70;
+final Color greenColor = HexColor("#38E25D");
+const Color dialogBackgroundColor = Colors.white70;
 final List<Color> gradientColors = [HexColor("#8A2CE6"), HexColor("#4F01C4"), HexColor("#4159D0")];
 
 /////////////// CLASSIFICATIONS //////////////////////

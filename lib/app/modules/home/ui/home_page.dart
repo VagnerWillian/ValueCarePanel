@@ -6,20 +6,13 @@ import 'package:value_panel/app/modules/home/ui/home_store.dart';
 import 'package:value_panel/app/modules/home/ui/models/menu.model.dart';
 
 class HomePage extends StatefulWidget {
-  final String title;
-  const HomePage({Key? key, this.title = "Home"}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends ModularState<HomePage, HomeStore> {
-
-  @override
-  void initState() {
-    super.initState();
-
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +38,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const Header(),
-                Expanded(
-                  child: RouterOutlet()
-                )
+                Expanded(child: RouterOutlet())
               ],
             ),
           ),

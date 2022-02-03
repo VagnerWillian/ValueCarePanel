@@ -18,7 +18,7 @@ class LeftMenu extends StatefulWidget {
 
 class _LeftMenuState extends State<LeftMenu> {
 
-  int index = 2;
+  int index = 0;
   bool isExpanded = true;
 
   @override

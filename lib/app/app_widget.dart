@@ -7,19 +7,18 @@ import 'package:value_panel/app/shared/utils.dart';
 class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: const [
+      localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
         SfGlobalLocalizations.delegate
       ],
-      supportedLocales: const [Locale('pt', 'BR')],
-      locale: const Locale('pt', 'BR'),
+      supportedLocales: [Locale('pt', 'BR')],
+      locale: Locale('pt', 'BR'),
       title: 'Painel de administração • Value Care',
-      theme: ThemeData(fontFamily: 'Cairo'),
-      initialRoute: SCHEDULING_ROUTE,
+      initialRoute: DASHBOARD_ROUTE,
     ).modular();
   }
 }

@@ -130,7 +130,8 @@ class MonitoringPageState extends State<MonitoringPage> {
                   builder:(_)=>DropdownButton<DateSelector>(
                     underline: Container(),
                     borderRadius: BorderRadius.circular(10),
-                    value: store.dateSelector!,
+                    value: store.dateSelector,
+                    hint: const Text("..."),
                     items: store.preDates.map((d) {
                       return DropdownMenuItem<DateSelector>(
                         child: Column(
@@ -295,7 +296,7 @@ class MonitoringPageState extends State<MonitoringPage> {
   }
 
   generateReportDoc() {
-    if (store.enableGenerateReportDoc) {
+    if (store.loadingMonitoringItems) {
       return () async{
         showDialog(
             barrierColor: dialogBackgroundColor,

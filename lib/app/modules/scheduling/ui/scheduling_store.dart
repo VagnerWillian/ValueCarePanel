@@ -118,8 +118,6 @@ abstract class _SchedulingStoreBase with Store {
   }
 
   ////////////////////////// EXPORTAR RELATORIO ///////////////////////////////////////
-  bool get enableGenerateReportDoc => !loadingSchedulingItems && dateSelector != null;
-
   void downloadReportDocFromSrc({required String url}) {
     try {
       downloadArchiveUseCase(url: url);

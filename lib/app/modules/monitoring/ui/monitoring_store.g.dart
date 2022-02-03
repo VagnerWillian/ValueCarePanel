@@ -9,21 +9,6 @@ part of 'monitoring_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$MonitoringStore on _MonitoringStoreBase, Store {
-  final _$dateSelectorAtom = Atom(name: '_MonitoringStoreBase.dateSelector');
-
-  @override
-  DateSelector? get dateSelector {
-    _$dateSelectorAtom.reportRead();
-    return super.dateSelector;
-  }
-
-  @override
-  set dateSelector(DateSelector? value) {
-    _$dateSelectorAtom.reportWrite(value, super.dateSelector, () {
-      super.dateSelector = value;
-    });
-  }
-
   final _$loadingMonitoringItemsAtom =
       Atom(name: '_MonitoringStoreBase.loadingMonitoringItems');
 
@@ -55,6 +40,21 @@ mixin _$MonitoringStore on _MonitoringStoreBase, Store {
     _$loadingUpdateMonitoringItemAtom
         .reportWrite(value, super.loadingUpdateMonitoringItem, () {
       super.loadingUpdateMonitoringItem = value;
+    });
+  }
+
+  final _$dateSelectorAtom = Atom(name: '_MonitoringStoreBase.dateSelector');
+
+  @override
+  DateSelector? get dateSelector {
+    _$dateSelectorAtom.reportRead();
+    return super.dateSelector;
+  }
+
+  @override
+  set dateSelector(DateSelector? value) {
+    _$dateSelectorAtom.reportWrite(value, super.dateSelector, () {
+      super.dateSelector = value;
     });
   }
 
@@ -123,9 +123,9 @@ mixin _$MonitoringStore on _MonitoringStoreBase, Store {
   @override
   String toString() {
     return '''
-dateSelector: ${dateSelector},
 loadingMonitoringItems: ${loadingMonitoringItems},
 loadingUpdateMonitoringItem: ${loadingUpdateMonitoringItem},
+dateSelector: ${dateSelector},
 preDates: ${preDates}
     ''';
   }

@@ -41,13 +41,13 @@ abstract class _MonitoringStoreBase with Store {
   // OBSERVABLES
 
   @observable
-  DateSelector? dateSelector;
-
-  @observable
   bool loadingMonitoringItems = false;
 
   @observable
   bool loadingUpdateMonitoringItem = false;
+
+  @observable
+  DateSelector? dateSelector;
 
   @observable
   ObservableList<DateSelector> preDates = ObservableList<DateSelector>();
@@ -119,7 +119,6 @@ abstract class _MonitoringStoreBase with Store {
     }
 
   ////////////////////////// EXPORTAR RELATORIO ///////////////////////////////////////
-  bool get enableGenerateReportDoc => !loadingMonitoringItems&&dateSelector!=null;
   void downloadReportDocFromSrc({required String url, on}) {
     try{
       downloadArchiveUseCase(url: url);

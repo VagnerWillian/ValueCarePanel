@@ -130,7 +130,8 @@ class SchedulingPageState extends State<SchedulingPage> {
                   builder:(_)=>DropdownButton<DateSelector>(
                     underline: Container(),
                     borderRadius: BorderRadius.circular(10),
-                    value: store.dateSelector!,
+                    value: store.dateSelector,
+                    hint: const Text("..."),
                     items: store.preDates.map((d) {
                       return DropdownMenuItem<DateSelector>(
                         child: Column(
@@ -294,7 +295,7 @@ class SchedulingPageState extends State<SchedulingPage> {
   }
 
   generateReportDoc() {
-    if (store.enableGenerateReportDoc) {
+    if (store.loadingSchedulingItems) {
       return () async{
         showDialog(
             barrierColor: dialogBackgroundColor,
