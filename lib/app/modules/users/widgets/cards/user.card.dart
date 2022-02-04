@@ -1,13 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_network/image_network.dart';
 import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
 import 'package:value_panel/app/modules/users/infra/models/user.model.dart';
 import 'package:value_panel/app/shared/core/domain/entities/user.entity.dart';
 import 'package:value_panel/app/shared/utils.dart';
-
 class UserCard extends StatelessWidget {
   final UserEntity userEntity;
   const UserCard(this.userEntity, {Key? key}) : super(key: key);
@@ -36,12 +34,9 @@ class UserCard extends StatelessWidget {
                     Column(
                       children: [
                         SizedBox(
-                          width: 65,
-                          height: 65,
-                          child: HtmlWidget(
-                            '''<html><img src="${userEntity.picture}" /></html>'''
-                          )
-                        ),
+                          width: 80,
+                          height: 80,
+                          child: Image.network(userEntity.picture)),
                         const SizedBox(
                           height: 10,
                         ),
