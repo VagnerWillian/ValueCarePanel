@@ -3,7 +3,7 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "991fd523c16aaedf567e0a0660509538",
+  "assets/AssetManifest.json": "ffbc9df75ea84df226c0ab6689bf560f",
 "assets/assets/anims/loading.flr": "51eb608bfe80ffe1b004dfc551fbae77",
 "assets/assets/images/classifications/Emerg%25C3%25AAncia.svg": "94f70ace313b2fb3e46b17b9089bbebf",
 "assets/assets/images/classifications/N%25C3%25A3o%2520Urgente.svg": "9f9f87bd99fe7552ab2c4604f3fbc0e2",
@@ -22,6 +22,10 @@ const RESOURCES = {
 "assets/assets/images/menu/usuarios.svg": "15b855cb8b2f3d2127b4aca8bcba8da3",
 "assets/assets/images/others/background.png": "5fe8b4dc9bdda58a85297976e24f6086",
 "assets/assets/images/others/drag.svg": "85802f43ec2044dea7804124410bba4c",
+"assets/assets/images/photos/user_1.jpg": "846321f4860d36f8762cf8a92f2f7136",
+"assets/assets/images/photos/user_2.jpg": "53de29550d5e45033ebd76248b1e4c12",
+"assets/assets/images/photos/user_3.jpg": "ea3b997facd43507e98b65dce3a3c6ad",
+"assets/assets/images/photos/user_4.jpg": "d767fe4fe05bb2724828ae5381d8c8eb",
 "assets/assets/images/symptoms/Cansa%25C3%25A7o%2520Fadiga.svg": "16d6c126b96881ef4d773203433a36e2",
 "assets/assets/images/symptoms/Chiado%2520no%2520Peito.svg": "37ebfb66aa44fc107a351a1ca7075244",
 "assets/assets/images/symptoms/Des%25C3%25A2nimo%2520Ansiedade.svg": "3310c31315d2ee81868872b5abab1e6b",
@@ -61,8 +65,8 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "a7597b37d439461430beb1cc30d23cdf",
-"/": "a7597b37d439461430beb1cc30d23cdf",
+"index.html": "cce7e67be23027be0ce2cc954e5c0d79",
+"/": "cce7e67be23027be0ce2cc954e5c0d79",
 "main.dart.js": "5e90cb68770f971a03d0e47a691aec23",
 "manifest.json": "a6bf733c5ff7cd5775faad23095ee26a",
 "version.json": "03f5412e45d2df3d844a7cbea420b6f4"

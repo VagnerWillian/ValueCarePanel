@@ -132,7 +132,8 @@ flutter:
     - assets/images/others/
     - assets/images/symptoms/
     - assets/images/classifications/
-    -
+    - assets/images/photos/
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
