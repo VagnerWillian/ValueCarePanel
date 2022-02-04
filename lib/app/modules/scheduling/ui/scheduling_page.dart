@@ -131,6 +131,7 @@ class SchedulingPageState extends State<SchedulingPage> {
                     underline: Container(),
                     borderRadius: BorderRadius.circular(10),
                     value: store.dateSelector,
+                    focusColor: Colors.transparent,
                     hint: const Text("..."),
                     items: store.preDates.map((d) {
                       return DropdownMenuItem<DateSelector>(

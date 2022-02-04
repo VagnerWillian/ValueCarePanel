@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:value_panel/app/modules/users/users_store.dart';
+import 'package:value_panel/app/modules/users/ui/users_store.dart';
  
 void main() {
   late UsersStore store;

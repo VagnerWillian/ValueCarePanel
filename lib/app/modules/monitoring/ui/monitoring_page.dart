@@ -132,6 +132,7 @@ class MonitoringPageState extends State<MonitoringPage> {
                     borderRadius: BorderRadius.circular(10),
                     value: store.dateSelector,
                     hint: const Text("..."),
+                    focusColor: Colors.transparent,
                     items: store.preDates.map((d) {
                       return DropdownMenuItem<DateSelector>(
                         child: Column(
