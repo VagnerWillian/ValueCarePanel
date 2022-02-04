@@ -70,6 +70,7 @@ dependencies:
   syncfusion_flutter_datepicker: ^19.4.48
   flare_flutter: ^3.0.2
   image_network: ^2.4.0
+  font_awesome_flutter: ^9.2.0
 
 dev_dependencies:
   flutter_test:

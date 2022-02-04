@@ -10,10 +10,10 @@ import 'package:value_panel/app/modules/dashboard/ui/dashboard_store.dart';
 import 'package:value_panel/app/modules/dashboard/ui/models/date_selector.model.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/simple.card.dart';
 import 'package:value_panel/app/shared/utils.dart';
-import 'package:value_panel/app/shared/widgets/custom/gradient.button.dart';
-import 'package:value_panel/app/shared/widgets/dialogs/another_error.dialog.dart';
-import 'package:value_panel/app/shared/widgets/dialogs/repository_error.dialog.dart';
-import 'package:value_panel/app/shared/widgets/page_title_description.widget.dart';
+import 'package:value_panel/app/shared/components/custom/gradient.button.dart';
+import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
+import 'package:value_panel/app/shared/components/dialogs/repository_error.dialog.dart';
+import 'package:value_panel/app/shared/components/page_title_description.widget.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);

@@ -48,4 +48,19 @@ abstract class _UsersStoreBase with Store {
     });
     setLoading(false);
   }
+
+  onChangedSearchText(String text)async{
+    if(text.isNotEmpty) {
+      List<UserEntity> searchList = _usersBackup.where((u) {
+        String? name = u.name.toLowerCase();
+        String? level = u.levelAccess.toLowerCase();
+        String? phone = u.phone.toLowerCase();
+        String? email = u.email.toLowerCase();
+        return name.contains(text.toLowerCase())||level.contains(text.toLowerCase())||phone.contains(text.toLowerCase())||email.contains(text.toLowerCase());
+      }).toList();
+      addAllUsers(searchList);
+    }else{
+      addAllUsers(_usersBackup);
+    }
+  }
 }

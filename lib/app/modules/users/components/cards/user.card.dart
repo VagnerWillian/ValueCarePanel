@@ -6,6 +6,7 @@ import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.da
 import 'package:value_panel/app/modules/users/infra/models/user.model.dart';
 import 'package:value_panel/app/shared/core/domain/entities/user.entity.dart';
 import 'package:value_panel/app/shared/utils.dart';
+
 class UserCard extends StatelessWidget {
   final UserEntity userEntity;
   const UserCard(this.userEntity, {Key? key}) : super(key: key);
@@ -13,9 +14,7 @@ class UserCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(5),
       width: 200,
-      height: 270,
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
@@ -33,10 +32,19 @@ class UserCard extends StatelessWidget {
                   child: Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     Column(
                       children: [
-                        SizedBox(
+                        Container(
                           width: 80,
                           height: 80,
-                          child: Image.network(userEntity.picture)),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: CachedNetworkImageProvider(
+                                  userEntity.picture
+                              )
+                            )
+                          ),
+                        ),
                         const SizedBox(
                           height: 10,
                         ),
@@ -74,6 +82,9 @@ class UserCard extends StatelessWidget {
                         ),
                         Expanded(child: Text(userEntity.phone, style: GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis, softWrap: false)),
                       ],
+                    ),
+                    const SizedBox(
+                      height: 5,
                     ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,

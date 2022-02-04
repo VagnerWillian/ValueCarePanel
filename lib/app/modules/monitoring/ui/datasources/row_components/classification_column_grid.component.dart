@@ -6,8 +6,8 @@ import 'package:value_panel/app/shared/core/domain/entities/classification.entit
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
 import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
 import 'package:value_panel/app/shared/utils.dart';
-import 'package:value_panel/app/shared/widgets/dialogs/another_error.dialog.dart';
-import 'package:value_panel/app/shared/widgets/dialogs/repository_error.dialog.dart';
+import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
+import 'package:value_panel/app/shared/components/dialogs/repository_error.dialog.dart';
 
 class ClassificationColumnGrid extends StatefulWidget {
   final MonitoringDataEntity value;

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:value_panel/app/modules/scheduling/domain/entities/scheduling_data.entity.dart';
 import 'package:value_panel/app/modules/scheduling/errors/scheduling.errors.dart';
 import 'package:value_panel/app/shared/utils.dart';
-import 'package:value_panel/app/shared/widgets/dialogs/another_error.dialog.dart';
-import 'package:value_panel/app/shared/widgets/dialogs/repository_error.dialog.dart';
+import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
+import 'package:value_panel/app/shared/components/dialogs/repository_error.dialog.dart';
 
 class ReferColumnGrid extends StatefulWidget {
   final SchedulingDataEntity value;
