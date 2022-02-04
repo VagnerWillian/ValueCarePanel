@@ -16,7 +16,7 @@ class HomeModule extends Module {
 
  @override
  final List<ModularRoute> routes = [
-   ChildRoute(Modular.initialRoute, child: (_, args) => const HomePage(), children: [
+     ChildRoute(Modular.initialRoute, child: (_, args) => const HomePage(), children: [
      ModuleRoute(DASHBOARD_ROUTE, module: DashboardModule(), transition: TransitionType.fadeIn),
      ModuleRoute(MONITORING_ROUTE, module: MonitoringModule(), transition: TransitionType.fadeIn),
      ModuleRoute(SCHEDULING_ROUTE, module: SchedulingModule(), transition: TransitionType.fadeIn),

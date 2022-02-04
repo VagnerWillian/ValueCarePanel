@@ -78,6 +78,8 @@ abstract class _SchedulingStoreBase with Store {
     );
     response.fold((SchedulingError failure) {
       onError(failure);
+      backupList.clear();
+      schedulingDataSource.updateList([]);
       return failure;
     }, (List<SchedulingDataEntity> data) {
       backupList = data;

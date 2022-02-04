@@ -79,6 +79,8 @@ abstract class _MonitoringStoreBase with Store {
     );
     response.fold((MonitoringError failure) {
       onError(failure);
+      backupList.clear();
+      monitoringDataSource.updateList([]);
       return failure;
     }, (List<MonitoringDataEntity> data) {
       backupList = data;

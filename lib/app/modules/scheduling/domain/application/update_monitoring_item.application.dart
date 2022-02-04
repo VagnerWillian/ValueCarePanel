@@ -11,7 +11,7 @@ class UpdateSchedulingItem implements UpdateSchedulingItemUseCase{
   UpdateSchedulingItem(this.schedulingRepository);
 
   @override
-  Future<Either<SchedulingError, bool>> call({required SchedulingDataEntity schedulingDataEntity}){
-    return schedulingRepository.updateSchedulingItem(schedulingDataEntity: schedulingDataEntity);
+  Future<Either<SchedulingError, bool>> call({required SchedulingDataEntity schedulingDataEntity})async{
+    return await schedulingRepository.updateSchedulingItem(schedulingDataEntity: schedulingDataEntity);
   }
 }

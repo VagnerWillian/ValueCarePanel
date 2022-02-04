@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_network/image_network.dart';
 import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
+import 'package:value_panel/app/modules/users/infra/models/user.model.dart';
+import 'package:value_panel/app/shared/core/domain/entities/user.entity.dart';
 import 'package:value_panel/app/shared/utils.dart';
 
 class UserCard extends StatelessWidget {
-  const UserCard({Key? key}) : super(key: key);
+  final UserEntity userEntity;
+  const UserCard(this.userEntity, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,21 +42,19 @@ class UserCard extends StatelessWidget {
                             height: 65,
                             width: 65,
                             onLoading: Container(),
-                            imageCache: const CachedNetworkImageProvider(
-                                "https://uploaddeimagens.com.br/images/003/700/538/original/272146181_6804132162995563_4295433218327981100_n.jpg"),
-                            image:
-                            "https://uploaddeimagens.com.br/images/003/700/538/original/272146181_6804132162995563_4295433218327981100_n.jpg",
-                          ),
+                            imageCache: CachedNetworkImageProvider(userEntity.picture),
+                            image: userEntity.picture),
                         ),
                         const SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Vagner Willian",
-                          style: GoogleFonts.cairo(textStyle: const TextStyle(fontWeight: FontWeight.bold)),
+                          userEntity.name,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.openSans(textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
                         ),
                         Text(
-                          "Administrador",
+                          userEntity.levelAccess,
                           style: GoogleFonts.cairo(textStyle: TextStyle(fontSize: 12, color: primaryColor, fontWeight: FontWeight.w600)),
                         ),
                       ],
@@ -79,7 +80,7 @@ class UserCard extends StatelessWidget {
                         const SizedBox(
                           width: 5,
                         ),
-                        Expanded(child: Text("(11) 981145411", style: GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis, softWrap: false)),
+                        Expanded(child: Text(userEntity.phone, style: GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis, softWrap: false)),
                       ],
                     ),
                     Row(
@@ -100,7 +101,7 @@ class UserCard extends StatelessWidget {
                         const SizedBox(
                           width: 5,
                         ),
-                        Expanded(child: Text("tecvagner.ti@gmail.com.br", style: GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis, softWrap: false)),
+                        Flexible(child: Text(userEntity.email, style: GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.bold))),
                       ],
                     )
                   ])),

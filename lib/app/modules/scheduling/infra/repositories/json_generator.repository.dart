@@ -1,7 +1,6 @@
 
 import 'package:dio/dio.dart';
 import 'package:either_dart/either.dart';
-import 'package:flutter/services.dart';
 import 'package:value_panel/app/modules/scheduling/domain/entities/scheduling_data.entity.dart';
 import 'package:value_panel/app/modules/scheduling/domain/repositories/repository.dart';
 import 'package:value_panel/app/modules/scheduling/errors/scheduling.errors.dart';
@@ -45,7 +44,7 @@ class JsonGeneratorRepository implements SchedulingRepository{
     try{
       await Future.delayed(const Duration(seconds: 2));
       // var response = await _customDio.client.post("https://api.json-generator.com/templates/-Yly0aK_l3oM/data", options: Options(headers: _header));
-      return Left(SchedulingRepositoryError(message: "e.toString()"));
+      return const Right(true);
     }on DioError catch(e){
       return Left(SchedulingRepositoryError(statusCode: e.response?.statusCode));
     }catch(e){

@@ -158,7 +158,7 @@ class MonitoringPageState extends State<MonitoringPage> {
           )),
       Observer(
         builder: (_) => GradientButton(
-          height: 50,
+          height: 55,
           onPressed: generateReportDoc(),
           gradient: LinearGradient(
             colors: store.loadingMonitoringItems ? [Colors.grey, Colors.grey] : gradientColors,

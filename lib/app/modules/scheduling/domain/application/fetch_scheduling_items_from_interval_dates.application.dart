@@ -11,7 +11,7 @@ class FetchSchedulingItemsFromIntervalDates implements FetchSchedulingDataFromIn
   FetchSchedulingItemsFromIntervalDates({required this.schedulingRepository});
 
   @override
-  Future<Either<SchedulingError, List<SchedulingDataEntity>>> call({required DateTime startDate, required DateTime endDate}){
-    return schedulingRepository.fetchSchedulingItemsFromIntervalDates(startDate: startDate, endDate: endDate);
+  Future<Either<SchedulingError, List<SchedulingDataEntity>>> call({required DateTime startDate, required DateTime endDate})async{
+    return await schedulingRepository.fetchSchedulingItemsFromIntervalDates(startDate: startDate, endDate: endDate);
   }
 }

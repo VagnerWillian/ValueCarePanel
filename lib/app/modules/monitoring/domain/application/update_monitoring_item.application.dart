@@ -11,7 +11,7 @@ class UpdateMonitoringItem implements UpdateMonitoringItemUseCase{
   UpdateMonitoringItem(this._monitoringRepository);
 
   @override
-  Future<Either<MonitoringError, bool>> call({required MonitoringDataEntity monitoringDataEntity}){
-    return _monitoringRepository.updateMonitoringItem(monitoringDataEntity: monitoringDataEntity);
+  Future<Either<MonitoringError, bool>> call({required MonitoringDataEntity monitoringDataEntity})async{
+    return await _monitoringRepository.updateMonitoringItem(monitoringDataEntity: monitoringDataEntity);
   }
 }

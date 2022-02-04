@@ -158,7 +158,7 @@ class SchedulingPageState extends State<SchedulingPage> {
           )),
       Observer(
         builder: (_) => GradientButton(
-          height: 50,
+          height: 55,
           onPressed: generateReportDoc(),
           gradient: LinearGradient(
             colors: !store.loadingSchedulingItems ? [Colors.grey, Colors.grey] : gradientColors,

@@ -28,7 +28,7 @@ scripts:
   mobx_build_clean: $clean & $get & $runner build --delete-conflicting-outputs
   build: $runner build
   build_o: $runner build --delete-conflicting-outputs
-  build_release: flutter build web --web-renderer auto
+  build_release: fvm flutter build web --web-renderer auto
 
 environment:
   sdk: ">=2.15.1 <3.0.0"
