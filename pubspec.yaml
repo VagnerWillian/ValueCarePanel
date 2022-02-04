@@ -47,29 +47,30 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  dio: ^4.0.0
-  flutter_modular: ^3.0.0
+  dio: ^4.0.4
+  flutter_modular: ^4.4.0
   mobx: ^2.0.6+1
-  flutter_mobx: ^2.0.3+2
+  flutter_mobx: ^2.0.4
   equatable: ^2.0.3
   jiffy: ^5.0.0
   intl: ^0.17.0
   either_dart: ^0.1.4
-  syncfusion_localizations: ^19.4.47
+  syncfusion_localizations: ^19.4.48+1
 
   #UI
-  cupertino_icons: ^1.0.2
-  hexcolor: ^2.0.5
-  flutter_svg: ^1.0.1
+  cupertino_icons: ^1.0.4
+  hexcolor: ^2.0.6
+  flutter_svg: ^1.0.3
   modern_form_line_awesome_icons: ^2.0.1
   badges: ^2.0.2
   google_fonts: ^2.2.0
   cached_network_image: ^3.2.0
-  syncfusion_flutter_core: ^19.4.43+1
-  syncfusion_flutter_datagrid: ^19.4.43
-  syncfusion_flutter_datepicker: ^19.4.47
+  syncfusion_flutter_core: ^19.4.48
+  syncfusion_flutter_datagrid: ^19.4.48+1
+  syncfusion_flutter_datepicker: ^19.4.48
   flare_flutter: ^3.0.2
-  image_network: ^2.3.0
+  image_network: ^2.4.0
+  flutter_widget_from_html: ^0.8.5
 
 dev_dependencies:
   flutter_test:
@@ -80,7 +81,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^1.0.0
+  flutter_lints: ^1.0.4
   mobx_codegen: ^2.0.5+2
   modular_test: ^1.0.1+1
   build_runner: ^2.1.7

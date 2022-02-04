@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_network/image_network.dart';
 import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
@@ -37,13 +38,9 @@ class UserCard extends StatelessWidget {
                         SizedBox(
                           width: 65,
                           height: 65,
-                          child: ImageNetwork(
-                            borderRadius: BorderRadius.circular(10),
-                            height: 65,
-                            width: 65,
-                            onLoading: Container(),
-                            imageCache: CachedNetworkImageProvider(userEntity.picture),
-                            image: userEntity.picture),
+                          child: HtmlWidget(
+                            '''<html><img src="${userEntity.picture}" /></html>'''
+                          )
                         ),
                         const SizedBox(
                           height: 10,
