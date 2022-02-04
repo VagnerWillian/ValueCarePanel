@@ -161,7 +161,7 @@ class SchedulingPageState extends State<SchedulingPage> {
           height: 55,
           onPressed: generateReportDoc(),
           gradient: LinearGradient(
-            colors: !store.loadingSchedulingItems ? [Colors.grey, Colors.grey] : gradientColors,
+            colors: store.loadingSchedulingItems ? [Colors.grey, Colors.grey] : gradientColors,
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),

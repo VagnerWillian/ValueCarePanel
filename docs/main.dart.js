@@ -104998,7 +104998,7 @@ $1(a){var s,r=null,q=this.a,p=q.Es()
 q=q.d
 s=q.xL$
 s.a.bh(s)
-q=!q.y?A.b([B.aY,B.aY],t.W):$.wp()
+q=q.y?A.b([B.aY,B.aY],t.W):$.wp()
 return A.anu(A.bG(10),A.ce(A.b([B.kH,B.cr,A.bf("Gerar Relat\xf3rio",r,r,r,r,r,A.aU(B.k,r,B.r,r),r,r)],t.p),B.B,B.H,B.x),new A.ke(B.fe,B.e9,B.a5,q,r,r),55,p)},
 $S:129}
 A.ax1.prototype={
