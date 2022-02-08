@@ -15,7 +15,7 @@ class SimpleCard extends StatelessWidget {
         child: Container(
           width: 250,
           height: 130,
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 25),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,7 +26,7 @@ class SimpleCard extends StatelessWidget {
                   Text(value, style: GoogleFonts.cairo(fontWeight: FontWeight.w900, fontSize: 25),),
                   const SizedBox(width: 10,),
                   Container(
-                    padding: const EdgeInsets.all(5),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     decoration: BoxDecoration(
                         color: comparation.contains("+")?greenColor:Colors.redAccent,
                         borderRadius: BorderRadius.circular(10)

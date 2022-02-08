@@ -5,6 +5,8 @@ import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 import 'package:value_panel/app/shared/utils.dart';
 
 class AppWidget extends StatelessWidget {
+  const AppWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
