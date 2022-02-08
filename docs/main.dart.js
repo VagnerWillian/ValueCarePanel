@@ -31442,11 +31442,12 @@ _.c=a
 _.d=b
 _.e=c
 _.a=d},
-a5L:function a5L(a,b,c,d){var _=this
+a5L:function a5L(a,b,c,d,e){var _=this
 _.c=a
 _.d=b
 _.e=c
-_.a=d},
+_.f=d
+_.a=e},
 aF7:function aF7(){},
 aF8:function aF8(){},
 bg6(){var s=A.b([A.fm(new A.aqu(),t.K)],t.PT),r=$.aw
@@ -105438,7 +105439,7 @@ $2(a,b){var s=null,r="Sintomas Reportados"
 switch(b){case 0:return new A.b4(s,170,new A.Am("Pacientes Ativos","421","+0,5%",s),s)
 case 1:return new A.b4(s,170,new A.Am(r,"874","-6,4%",s),s)
 case 2:return new A.b4(s,170,new A.Am(r,"874","-6,4%",s),s)
-case 3:return new A.b4(s,170,new A.a5L("Consultas","68","-2,4%",s),s)
+case 3:return new A.b4(s,170,new A.a5L("Consultas","68","-2,4%","(Per\xedodo anterior)",s),s)
 default:return A.av(s,s,B.j,s,s,s,s,s,s,s,s)}},
 $S:633}
 A.akU.prototype={
@@ -105557,7 +105558,7 @@ A.Am.prototype={
 N(a,b){var s=null,r=A.bE(10),q=A.bb(this.c,s,s,s,s,s,A.aU(s,18,B.r,s),s,s),p=A.bb(this.d,s,s,s,s,s,A.aU(s,25,B.cX,s),s,s),o=this.e,n=B.c.q(o,"+")?$.aTg():B.a7_,m=A.bE(10),l=t.p
 return new A.cJ(B.rM,A.ajp(A.av(s,A.e2(A.b([q,A.cc(A.b([p,B.e5,A.av(s,A.cc(A.b([B.So,B.ct,A.bb(o,s,s,s,s,s,A.hh(B.k,11,B.aF,s),s,s)],l),B.B,B.H,B.w),B.j,s,s,new A.bO(n,s,s,m,s,s,B.N),s,s,s,B.rN,s)],l),B.B,B.H,B.w)],l),B.c2,B.bt,B.w),B.j,s,s,s,130,s,s,B.rQ,250),s,s,new A.cG(r,B.q)),s)}}
 A.a5L.prototype={
-N(a,b){var s,r=this,q=null,p=A.bE(10),o=A.bb(r.c,q,q,q,q,q,A.aU(q,18,B.r,q),q,q),n=A.bb("",q,q,q,q,q,A.aU(q,11,q,q),q,q),m=A.bb(r.d,q,q,q,q,q,A.aU(q,25,B.cX,q),q,q),l=r.e,k=B.c.q(l,"+"),j=k?35:5
+N(a,b){var s,r=this,q=null,p=A.bE(10),o=A.bb(r.c,q,q,q,q,q,A.aU(q,18,B.r,q),q,q),n=A.bb(r.f,q,q,q,q,q,A.aU(q,11,q,q),q,q),m=A.bb(r.d,q,q,q,q,q,A.aU(q,25,B.cX,q),q,q),l=r.e,k=B.c.q(l,"+"),j=k?35:5
 l=A.f1(q,A.bb(l,q,q,q,q,q,A.hh(k?$.aTg():$.aTj(),11,B.r,q),q,q),q,q,12,q,j,q)
 j=k?B.S1:B.tl
 s=t.p

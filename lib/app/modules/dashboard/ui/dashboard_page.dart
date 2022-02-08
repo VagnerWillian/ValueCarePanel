@@ -75,7 +75,7 @@ class DashboardPageState extends State<DashboardPage> {
                   case 3:
                     return SizedBox(
                       height: (.7 % 5 + 1) * 100,
-                      child: VChart(label: "Consultas", value: "68", comparation: "-2,4%"),
+                      child: VChart(label: "Consultas", value: "68", comparation: "-2,4%" , description: "(Período anterior)",),
                     );
                   default:
                     return Container();
