@@ -3,7 +3,7 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "ffbc9df75ea84df226c0ab6689bf560f",
+  "assets/AssetManifest.json": "7a251c27cd57abc7cff699a417e16796",
 "assets/assets/anims/loading.flr": "51eb608bfe80ffe1b004dfc551fbae77",
 "assets/assets/images/classifications/Emerg%25C3%25AAncia.svg": "94f70ace313b2fb3e46b17b9089bbebf",
 "assets/assets/images/classifications/N%25C3%25A3o%2520Urgente.svg": "9f9f87bd99fe7552ab2c4604f3fbc0e2",
@@ -21,6 +21,7 @@ const RESOURCES = {
 "assets/assets/images/menu/pacientes.svg": "f103bae3fa85d6a590056fead093b578",
 "assets/assets/images/menu/usuarios.svg": "15b855cb8b2f3d2127b4aca8bcba8da3",
 "assets/assets/images/others/background.png": "5fe8b4dc9bdda58a85297976e24f6086",
+"assets/assets/images/others/background_card.png": "a3e06c0ac7f46db2d90f34356897ff9f",
 "assets/assets/images/others/drag.svg": "85802f43ec2044dea7804124410bba4c",
 "assets/assets/images/photos/user_1.jpg": "846321f4860d36f8762cf8a92f2f7136",
 "assets/assets/images/photos/user_2.jpg": "53de29550d5e45033ebd76248b1e4c12",
@@ -65,9 +66,9 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "072c9ceed1ec596a82d00ce50caf9a10",
-"/": "072c9ceed1ec596a82d00ce50caf9a10",
-"main.dart.js": "32f833de7f63081bf2de9247de359110",
+"index.html": "4ce078efa64dbf8dca6dc3a9de564e71",
+"/": "4ce078efa64dbf8dca6dc3a9de564e71",
+"main.dart.js": "df03d6b25c915a3bc12117509ca43089",
 "manifest.json": "a6bf733c5ff7cd5775faad23095ee26a",
 "version.json": "03f5412e45d2df3d844a7cbea420b6f4"
 };

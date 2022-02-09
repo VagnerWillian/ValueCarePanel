@@ -9,6 +9,8 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:value_panel/app/modules/dashboard/errors/monitoring.errors.dart';
 import 'package:value_panel/app/modules/dashboard/ui/dashboard_store.dart';
 import 'package:value_panel/app/modules/dashboard/ui/models/date_selector.model.dart';
+import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/line_chart_h.card.dart';
+import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/new_cases.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/simple.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/v_chart.card.dart';
 import 'package:value_panel/app/shared/components/custom/gradient.button.dart';
@@ -26,7 +28,6 @@ class DashboardPage extends StatefulWidget {
 
 class DashboardPageState extends State<DashboardPage> {
   final DashboardStore store = Modular.get();
-  final _key = GlobalKey();
 
   @override
   void initState() {
@@ -37,88 +38,89 @@ class DashboardPageState extends State<DashboardPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      key: _key,
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
+    return SingleChildScrollView(
+      child: Container(
+        margin: const EdgeInsets.all(20),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           _headerBuild(),
-          Expanded(
-            child: MasonryGridView.count(
-              padding: EdgeInsets.zero,
-              crossAxisCount: MediaQuery.of(context).size.width <= 880
-                  ? 1
-                  : MediaQuery.of(context).size.width <= 1028
-                  ? 2
-                  : 4,
-              mainAxisSpacing: 2,
-              crossAxisSpacing: 2,
-              itemCount: 8,
-              itemBuilder: (context, index) {
-                switch (index) {
-                  case 0:
-                    return SizedBox(
-                      height: (.7 % 5 + 1) * 100,
-                      child: SimpleCard(label: "Pacientes Ativos", value: "421", comparation: "+0,5%"),
-                    );
-                  case 1:
-                    return SizedBox(
-                      height: (.7 % 5 + 1) * 100,
-                      child: SimpleCard(label: "Sintomas Reportados", value: "874", comparation: "-6,4%"),
-                    );
-                  case 2:
-                    return SizedBox(
-                      height: (.7 % 5 + 1) * 100,
-                      child: SimpleCard(label: "Sintomas Reportados", value: "874", comparation: "-6,4%"),
-                    );
-                  case 3:
-                    return SizedBox(
-                      height: (.7 % 5 + 1) * 100,
-                      child: VChart(label: "Consultas", value: "68", comparation: "-2,4%" , description: "(Período anterior)",),
-                    );
-                  default:
-                    return Container();
-                }
-              },
-            ),
-          ),
-         /* Expanded(
-            child: GridView.custom(
-              gridDelegate: SliverStairedGridDelegate(
-                crossAxisSpacing: 5,
-                mainAxisSpacing: 5,
-                startCrossAxisDirectionReversed: true,
-                pattern: [
-                  StairedGridTile(0.5, 1),
-                  StairedGridTile(0.5, 3 / 4),
-                  StairedGridTile(1.0, 10 / 4),
-                ],
-              ),
-              childrenDelegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    print(index);
-                  itemBuilder: (context, index) {
-                    switch (index) {
-                      case 0:
-                        return SimpleCard(label: "Pacientes Ativos", value: "421", comparation: "+0,5%");
-                      case 1:
-                        return SimpleCard(label: "Sintomas Reportados", value: "874", comparation: "-6,4%");
-                      case 2:
-                        return SimpleCard(label: "Sintomas Reportados", value: "874", comparation: "-6,4%");
-                      case 3:
-                        return VChart(label: "Consultas", value: "68", comparation: "-2,4%");
-                      default:
-                        return Container();
-                    }
-                  };
+          MasonryGridView.count(
+            shrinkWrap: true,
+            padding: EdgeInsets.zero,
+            crossAxisCount: MediaQuery.of(context).size.width <= 880
+                ? 1
+                : MediaQuery.of(context).size.width <= 1410
+                    ? 2
+                    : 4,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+            itemCount: 8,
+            itemBuilder: (context, index) {
+              switch (index) {
+                case 0:
+                  return SizedBox(
+                    height: (.7 % 5 + 1) * 100,
+                    child: SimpleCard(label: "Pacientes Ativos", value: "421", comparation: "+0,5%"),
+                  );
+                case 1:
+                  return SizedBox(
+                    height: (.7 % 5 + 1) * 100,
+                    child: SimpleCard(label: "Sintomas Reportados", value: "874", comparation: "-6,4%"),
+                  );
+                case 2:
+                  return SizedBox(
+                    height: (.7 % 5 + 1) * 100,
+                    child: SimpleCard(label: "Sintomas Reportados", value: "874", comparation: "-6,4%"),
+                  );
+                case 3:
+                  return SizedBox(
+                    height: (.7 % 5 + 1) * 100,
+                    child: VChart(
+                      label: "Consultas",
+                      value: "68",
+                      comparation: "-2,4%",
+                      description: "(Período anterior)",
+                    ),
+                  );
+                default:
                   return Container();
-                },
-                childCount: 4,
+              }
+            },
+          ),
+          StaggeredGrid.count(
+            crossAxisCount: 4,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+            children: [
+              const StaggeredGridTile.count(
+                crossAxisCellCount: 2,
+                mainAxisCellCount: 1,
+                child: NewCasesCard(
+                  icon: LineAwesomeIcons.bell,
+                  value: "142",
+                  description: "Novos casos urgentes para classificar e agendar",
+                  textContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore",
+                ),
               ),
-            ),
-          ),*/
-        ],
+              StaggeredGridTile.count(
+                crossAxisCellCount: 1,
+                mainAxisCellCount: 2,
+                child: SimpleCard(label: "Pacientes Ativos", value: "421", comparation: "+0,5%"),
+              ),
+              StaggeredGridTile.count(
+                crossAxisCellCount: 1,
+                mainAxisCellCount: 2,
+                child: SimpleCard(label: "Pacientes Ativos", value: "421", comparation: "+0,5%"),
+              ),
+              const StaggeredGridTile.count(
+                crossAxisCellCount: 2,
+                mainAxisCellCount: 1,
+                child: LineChartHorizontal(
+                  description: "Consultas agendadas na última semana do período",
+                ),
+              ),
+            ],
+          )
+        ]),
       ),
     );
   }
