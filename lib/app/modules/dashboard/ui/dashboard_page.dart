@@ -91,14 +91,11 @@ class DashboardPageState extends State<DashboardPage> {
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
             children: [
-              const StaggeredGridTile.count(
+              StaggeredGridTile.count(
                 crossAxisCellCount: 2,
                 mainAxisCellCount: 1,
-                child: NewCasesCard(
-                  icon: LineAwesomeIcons.bell,
-                  value: "142",
-                  description: "Novos casos urgentes para classificar e agendar",
-                  textContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore",
+                child: LineChartHorizontal(
+                  description: "Consultas agendadas na última semana do período",
                 ),
               ),
               StaggeredGridTile.count(
@@ -114,8 +111,11 @@ class DashboardPageState extends State<DashboardPage> {
               const StaggeredGridTile.count(
                 crossAxisCellCount: 2,
                 mainAxisCellCount: 1,
-                child: LineChartHorizontal(
-                  description: "Consultas agendadas na última semana do período",
+                child: NewCasesCard(
+                  icon: LineAwesomeIcons.bell,
+                  value: "142",
+                  description: "Novos casos urgentes para classificar e agendar",
+                  textContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore",
                 ),
               ),
             ],

@@ -1,0 +1,165 @@
+import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:value_panel/app/shared/components/charts/models/chart.config.dart';
+import 'package:value_panel/app/shared/components/charts/models/chart.data.item.dart';
+import 'package:value_panel/app/shared/utils.dart';
+
+class LineHChart extends StatefulWidget {
+  final double width, height;
+  final ChartDataConfig chartDataConfig;
+  const LineHChart({required this.width, required this.height, required this.chartDataConfig, Key? key}) : super(key: key);
+
+  @override
+  _LineHChartState createState() => _LineHChartState();
+}
+
+class _LineHChartState extends State<LineHChart> {
+  
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        width: widget.width,
+        height: widget.height,
+        child: LineChart(mainData()));
+  }
+
+  LineChartBarData _lineBarChartData()=>LineChartBarData(
+    spots: widget.chartDataConfig.group.map((i) => FlSpot(widget.chartDataConfig.group.indexOf(i).toDouble(), i.value)).toList(),
+    isCurved: true,
+    colors: gradientColors,
+    barWidth: 5,
+    dotData: FlDotData(
+        show: true,
+        getDotPainter:(a,b,c,d){
+          return FlDotCirclePainter(strokeWidth: 4, strokeColor: Colors.white, color: primaryColor);
+        }
+    ),
+    aboveBarData: BarAreaData(
+      spotsLine: BarAreaSpotsLine(
+          show: true,
+          flLineStyle: FlLine(color: Colors.grey.shade300, strokeWidth: 0.5)),
+      show: true,
+      colors: [Colors.white],
+    ),
+    belowBarData: BarAreaData(
+      spotsLine: BarAreaSpotsLine(
+          show: true,
+          flLineStyle: FlLine(color: Colors.grey.shade300, strokeWidth: 0.5)),
+      show: true,
+      colors: gradientColors.map((color) => color.withOpacity(0.1)).toList(),
+    ),
+  );
+
+
+  LineChartData mainData() {
+
+    return LineChartData(
+      gridData: FlGridData(
+          show: true,
+          drawVerticalLine: true,
+          drawHorizontalLine: false,
+          getDrawingVerticalLine: (value) {
+            return FlLine(
+                color: Colors.grey.shade100,
+                strokeWidth: 1);
+          }
+      ),
+      titlesData: FlTitlesData(
+        show: true,
+        rightTitles: SideTitles(showTitles: false),
+        topTitles: SideTitles(showTitles: false),
+        bottomTitles: SideTitles(
+          showTitles: true,
+          interval: 1,
+          getTextStyles: (context, value) => const TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.grey,
+            fontSize: 10,
+          ),
+          getTitles: (value) {
+            switch (value.toInt()) {
+              case 0:
+                return 'S';
+              case 1:
+                return 'T';
+              case 2:
+                return 'Q';
+              case 3:
+                return 'Q';
+              case 4:
+                return 'S';
+              case 5:
+                return 'S';
+              case 6:
+                return 'D';
+            }
+            return '';
+          },
+        ),
+        leftTitles: SideTitles(
+          showTitles: true,
+          interval: 1,
+          getTextStyles: (context, value) => GoogleFonts.cairo(
+            fontWeight: FontWeight.w900,
+            color: Colors.grey,
+            fontSize: 9,
+          ),
+          getTitles: (value) {
+            switch (value.toInt()) {
+              case 0:
+                return '0';
+              case 10:
+                return '10';
+              case 20:
+                return '20';
+              case 30:
+                return '30';
+              case 40:
+                return '40';
+              case 50:
+                return '50';
+              case 60:
+                return '60';
+              case 70:
+                return '70';
+              case 80:
+                return '80';
+              case 90:
+                return '90';
+              case 100:
+                return '100+';
+            }
+            return '';
+          },
+        ),
+      ),
+      borderData: FlBorderData(show: false),
+      minX: 0, maxX: 6, minY: 0, maxY: 100,
+      lineTouchData: LineTouchData(
+        touchTooltipData: LineTouchTooltipData(
+          tooltipBgColor: primaryColor,
+          tooltipRoundedRadius: 8,
+          getTooltipItems: (List<LineBarSpot> lineBarsSpot) {
+            return lineBarsSpot.map((lineBarSpot) {
+              return LineTooltipItem(
+                lineBarSpot.y.toString(),
+                const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              );
+            }).toList();
+          },
+        ),
+      ),
+      lineBarsData: [
+        _lineBarChartData()
+      ],
+      showingTooltipIndicators: _lineBarChartData().spots
+          .map((e) => _lineBarChartData().spots.indexOf(e))
+          .map((index) => ShowingTooltipIndicators([
+        LineBarSpot(_lineBarChartData(), index,
+            _lineBarChartData().spots[index]),
+      ]))
+          .toList(),
+    );
+  }
+}
