@@ -2,7 +2,6 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:value_panel/app/shared/components/charts/models/chart.config.dart';
-import 'package:value_panel/app/shared/components/charts/models/chart.data.item.dart';
 import 'package:value_panel/app/shared/utils.dart';
 
 class LineHChart extends StatefulWidget {
@@ -35,6 +34,7 @@ class _LineHChartState extends State<LineHChart> {
           return FlDotCirclePainter(strokeWidth: 4, strokeColor: Colors.white, color: primaryColor);
         }
     ),
+    // preventCurveOverShooting: true,
     aboveBarData: BarAreaData(
       spotsLine: BarAreaSpotsLine(
           show: true,
@@ -53,7 +53,6 @@ class _LineHChartState extends State<LineHChart> {
 
 
   LineChartData mainData() {
-
     return LineChartData(
       gridData: FlGridData(
           show: true,
@@ -71,7 +70,7 @@ class _LineHChartState extends State<LineHChart> {
         topTitles: SideTitles(showTitles: false),
         bottomTitles: SideTitles(
           showTitles: true,
-          interval: 1,
+          interval: 5,
           getTextStyles: (context, value) => const TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.grey,
@@ -106,36 +105,15 @@ class _LineHChartState extends State<LineHChart> {
             fontSize: 9,
           ),
           getTitles: (value) {
-            switch (value.toInt()) {
-              case 0:
-                return '0';
-              case 10:
-                return '10';
-              case 20:
-                return '20';
-              case 30:
-                return '30';
-              case 40:
-                return '40';
-              case 50:
-                return '50';
-              case 60:
-                return '60';
-              case 70:
-                return '70';
-              case 80:
-                return '80';
-              case 90:
-                return '90';
-              case 100:
-                return '100+';
+            if(value%widget.chartDataConfig.intervalY==0||value==widget.chartDataConfig.maxY){
+              return value.toString();
             }
             return '';
           },
         ),
       ),
       borderData: FlBorderData(show: false),
-      minX: 0, maxX: 6, minY: 0, maxY: 100,
+      minX: 0, maxX: 6, minY: 0, maxY: widget.chartDataConfig.maxY,
       lineTouchData: LineTouchData(
         touchTooltipData: LineTouchTooltipData(
           tooltipBgColor: primaryColor,

@@ -9,7 +9,8 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:value_panel/app/modules/dashboard/errors/monitoring.errors.dart';
 import 'package:value_panel/app/modules/dashboard/ui/dashboard_store.dart';
 import 'package:value_panel/app/modules/dashboard/ui/models/date_selector.model.dart';
-import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/line_chart_h.card.dart';
+import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/progress.card.dart';
+import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/line_chart_v.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/new_cases.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/simple.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/v_chart.card.dart';
@@ -69,16 +70,20 @@ class DashboardPageState extends State<DashboardPage> {
                 case 2:
                   return SizedBox(
                     height: (.7 % 5 + 1) * 100,
-                    child: SimpleCard(label: "Sintomas Reportados", value: "874", comparation: "-6,4%"),
-                  );
-                case 3:
-                  return SizedBox(
-                    height: (.7 % 5 + 1) * 100,
                     child: VChart(
                       label: "Consultas",
                       value: "68",
                       comparation: "-2,4%",
                       description: "(Período anterior)",
+                    ),
+                  );
+                case 3:
+                  return SizedBox(
+                    height: (.7 % 5 + 1) * 100,
+                    child: ProgressCard(
+                      label: "Novos Usuários",
+                      value: "144",
+                      comparation: "-0,4%",
                     ),
                   );
                 default:
@@ -91,11 +96,14 @@ class DashboardPageState extends State<DashboardPage> {
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
             children: [
-              StaggeredGridTile.count(
+              const StaggeredGridTile.count(
                 crossAxisCellCount: 2,
                 mainAxisCellCount: 1,
-                child: LineChartHorizontal(
-                  description: "Consultas agendadas na última semana do período",
+                child: NewCasesCard(
+                  icon: LineAwesomeIcons.bell,
+                  value: "142",
+                  description: "Novos casos urgentes para classificar e agendar",
+                  textContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore",
                 ),
               ),
               StaggeredGridTile.count(
@@ -108,14 +116,11 @@ class DashboardPageState extends State<DashboardPage> {
                 mainAxisCellCount: 2,
                 child: SimpleCard(label: "Pacientes Ativos", value: "421", comparation: "+0,5%"),
               ),
-              const StaggeredGridTile.count(
+              StaggeredGridTile.count(
                 crossAxisCellCount: 2,
                 mainAxisCellCount: 1,
-                child: NewCasesCard(
-                  icon: LineAwesomeIcons.bell,
-                  value: "142",
-                  description: "Novos casos urgentes para classificar e agendar",
-                  textContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore",
+                child: LineChartVertical(
+                  description: "Consultas agendadas na última semana do período",
                 ),
               ),
             ],

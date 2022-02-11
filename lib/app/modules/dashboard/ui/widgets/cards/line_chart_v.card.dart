@@ -7,22 +7,21 @@ import 'package:value_panel/app/shared/components/charts/models/chart.config.dar
 import 'package:value_panel/app/shared/components/charts/models/chart.data.item.dart';
 import 'package:value_panel/app/shared/utils.dart';
 
-class LineChartHorizontal extends StatelessWidget {
+class LineChartVertical extends StatelessWidget {
   final String description;
 
   final ChartDataConfig _chartDataConfig = ChartDataConfig(
-      maxY: 100,
       group: [
         ChartDataItem("D", 15),
-        ChartDataItem("S", 55),
-        ChartDataItem("T", 30),
-        ChartDataItem("Q", 4),
-        ChartDataItem("Q", 59),
-        ChartDataItem("S", 2),
-        ChartDataItem("S", 500),
+        ChartDataItem("S", 100),
+        ChartDataItem("T", 100),
+        ChartDataItem("Q", 35),
+        ChartDataItem("Q", 85),
+        ChartDataItem("S", 96),
+        ChartDataItem("S", 97),
       ]
   );
-  LineChartHorizontal({required this.description, Key? key}) : super(key: key);
+  LineChartVertical({required this.description, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

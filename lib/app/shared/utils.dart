@@ -19,7 +19,7 @@ final Color greyColor = HexColor("#A5A5A5");
 final Color greenColor = HexColor("#38E25D");
 final Color redColor = HexColor("#FF5E5E");
 const Color dialogBackgroundColor = Colors.white70;
-final List<Color> gradientColors = [HexColor("#6418C3"), HexColor("#4F01C4"), HexColor("#4159D0")];
+final List<Color> gradientColors = [HexColor("#4159D0"), HexColor("#4F01C4"), HexColor("#8A2CE6")];
 
 /////////////// CLASSIFICATIONS //////////////////////
 final List<ClassificationEntity> classifications = [

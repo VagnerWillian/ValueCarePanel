@@ -1,14 +1,12 @@
 import 'package:value_panel/app/shared/components/charts/models/chart.data.item.dart';
 
 class ChartDataConfig{
-  final double maxY;
+  double maxY = 0;
+  int intervalY;
   final List<ChartDataItem> group;
 
-  ChartDataConfig({required this.maxY, required this.group}){
-    group.map((e){
-      if(e.value>maxY){
-        e.value=100;
-      }
-    }).toList();
+  ChartDataConfig({required this.group, this.intervalY=10}){
+    maxY = group.reduce((a, b) => a.value>b.value ? a : b).value;
+    maxY = maxY+intervalY-(maxY%intervalY - intervalY);
   }
 }
