@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
 import 'package:value_panel/app/shared/components/custom/gradient.icon.dart';
 import 'package:value_panel/app/shared/utils.dart';
 
 class NewCasesCard extends StatelessWidget {
-  final String value, description, textContent;
+  final String description, textContent;
+  final double value;
   final IconData? icon;
 
   const NewCasesCard({Key? key, required this.value, this.icon, required this.description, this.textContent = ''}) : super(key: key);
@@ -51,7 +51,7 @@ class NewCasesCard extends StatelessWidget {
                             secondColor
                           ])),
                       Text(
-                        value,
+                        value.toString(),
                         style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 40, color: Colors.black),
                       ),
                     ],

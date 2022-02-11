@@ -54,6 +54,23 @@ mixin _$DashboardStore on _DashboardStoreBase, Store {
     });
   }
 
+  final _$comparisonGroupChartDataAtom =
+      Atom(name: '_DashboardStoreBase.comparisonGroupChartData');
+
+  @override
+  ComparisonGroupChartDataEntity get comparisonGroupChartData {
+    _$comparisonGroupChartDataAtom.reportRead();
+    return super.comparisonGroupChartData;
+  }
+
+  @override
+  set comparisonGroupChartData(ComparisonGroupChartDataEntity value) {
+    _$comparisonGroupChartDataAtom
+        .reportWrite(value, super.comparisonGroupChartData, () {
+      super.comparisonGroupChartData = value;
+    });
+  }
+
   final _$_DashboardStoreBaseActionController =
       ActionController(name: '_DashboardStoreBase');
 
@@ -91,11 +108,23 @@ mixin _$DashboardStore on _DashboardStoreBase, Store {
   }
 
   @override
+  dynamic setComparisonChartGroup(ComparisonGroupChartDataEntity value) {
+    final _$actionInfo = _$_DashboardStoreBaseActionController.startAction(
+        name: '_DashboardStoreBase.setComparisonChartGroup');
+    try {
+      return super.setComparisonChartGroup(value);
+    } finally {
+      _$_DashboardStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 loading: ${loading},
 dateSelector: ${dateSelector},
-preDates: ${preDates}
+preDates: ${preDates},
+comparisonGroupChartData: ${comparisonGroupChartData}
     ''';
   }
 }

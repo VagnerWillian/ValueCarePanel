@@ -5,7 +5,7 @@ void main() {
   late DashboardStore store;
 
   setUpAll(() {
-    store = DashboardStore();
+    // store = DashboardStore();
   });
 
   test('increment count', () async {

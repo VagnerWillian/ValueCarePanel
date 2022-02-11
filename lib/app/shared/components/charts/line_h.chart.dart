@@ -70,35 +70,18 @@ class _LineHChartState extends State<LineHChart> {
         topTitles: SideTitles(showTitles: false),
         bottomTitles: SideTitles(
           showTitles: true,
-          interval: 5,
+          interval: 1,
           getTextStyles: (context, value) => const TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.grey,
             fontSize: 10,
           ),
           getTitles: (value) {
-            switch (value.toInt()) {
-              case 0:
-                return 'S';
-              case 1:
-                return 'T';
-              case 2:
-                return 'Q';
-              case 3:
-                return 'Q';
-              case 4:
-                return 'S';
-              case 5:
-                return 'S';
-              case 6:
-                return 'D';
-            }
-            return '';
+            return widget.chartDataConfig.group[value.toInt()].bottomLabel;
           },
         ),
         leftTitles: SideTitles(
           showTitles: true,
-          interval: 1,
           getTextStyles: (context, value) => GoogleFonts.cairo(
             fontWeight: FontWeight.w900,
             color: Colors.grey,
@@ -113,7 +96,7 @@ class _LineHChartState extends State<LineHChart> {
         ),
       ),
       borderData: FlBorderData(show: false),
-      minX: 0, maxX: 6, minY: 0, maxY: widget.chartDataConfig.maxY,
+      minX: 0, maxX: widget.chartDataConfig.maxX, minY: 0, maxY: widget.chartDataConfig.maxY,
       lineTouchData: LineTouchData(
         touchTooltipData: LineTouchTooltipData(
           tooltipBgColor: primaryColor,

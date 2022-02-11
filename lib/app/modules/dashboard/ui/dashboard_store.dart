@@ -1,5 +1,10 @@
+import 'package:either_dart/either.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:mobx/mobx.dart';
+import 'package:value_panel/app/modules/dashboard/domain/entities/comparison_group_chart_data.entity.dart';
+import 'package:value_panel/app/modules/dashboard/domain/usecases/get_comparison_data.usecase.dart';
+import 'package:value_panel/app/modules/dashboard/errors/dashboard.errors.dart';
+import 'package:value_panel/app/modules/dashboard/infra/models/group_comparison_chart.model.dart';
 import 'package:value_panel/app/modules/dashboard/ui/models/date_selector.model.dart';
 
 part 'dashboard_store.g.dart';
@@ -7,7 +12,9 @@ part 'dashboard_store.g.dart';
 class DashboardStore = _DashboardStoreBase with _$DashboardStore;
 abstract class _DashboardStoreBase with Store {
 
-  _DashboardStoreBase(){
+  final GetComparisonGroupDataUseCase _getComparisonGroupDataUseCase;
+
+  _DashboardStoreBase(this._getComparisonGroupDataUseCase){
     preDatesLogic();
   }
 
@@ -22,6 +29,9 @@ abstract class _DashboardStoreBase with Store {
   @observable
   ObservableList<DateSelector> preDates = ObservableList<DateSelector>();
 
+  @observable
+  ComparisonGroupChartDataEntity comparisonGroupChartData = ComparisonGroupChartData();
+
   // ACTIONS
   @action
   void setLoading(bool value) => loading=value;
@@ -32,12 +42,21 @@ abstract class _DashboardStoreBase with Store {
   @action
   addPreDates(DateSelector value)=>preDates.add(value);
 
+  @action
+  setComparisonChartGroup(ComparisonGroupChartDataEntity value)=>comparisonGroupChartData=value;
+
   // FUNCTIONS AND VOIDS
 
   Future onChangedSelectorDate(DateSelector dateSelector, Function onError) async {
     setDateSelector(dateSelector);
     setLoading(true);
-    await Future.delayed(const Duration(seconds: 3));
+    Either<DashboardError, ComparisonGroupChartDataEntity> response = await _getComparisonGroupDataUseCase(startDate: dateSelector.startDate!, endDate: dateSelector.endDate!);
+    response.fold((DashboardError failure) {
+      return failure;
+    }, (ComparisonGroupChartDataEntity value) {
+      setComparisonChartGroup(value);
+      return value;
+    });
     setLoading(false);
   }
 

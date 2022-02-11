@@ -5,9 +5,10 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:value_panel/app/shared/utils.dart';
 
 class VChart extends StatelessWidget {
-  String label, value, comparation, description;
+  final String label, comparation, description;
+  final double value;
 
-  VChart({required this.label, required this.value, required this.comparation, this.description="", Key? key}) : super(key: key);
+  const VChart({required this.label, required this.value, required this.comparation, this.description="", Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class VChart extends StatelessWidget {
                   Text(description, style: GoogleFonts.cairo(fontSize: 11),),
                   Row(
                     children: [
-                      Text(value, style: GoogleFonts.cairo(fontWeight: FontWeight.w900, fontSize: 25),),
+                      Text(value.toString(), style: GoogleFonts.cairo(fontWeight: FontWeight.w900, fontSize: 25),),
                       const SizedBox(width: 10,),
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),

@@ -1,3 +1,4 @@
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -6,11 +7,13 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-import 'package:value_panel/app/modules/dashboard/errors/monitoring.errors.dart';
+import 'package:value_panel/app/modules/dashboard/domain/entities/comparison_group_chart_data.entity.dart';
+import 'package:value_panel/app/modules/dashboard/errors/dashboard.errors.dart';
+import 'package:value_panel/app/modules/dashboard/infra/models/group_comparison_chart.model.dart';
 import 'package:value_panel/app/modules/dashboard/ui/dashboard_store.dart';
 import 'package:value_panel/app/modules/dashboard/ui/models/date_selector.model.dart';
-import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/progress.card.dart';
-import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/line_chart_v.card.dart';
+import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/new_users.card.dart';
+import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/schedules_in_week.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/new_cases.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/simple.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/v_chart.card.dart';
@@ -44,87 +47,107 @@ class DashboardPageState extends State<DashboardPage> {
         margin: const EdgeInsets.all(20),
         child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           _headerBuild(),
-          MasonryGridView.count(
-            shrinkWrap: true,
-            padding: EdgeInsets.zero,
-            crossAxisCount: MediaQuery.of(context).size.width <= 880
-                ? 1
-                : MediaQuery.of(context).size.width <= 1410
-                    ? 2
-                    : 4,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-            itemCount: 8,
-            itemBuilder: (context, index) {
-              switch (index) {
-                case 0:
-                  return SizedBox(
-                    height: (.7 % 5 + 1) * 100,
-                    child: SimpleCard(label: "Pacientes Ativos", value: "421", comparation: "+0,5%"),
-                  );
-                case 1:
-                  return SizedBox(
-                    height: (.7 % 5 + 1) * 100,
-                    child: SimpleCard(label: "Sintomas Reportados", value: "874", comparation: "-6,4%"),
-                  );
-                case 2:
-                  return SizedBox(
-                    height: (.7 % 5 + 1) * 100,
-                    child: VChart(
-                      label: "Consultas",
-                      value: "68",
-                      comparation: "-2,4%",
-                      description: "(Período anterior)",
+          Observer(builder: (_) {
+            ComparisonGroupChartDataEntity _cGroup = store.comparisonGroupChartData;
+            return store.loading
+                ? SizedBox(
+                    width: 250,
+                    height: 250,
+                    child: FlareActor(
+                      'assets/anims/loading.flr',
+                      animation: 'loading',
+                      color: primaryColor,
                     ),
-                  );
-                case 3:
-                  return SizedBox(
-                    height: (.7 % 5 + 1) * 100,
-                    child: ProgressCard(
-                      label: "Novos Usuários",
-                      value: "144",
-                      comparation: "-0,4%",
+                  )
+                : Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                    MasonryGridView.count(
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      crossAxisCount: MediaQuery.of(context).size.width <= 880
+                          ? 1
+                          : MediaQuery.of(context).size.width <= 1410
+                              ? 2
+                              : 4,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                      itemCount: 8,
+                      itemBuilder: (context, index) {
+                        switch (index) {
+                          case 0:
+                            return SizedBox(
+                              height: (.7 % 5 + 1) * 100,
+                              child: SimpleCard(
+                                  label: "Pacientes Ativos", value: _cGroup.activeUsers.value, comparation: _cGroup.activeUsers.comparation),
+                            );
+                          case 1:
+                            return SizedBox(
+                              height: (.7 % 5 + 1) * 100,
+                              child: SimpleCard(
+                                  label: "Sintomas Reportados",
+                                  value: _cGroup.reportedSymptons.value,
+                                  comparation: _cGroup.reportedSymptons.comparation),
+                            );
+                          case 2:
+                            return SizedBox(
+                              height: (.7 % 5 + 1) * 100,
+                              child: VChart(
+                                label: "Consultas",
+                                value: _cGroup.appointments.value,
+                                comparation: _cGroup.appointments.comparation,
+                                description: "(Período anterior)",
+                              ),
+                            );
+                          case 3:
+                            return SizedBox(
+                              height: (.7 % 5 + 1) * 100,
+                              child: ProgressCard(
+                                label: "Novos Usuários",
+                                value: _cGroup.newUsers.value,
+                                comparation: _cGroup.newUsers.comparation,
+                              ),
+                            );
+                          default:
+                            return Container();
+                        }
+                      },
                     ),
-                  );
-                default:
-                  return Container();
-              }
-            },
-          ),
-          StaggeredGrid.count(
-            crossAxisCount: 4,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-            children: [
-              const StaggeredGridTile.count(
-                crossAxisCellCount: 2,
-                mainAxisCellCount: 1,
-                child: NewCasesCard(
-                  icon: LineAwesomeIcons.bell,
-                  value: "142",
-                  description: "Novos casos urgentes para classificar e agendar",
-                  textContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore",
-                ),
-              ),
-              StaggeredGridTile.count(
-                crossAxisCellCount: 1,
-                mainAxisCellCount: 2,
-                child: SimpleCard(label: "Pacientes Ativos", value: "421", comparation: "+0,5%"),
-              ),
-              StaggeredGridTile.count(
-                crossAxisCellCount: 1,
-                mainAxisCellCount: 2,
-                child: SimpleCard(label: "Pacientes Ativos", value: "421", comparation: "+0,5%"),
-              ),
-              StaggeredGridTile.count(
-                crossAxisCellCount: 2,
-                mainAxisCellCount: 1,
-                child: LineChartVertical(
-                  description: "Consultas agendadas na última semana do período",
-                ),
-              ),
-            ],
-          )
+                    StaggeredGrid.count(
+                      crossAxisCount: 4,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                      children: [
+                        StaggeredGridTile.count(
+                          crossAxisCellCount: 2,
+                          mainAxisCellCount: 1,
+                          child: NewCasesCard(
+                            icon: LineAwesomeIcons.bell,
+                            value: _cGroup.newCases.value,
+                            description: "Novos casos urgentes para classificar e agendar",
+                            textContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore",
+                          ),
+                        ),
+                        const StaggeredGridTile.count(
+                          crossAxisCellCount: 1,
+                          mainAxisCellCount: 2,
+                          child: SimpleCard(label: "Pacientes Ativos", value: 421, comparation: "+0,5%"),
+                        ),
+                        const StaggeredGridTile.count(
+                          crossAxisCellCount: 1,
+                          mainAxisCellCount: 2,
+                          child: SimpleCard(label: "Pacientes Ativos", value: 421, comparation: "+0,5%"),
+                        ),
+                        StaggeredGridTile.count(
+                          crossAxisCellCount: 2,
+                          mainAxisCellCount: 1,
+                          child: LineChartVertical(
+                            weekGroup: _cGroup.weekGroup,
+                            description: "Consultas agendadas na última semana do período",
+                          ),
+                        ),
+                      ],
+                    )
+                  ]);
+          }),
         ]),
       ),
     );
