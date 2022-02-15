@@ -20,7 +20,10 @@ class _LineHChartState extends State<LineHChart> {
     return SizedBox(
         width: widget.width,
         height: widget.height,
-        child: LineChart(mainData()));
+        child: LineChart(mainData(),
+            swapAnimationDuration: const Duration(milliseconds: 150), // Optional
+            swapAnimationCurve: Curves.linear, // Optional
+           ));
   }
 
   LineChartBarData _lineBarChartData()=>LineChartBarData(

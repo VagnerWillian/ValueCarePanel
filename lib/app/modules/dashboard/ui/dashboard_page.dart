@@ -117,8 +117,8 @@ class DashboardPageState extends State<DashboardPage> {
                       crossAxisSpacing: 10,
                       children: [
                         StaggeredGridTile.count(
-                          crossAxisCellCount: 2,
-                          mainAxisCellCount: 1,
+                          crossAxisCellCount: MediaQuery.of(context).size.width<1355?4:2,
+                          mainAxisCellCount: MediaQuery.of(context).size.width<1355?2:1,
                           child: NewCasesCard(
                             icon: LineAwesomeIcons.bell,
                             value: _cGroup.newCases.value,
@@ -137,8 +137,8 @@ class DashboardPageState extends State<DashboardPage> {
                           child: SimpleCard(label: "Pacientes Ativos", value: 421, comparation: "+0,5%"),
                         ),
                         StaggeredGridTile.count(
-                          crossAxisCellCount: 2,
-                          mainAxisCellCount: 1,
+                          crossAxisCellCount: MediaQuery.of(context).size.width<1355?4:2,
+                          mainAxisCellCount: MediaQuery.of(context).size.width<1355?2:1,
                           child: LineChartVertical(
                             weekGroup: _cGroup.weekGroup,
                             description: "Consultas agendadas na última semana do período",

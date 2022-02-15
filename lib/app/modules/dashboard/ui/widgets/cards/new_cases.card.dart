@@ -68,33 +68,30 @@ class NewCasesCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Container(
-                margin: const EdgeInsets.only(top: 50, bottom: 20),
-                child: Row(
-                  children: [
-                    SizedBox(
-                      width: 150,
-                      height: 40,
-                      child: ElevatedButton(
-                          onPressed: ()=>Navigator.pushNamed(context, MONITORING_ROUTE),
-                          style: ButtonStyle(
-                              shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))),
-                              backgroundColor: MaterialStateProperty.all(primaryColor)),
-                          child: Text("Monitoramento", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14, color: Colors.white))),
-                    ),
-                    const SizedBox(width: 20),
-                    SizedBox(
-                      width: 150,
-                      height: 40,
-                      child: ElevatedButton(
-                          onPressed: ()=>Navigator.pushNamed(context, SCHEDULING_ROUTE),
-                          style: ButtonStyle(
-                              shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))),
-                              backgroundColor: MaterialStateProperty.all(Colors.white)),
-                          child: Text("Agendamentos", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14, color: Colors.grey))),
-                    ),
-                  ],
-                ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 150,
+                    height: 40,
+                    child: ElevatedButton(
+                        onPressed: ()=>Navigator.pushNamed(context, MONITORING_ROUTE),
+                        style: ButtonStyle(
+                            shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))),
+                            backgroundColor: MaterialStateProperty.all(primaryColor)),
+                        child: Text("Monitoramento", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14, color: Colors.white))),
+                  ),
+                  const SizedBox(width: 20),
+                  SizedBox(
+                    width: 150,
+                    height: 40,
+                    child: ElevatedButton(
+                        onPressed: ()=>Navigator.pushNamed(context, SCHEDULING_ROUTE),
+                        style: ButtonStyle(
+                            shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))),
+                            backgroundColor: MaterialStateProperty.all(Colors.white)),
+                        child: Text("Agendamentos", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14, color: Colors.grey))),
+                  ),
+                ],
               )
             ],
           ),
