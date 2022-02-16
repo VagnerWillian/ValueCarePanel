@@ -1,20 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="153.787" height="187.962" viewBox="0 0 153.787 187.962">
-  <g id="lesões" transform="translate(-1632.181 -182.392)">
-    <g id="lesões-2" data-name="lesões" transform="translate(1632.181 182.392)">
-      <path id="Caminho_62" data-name="Caminho 62" d="M1137.773,33.638a4.273,4.273,0,0,0-2.7-5.4l-4.53-1.511,5.548-3.7a4.272,4.272,0,0,0-4.739-7.109l-12.815,8.544a4.271,4.271,0,0,0,1.017,7.607l12.817,4.272a4.267,4.267,0,0,0,5.4-2.7Z" transform="translate(-1031.197 23.248)" fill="#040505"/>
-      <path id="Caminho_63" data-name="Caminho 63" d="M1112.684,24.461l-12.815-8.544a4.272,4.272,0,0,0-4.739,7.109l5.548,3.7-4.53,1.511a4.272,4.272,0,1,0,2.7,8.106l12.817-4.272a4.271,4.271,0,0,0,1.017-7.607Z" transform="translate(-1046.237 23.248)" fill="#040505"/>
-      <path id="Caminho_64" data-name="Caminho 64" d="M1064.618,128.49v29.9a21.384,21.384,0,0,0,21.359,21.36h111.068a21.385,21.385,0,0,0,21.36-21.36v-29.9A47.045,47.045,0,0,0,1171.414,81.5h-2.265a49.127,49.127,0,1,0-55.275,0h-2.265A47.044,47.044,0,0,0,1064.618,128.49Zm36.311-87.573A40.582,40.582,0,1,1,1141.512,81.5,40.627,40.627,0,0,1,1100.93,40.917Zm70.484,49.127a38.49,38.49,0,0,1,38.447,38.447v29.9a12.83,12.83,0,0,1-12.815,12.815h-12.815v-46.99a4.272,4.272,0,1,0-8.544,0v46.99h-68.349v-46.99a4.272,4.272,0,0,0-8.545,0v46.99h-12.815a12.83,12.83,0,0,1-12.815-12.815v-29.9a38.49,38.49,0,0,1,38.447-38.447Z" transform="translate(-1064.618 8.21)" fill="#040505"/>
-      <ellipse id="Elipse_5" data-name="Elipse 5" cx="7.066" cy="7.066" rx="7.066" ry="7.066" transform="translate(37.468 105.031)" fill="#040505"/>
-      <ellipse id="Elipse_6" data-name="Elipse 6" cx="7.066" cy="7.066" rx="7.066" ry="7.066" transform="translate(16.146 118.989)" fill="#040505"/>
-      <ellipse id="Elipse_7" data-name="Elipse 7" cx="7.066" cy="7.066" rx="7.066" ry="7.066" transform="translate(17.138 149.98)" fill="#040505"/>
-      <ellipse id="Elipse_8" data-name="Elipse 8" cx="7.066" cy="7.066" rx="7.066" ry="7.066" transform="translate(63.005 114.348)" fill="#040505"/>
-      <ellipse id="Elipse_9" data-name="Elipse 9" cx="7.066" cy="7.066" rx="7.066" ry="7.066" transform="translate(88.542 104.183)" fill="#040505"/>
-      <ellipse id="Elipse_10" data-name="Elipse 10" cx="7.066" cy="7.066" rx="7.066" ry="7.066" transform="translate(114.698 109.638)" fill="#040505"/>
-      <ellipse id="Elipse_11" data-name="Elipse 11" cx="7.066" cy="7.066" rx="7.066" ry="7.066" transform="translate(123.748 133.123)" fill="#040505"/>
-      <ellipse id="Elipse_12" data-name="Elipse 12" cx="7.066" cy="7.066" rx="7.066" ry="7.066" transform="translate(126.351 161.759)" fill="#040505"/>
-      <ellipse id="Elipse_13" data-name="Elipse 13" cx="7.066" cy="7.066" rx="7.066" ry="7.066" transform="translate(81.474 137.338)" fill="#040505"/>
-      <ellipse id="Elipse_14" data-name="Elipse 14" cx="7.066" cy="7.066" rx="7.066" ry="7.066" transform="translate(51.971 146.264)" fill="#040505"/>
-      <ellipse id="Elipse_15" data-name="Elipse 15" cx="7.066" cy="7.066" rx="7.066" ry="7.066" transform="translate(89.904 163.247)" fill="#040505"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="163.609" height="200" viewBox="0 0 163.609 200">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#8a2ce6"/>
+      <stop offset="0.544" stop-color="#4f01c4"/>
+      <stop offset="1" stop-color="#4159d0"/>
+    </linearGradient>
+  </defs>
+  <g id="lesões" transform="translate(-1736.433 -194.007)">
+    <g id="lesões-2" data-name="lesões" transform="translate(1736.431 194.042)">
+      <path id="Caminho_62" data-name="Caminho 62" d="M1210.441,35.787a4.546,4.546,0,0,0-2.872-5.745l-4.819-1.608,5.9-3.936a4.545,4.545,0,1,0-5.042-7.563l-13.634,9.09a4.544,4.544,0,0,0,1.082,8.093l13.636,4.545a4.54,4.54,0,0,0,5.745-2.872Z" transform="translate(-1097.061 24.733)" fill="url(#linear-gradient)"/>
+      <path id="Caminho_63" data-name="Caminho 63" d="M1183.748,26.023l-13.633-9.09a4.545,4.545,0,1,0-5.042,7.563l5.9,3.936-4.819,1.608a4.545,4.545,0,0,0,2.872,8.624l13.636-4.545a4.544,4.544,0,0,0,1.082-8.093Z" transform="translate(-1113.062 24.733)" fill="url(#linear-gradient)"/>
+      <path id="Caminho_64" data-name="Caminho 64" d="M1132.619,136.7v31.81a22.75,22.75,0,0,0,22.723,22.724H1273.5a22.751,22.751,0,0,0,22.724-22.724V136.7a50.05,50.05,0,0,0-50-49.991h-2.41a52.265,52.265,0,1,0-58.806,0h-2.41a50.049,50.049,0,0,0-49.986,49.991Zm38.63-93.166a43.174,43.174,0,1,1,43.173,43.175,43.174,43.174,0,0,1-43.173-43.175ZM1246.235,95.8a40.948,40.948,0,0,1,40.9,40.9v31.81a13.649,13.649,0,0,1-13.633,13.634h-13.633V132.15a4.545,4.545,0,1,0-9.09,0v49.991h-72.714V132.15a4.545,4.545,0,1,0-9.091,0v49.991h-13.633a13.649,13.649,0,0,1-13.634-13.634V136.7a40.948,40.948,0,0,1,40.9-40.9Z" transform="translate(-1132.617 8.734)" fill="url(#linear-gradient)"/>
+      <circle id="Elipse_5" data-name="Elipse 5" cx="7.517" cy="7.517" r="7.517" transform="translate(39.861 111.739)" fill="url(#linear-gradient)"/>
+      <circle id="Elipse_6" data-name="Elipse 6" cx="7.517" cy="7.517" r="7.517" transform="translate(17.177 126.589)" fill="url(#linear-gradient)"/>
+      <circle id="Elipse_7" data-name="Elipse 7" cx="7.517" cy="7.517" r="7.517" transform="translate(18.233 159.559)" fill="url(#linear-gradient)"/>
+      <circle id="Elipse_8" data-name="Elipse 8" cx="7.517" cy="7.517" r="7.517" transform="translate(67.029 121.652)" fill="url(#linear-gradient)"/>
+      <circle id="Elipse_9" data-name="Elipse 9" cx="7.517" cy="7.517" r="7.517" transform="translate(94.197 110.837)" fill="url(#linear-gradient)"/>
+      <circle id="Elipse_10" data-name="Elipse 10" cx="7.517" cy="7.517" r="7.517" transform="translate(122.024 116.641)" fill="url(#linear-gradient)"/>
+      <circle id="Elipse_11" data-name="Elipse 11" cx="7.517" cy="7.517" r="7.517" transform="translate(131.652 141.626)" fill="url(#linear-gradient)"/>
+      <circle id="Elipse_12" data-name="Elipse 12" cx="7.517" cy="7.517" r="7.517" transform="translate(134.421 172.091)" fill="url(#linear-gradient)"/>
+      <circle id="Elipse_13" data-name="Elipse 13" cx="7.517" cy="7.517" r="7.517" transform="translate(86.678 146.11)" fill="url(#linear-gradient)"/>
+      <circle id="Elipse_14" data-name="Elipse 14" cx="7.517" cy="7.517" r="7.517" transform="translate(55.29 155.606)" fill="url(#linear-gradient)"/>
+      <circle id="Elipse_15" data-name="Elipse 15" cx="7.517" cy="7.517" r="7.517" transform="translate(95.646 173.674)" fill="url(#linear-gradient)"/>
     </g>
   </g>
 </svg>

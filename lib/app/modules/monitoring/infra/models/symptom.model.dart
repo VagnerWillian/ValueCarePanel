@@ -11,7 +11,7 @@ class Symptom implements SymptomEntity{
   @override
   String? label;
 
-  Symptom({this.id, this.label, this.dateReport});
+  Symptom({required this.id, required this.label, this.dateReport = ''});
 
   Symptom.fromJson(Map<String, dynamic> json) {
     id = json['id'];

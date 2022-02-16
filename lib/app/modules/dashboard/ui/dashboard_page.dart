@@ -13,6 +13,7 @@ import 'package:value_panel/app/modules/dashboard/infra/models/group_comparison_
 import 'package:value_panel/app/modules/dashboard/ui/dashboard_store.dart';
 import 'package:value_panel/app/modules/dashboard/ui/models/date_selector.model.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/new_users.card.dart';
+import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/reported_symptoms.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/schedules_in_week.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/new_cases.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/simple.card.dart';
@@ -129,7 +130,7 @@ class DashboardPageState extends State<DashboardPage> {
                         const StaggeredGridTile.count(
                           crossAxisCellCount: 1,
                           mainAxisCellCount: 2,
-                          child: SimpleCard(label: "Pacientes Ativos", value: 421, comparation: "+0,5%"),
+                          child: SymptomReportedCard(),
                         ),
                         const StaggeredGridTile.count(
                           crossAxisCellCount: 1,

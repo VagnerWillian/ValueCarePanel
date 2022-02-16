@@ -23,7 +23,12 @@ class _LeftMenuState extends State<LeftMenu> {
 
   @override
   Widget build(BuildContext context) {
+    double widthScreen = MediaQuery.of(context).size.width;
+    double maxScreen = 1000;
 
+    if(widthScreen<=768){
+      collapseDrawer(false);
+    }
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -59,10 +64,14 @@ class _LeftMenuState extends State<LeftMenu> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    !isExpanded?Container():Image.asset("assets/images/logo.png",
+                    !isExpanded?Container():
+                    Image.asset("assets/images/logo_h.png",
                       width: 120,
                     ),
-                    SizedBox(
+                    widthScreen<=790?SizedBox(
+                        width: 40,
+                        height: 40,
+                        child: Image.asset("assets/images/logo.png")):SizedBox(
                       height: 40,
                       width: 40,
                       child: OutlinedButton(
@@ -70,8 +79,8 @@ class _LeftMenuState extends State<LeftMenu> {
                             padding: MaterialStateProperty.all(EdgeInsets.zero),
                             side: MaterialStateProperty.all(BorderSide(color: Colors.grey.withOpacity(0.05)))
                         ),
-                        onPressed: () => collapseDrawer(),
-                        child: SvgPicture.asset("assets/images/menu/drawer.svg",
+                        onPressed: () => collapseDrawer(!isExpanded),
+                        child: SvgPicture.asset(widthScreen<=768?"assets/images/logo.png":"assets/images/menu/drawer.svg",
                           color: primaryColor,
                           width: 15,
                         ),
@@ -175,7 +184,7 @@ class _LeftMenuState extends State<LeftMenu> {
   }
 
   void setIndex(int index)=> setState(() => this.index=index);
-  void collapseDrawer()=> setState(() => isExpanded=!isExpanded);
+  void collapseDrawer(bool value)=> setState(() => isExpanded=value);
 
   Color? getSvgColor(MenuLeftItem item)=>index==widget.menus.indexOf(item)?primaryColor:greyColor;
   Color? getTextColor(MenuLeftItem item)=>index==widget.menus.indexOf(item)?primaryColor:greyColor;
