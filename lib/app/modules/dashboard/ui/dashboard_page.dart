@@ -7,15 +7,14 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-import 'package:value_panel/app/modules/dashboard/domain/entities/comparison_group_chart_data.entity.dart';
+import 'package:value_panel/app/modules/dashboard/domain/entities/groups_chart.entity.dart';
 import 'package:value_panel/app/modules/dashboard/errors/dashboard.errors.dart';
-import 'package:value_panel/app/modules/dashboard/infra/models/group_comparison_chart.model.dart';
 import 'package:value_panel/app/modules/dashboard/ui/dashboard_store.dart';
 import 'package:value_panel/app/modules/dashboard/ui/models/date_selector.model.dart';
+import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/new_cases.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/new_users.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/reported_symptoms.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/schedules_in_week.card.dart';
-import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/new_cases.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/simple.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/v_chart.card.dart';
 import 'package:value_panel/app/shared/components/custom/gradient.button.dart';
@@ -78,7 +77,7 @@ class DashboardPageState extends State<DashboardPage> {
                             return SizedBox(
                               height: (.7 % 5 + 1) * 100,
                               child: SimpleCard(
-                                  label: "Pacientes Ativos", value: _cGroup.activeUsers.value, comparation: _cGroup.activeUsers.comparation),
+                                  label: "Pacientes Ativos", value: _cGroup.activeUsers.value, comparation: _cGroup.activeUsers.comparison),
                             );
                           case 1:
                             return SizedBox(
@@ -86,7 +85,7 @@ class DashboardPageState extends State<DashboardPage> {
                               child: SimpleCard(
                                   label: "Sintomas Reportados",
                                   value: _cGroup.reportedSymptons.value,
-                                  comparation: _cGroup.reportedSymptons.comparation),
+                                  comparation: _cGroup.reportedSymptons.comparison),
                             );
                           case 2:
                             return SizedBox(
@@ -94,7 +93,7 @@ class DashboardPageState extends State<DashboardPage> {
                               child: VChart(
                                 label: "Consultas",
                                 value: _cGroup.appointments.value,
-                                comparation: _cGroup.appointments.comparation,
+                                comparation: _cGroup.appointments.comparison,
                                 description: "(Período anterior)",
                               ),
                             );
@@ -104,7 +103,7 @@ class DashboardPageState extends State<DashboardPage> {
                               child: ProgressCard(
                                 label: "Novos Usuários",
                                 value: _cGroup.newUsers.value,
-                                comparation: _cGroup.newUsers.comparation,
+                                comparation: _cGroup.newUsers.comparison,
                               ),
                             );
                           default:
@@ -127,15 +126,15 @@ class DashboardPageState extends State<DashboardPage> {
                             textContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore",
                           ),
                         ),
-                        const StaggeredGridTile.count(
-                          crossAxisCellCount: 1,
-                          mainAxisCellCount: 2,
-                          child: SymptomReportedCard(),
+                        StaggeredGridTile.count(
+                          crossAxisCellCount: MediaQuery.of(context).size.width<1355?2:1,
+                          mainAxisCellCount: MediaQuery.of(context).size.width<1355?3:2,
+                          child: SymptomReportedCard(reportedSymptomsGroup: _cGroup.reportedSymptonsComparison),
                         ),
-                        const StaggeredGridTile.count(
-                          crossAxisCellCount: 1,
-                          mainAxisCellCount: 2,
-                          child: SimpleCard(label: "Pacientes Ativos", value: 421, comparation: "+0,5%"),
+                        StaggeredGridTile.count(
+                          crossAxisCellCount: MediaQuery.of(context).size.width<1355?2:1,
+                          mainAxisCellCount: MediaQuery.of(context).size.width<1355?3:2,
+                          child: const SimpleCard(label: "Pacientes Ativos", value: 421, comparation: "+0,5%"),
                         ),
                         StaggeredGridTile.count(
                           crossAxisCellCount: MediaQuery.of(context).size.width<1355?4:2,

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
-import 'package:value_panel/app/modules/dashboard/domain/entities/week_group_comparison_chart.entity.dart';
+import 'package:value_panel/app/modules/dashboard/domain/entities/week_group_chart.entity.dart';
+import 'package:value_panel/app/modules/dashboard/infra/models/basic_value_chart.model.dart';
 import 'package:value_panel/app/shared/components/charts/line_h.chart.dart';
 import 'package:value_panel/app/shared/components/charts/models/chart.config.dart';
 import 'package:value_panel/app/shared/components/charts/models/chart.data.item.dart';
@@ -10,11 +11,14 @@ import 'package:value_panel/app/shared/utils.dart';
 
 class LineChartVertical extends StatelessWidget {
   final String description;
-  final WeekComparisonGroupChartDataEntity weekGroup;
+  final WeekGroupChartDataEntity weekGroup;
   late final ChartDataConfig _chartDataConfig;
 
   LineChartVertical({required this.weekGroup, required this.description, Key? key}) : super(key: key){
-    List<ChartDataItem> chartItems = weekGroup.values.map((i) => ChartDataItem(i.comparation, i.value)).toList();
+    List<ChartDataItem> chartItems = weekGroup.values.map((i) {
+      BasicValueChartData data = i;
+      return ChartDataItem(data.comparison, data.value);
+    }).toList();
     _chartDataConfig = ChartDataConfig(group: chartItems);
   }
 

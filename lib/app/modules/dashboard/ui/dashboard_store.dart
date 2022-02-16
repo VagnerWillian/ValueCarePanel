@@ -1,10 +1,10 @@
 import 'package:either_dart/either.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:mobx/mobx.dart';
-import 'package:value_panel/app/modules/dashboard/domain/entities/comparison_group_chart_data.entity.dart';
+import 'package:value_panel/app/modules/dashboard/domain/entities/groups_chart.entity.dart';
 import 'package:value_panel/app/modules/dashboard/domain/usecases/get_comparison_data.usecase.dart';
 import 'package:value_panel/app/modules/dashboard/errors/dashboard.errors.dart';
-import 'package:value_panel/app/modules/dashboard/infra/models/group_comparison_chart.model.dart';
+import 'package:value_panel/app/modules/dashboard/infra/models/groups_chart.model.dart';
 import 'package:value_panel/app/modules/dashboard/ui/models/date_selector.model.dart';
 
 part 'dashboard_store.g.dart';
@@ -30,7 +30,7 @@ abstract class _DashboardStoreBase with Store {
   ObservableList<DateSelector> preDates = ObservableList<DateSelector>();
 
   @observable
-  ComparisonGroupChartDataEntity comparisonGroupChartData = ComparisonGroupChartData();
+  ComparisonGroupChartDataEntity comparisonGroupChartData = GroupsChart();
 
   // ACTIONS
   @action
@@ -52,6 +52,7 @@ abstract class _DashboardStoreBase with Store {
     setLoading(true);
     Either<DashboardError, ComparisonGroupChartDataEntity> response = await _getComparisonGroupDataUseCase(startDate: dateSelector.startDate!, endDate: dateSelector.endDate!);
     response.fold((DashboardError failure) {
+      onError(failure);
       return failure;
     }, (ComparisonGroupChartDataEntity value) {
       setComparisonChartGroup(value);

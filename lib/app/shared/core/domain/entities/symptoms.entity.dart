@@ -1,7 +1,7 @@
 abstract class SymptomEntity {
-  int? id;
-  String? label;
-  String? dateReport;
+  late int id;
+  late String label;
+  late String dateReport;
 
   Map<String, dynamic> get toJson;
 }

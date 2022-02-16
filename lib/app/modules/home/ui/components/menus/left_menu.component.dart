@@ -26,7 +26,7 @@ class _LeftMenuState extends State<LeftMenu> {
     double widthScreen = MediaQuery.of(context).size.width;
     double maxScreen = 1000;
 
-    if(widthScreen<=768){
+    if(widthScreen<=maxScreen){
       collapseDrawer(false);
     }
     return Container(
@@ -68,7 +68,7 @@ class _LeftMenuState extends State<LeftMenu> {
                     Image.asset("assets/images/logo_h.png",
                       width: 120,
                     ),
-                    widthScreen<=790?SizedBox(
+                    widthScreen<=maxScreen?SizedBox(
                         width: 40,
                         height: 40,
                         child: Image.asset("assets/images/logo.png")):SizedBox(

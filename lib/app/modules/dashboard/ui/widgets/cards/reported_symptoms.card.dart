@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:value_panel/app/modules/dashboard/domain/entities/symptoms_group_chart.entity.dart';
+import 'package:value_panel/app/modules/dashboard/infra/models/symptoms_value_chart.model.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/tiles/symptom_appointments.tile.dart';
 import 'package:value_panel/app/modules/monitoring/infra/models/symptom.model.dart';
 import 'package:value_panel/app/shared/utils.dart';
 
 class SymptomReportedCard extends StatelessWidget {
-  const SymptomReportedCard({Key? key}) : super(key: key);
+  SymptomsGroupChartDataEntity reportedSymptomsGroup;
+  SymptomReportedCard({required this.reportedSymptomsGroup, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(15),
       child: Container(
         height: 130,
         padding: const EdgeInsets.all(15),
@@ -33,8 +36,11 @@ class SymptomReportedCard extends StatelessWidget {
             Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: 20,
-                itemBuilder: (context, item)=>SymptomAppointmentsTile(symptom: Symptom(id: 1, label: "Febre"), value: 252, date: '03/01/1996'),
+                itemCount: reportedSymptomsGroup.values.length,
+                itemBuilder: (context, item) {
+                  SymptomsValueChartData data = reportedSymptomsGroup.values[item];
+                  return SymptomAppointmentsTile(symptom: Symptom(id: 1, label: data.symptom), percentage: data.percentage , quantity: data.quantity, date: reportedSymptomsGroup.comparison);
+                },
               ),
             ),
             Container(

@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:either_dart/either.dart';
-import 'package:value_panel/app/modules/dashboard/domain/entities/comparison_group_chart_data.entity.dart';
+import 'package:value_panel/app/modules/dashboard/domain/entities/groups_chart.entity.dart';
 import 'package:value_panel/app/modules/dashboard/domain/repositories/repository.dart';
 import 'package:value_panel/app/modules/dashboard/errors/dashboard.errors.dart';
-import 'package:value_panel/app/modules/dashboard/infra/models/group_comparison_chart.model.dart';
+import 'package:value_panel/app/modules/dashboard/infra/models/groups_chart.model.dart';
 import 'package:value_panel/app/shared/custom_dio/custom.dio.dart';
 
 class JsonGeneratorDashboardRepository implements DashboardRepository{
@@ -17,7 +17,7 @@ class JsonGeneratorDashboardRepository implements DashboardRepository{
   Future<Either<DashboardError, ComparisonGroupChartDataEntity>> getAllComparisonGroupChartData({required DateTime startDate, required DateTime endDate}) async{
     try{
       var response = await _customDio.client.get("https://api.json-generator.com/templates/GsoHyu6Aa0DY/data", options: Options(headers: _header));
-      ComparisonGroupChartData comparisonGroupChartData = ComparisonGroupChartData.fromJson(response.data);
+      GroupsChart comparisonGroupChartData = GroupsChart.fromJson(response.data);
       return Right(comparisonGroupChartData);
     }on DioError catch(e){
       return Left(DashboardRepositoryError(statusCode: e.response?.statusCode));

@@ -3,13 +3,13 @@ import 'package:value_panel/app/shared/core/domain/entities/symptoms.entity.dart
 class Symptom implements SymptomEntity{
 
   @override
-  int? id;
+  late final int id;
 
   @override
-  String? dateReport;
+  late String dateReport;
 
   @override
-  String? label;
+  late final String label;
 
   Symptom({required this.id, required this.label, this.dateReport = ''});
 

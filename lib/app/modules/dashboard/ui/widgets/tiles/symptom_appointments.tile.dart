@@ -7,14 +7,15 @@ import 'package:value_panel/app/shared/utils.dart';
 
 class SymptomAppointmentsTile extends StatelessWidget {
   final SymptomEntity symptom;
-  final int value;
+  final int quantity;
+  final double percentage;
   final String date;
-  const SymptomAppointmentsTile({required this.symptom, required this.value, required this.date, Key? key}) : super(key: key);
+  const SymptomAppointmentsTile({required this.symptom, required this.quantity, required this.percentage, required this.date, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
       child: Column(
         children: [
           Row(
@@ -34,16 +35,18 @@ class SymptomAppointmentsTile extends StatelessWidget {
                       offset: const Offset(0, 10), // changes position of shadow
                     )],
                 ),
-                child: Center(child: SvgPicture.asset('assets/images/symptoms/Desânimo Ansiedade.svg', width: 60)),
+                child: Center(child: SvgPicture.asset('assets/images/symptoms/${symptom.label}.svg', width: 60)),
               ),
-              Container(
-                margin: const EdgeInsets.only(left: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Cansaço Fadiga', style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14),),
-                    Text('Sintoma', style: GoogleFonts.cairo(fontWeight: FontWeight.normal, fontSize: 11, color: Colors.grey),),
-                  ],
+              Expanded(
+                child: Container(
+                  margin: const EdgeInsets.only(left: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(symptom.label, style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14)),
+                      Text('Sintoma', style: GoogleFonts.cairo(fontWeight: FontWeight.normal, fontSize: 12, color: Colors.grey)),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -58,7 +61,7 @@ class SymptomAppointmentsTile extends StatelessWidget {
                   gradient: LinearGradient(
                     colors: gradientColors,
                   ),
-                  value: 50,
+                  value: percentage,
                 ),
               )
           ),
@@ -69,16 +72,18 @@ class SymptomAppointmentsTile extends StatelessWidget {
                 maxLines: 3,
                 text: TextSpan(
                     children: <TextSpan>[
-                      TextSpan(text: "200 ",
+                      TextSpan(text: quantity.toString(),
                           style:GoogleFonts.openSans(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black)
                       ),
-                      TextSpan(text: "Marcações",
-                          style:GoogleFonts.openSans(fontSize: 12, fontWeight: FontWeight.w600, color: Colors.grey)
+                      TextSpan(text: " Marcações",
+                          style:GoogleFonts.openSans(fontSize: 12, fontWeight: FontWeight.w600, color: Colors.black)
                       ),
                     ]
                 ),
               ),
-              Text("Até a data 12/05/2020", style:GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.grey)
+              Flexible(
+                child: Text("Até a data $date", style:GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.grey)
+                ),
               ),
             ],
           )
