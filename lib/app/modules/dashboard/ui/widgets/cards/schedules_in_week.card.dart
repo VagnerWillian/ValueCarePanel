@@ -76,7 +76,7 @@ class LineChartVertical extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  LineHChart(width: 400, height: 250, chartDataConfig: _chartDataConfig,),
+                  LineHChart(width: 430, height: 240, chartDataConfig: _chartDataConfig,),
                   Expanded(
                     child: Column(
                       children: [

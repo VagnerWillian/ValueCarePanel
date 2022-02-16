@@ -107685,7 +107685,7 @@ s=A.a(s.a,"comparison")
 s=A.cg(o,A.ax(q,14,B.n,o),s)
 q=B.ac.h(0,500)
 q.toString
-return new A.ci(B.dJ,A.an(o,new A.ci(B.aC,A.cX(A.b([k,A.bJ(A.b([new A.HN(400,250,m,o),A.eH(A.cX(A.b([r,p,A.Ax(o,o,B.bn,!0,o,A.cg(A.b([s,A.cg(o,A.ax(q,14,B.n,o)," de aumento")],t.Ne),o,o),B.Y,o,o,1,B.a3)],j),B.w,B.C,B.r),1)],j),B.w,B.b1,B.r)],j),B.bt,B.b1,B.r),o),B.i,o,o,new A.by(B.k,o,o,n,l,o,B.I),o,o,o,B.fC,o),o)}}
+return new A.ci(B.dJ,A.an(o,new A.ci(B.aC,A.cX(A.b([k,A.bJ(A.b([new A.HN(430,240,m,o),A.eH(A.cX(A.b([r,p,A.Ax(o,o,B.bn,!0,o,A.cg(A.b([s,A.cg(o,A.ax(q,14,B.n,o)," de aumento")],t.Ne),o,o),B.Y,o,o,1,B.a3)],j),B.w,B.C,B.r),1)],j),B.w,B.b1,B.r)],j),B.bt,B.b1,B.r),o),B.i,o,o,new A.by(B.k,o,o,n,l,o,B.I),o,o,o,B.fC,o),o)}}
 A.auk.prototype={
 $1(a){return new A.iO(a.b,a.a)},
 $S:658}
