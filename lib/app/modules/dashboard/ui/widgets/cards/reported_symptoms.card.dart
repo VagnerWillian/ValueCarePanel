@@ -3,12 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:value_panel/app/modules/dashboard/domain/entities/symptoms_group_chart.entity.dart';
 import 'package:value_panel/app/modules/dashboard/infra/models/symptoms_value_chart.model.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/tiles/symptom_appointments.tile.dart';
-import 'package:value_panel/app/shared/core/infra/models/symptom.model.dart';
 import 'package:value_panel/app/shared/utils.dart';
 
 class SymptomReportedCard extends StatelessWidget {
   SymptomsGroupChartDataEntity reportedSymptomsGroup;
-  SymptomReportedCard({required this.reportedSymptomsGroup, Key? key}) : super(key: key);
+  final Function goAnalytics;
+  SymptomReportedCard({required this.reportedSymptomsGroup, required this.goAnalytics, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class SymptomReportedCard extends StatelessWidget {
               height: 50,
               margin: const EdgeInsets.all(10),
               child: OutlinedButton(
-                onPressed: (){},
+                onPressed: ()=>goAnalytics(),
                 style: ButtonStyle(
                     side: MaterialStateProperty.all(BorderSide(color: primaryColor)),
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))

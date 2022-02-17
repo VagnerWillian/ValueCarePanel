@@ -11,6 +11,7 @@ import 'package:value_panel/app/modules/dashboard/domain/entities/groups_chart.e
 import 'package:value_panel/app/modules/dashboard/errors/dashboard.errors.dart';
 import 'package:value_panel/app/modules/dashboard/ui/dashboard_store.dart';
 import 'package:value_panel/app/modules/dashboard/ui/models/date_selector.model.dart';
+import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/classifications.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/new_cases.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/new_users.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/reported_symptoms.card.dart';
@@ -124,19 +125,19 @@ class DashboardPageState extends State<DashboardPage> {
                             value: _cGroup.newCases.value,
                             description: "Novos casos urgentes para classificar e agendar",
                             textContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore",
-                            goMonitoring: ()=>store.goMonitoring(),
-                            goScheduling: ()=>store.goScheduling(),
+                            goMonitoring: store.goMonitoring,
+                            goScheduling: store.goScheduling,
                           ),
                         ),
                         StaggeredGridTile.count(
                           crossAxisCellCount: MediaQuery.of(context).size.width<1355?2:1,
                           mainAxisCellCount: MediaQuery.of(context).size.width<1355?3:2,
-                          child: SymptomReportedCard(reportedSymptomsGroup: _cGroup.reportedSymptonsComparison),
+                          child: SymptomReportedCard(reportedSymptomsGroup: _cGroup.reportedSymptonsComparison, goAnalytics: store.goAnalytics),
                         ),
                         StaggeredGridTile.count(
                           crossAxisCellCount: MediaQuery.of(context).size.width<1355?2:1,
                           mainAxisCellCount: MediaQuery.of(context).size.width<1355?3:2,
-                          child: const SimpleCard(label: "Pacientes Ativos", value: 421, comparation: "+0,5%"),
+                          child: ClassificationsCard(basicGroupChartDataEntity: _cGroup.classifications),
                         ),
                         StaggeredGridTile.count(
                           crossAxisCellCount: MediaQuery.of(context).size.width<1355?4:2,

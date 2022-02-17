@@ -8,6 +8,7 @@ import 'core/domain/entities/classification.entity.dart';
 const String DASHBOARD_ROUTE = "/dashboard/";
 const String MONITORING_ROUTE = "/monitoramento/";
 const String SCHEDULING_ROUTE = "/agendamento/";
+const String ANALYTICS_ROUTE = "/analytics/";
 const String USERS_ROUTE = "/users/";
 
 

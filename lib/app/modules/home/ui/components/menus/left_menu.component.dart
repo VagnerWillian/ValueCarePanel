@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
 import 'package:value_panel/app/modules/home/ui/models/menu.model.dart';
 import 'package:value_panel/app/shared/utils.dart';

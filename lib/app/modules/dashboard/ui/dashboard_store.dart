@@ -67,6 +67,7 @@ abstract class _DashboardStoreBase with Store {
 
   void goMonitoring()=>homeStore.navigateTo(MONITORING_ROUTE);
   void goScheduling()=>homeStore.navigateTo(SCHEDULING_ROUTE);
+  void goAnalytics()=>homeStore.navigateTo(ANALYTICS_ROUTE);
 
   ///////////////////////////////////// PRE-DATES LOGIC //////////////////////////
   void preDatesLogic() {
