@@ -5,10 +5,10 @@ import 'package:value_panel/app/shared/core/infra/models/classification.model.da
 import 'core/domain/entities/classification.entity.dart';
 
 //////////////// ROUTES ////////////////////////////
-const  String DASHBOARD_ROUTE = "/dashboard";
-const String MONITORING_ROUTE = "/monitoramento";
-const String SCHEDULING_ROUTE = "/agendamento";
-const String USERS_ROUTE = "/users";
+const String DASHBOARD_ROUTE = "/dashboard/";
+const String MONITORING_ROUTE = "/monitoramento/";
+const String SCHEDULING_ROUTE = "/agendamento/";
+const String USERS_ROUTE = "/users/";
 
 
 /////////////// COLORS //////////////////////////

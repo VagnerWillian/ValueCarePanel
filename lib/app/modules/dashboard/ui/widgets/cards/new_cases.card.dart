@@ -8,8 +8,8 @@ class NewCasesCard extends StatelessWidget {
   final String description, textContent;
   final double value;
   final IconData? icon;
-
-  const NewCasesCard({Key? key, required this.value, this.icon, required this.description, this.textContent = ''}) : super(key: key);
+  final Function? goMonitoring, goScheduling;
+  const NewCasesCard({Key? key, required this.value, this.icon, required this.description, this.textContent = '', required this.goMonitoring, required this.goScheduling}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +74,7 @@ class NewCasesCard extends StatelessWidget {
                     width: 150,
                     height: 40,
                     child: ElevatedButton(
-                        onPressed: ()=>Navigator.pushNamed(context, MONITORING_ROUTE),
+                        onPressed: ()=>goMonitoring!(),
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))),
                             backgroundColor: MaterialStateProperty.all(primaryColor)),
@@ -85,7 +85,7 @@ class NewCasesCard extends StatelessWidget {
                     width: 150,
                     height: 40,
                     child: ElevatedButton(
-                        onPressed: ()=>Navigator.pushNamed(context, SCHEDULING_ROUTE),
+                        onPressed: ()=>goScheduling!(),
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))),
                             backgroundColor: MaterialStateProperty.all(Colors.white)),

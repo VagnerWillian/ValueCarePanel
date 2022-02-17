@@ -16,7 +16,7 @@ import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/new_users.car
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/reported_symptoms.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/schedules_in_week.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/simple.card.dart';
-import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/v_chart.card.dart';
+import 'package:value_panel/app/modules/dashboard/ui/widgets/cards/simple_with_v_chart.card.dart';
 import 'package:value_panel/app/shared/components/custom/gradient.button.dart';
 import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
 import 'package:value_panel/app/shared/components/dialogs/repository_error.dialog.dart';
@@ -124,6 +124,8 @@ class DashboardPageState extends State<DashboardPage> {
                             value: _cGroup.newCases.value,
                             description: "Novos casos urgentes para classificar e agendar",
                             textContent: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore",
+                            goMonitoring: ()=>store.goMonitoring(),
+                            goScheduling: ()=>store.goScheduling(),
                           ),
                         ),
                         StaggeredGridTile.count(

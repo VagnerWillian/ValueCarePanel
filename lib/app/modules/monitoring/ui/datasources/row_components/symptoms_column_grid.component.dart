@@ -35,7 +35,7 @@ class SymptomsColumnGrid extends StatelessWidget {
                       end: Alignment.bottomLeft,
                     ),
                     borderRadius: BorderRadius.circular(10)),
-                child: Center(child: SvgPicture.asset('assets/images/symptoms/${value[0].label}.svg', color: Colors.white))),
+                child: Center(child: SvgPicture.network(value[0].srcImage, color: Colors.white))),
           ),
           const SizedBox(width: 5,),
           Flexible(

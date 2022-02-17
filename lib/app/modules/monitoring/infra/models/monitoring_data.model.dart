@@ -1,6 +1,7 @@
 import 'package:intl/intl.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
-import 'package:value_panel/app/modules/monitoring/infra/models/symptom.model.dart';
+import 'package:value_panel/app/shared/core/domain/entities/symptoms.entity.dart';
+import 'package:value_panel/app/shared/core/infra/models/symptom.model.dart';
 
 class MonitoringData implements MonitoringDataEntity {
 
@@ -28,7 +29,7 @@ class MonitoringData implements MonitoringDataEntity {
   String? score;
 
   @override
-  List<Symptom>? symptoms;
+  List<SymptomEntity>? symptoms;
 
   @override
   String get idString => "#$id";
@@ -52,6 +53,7 @@ class MonitoringData implements MonitoringDataEntity {
     classification = json['classificacao'];
     solicitationDate = datePattern.format(DateTime.parse(json['dataSolicitada']));
     forward = json['encaminhar'];
+
   }
 
   @override

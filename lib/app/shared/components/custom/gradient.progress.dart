@@ -125,7 +125,7 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator>
                         colors: colors)),
               ),
             ),
-            Expanded(flex: (100-widget.value!).toInt(), child: Container(color: Colors.grey.shade200))
+            Expanded(flex: (100-widget.value!).toInt(), child: Container(color: Colors.transparent))
           ],
         ),
       ),

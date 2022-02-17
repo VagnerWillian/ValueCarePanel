@@ -17,7 +17,7 @@ class JsonGeneratorRepository implements SchedulingRepository{
   @override
   Future<Either<SchedulingError, List<SchedulingDataEntity>>> fetchSchedulingItemsFromIntervalDates({required DateTime startDate, required DateTime endDate}) async {
     try{
-      var response = await _customDio.client.get("https://api.json-generator.com/templates/4SAzQe1yEACA/data", options: Options(headers: _header));
+      var response = await _customDio.client.get("https://api.json-generator.com/templates/A4m9Zq79KT7I/data", options: Options(headers: _header));
       List<SchedulingDataEntity> schedulingDataItems = (response.data as List).map((i) => SchedulingData.fromJson(i)).toList();
       return Right(schedulingDataItems);
     }on DioError catch(e){
@@ -30,7 +30,7 @@ class JsonGeneratorRepository implements SchedulingRepository{
   @override
   Future<Either<SchedulingError, String>> generateReportDoc({required DateTime startDate, required DateTime endDate}) async{
     try{
-      var response = await _customDio.client.get("https://api.json-generator.com/templates/-Yly0aK_l3oM/data", options: Options(headers: _header));
+      var response = await _customDio.client.get("https://api.json-generator.com/templates/CewGX2FjpiVb/data", options: Options(headers: _header));
       return Right(response.data['url']);
     }on DioError catch(e){
       return Left(SchedulingRepositoryError(statusCode: e.response?.statusCode));

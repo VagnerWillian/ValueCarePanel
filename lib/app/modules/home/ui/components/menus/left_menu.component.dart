@@ -9,8 +9,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 class LeftMenu extends StatefulWidget {
   final List<MenuLeftItem> menus;
-
-  const LeftMenu({Key? key, required this.menus}) : super(key: key);
+  final Function? navigateTo;
+  final String actuallyRoute;
+  const LeftMenu({Key? key, required this.menus, required this.navigateTo, required this.actuallyRoute}) : super(key: key);
 
   @override
   State<LeftMenu> createState() => _LeftMenuState();
@@ -18,7 +19,6 @@ class LeftMenu extends StatefulWidget {
 
 class _LeftMenuState extends State<LeftMenu> {
 
-  int index = 0;
   bool isExpanded = true;
 
   @override
@@ -109,7 +109,7 @@ class _LeftMenuState extends State<LeftMenu> {
                             backgroundColor: MaterialStateProperty.all(Colors.white),
                             overlayColor: MaterialStateProperty.all(Colors.grey.withOpacity(0.1)),
                           ),
-                          onPressed: ()=>animationToPage(widget.menus.indexOf(item)),
+                          onPressed: ()=>widget.navigateTo!(item.route),
                           label: !isExpanded?Container():Text(item.label, style: GoogleFonts.cairo(textStyle: TextStyle(color: getTextColor(item), fontWeight: FontWeight.w600, fontSize: 14)) ,),
                           icon: Badge(
                             position: BadgePosition.topEnd(),
@@ -130,7 +130,7 @@ class _LeftMenuState extends State<LeftMenu> {
                       width: 5,
                       height: 50,
                       decoration: BoxDecoration(
-                        color: index==widget.menus.indexOf(item)?primaryColor:Colors.white,
+                        color: widget.actuallyRoute==item.route?primaryColor:Colors.white,
                         borderRadius: BorderRadius.circular(100)
                       ),
                     )
@@ -183,22 +183,9 @@ class _LeftMenuState extends State<LeftMenu> {
     );
   }
 
-  void setIndex(int index)=> setState(() => this.index=index);
   void collapseDrawer(bool value)=> setState(() => isExpanded=value);
 
-  Color? getSvgColor(MenuLeftItem item)=>index==widget.menus.indexOf(item)?primaryColor:greyColor;
-  Color? getTextColor(MenuLeftItem item)=>index==widget.menus.indexOf(item)?primaryColor:greyColor;
+  Color? getSvgColor(MenuLeftItem item)=>widget.actuallyRoute==item.route?primaryColor:greyColor;
+  Color? getTextColor(MenuLeftItem item)=>widget.actuallyRoute==item.route?primaryColor:greyColor;
 
-  void animationToPage(int page){
-    if(page==0){
-      Modular.to.navigate(DASHBOARD_ROUTE);
-    }else if(page==1){
-      Modular.to.navigate(MONITORING_ROUTE);
-    }else if(page==2){
-      Modular.to.navigate(SCHEDULING_ROUTE);
-    }else if(page==6){
-      Modular.to.navigate(USERS_ROUTE);
-    }
-    setIndex(page);
-  }
 }

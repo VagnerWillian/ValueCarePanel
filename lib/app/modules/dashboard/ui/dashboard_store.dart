@@ -1,4 +1,5 @@
 import 'package:either_dart/either.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:mobx/mobx.dart';
 import 'package:value_panel/app/modules/dashboard/domain/entities/groups_chart.entity.dart';
@@ -6,6 +7,8 @@ import 'package:value_panel/app/modules/dashboard/domain/usecases/get_comparison
 import 'package:value_panel/app/modules/dashboard/errors/dashboard.errors.dart';
 import 'package:value_panel/app/modules/dashboard/infra/models/groups_chart.model.dart';
 import 'package:value_panel/app/modules/dashboard/ui/models/date_selector.model.dart';
+import 'package:value_panel/app/modules/home/ui/home_store.dart';
+import 'package:value_panel/app/shared/utils.dart';
 
 part 'dashboard_store.g.dart';
 
@@ -13,6 +16,7 @@ class DashboardStore = _DashboardStoreBase with _$DashboardStore;
 abstract class _DashboardStoreBase with Store {
 
   final GetComparisonGroupDataUseCase _getComparisonGroupDataUseCase;
+  final HomeStore homeStore = Modular.get();
 
   _DashboardStoreBase(this._getComparisonGroupDataUseCase){
     preDatesLogic();
@@ -61,6 +65,8 @@ abstract class _DashboardStoreBase with Store {
     setLoading(false);
   }
 
+  void goMonitoring()=>homeStore.navigateTo(MONITORING_ROUTE);
+  void goScheduling()=>homeStore.navigateTo(SCHEDULING_ROUTE);
 
   ///////////////////////////////////// PRE-DATES LOGIC //////////////////////////
   void preDatesLogic() {

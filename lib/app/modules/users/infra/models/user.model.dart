@@ -24,10 +24,10 @@ class UserModel implements UserEntity{
 
   UserModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    name = json['name'];
-    levelAccess = json['levelAccess'];
-    picture = json['picture'];
-    phone = json['phone'];
+    name = json['nome'];
+    levelAccess = json['nivel'];
+    picture = json['foto'];
+    phone = json['telefone'];
     email = json['email'];
   }
 

@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:value_panel/app/modules/dashboard/domain/entities/symptoms_group_chart.entity.dart';
 import 'package:value_panel/app/modules/dashboard/infra/models/symptoms_value_chart.model.dart';
 import 'package:value_panel/app/modules/dashboard/ui/widgets/tiles/symptom_appointments.tile.dart';
-import 'package:value_panel/app/modules/monitoring/infra/models/symptom.model.dart';
+import 'package:value_panel/app/shared/core/infra/models/symptom.model.dart';
 import 'package:value_panel/app/shared/utils.dart';
 
 class SymptomReportedCard extends StatelessWidget {
@@ -39,7 +39,7 @@ class SymptomReportedCard extends StatelessWidget {
                 itemCount: reportedSymptomsGroup.values.length,
                 itemBuilder: (context, item) {
                   SymptomsValueChartData data = reportedSymptomsGroup.values[item];
-                  return SymptomAppointmentsTile(symptom: Symptom(id: 1, label: data.symptom), percentage: data.percentage , quantity: data.quantity, date: reportedSymptomsGroup.comparison);
+                  return SymptomAppointmentsTile(symptom: data.symptom, percentage: data.percentage , quantity: data.quantity, date: reportedSymptomsGroup.comparison);
                 },
               ),
             ),

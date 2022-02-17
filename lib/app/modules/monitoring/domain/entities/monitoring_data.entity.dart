@@ -1,9 +1,9 @@
-import 'package:value_panel/app/modules/monitoring/infra/models/symptom.model.dart';
+import 'package:value_panel/app/shared/core/domain/entities/symptoms.entity.dart';
 
 abstract class MonitoringDataEntity {
   int? id;
   String? date;
-  List<Symptom>? symptoms;
+  List<SymptomEntity>? symptoms;
   String? patient;
   String? score;
   int? classification;

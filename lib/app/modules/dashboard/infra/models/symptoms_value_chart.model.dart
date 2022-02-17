@@ -1,4 +1,6 @@
 import 'package:value_panel/app/modules/dashboard/domain/entities/symptoms_value_chart.entity.dart';
+import 'package:value_panel/app/shared/core/domain/entities/symptoms.entity.dart';
+import 'package:value_panel/app/shared/core/infra/models/symptom.model.dart';
 
 class SymptomsValueChartData implements SymptomValueChartDataEntity{
 
@@ -6,7 +8,7 @@ class SymptomsValueChartData implements SymptomValueChartDataEntity{
   double percentage = 0;
 
   @override
-  String symptom = 'Nan';
+  SymptomEntity symptom = Symptom(id: 0, label: '');
 
   @override
   int quantity = 0;
@@ -15,7 +17,7 @@ class SymptomsValueChartData implements SymptomValueChartDataEntity{
 
   SymptomsValueChartData.fromJson(Map<String, dynamic> json) {
     percentage = json['porcentagem']??0;
-    symptom = json['sintoma']??0;
+    symptom = Symptom.fromJson(json['sintoma']);
     quantity = json['quantidade']??0;
   }
 

@@ -17,7 +17,7 @@ class JsonGeneratorRepository implements UsersRepository{
   Future<Either<UsersError, List<UserEntity>>> getAllUsers() async{
     try{
       await Future.delayed(const Duration(seconds: 2));
-      var response = await _customDio.client.post("https://api.json-generator.com/templates/dGfUm_9fGjZK/data", options: Options(headers: _header));
+      var response = await _customDio.client.post("https://api.json-generator.com/templates/IdThcNaNoWfV/data", options: Options(headers: _header));
       List<UserEntity> users = (response.data as List).map((u) => UserModel.fromJson(u)).toList();
       return Right(users);
     }on DioError catch(e){

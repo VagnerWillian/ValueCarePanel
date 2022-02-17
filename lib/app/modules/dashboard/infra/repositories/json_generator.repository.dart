@@ -11,12 +11,12 @@ class JsonGeneratorDashboardRepository implements DashboardRepository{
   final CustomDio _customDio;
   JsonGeneratorDashboardRepository(this._customDio);
 
-  final _header = {"Authorization":"Bearer ldhkns7svaq3wfb1faf6r4dfsa1bd8hua71d6lm6"};
+  final _header = {"Authorization":"Bearer kf62xpo2f9fwi8c2vtmoqfpxwfvs3okngz58pgam"};
 
   @override
   Future<Either<DashboardError, ComparisonGroupChartDataEntity>> getAllComparisonGroupChartData({required DateTime startDate, required DateTime endDate}) async{
     try{
-      var response = await _customDio.client.get("https://api.json-generator.com/templates/GsoHyu6Aa0DY/data", options: Options(headers: _header));
+      var response = await _customDio.client.get("https://api.json-generator.com/templates/sLP-7k5P4189/data", options: Options(headers: _header));
       GroupsChart comparisonGroupChartData = GroupsChart.fromJson(response.data);
       return Right(comparisonGroupChartData);
     }on DioError catch(e){

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,7 +36,11 @@ class SymptomAppointmentsTile extends StatelessWidget {
                       offset: const Offset(0, 10), // changes position of shadow
                     )],
                 ),
-                child: Center(child: SvgPicture.asset('assets/images/symptoms/${symptom.label}.svg', width: 60)),
+                child: Center(
+                  child: SvgPicture.network(
+                      symptom.srcImage,
+                  ),
+                ),
               ),
               Expanded(
                 child: Container(
