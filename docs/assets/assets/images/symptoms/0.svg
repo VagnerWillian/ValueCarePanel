@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="166.169" height="200" viewBox="0 0 166.169 200">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#8a2ce6"/>
+      <stop offset="0.523" stop-color="#4f01c4"/>
+      <stop offset="1" stop-color="#4159d0"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#8a2ce6"/>
+      <stop offset="0.527" stop-color="#4f01c4"/>
+      <stop offset="1" stop-color="#4159d0"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-5" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#8a2ce6"/>
+      <stop offset="0.515" stop-color="#4f01c4"/>
+      <stop offset="1" stop-color="#4159d0"/>
+    </linearGradient>
+  </defs>
+  <g id="Cansaço_-_Fadiga" data-name="Cansaço - Fadiga" transform="translate(0 0)">
+    <g id="Grupo_21" data-name="Grupo 21" transform="translate(2.534)">
+      <path id="Caminho_95" data-name="Caminho 95" d="M658.7-118.331A52.331,52.331,0,0,0,606.428-170.6a52.332,52.332,0,0,0-52.273,52.273,52.247,52.247,0,0,0,22.864,43.181h-2.41a50.057,50.057,0,0,0-50,50.006V6.669A22.755,22.755,0,0,0,547.337,29.4H665.523A22.754,22.754,0,0,0,688.245,6.669V-25.149a50.057,50.057,0,0,0-50-50.006h-2.41A52.247,52.247,0,0,0,658.7-118.331ZM638.245-66.058a40.955,40.955,0,0,1,40.909,40.909V6.669a13.65,13.65,0,0,1-13.636,13.636H651.882v-50a4.544,4.544,0,0,0-4.544-4.546,4.545,4.545,0,0,0-4.546,4.547V-2.278a22.645,22.645,0,0,0-18.182-9.231H570.064V-29.694a4.544,4.544,0,0,0-4.544-4.546,4.545,4.545,0,0,0-4.546,4.547V-6.967a4.543,4.543,0,0,0,4.547,4.544h59.087a13.657,13.657,0,0,1,13.636,13.637V20.3H547.338A13.657,13.657,0,0,1,533.7,6.668V-25.149A40.955,40.955,0,0,1,574.61-66.058Zm-31.818-9.091a43.229,43.229,0,0,1-43.182-43.181,43.229,43.229,0,0,1,43.185-43.187,43.229,43.229,0,0,1,43.182,43.183,43.229,43.229,0,0,1-43.182,43.186Z" transform="translate(-524.611 170.603)" fill="url(#linear-gradient)"/>
+      <path id="Caminho_96" data-name="Caminho 96" d="M577.209-128.818a7.2,7.2,0,0,0-7.2,7.195H584.4a7.194,7.194,0,0,0-7.194-7.194Z" transform="translate(-493.731 199.022)" fill="url(#linear-gradient-2)"/>
+    </g>
+    <path id="Caminho_97" data-name="Caminho 97" d="M573-140.047a1.9,1.9,0,0,0,2.628-.526,1.882,1.882,0,0,0,.317-1.049,1.889,1.889,0,0,0-.842-1.577l-2.846-1.9a5.31,5.31,0,0,0-7.359,1.481,1.518,1.518,0,0,1-2.1.419l-2.845-1.9a1.9,1.9,0,0,0-2.628.525,1.893,1.893,0,0,0-.282,1.423,1.894,1.894,0,0,0,.808,1.2l2.846,1.9a5.31,5.31,0,0,0,7.359-1.479,1.516,1.516,0,0,1,2.1-.421Z" transform="translate(-500.047 187.348)" fill="url(#linear-gradient-2)"/>
+    <path id="Caminho_98" data-name="Caminho 98" d="M595.858-140.047a1.893,1.893,0,0,0,2.625-.526,1.884,1.884,0,0,0,.319-1.049,1.89,1.89,0,0,0-.844-1.577l-2.846-1.9a5.311,5.311,0,0,0-7.359,1.481,1.517,1.517,0,0,1-2.1.419l-2.846-1.9a1.894,1.894,0,0,0-2.626.525,1.892,1.892,0,0,0-.283,1.423,1.892,1.892,0,0,0,.807,1.2l2.846,1.9a5.31,5.31,0,0,0,7.36-1.479,1.517,1.517,0,0,1,2.1-.421Z" transform="translate(-484.499 187.348)" fill="url(#linear-gradient-2)"/>
+    <g id="Grupo_22" data-name="Grupo 22" transform="translate(0 19.915)">
+      <path id="Caminho_99" data-name="Caminho 99" d="M536.982-144.688H523.1V-147.9l6.925-7.764h-3.518v1.739h-3.226v-4.826h13.648v2.851l-7.279,8.127h4.054V-149.7h3.275Z" transform="translate(-523.102 158.75)" fill="url(#linear-gradient-5)"/>
+    </g>
+    <g id="Grupo_23" data-name="Grupo 23" transform="translate(7.876 37.819)">
+      <path id="Caminho_100" data-name="Caminho 100" d="M537.131-138.63h-9.344v-2.163l4.662-5.225h-2.367v1.172h-2.169v-3.247H537.1v1.92l-4.9,5.469h2.727V-142h2.2Z" transform="translate(-527.789 148.094)" fill="url(#linear-gradient-5)"/>
+    </g>
+    <g id="Grupo_24" data-name="Grupo 24" transform="translate(17.443 51.477)">
+      <path id="Caminho_101" data-name="Caminho 101" d="M539.948-133.414h-6.469v-1.5l3.224-3.616h-1.633v.811h-1.5v-2.247h6.357v1.329l-3.388,3.785h1.889v-.893h1.524Z" transform="translate(-533.484 139.964)" fill="url(#linear-gradient-5)"/>
+    </g>
+  </g>
+</svg>
