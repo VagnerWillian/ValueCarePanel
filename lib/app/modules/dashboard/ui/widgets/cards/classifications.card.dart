@@ -1,4 +1,5 @@
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -25,7 +26,9 @@ class _ClassificationsCardState extends State<ClassificationsCard> {
 
   @override
   Widget build(BuildContext context) {
-    widget.basicGroupChartDataEntity.values.map((e) => print(e.label)).toList();
+    final double screenWidth = MediaQuery.of(context).size.width;
+    const double maxWidth = 790;
+
     return Padding(
       padding: const EdgeInsets.all(15),
       child: Container(
@@ -54,32 +57,36 @@ class _ClassificationsCardState extends State<ClassificationsCard> {
               'Média de classificações no período',
               style: GoogleFonts.cairo(fontWeight: FontWeight.normal, fontSize: 15, color: Colors.grey),
             ),
-            Expanded(
-              child: PieChart(
-                PieChartData(
-                    pieTouchData: PieTouchData(touchCallback: (FlTouchEvent event, pieTouchResponse) {
-                      setState(() {
-                        if (!event.isInterestedForInteractions || pieTouchResponse == null || pieTouchResponse.touchedSection == null) {
-                          touchedIndex = -1;
-                          return;
-                        }
-                        touchedIndex = pieTouchResponse.touchedSection!.touchedSectionIndex;
-                      });
-                    }),
-                    borderData: FlBorderData(
-                      show: false,
-                    ),
-                    sectionsSpace: 0,
-                    centerSpaceRadius: 60,
-                    sections: showingSections()),
+            Expanded(flex: 1,
+              child: Padding(
+                padding: EdgeInsets.all(screenWidth<maxWidth?0:30),
+                child: PieChart(
+                  PieChartData(
+                      pieTouchData: PieTouchData(touchCallback: (FlTouchEvent event, pieTouchResponse) {
+                        setState(() {
+                          if (!event.isInterestedForInteractions || pieTouchResponse == null || pieTouchResponse.touchedSection == null) {
+                            touchedIndex = -1;
+                            return;
+                          }
+                          touchedIndex = pieTouchResponse.touchedSection!.touchedSectionIndex;
+                        });
+                      }),
+                      borderData: FlBorderData(
+                        show: false,
+                      ),
+                      sectionsSpace: 0,
+                      sections: showingSections()),
+                ),
               ),
             ),
             Text(
               'Legenda',
               style: GoogleFonts.cairo(fontWeight: FontWeight.normal, fontSize: 15, color: Colors.grey),
             ),
-            Flexible(
+            SingleChildScrollView(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.max,
                 children: widget.basicGroupChartDataEntity.values.map((i) => ClassificationTile(classificationValueChartData: i)).toList(),
               ),
             )
