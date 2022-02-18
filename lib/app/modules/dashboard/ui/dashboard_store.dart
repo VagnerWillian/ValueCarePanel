@@ -5,7 +5,9 @@ import 'package:mobx/mobx.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:value_panel/app/modules/dashboard/domain/entities/chart/groups_chart.entity.dart';
 import 'package:value_panel/app/modules/dashboard/domain/entities/monitoring_data.entity.dart';
+import 'package:value_panel/app/modules/dashboard/domain/usecases/download_archive.usecase.dart';
 import 'package:value_panel/app/modules/dashboard/domain/usecases/fetch_monitoring_from_interval_dates.usecase.dart';
+import 'package:value_panel/app/modules/dashboard/domain/usecases/fetch_report_doc_src.usecase.dart.dart';
 import 'package:value_panel/app/modules/dashboard/domain/usecases/get_comparison_data.usecase.dart';
 import 'package:value_panel/app/modules/dashboard/domain/usecases/update_monitoring_item.usecase.dart';
 import 'package:value_panel/app/modules/dashboard/errors/dashboard.errors.dart';
@@ -20,16 +22,26 @@ part 'dashboard_store.g.dart';
 class DashboardStore = _DashboardStoreBase with _$DashboardStore;
 abstract class _DashboardStoreBase with Store {
 
-  final GetComparisonGroupDataUseCase _getComparisonGroupDataUseCase;
-  final FetchMonitoringDataFromIntervalDatesUseCase _fetchMonitoringDataFromIntervalDatesUseCase;
-  final UpdateMonitoringItemUseCase _updateMonitoringItemUseCase;
+  // UseCases
+  final GetComparisonGroupDataUseCase getComparisonGroupDataUseCase;
+  final FetchMonitoringDataFromIntervalDatesUseCase fetchMonitoringDataFromIntervalDatesUseCase;
+  final UpdateMonitoringItemUseCase updateMonitoringItemUseCase;
+  final FetchReportDocSrcUseCase fetchReportDocSrc;
+  final DownloadArchiveUseCase downloadArchive;
+
+  // Stores
   final HomeStore homeStore = Modular.get();
 
   //OTHERS
   final DataPagerController dataPagerController = DataPagerController();
   late MonitoringDataSource monitoringDataSource;
 
-  _DashboardStoreBase(this._getComparisonGroupDataUseCase, this._fetchMonitoringDataFromIntervalDatesUseCase, this._updateMonitoringItemUseCase){
+  _DashboardStoreBase(
+      {required this.getComparisonGroupDataUseCase,
+        required this.fetchMonitoringDataFromIntervalDatesUseCase,
+        required this.updateMonitoringItemUseCase,
+        required this.fetchReportDocSrc,
+        required this.downloadArchive}){
     monitoringDataSource = MonitoringDataSource(updateMonitoringItem: updateMonitoringItem);
     preDatesLogic();
   }
@@ -83,7 +95,7 @@ abstract class _DashboardStoreBase with Store {
 
   void loadAnalyticsDataFromSelectorDate(DateSelector dateSelector, Function onError)async {
     setLoadingAnalytics(true);
-    Either<DashboardError, ComparisonGroupChartDataEntity> response = await _getComparisonGroupDataUseCase(startDate: dateSelector.startDate!, endDate: dateSelector.endDate!);
+    Either<DashboardError, ComparisonGroupChartDataEntity> response = await getComparisonGroupDataUseCase(startDate: dateSelector.startDate!, endDate: dateSelector.endDate!);
     response.fold((DashboardError failure) {
       onError(failure);
       return failure;
@@ -96,7 +108,7 @@ abstract class _DashboardStoreBase with Store {
 
     void loadMonitoringItemsFromSelectorDate(DateSelector dateSelector, Function onError)async{
     setLoadingMonitoring(true);
-    Either<DashboardError, List<MonitoringDataEntity>> response = await _fetchMonitoringDataFromIntervalDatesUseCase(startDate: dateSelector.startDate!, endDate: dateSelector.endDate!);
+    Either<DashboardError, List<MonitoringDataEntity>> response = await fetchMonitoringDataFromIntervalDatesUseCase(startDate: dateSelector.startDate!, endDate: dateSelector.endDate!);
     response.fold((DashboardError failure) {
       onError(failure);
       monitoringDataSource.updateList([]);
@@ -110,7 +122,7 @@ abstract class _DashboardStoreBase with Store {
 
   Future<Either<DashboardError, bool>> updateMonitoringItem(MonitoringDataEntity monitoringDataEntity, Function onError) async {
     setLoadingUpdateMonitoring(true);
-    Either<DashboardError, bool> response = await _updateMonitoringItemUseCase(monitoringDataEntity: monitoringDataEntity);
+    Either<DashboardError, bool> response = await updateMonitoringItemUseCase(monitoringDataEntity: monitoringDataEntity);
     response.fold((DashboardError failure) {
       onError(failure);
       return failure;
@@ -120,6 +132,30 @@ abstract class _DashboardStoreBase with Store {
     setLoadingUpdateMonitoring(false);
     return response;
   }
+
+  ////////////////////////// EXPORTAR RELATORIO ///////////////////////////////////////
+  void downloadReportDocFromSrc({required String url, on}) {
+    try{
+      downloadArchive(url: url);
+    }catch(e){
+      // TODO IMPLEMENTAR TRATAMENTO DE FALHA DOWNLOAD
+    }
+  }
+
+  Future<Either<DashboardError, String>> exportReportDoc(Function onError)async{
+    Either<DashboardError, String> responseSrcOfDoc = await fetchReportDocSrc(
+        startDate: dateSelector!.startDate!,
+        endDate: dateSelector!.endDate!
+    );
+    await responseSrcOfDoc.fold((DashboardError failure) async{
+      await onError(failure);
+      return failure;
+    }, (String url) {
+      downloadReportDocFromSrc(url: url);
+    });
+    return responseSrcOfDoc;
+  }
+
 
   void goMonitoring()=>homeStore.navigateTo(MONITORING_ROUTE);
   void goScheduling()=>homeStore.navigateTo(SCHEDULING_ROUTE);

@@ -22,6 +22,7 @@ import 'package:value_panel/app/modules/dashboard/ui/dashboard_store.dart';
 import 'package:value_panel/app/modules/dashboard/ui/models/date_selector.model.dart';
 import 'package:value_panel/app/shared/components/custom/gradient.button.dart';
 import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
+import 'package:value_panel/app/shared/components/dialogs/loading.dialog.dart';
 import 'package:value_panel/app/shared/components/dialogs/repository_error.dialog.dart';
 import 'package:value_panel/app/shared/components/page_title_description.widget.dart';
 import 'package:value_panel/app/shared/utils.dart';
@@ -307,7 +308,7 @@ class DashboardPageState extends State<DashboardPage> {
                 Observer(
                   builder: (_) => GradientButton(
                     height: 50,
-                    onPressed: () {},
+                    onPressed: ()=>store.exportReportDoc(onError),
                     gradient: LinearGradient(
                       colors: store.loadingAnalytics ? [Colors.grey, Colors.grey] : gradientColors,
                       begin: Alignment.topCenter,
@@ -467,6 +468,21 @@ class DashboardPageState extends State<DashboardPage> {
           [DateSelector(label: "Selecionar período...", startDate: null, endDate: null, dynamic: true)]);
       store.onChangedSelectorDate(v, onError);
     }
+  }
+
+  generateReportDoc() {
+    if (!store.loadingMonitoringItems) {
+      return () async{
+        showDialog(
+            barrierColor: dialogBackgroundColor,
+            barrierDismissible: false,
+            context: context,
+            builder: (_) => const LoadingDialog());
+        await store.exportReportDoc(onError);
+        Modular.to.pop();
+      };
+    }
+    return null;
   }
 
   Future onError(DashboardError failure) async {

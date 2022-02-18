@@ -53,4 +53,16 @@ class JsonGeneratorDashboardRepository implements DashboardRepository{
       return Left(DashboardRepositoryError(message: e.toString()));
     }
   }
+
+  @override
+  Future<Either<DashboardError, String>> generateReportDoc({required DateTime startDate, required DateTime endDate}) async{
+    try{
+      var response = await _customDio.client.get("https://api.json-generator.com/templates/CewGX2FjpiVb/data", options: Options(headers: _header));
+      return Right(response.data['url']);
+    }on DioError catch(e){
+      return Left(DashboardRepositoryError(statusCode: e.response?.statusCode));
+    }catch(e){
+      return Left(DashboardRepositoryError(message: e.toString()));
+    }
+  }
 }

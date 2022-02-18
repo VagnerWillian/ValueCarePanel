@@ -1,9 +1,9 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:value_panel/app/modules/scheduling/domain/application/download_archive.application.dart';
-import 'package:value_panel/app/modules/scheduling/domain/application/fetch_report_doc_src.application.dart';
-import 'package:value_panel/app/modules/scheduling/domain/application/fetch_scheduling_items_from_interval_dates.application.dart';
-import 'package:value_panel/app/modules/scheduling/domain/application/update_monitoring_item.application.dart';
 import 'package:value_panel/app/modules/scheduling/domain/repositories/repository.dart';
+import 'package:value_panel/app/modules/scheduling/domain/services/download_archive.service.dart';
+import 'package:value_panel/app/modules/scheduling/domain/services/fetch_report_doc_src.service.dart';
+import 'package:value_panel/app/modules/scheduling/domain/services/fetch_scheduling_items_from_interval_dates.service.dart';
+import 'package:value_panel/app/modules/scheduling/domain/services/update_monitoring_item.service.dart';
 import 'package:value_panel/app/modules/scheduling/domain/usecases/download_archive.usecase.dart';
 import 'package:value_panel/app/modules/scheduling/domain/usecases/fetch_report_doc_src.usecase.dart.dart';
 import 'package:value_panel/app/modules/scheduling/domain/usecases/fetch_scheduling_items_from_interval_dates.usecase.dart';

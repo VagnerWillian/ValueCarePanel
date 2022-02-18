@@ -24,4 +24,10 @@ class ApiDashBoardRepository implements DashboardRepository{
     throw UnimplementedError();
   }
 
+  @override
+  Future<Either<DashboardError, String>> generateReportDoc({required DateTime startDate, required DateTime endDate}) {
+    // TODO: implement generateReportDoc
+    throw UnimplementedError();
+  }
+
 }

@@ -1,9 +1,9 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:value_panel/app/modules/monitoring/domain/application/download_archive.application.dart';
-import 'package:value_panel/app/modules/monitoring/domain/application/fetch_monitoring_from_interval_dates.application.dart';
-import 'package:value_panel/app/modules/monitoring/domain/application/fetch_report_doc_src.application.dart';
-import 'package:value_panel/app/modules/monitoring/domain/application/update_monitoring_item.application.dart';
 import 'package:value_panel/app/modules/monitoring/domain/repositories/repository.dart';
+import 'package:value_panel/app/modules/monitoring/domain/services/download_archive.service.dart';
+import 'package:value_panel/app/modules/monitoring/domain/services/fetch_monitoring_from_interval_dates.service.dart';
+import 'package:value_panel/app/modules/monitoring/domain/services/fetch_report_doc_src.service.dart';
+import 'package:value_panel/app/modules/monitoring/domain/services/update_monitoring_item.service.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/download_archive.usecase.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/fetch_monitoring_from_interval_dates.usecase.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/fetch_report_doc_src.usecase.dart.dart';
@@ -17,8 +17,7 @@ class MonitoringModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.lazySingleton((i) => MonitoringStore(
-          fetchMonitoringDataFromIntervalDatesUseCase:
-              i.get<FetchMonitoringDataFromIntervalDatesUseCase>(),
+          fetchMonitoringDataFromIntervalDatesUseCase: i.get<FetchMonitoringDataFromIntervalDatesUseCase>(),
           fetchReportDocSrcUseCase: i.get<FetchReportDocSrcUseCase>(),
           downloadArchiveUseCase: i.get<DownloadArchiveUseCase>(),
           updateMonitoringItemUseCase: i.get<UpdateMonitoringItemUseCase>(),
