@@ -10,13 +10,13 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
 import 'package:value_panel/app/modules/monitoring/ui/models/date_selector.model.dart';
 import 'package:value_panel/app/modules/monitoring/ui/monitoring_store.dart';
-import 'package:value_panel/app/shared/utils.dart';
 import 'package:value_panel/app/shared/components/custom/gradient.button.dart';
 import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
 import 'package:value_panel/app/shared/components/dialogs/loading.dialog.dart';
 import 'package:value_panel/app/shared/components/dialogs/repository_error.dialog.dart';
 import 'package:value_panel/app/shared/components/page_title_description.widget.dart';
 import 'package:value_panel/app/shared/components/search/main_search.widget.dart';
+import 'package:value_panel/app/shared/utils.dart';
 
 class MonitoringPage extends StatefulWidget {
   const MonitoringPage({Key? key}) : super(key: key);

@@ -9,18 +9,53 @@ part of 'dashboard_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$DashboardStore on _DashboardStoreBase, Store {
-  final _$loadingAtom = Atom(name: '_DashboardStoreBase.loading');
+  final _$loadingAnalyticsAtom =
+      Atom(name: '_DashboardStoreBase.loadingAnalytics');
 
   @override
-  bool get loading {
-    _$loadingAtom.reportRead();
-    return super.loading;
+  bool get loadingAnalytics {
+    _$loadingAnalyticsAtom.reportRead();
+    return super.loadingAnalytics;
   }
 
   @override
-  set loading(bool value) {
-    _$loadingAtom.reportWrite(value, super.loading, () {
-      super.loading = value;
+  set loadingAnalytics(bool value) {
+    _$loadingAnalyticsAtom.reportWrite(value, super.loadingAnalytics, () {
+      super.loadingAnalytics = value;
+    });
+  }
+
+  final _$loadingMonitoringItemsAtom =
+      Atom(name: '_DashboardStoreBase.loadingMonitoringItems');
+
+  @override
+  bool get loadingMonitoringItems {
+    _$loadingMonitoringItemsAtom.reportRead();
+    return super.loadingMonitoringItems;
+  }
+
+  @override
+  set loadingMonitoringItems(bool value) {
+    _$loadingMonitoringItemsAtom
+        .reportWrite(value, super.loadingMonitoringItems, () {
+      super.loadingMonitoringItems = value;
+    });
+  }
+
+  final _$loadingUpdateMonitoringItemsAtom =
+      Atom(name: '_DashboardStoreBase.loadingUpdateMonitoringItems');
+
+  @override
+  bool get loadingUpdateMonitoringItems {
+    _$loadingUpdateMonitoringItemsAtom.reportRead();
+    return super.loadingUpdateMonitoringItems;
+  }
+
+  @override
+  set loadingUpdateMonitoringItems(bool value) {
+    _$loadingUpdateMonitoringItemsAtom
+        .reportWrite(value, super.loadingUpdateMonitoringItems, () {
+      super.loadingUpdateMonitoringItems = value;
     });
   }
 
@@ -75,11 +110,33 @@ mixin _$DashboardStore on _DashboardStoreBase, Store {
       ActionController(name: '_DashboardStoreBase');
 
   @override
-  void setLoading(bool value) {
+  void setLoadingAnalytics(bool value) {
     final _$actionInfo = _$_DashboardStoreBaseActionController.startAction(
-        name: '_DashboardStoreBase.setLoading');
+        name: '_DashboardStoreBase.setLoadingAnalytics');
     try {
-      return super.setLoading(value);
+      return super.setLoadingAnalytics(value);
+    } finally {
+      _$_DashboardStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setLoadingMonitoring(bool value) {
+    final _$actionInfo = _$_DashboardStoreBaseActionController.startAction(
+        name: '_DashboardStoreBase.setLoadingMonitoring');
+    try {
+      return super.setLoadingMonitoring(value);
+    } finally {
+      _$_DashboardStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setLoadingUpdateMonitoring(bool value) {
+    final _$actionInfo = _$_DashboardStoreBaseActionController.startAction(
+        name: '_DashboardStoreBase.setLoadingUpdateMonitoring');
+    try {
+      return super.setLoadingUpdateMonitoring(value);
     } finally {
       _$_DashboardStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -121,7 +178,9 @@ mixin _$DashboardStore on _DashboardStoreBase, Store {
   @override
   String toString() {
     return '''
-loading: ${loading},
+loadingAnalytics: ${loadingAnalytics},
+loadingMonitoringItems: ${loadingMonitoringItems},
+loadingUpdateMonitoringItems: ${loadingUpdateMonitoringItems},
 dateSelector: ${dateSelector},
 preDates: ${preDates},
 comparisonGroupChartData: ${comparisonGroupChartData}

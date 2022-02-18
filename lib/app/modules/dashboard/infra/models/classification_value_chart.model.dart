@@ -1,4 +1,4 @@
-import 'package:value_panel/app/modules/dashboard/domain/entities/classification_value_chart.entity.dart';
+import 'package:value_panel/app/modules/dashboard/domain/entities/chart/classification_value_chart.entity.dart';
 
 class ClassificationValueChartData implements ClassificationValueChartDataEntity{
 

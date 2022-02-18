@@ -1,5 +1,4 @@
-import 'package:value_panel/app/modules/dashboard/domain/entities/symptoms_group_chart.entity.dart';
-import 'package:value_panel/app/modules/dashboard/domain/entities/symptoms_value_chart.entity.dart';
+import 'package:value_panel/app/modules/dashboard/domain/entities/chart/symptoms_group_chart.entity.dart';
 import 'package:value_panel/app/modules/dashboard/infra/models/symptoms_value_chart.model.dart';
 
 class SymptomsGroupChartData<T> implements SymptomsGroupChartDataEntity{

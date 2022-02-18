@@ -12,7 +12,7 @@ class SchedulingRepositoryError extends SchedulingError implements RepositoryErr
   String? message;
 
   SchedulingRepositoryError({this.statusCode = 5, this.message}) {
-      message ??= responseErrors[statusCode];
+    message ??= responseErrors[statusCode]??statusCode.toString();
   }
 
   @override

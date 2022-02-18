@@ -2,9 +2,9 @@ import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
 import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
-import 'package:value_panel/app/shared/utils.dart';
 import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
 import 'package:value_panel/app/shared/components/dialogs/repository_error.dialog.dart';
+import 'package:value_panel/app/shared/utils.dart';
 
 class ReferColumnGrid extends StatefulWidget {
   final MonitoringDataEntity value;

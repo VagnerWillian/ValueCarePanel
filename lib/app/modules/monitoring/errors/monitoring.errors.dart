@@ -12,7 +12,7 @@ class MonitoringRepositoryError extends MonitoringError implements RepositoryErr
   String? message;
 
   MonitoringRepositoryError({this.statusCode = 5, this.message}) {
-      message ??= responseErrors[statusCode];
+    message ??= responseErrors[statusCode]??statusCode.toString();
   }
 
   @override

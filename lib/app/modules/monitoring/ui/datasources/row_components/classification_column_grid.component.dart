@@ -2,12 +2,12 @@ import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:value_panel/app/shared/core/domain/entities/classification.entity.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
 import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
-import 'package:value_panel/app/shared/utils.dart';
 import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
 import 'package:value_panel/app/shared/components/dialogs/repository_error.dialog.dart';
+import 'package:value_panel/app/shared/core/domain/entities/classification.entity.dart';
+import 'package:value_panel/app/shared/utils.dart';
 
 class ClassificationColumnGrid extends StatefulWidget {
   final MonitoringDataEntity value;

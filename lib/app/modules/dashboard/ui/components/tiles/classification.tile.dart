@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:value_panel/app/modules/dashboard/domain/entities/classification_value_chart.entity.dart';
+import 'package:value_panel/app/modules/dashboard/domain/entities/chart/classification_value_chart.entity.dart';
 
 class ClassificationTile extends StatelessWidget {
   final ClassificationValueChartDataEntity classificationValueChartData;

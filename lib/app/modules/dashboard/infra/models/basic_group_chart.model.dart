@@ -1,4 +1,4 @@
-import 'package:value_panel/app/modules/dashboard/domain/entities/basic_group_chart.entity.dart';
+import 'package:value_panel/app/modules/dashboard/domain/entities/chart/basic_group_chart.entity.dart';
 import 'package:value_panel/app/modules/dashboard/infra/models/classification_value_chart.model.dart';
 
 class BasicGroupChartData<T> implements BasicGroupChartDataEntity{

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
-import 'package:value_panel/app/shared/errors/repository.error.dart';
 import 'package:value_panel/app/shared/errors/unknown.error.dart';
 import 'package:value_panel/app/shared/utils.dart';
 

@@ -2,10 +2,15 @@ import 'package:either_dart/either.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:mobx/mobx.dart';
-import 'package:value_panel/app/modules/dashboard/domain/entities/groups_chart.entity.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+import 'package:value_panel/app/modules/dashboard/domain/entities/chart/groups_chart.entity.dart';
+import 'package:value_panel/app/modules/dashboard/domain/entities/monitoring_data.entity.dart';
+import 'package:value_panel/app/modules/dashboard/domain/usecases/fetch_monitoring_from_interval_dates.usecase.dart';
 import 'package:value_panel/app/modules/dashboard/domain/usecases/get_comparison_data.usecase.dart';
+import 'package:value_panel/app/modules/dashboard/domain/usecases/update_monitoring_item.usecase.dart';
 import 'package:value_panel/app/modules/dashboard/errors/dashboard.errors.dart';
 import 'package:value_panel/app/modules/dashboard/infra/models/groups_chart.model.dart';
+import 'package:value_panel/app/modules/dashboard/ui/datasources/monitoring.datasource.dart';
 import 'package:value_panel/app/modules/dashboard/ui/models/date_selector.model.dart';
 import 'package:value_panel/app/modules/home/ui/home_store.dart';
 import 'package:value_panel/app/shared/utils.dart';
@@ -16,16 +21,29 @@ class DashboardStore = _DashboardStoreBase with _$DashboardStore;
 abstract class _DashboardStoreBase with Store {
 
   final GetComparisonGroupDataUseCase _getComparisonGroupDataUseCase;
+  final FetchMonitoringDataFromIntervalDatesUseCase _fetchMonitoringDataFromIntervalDatesUseCase;
+  final UpdateMonitoringItemUseCase _updateMonitoringItemUseCase;
   final HomeStore homeStore = Modular.get();
 
-  _DashboardStoreBase(this._getComparisonGroupDataUseCase){
+  //OTHERS
+  final DataPagerController dataPagerController = DataPagerController();
+  late MonitoringDataSource monitoringDataSource;
+
+  _DashboardStoreBase(this._getComparisonGroupDataUseCase, this._fetchMonitoringDataFromIntervalDatesUseCase, this._updateMonitoringItemUseCase){
+    monitoringDataSource = MonitoringDataSource(updateMonitoringItem: updateMonitoringItem);
     preDatesLogic();
   }
 
   // OSERVABLES
 
   @observable
-  bool loading = false;
+  bool loadingAnalytics = false;
+
+  @observable
+  bool loadingMonitoringItems = false;
+
+  @observable
+  bool loadingUpdateMonitoringItems = false;
 
   @observable
   DateSelector? dateSelector;
@@ -38,7 +56,13 @@ abstract class _DashboardStoreBase with Store {
 
   // ACTIONS
   @action
-  void setLoading(bool value) => loading=value;
+  void setLoadingAnalytics(bool value) => loadingAnalytics=value;
+
+  @action
+  void setLoadingMonitoring(bool value) => loadingMonitoringItems=value;
+
+  @action
+  void setLoadingUpdateMonitoring(bool value) => loadingUpdateMonitoringItems=value;
 
   @action
   void setDateSelector(DateSelector value)=>dateSelector=value;
@@ -53,7 +77,12 @@ abstract class _DashboardStoreBase with Store {
 
   Future onChangedSelectorDate(DateSelector dateSelector, Function onError) async {
     setDateSelector(dateSelector);
-    setLoading(true);
+    loadAnalyticsDataFromSelectorDate(dateSelector, onError);
+    loadMonitoringItemsFromSelectorDate(dateSelector, onError);
+  }
+
+  void loadAnalyticsDataFromSelectorDate(DateSelector dateSelector, Function onError)async {
+    setLoadingAnalytics(true);
     Either<DashboardError, ComparisonGroupChartDataEntity> response = await _getComparisonGroupDataUseCase(startDate: dateSelector.startDate!, endDate: dateSelector.endDate!);
     response.fold((DashboardError failure) {
       onError(failure);
@@ -62,7 +91,34 @@ abstract class _DashboardStoreBase with Store {
       setComparisonChartGroup(value);
       return value;
     });
-    setLoading(false);
+    setLoadingAnalytics(false);
+  }
+
+    void loadMonitoringItemsFromSelectorDate(DateSelector dateSelector, Function onError)async{
+    setLoadingMonitoring(true);
+    Either<DashboardError, List<MonitoringDataEntity>> response = await _fetchMonitoringDataFromIntervalDatesUseCase(startDate: dateSelector.startDate!, endDate: dateSelector.endDate!);
+    response.fold((DashboardError failure) {
+      onError(failure);
+      monitoringDataSource.updateList([]);
+      return failure;
+    }, (List<MonitoringDataEntity> values) {
+      monitoringDataSource.updateList(values);
+      return values;
+    });
+    setLoadingMonitoring(false);
+  }
+
+  Future<Either<DashboardError, bool>> updateMonitoringItem(MonitoringDataEntity monitoringDataEntity, Function onError) async {
+    setLoadingUpdateMonitoring(true);
+    Either<DashboardError, bool> response = await _updateMonitoringItemUseCase(monitoringDataEntity: monitoringDataEntity);
+    response.fold((DashboardError failure) {
+      onError(failure);
+      return failure;
+    }, (bool data) {
+      return data;
+    });
+    setLoadingUpdateMonitoring(false);
+    return response;
   }
 
   void goMonitoring()=>homeStore.navigateTo(MONITORING_ROUTE);

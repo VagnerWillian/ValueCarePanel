@@ -6,9 +6,9 @@ import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:value_panel/app/modules/scheduling/domain/entities/scheduling_data.entity.dart';
 import 'package:value_panel/app/modules/scheduling/errors/scheduling.errors.dart';
-import 'package:value_panel/app/shared/utils.dart';
 import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
 import 'package:value_panel/app/shared/components/dialogs/repository_error.dialog.dart';
+import 'package:value_panel/app/shared/utils.dart';
 
 class AppointmentDateColumnGrid extends StatefulWidget {
   final SchedulingDataEntity schedulingDataEntity;

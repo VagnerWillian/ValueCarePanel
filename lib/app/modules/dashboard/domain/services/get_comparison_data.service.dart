@@ -1,5 +1,5 @@
 import 'package:either_dart/either.dart';
-import 'package:value_panel/app/modules/dashboard/domain/entities/groups_chart.entity.dart';
+import 'package:value_panel/app/modules/dashboard/domain/entities/chart/groups_chart.entity.dart';
 import 'package:value_panel/app/modules/dashboard/domain/repositories/repository.dart';
 import 'package:value_panel/app/modules/dashboard/domain/usecases/get_comparison_data.usecase.dart';
 import 'package:value_panel/app/modules/dashboard/errors/dashboard.errors.dart';

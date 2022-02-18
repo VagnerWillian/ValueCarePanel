@@ -1,9 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:image_network/image_network.dart';
 import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
-import 'package:value_panel/app/modules/users/infra/models/user.model.dart';
 import 'package:value_panel/app/shared/core/domain/entities/user.entity.dart';
 import 'package:value_panel/app/shared/utils.dart';
 

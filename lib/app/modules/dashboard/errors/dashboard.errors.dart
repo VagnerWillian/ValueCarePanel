@@ -12,7 +12,7 @@ class DashboardRepositoryError extends DashboardError implements RepositoryError
   String? message;
 
   DashboardRepositoryError({this.statusCode = 5, this.message}) {
-      message ??= responseErrors[statusCode];
+    message ??= responseErrors[statusCode]??statusCode.toString();
   }
 
   @override

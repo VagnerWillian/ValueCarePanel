@@ -12,7 +12,7 @@ class UsersRepositoryError extends UsersError implements RepositoryError{
   String? message;
 
   UsersRepositoryError({this.statusCode = 5, this.message}) {
-      message ??= responseErrors[statusCode];
+    message ??= responseErrors[statusCode]??statusCode.toString();
   }
 
   @override

@@ -1,4 +1,4 @@
-import 'package:value_panel/app/modules/dashboard/domain/entities/symptoms_value_chart.entity.dart';
+import 'package:value_panel/app/modules/dashboard/domain/entities/chart/symptoms_value_chart.entity.dart';
 import 'package:value_panel/app/shared/core/domain/entities/symptoms.entity.dart';
 import 'package:value_panel/app/shared/core/infra/models/symptom.model.dart';
 
