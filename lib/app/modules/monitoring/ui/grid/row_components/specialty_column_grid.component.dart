@@ -6,7 +6,6 @@ import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_da
 import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
 import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
 import 'package:value_panel/app/shared/components/dialogs/repository_error.dialog.dart';
-import 'package:value_panel/app/shared/core/domain/entities/classification.entity.dart';
 import 'package:value_panel/app/shared/core/domain/entities/specialty.entity.dart';
 import 'package:value_panel/app/shared/utils.dart';
 

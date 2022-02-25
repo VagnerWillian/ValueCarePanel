@@ -8,8 +8,8 @@ import 'package:value_panel/app/modules/monitoring/domain/usecases/fetch_monitor
 import 'package:value_panel/app/modules/monitoring/domain/usecases/fetch_report_doc_src.usecase.dart.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/update_monitoring_item.usecase.dart';
 import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
-import 'package:value_panel/app/modules/monitoring/ui/datasources/monitoring.datasource.dart';
-import 'package:value_panel/app/modules/monitoring/ui/models/date_selector.model.dart';
+import 'package:value_panel/app/modules/monitoring/ui/grid/monitoring.datasource.dart';
+import 'package:value_panel/app/shared/core/infra/models/date_selector.model.dart';
 
 part 'monitoring_store.g.dart';
 

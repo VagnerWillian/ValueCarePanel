@@ -1,5 +1,6 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,7 +9,7 @@ import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
-import 'package:value_panel/app/modules/monitoring/ui/models/date_selector.model.dart';
+import 'package:value_panel/app/shared/core/infra/models/date_selector.model.dart';
 import 'package:value_panel/app/modules/monitoring/ui/monitoring_store.dart';
 import 'package:value_panel/app/shared/components/custom/gradient.button.dart';
 import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
@@ -29,8 +30,10 @@ class MonitoringPageState extends State<MonitoringPage> {
 
   @override
   void initState() {
-    store.setDateSelector(store.preDates.first);
-    onChangedDate(store.preDates.first);
+    SchedulerBinding.instance!.addPostFrameCallback((_) {
+      store.setDateSelector(store.preDates.first);
+      onChangedDate(store.preDates.first);
+    });
     super.initState();
   }
 

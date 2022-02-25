@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:value_panel/app/modules/monitoring/ui/models/specialty.model.dart';
+import 'package:value_panel/app/shared/core/infra/models/specialty.model.dart';
 import 'package:value_panel/app/shared/core/domain/entities/specialty.entity.dart';
 import 'package:value_panel/app/shared/core/infra/models/classification.model.dart';
 
