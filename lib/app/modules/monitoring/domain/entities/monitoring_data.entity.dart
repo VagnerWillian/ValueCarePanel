@@ -2,24 +2,25 @@ import 'package:value_panel/app/shared/core/domain/entities/symptoms.entity.dart
 
 abstract class MonitoringDataEntity {
   int? id;
-  String? date;
   List<SymptomEntity>? symptoms;
   String? patient;
-  String? score;
-  int? classification;
+  int? classificationId;
+  int? specialtyId;
   String? solicitationDate;
-  bool? forward;
+  String? appointmentDate;
+  bool? confirm;
 
   String get idString;
+  DateTime? get appointmentDateInDateTime;
 
   MonitoringDataEntity(
       {this.id,
-        this.date,
         this.symptoms,
         this.patient,
-        this.score,
-        this.classification,
+        this.classificationId,
+        this.specialtyId,
+        this.appointmentDate,
         this.solicitationDate,
-        this.forward});
+        this.confirm});
 
 }

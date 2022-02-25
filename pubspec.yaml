@@ -134,6 +134,7 @@ flutter:
     - assets/images/others/
     - assets/images/symptoms/
     - assets/images/classifications/
+    - assets/images/specialties/
     - assets/images/photos/
 
   #

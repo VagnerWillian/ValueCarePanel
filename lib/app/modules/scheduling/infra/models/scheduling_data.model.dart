@@ -5,7 +5,7 @@ class SchedulingData implements SchedulingDataEntity{
   final datePattern = DateFormat("dd/MM/yyyy", "pt_BR");
 
   @override
-  int? classification;
+  int? classificationId;
 
   @override
   bool? confirmation;
@@ -38,7 +38,7 @@ class SchedulingData implements SchedulingDataEntity{
   DateTime get dateSolicitedInDateTime => DateTime.parse(dateSolicited!);
 
   @override
-  DateTime get appointmentDateInDateTime => DateTime.parse(appointmentDate!);
+  DateTime? get appointmentDateInDateTime => appointmentDate==null?null:DateTime.parse(appointmentDate!);
 
   SchedulingData(
       {id,
@@ -57,7 +57,7 @@ class SchedulingData implements SchedulingDataEntity{
     solicitationDate = datePattern.format(DateTime.parse(json['dataSolicitacao']));
     contactDate = datePattern.format(DateTime.parse(json['dataContato']));
     score = json['score'];
-    classification = json['classificacao'];
+    classificationId = json['classificacaoID'];
     dateSolicited = json['dataSolicitada'];
     appointmentDate = json['dataConsulta'];
     confirmation = json['confirmacao'];
@@ -70,7 +70,7 @@ class SchedulingData implements SchedulingDataEntity{
     data['dataSolicitacao'] = solicitationDate;
     data['dataContato'] = contactDate;
     data['score'] = score;
-    data['classificacao'] = classification;
+    data['classificacaoId'] = classificationId;
     data['dataSolicitada'] = dateSolicited;
     data['dataConsulta'] = appointmentDate;
     data['confirmacao'] = confirmation;

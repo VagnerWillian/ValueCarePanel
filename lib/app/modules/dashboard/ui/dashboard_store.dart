@@ -12,7 +12,7 @@ import 'package:value_panel/app/modules/dashboard/domain/usecases/get_comparison
 import 'package:value_panel/app/modules/dashboard/domain/usecases/update_monitoring_item.usecase.dart';
 import 'package:value_panel/app/modules/dashboard/errors/dashboard.errors.dart';
 import 'package:value_panel/app/modules/dashboard/infra/models/groups_chart.model.dart';
-import 'package:value_panel/app/modules/dashboard/ui/datasources/monitoring.datasource.dart';
+import 'package:value_panel/app/modules/dashboard/ui/grid/monitoring.datasource.dart';
 import 'package:value_panel/app/modules/dashboard/ui/models/date_selector.model.dart';
 import 'package:value_panel/app/modules/home/ui/home_store.dart';
 import 'package:value_panel/app/shared/utils.dart';

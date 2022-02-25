@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
+import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/appointment_date_column_grid.component.dart';
 import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/classification_column_grid.component.dart';
 import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/date_column_grid.component.dart';
-import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/id_column_grid.component.dart';
+import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/history_column_grid.component.dart';
 import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/patient_name_column_grid.component.dart';
-import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/refer_column_grid.component.dart';
-import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/score_column_grid.component.dart';
+import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/confirm_column_grid.component.dart';
+import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/specialty_column_grid.component.dart';
 import 'package:value_panel/app/modules/monitoring/ui/datasources/row_components/symptoms_column_grid.component.dart';
 import 'package:value_panel/app/shared/core/domain/entities/symptoms.entity.dart';
 class ColumnConfig{
@@ -21,14 +22,14 @@ class MonitoringDataSource extends DataGridSource {
 
   List<MonitoringDataEntity>  _paginatedMonitoringItems = [], monitoringItems = [];
   final List<ColumnConfig> columnNames = [
-    ColumnConfig("ID", 60, double.nan),
-    ColumnConfig("Data", 70, double.nan),
-    ColumnConfig("Sintomas", 160, double.nan),
     ColumnConfig("Paciente", 100, double.nan),
-    ColumnConfig("Score", 30, 60),
+    ColumnConfig("Sintomas", 160, double.nan),
     ColumnConfig("Classificação", 150, double.nan),
     ColumnConfig("Data Solicitação", 70, double.nan),
-    ColumnConfig("Encaminhar", 20, double.nan),
+    ColumnConfig("Data agendamento", 125, double.nan),
+    ColumnConfig("Especialidade", 160, double.nan),
+    ColumnConfig("Confirmado", 30, double.nan),
+    ColumnConfig("Histórico", 40, double.nan),
   ];
 
   int rowsPerPage = 10;
@@ -43,14 +44,14 @@ class MonitoringDataSource extends DataGridSource {
 
   void buildPaginatedDataGridRows() {
     dataGridRows = _paginatedMonitoringItems.map<DataGridRow>((m) => DataGridRow(cells: [
-      DataGridCell<String>(columnName: columnNames[0].label, value: m.idString),
-      DataGridCell<String>(columnName: columnNames[1].label, value: m.date),
-      DataGridCell<List<SymptomEntity>>(columnName: columnNames[2].label, value: m.symptoms),
-      DataGridCell<String>(columnName: columnNames[3].label, value: m.patient),
-      DataGridCell<String>(columnName: columnNames[4].label, value: m.score),
+      DataGridCell<String>(columnName:  columnNames[0].label, value: m.patient),
+      DataGridCell<List<SymptomEntity>>(columnName: columnNames[1].label, value: m.symptoms),
+      DataGridCell<MonitoringDataEntity>(columnName: columnNames[2].label, value: m),
+      DataGridCell<String>(columnName: columnNames[3].label, value: m.solicitationDate),
+      DataGridCell<MonitoringDataEntity>(columnName: columnNames[4].label, value: m),
       DataGridCell<MonitoringDataEntity>(columnName: columnNames[5].label, value: m),
-      DataGridCell<String>(columnName: columnNames[6].label, value: m.solicitationDate),
-      DataGridCell<MonitoringDataEntity>(columnName: columnNames[7].label, value: m),
+      DataGridCell<MonitoringDataEntity>(columnName: columnNames[6].label, value: m),
+      DataGridCell<int>(columnName: columnNames[7].label, value: m.id),
     ])).toList(growable: false);
   }
 
@@ -58,22 +59,22 @@ class MonitoringDataSource extends DataGridSource {
   DataGridRowAdapter? buildRow(DataGridRow row) {
     return DataGridRowAdapter(
         cells: row.getCells().map<Widget>((dataGridCell) {
-          if(dataGridCell.columnName==columnNames[0].label){
-            return IDColumnGrid(value: dataGridCell.value);
-          }else if(dataGridCell.columnName==columnNames[1].label){
-            return DateColumnGrid(value: dataGridCell.value);
-          }else if(dataGridCell.columnName==columnNames[2].label){
+         if(dataGridCell.columnName==columnNames[0].label){
+           return PatientNameColumnGrid(value: dataGridCell.value);
+         }else if(dataGridCell.columnName==columnNames[1].label){
             return SymptomsColumnGrid(value: dataGridCell.value);
-          }else if(dataGridCell.columnName==columnNames[3].label){
-            return PatientNameColumnGrid(value: dataGridCell.value);
-          }else if(dataGridCell.columnName==columnNames[4].label){
-            return ScoreColumnGrid(value: dataGridCell.value);
-          }else if(dataGridCell.columnName==columnNames[5].label){
+         }else if(dataGridCell.columnName==columnNames[2].label){
             return ClassificationColumnGrid(value: dataGridCell.value, updateMonitoringItem: updateMonitoringItem);
-          }else if(dataGridCell.columnName==columnNames[6].label){
+          }else if(dataGridCell.columnName==columnNames[3].label){
             return DateColumnGrid(value: dataGridCell.value);
+          }else if(dataGridCell.columnName==columnNames[4].label){
+            return AppointmentDateColumnGrid(value: dataGridCell.value, updateMonitoringItem: updateMonitoringItem);
+          }else if(dataGridCell.columnName==columnNames[5].label){
+            return SpecialtyColumnGrid(value: dataGridCell.value, updateMonitoringItem: updateMonitoringItem);
+          }else if(dataGridCell.columnName==columnNames[6].label){
+            return ConfirmColumnGrid(value: dataGridCell.value, updateMonitoringItem: updateMonitoringItem);
           }else if(dataGridCell.columnName==columnNames[7].label){
-            return ReferColumnGrid(value: dataGridCell.value, updateMonitoringItem: updateMonitoringItem);
+            return HistoryColumnGrid(value: dataGridCell.value);
           }
           return Container(
             alignment: Alignment.center,

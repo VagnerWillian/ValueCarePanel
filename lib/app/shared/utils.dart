@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:value_panel/app/modules/monitoring/ui/models/specialty.model.dart';
+import 'package:value_panel/app/shared/core/domain/entities/specialty.entity.dart';
 import 'package:value_panel/app/shared/core/infra/models/classification.model.dart';
 
 import 'core/domain/entities/classification.entity.dart';
@@ -29,4 +31,19 @@ final List<ClassificationEntity> classifications = [
   Classification(label: "Emergência", id: 2, color: HexColor("#E23838")),
   Classification(label: "Urgente", id: 3, color: HexColor("#FFAB2D")),
   Classification(label: "Pouco Urgente", id: 4, color: HexColor("#38E25D")),
+];
+
+final List<SpecialtyEntity> specialties = [
+  Specialty(id: 0, label: "Clínico Geral", image: "assets/images/specialties/0.svg"),
+  Specialty(id: 1, label: "Oftalmologista", image: "assets/images/specialties/1.svg"),
+  Specialty(id: 2, label: "Psicólogo", image: "assets/images/specialties/2.svg"),
+  Specialty(id: 3, label: "Pneumologista", image: "assets/images/specialties/3.svg"),
+  Specialty(id: 4, label: "Nefrologista", image: "assets/images/specialties/4.svg"),
+  Specialty(id: 5, label: "Traumatologista", image: "assets/images/specialties/5.svg"),
+  Specialty(id: 6, label: "Otorrinolaringologista", image: "assets/images/specialties/6.svg"),
+  Specialty(id: 7, label: "Endócrinologista", image: "assets/images/specialties/7.svg"),
+  Specialty(id: 8, label: "Cardiologista", image: "assets/images/specialties/8.svg"),
+  Specialty(id: 9, label: "Gastroenterologista", image: "assets/images/specialties/9.svg"),
+  Specialty(id: 10, label: "Fisioterapeuta", image: "assets/images/specialties/10.svg"),
+  Specialty(id: 11, label: "Dermatologista", image: "assets/images/specialties/11.svg"),
 ];

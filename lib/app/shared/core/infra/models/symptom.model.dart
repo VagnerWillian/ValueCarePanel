@@ -15,13 +15,17 @@ class Symptom extends Equatable implements SymptomEntity {
   @override
   late final String srcImage;
 
-  Symptom({required this.id, required this.label, this.srcImage = '', this.dateReport = ''});
+  @override
+  late final String intensity;
+
+  Symptom({required this.id, required this.label, this.srcImage = '', this.dateReport = '', this.intensity = ''});
 
   Symptom.fromJson(Map<String, dynamic> json) {
     id = json['id']??0;
     label = json['label']??"Nan";
     dateReport = json['reportado_em']??"Nan";
     srcImage = json['imagem']??"Nan";
+    intensity = json['intensidade']??"Nan";
   }
 
   @override
@@ -31,6 +35,7 @@ class Symptom extends Equatable implements SymptomEntity {
     data['label'] = label;
     data['reportado_em'] = dateReport;
     data['imagem'] = srcImage;
+    data['intensidade'] = intensity;
     return data;
   }
 

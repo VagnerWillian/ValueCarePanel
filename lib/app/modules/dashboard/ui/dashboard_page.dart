@@ -156,7 +156,7 @@ class DashboardPageState extends State<DashboardPage> {
                   ]);
           }),
           const SizedBox(height: 20),
-          Observer(
+         /* Observer(
             builder: (_) => store.loadingMonitoringItems
                 ? Center(
                     child: SizedBox(
@@ -184,7 +184,7 @@ class DashboardPageState extends State<DashboardPage> {
                           child: Column(children: [_buildDataGrid(), _buildGridPages()])),
                     ],
                   ),
-          )
+          )*/
         ]),
       ),
     );

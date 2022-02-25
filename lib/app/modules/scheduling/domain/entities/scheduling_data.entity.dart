@@ -4,14 +4,14 @@ abstract class SchedulingDataEntity {
   String? solicitationDate;
   String? contactDate;
   String? score;
-  int? classification;
+  int? classificationId;
   String? dateSolicited;
   String? appointmentDate;
   bool? confirmation;
 
   String get idString;
   DateTime get dateSolicitedInDateTime;
-  DateTime get appointmentDateInDateTime;
+  DateTime? get appointmentDateInDateTime;
 
   SchedulingDataEntity(
       {this.id,
@@ -19,7 +19,7 @@ abstract class SchedulingDataEntity {
         this.solicitationDate,
         this.contactDate,
         this.score,
-        this.classification,
+        this.classificationId,
         this.dateSolicited,
         this.appointmentDate,
         this.confirmation});

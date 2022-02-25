@@ -8,16 +8,16 @@ class MonitoringData implements MonitoringDataEntity {
   final datePattern = DateFormat("dd/MM/yyyy", "pt_BR");
 
   @override
-  int? classification;
+  int? classificationId;
 
   @override
-  String? date;
+  int? specialtyId;
 
   @override
   String? solicitationDate;
 
   @override
-  bool? forward;
+  bool? confirm;
 
   @override
   int? id;
@@ -26,47 +26,48 @@ class MonitoringData implements MonitoringDataEntity {
   String? patient;
 
   @override
-  String? score;
-
-  @override
   List<SymptomEntity>? symptoms;
 
   @override
   String get idString => "#$id";
 
+  @override
+  String? appointmentDate;
+
+  @override
+  DateTime? get appointmentDateInDateTime => appointmentDate==null?null:DateTime.parse(appointmentDate!);
+
   MonitoringData(
       {required this.id,
-      required this.date,
       required this.symptoms,
       required this.patient,
-      required this.score,
-      required this.classification,
+      required this.classificationId,
       required this.solicitationDate,
-      required this.forward});
+      required this.appointmentDate,
+      required this.confirm});
 
   MonitoringData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    date = datePattern.format(DateTime.parse(json['data']));
     symptoms = (json['sintomas'] as List).map((s) => Symptom.fromJson(s)).toList();
     patient = json['paciente'];
-    score = json['score'];
-    classification = json['classificacao'];
+    classificationId = json['classificacaoID'];
+    specialtyId = json['especialidadeID'];
     solicitationDate = datePattern.format(DateTime.parse(json['dataSolicitada']));
-    forward = json['encaminhar'];
-
+    confirm = json['confirmado'];
+    appointmentDate = json['dataAgendamento'];
   }
 
   @override
   Map<String, dynamic> get toJson {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['data'] = this.date;
     data['sintomas'] = symptoms?.map((e) => e.toJson).toList();
     data['paciente'] = patient;
-    data['score'] = score;
-    data['classificacao'] = classification;
+    data['classificacaoID'] = classificationId;
+    data['especialidadeID'] = specialtyId;
     data['dataSolicitada'] = solicitationDate;
-    data['encaminhar'] = forward;
+    data['confirmado'] = confirm;
+    data['dataAgendamento'] = appointmentDate;
     return data;
   }
 }

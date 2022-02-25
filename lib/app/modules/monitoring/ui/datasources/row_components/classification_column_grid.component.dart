@@ -25,14 +25,14 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
 
   @override
   void initState() {
-    selectedClassification = classifications.singleWhere((c) => c.id==widget.value.classification);
+    selectedClassification = classifications.singleWhere((c) => c.id==widget.value.classificationId);
     loading = false;
     super.initState();
   }
 
   @override
   void didUpdateWidget(covariant ClassificationColumnGrid oldWidget) {
-    selectedClassification = classifications.singleWhere((c) => c.id==widget.value.classification);
+    selectedClassification = classifications.singleWhere((c) => c.id==widget.value.classificationId);
     loading = false;
     super.didUpdateWidget(oldWidget);
   }
@@ -82,7 +82,7 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
 
   Future setClassification(ClassificationEntity classificationEntity)async{
     setState(() => loading = true);
-    widget.value.classification = classificationEntity.id;
+    widget.value.classificationId = classificationEntity.id;
     Either<MonitoringError, bool> response = await widget.updateMonitoringItem(widget.value, onError);
     if(response.isRight){
       setState(() {
