@@ -34,16 +34,16 @@ final List<ClassificationEntity> classifications = [
 ];
 
 final List<SpecialtyEntity> specialties = [
-  Specialty(id: 0, label: "Clínico Geral", image: "assets/images/specialties/0.svg"),
-  Specialty(id: 1, label: "Oftalmologista", image: "assets/images/specialties/1.svg"),
-  Specialty(id: 2, label: "Psicólogo", image: "assets/images/specialties/2.svg"),
-  Specialty(id: 3, label: "Pneumologista", image: "assets/images/specialties/3.svg"),
-  Specialty(id: 4, label: "Nefrologista", image: "assets/images/specialties/4.svg"),
-  Specialty(id: 5, label: "Traumatologista", image: "assets/images/specialties/5.svg"),
-  Specialty(id: 6, label: "Otorrinolaringologista", image: "assets/images/specialties/6.svg"),
-  Specialty(id: 7, label: "Endócrinologista", image: "assets/images/specialties/7.svg"),
-  Specialty(id: 8, label: "Cardiologista", image: "assets/images/specialties/8.svg"),
-  Specialty(id: 9, label: "Gastroenterologista", image: "assets/images/specialties/9.svg"),
-  Specialty(id: 10, label: "Fisioterapeuta", image: "assets/images/specialties/10.svg"),
-  Specialty(id: 11, label: "Dermatologista", image: "assets/images/specialties/11.svg"),
+  Specialty(id: 0, label: "Clínico Geral", image: "assets/assets/images/specialties/0.svg"),
+  Specialty(id: 1, label: "Oftalmologista", image: "assets/assets/images/specialties/1.svg"),
+  Specialty(id: 2, label: "Psicólogo", image: "assets/assets/images/specialties/2.svg"),
+  Specialty(id: 3, label: "Pneumologista", image: "assets/assets/images/specialties/3.svg"),
+  Specialty(id: 4, label: "Nefrologista", image: "assets/assets/images/specialties/4.svg"),
+  Specialty(id: 5, label: "Traumatologista", image: "assets/assets/images/specialties/5.svg"),
+  Specialty(id: 6, label: "Otorrinolaringologista", image: "assets/assets/images/specialties/6.svg"),
+  Specialty(id: 7, label: "Endócrinologista", image: "assets/assets/images/specialties/7.svg"),
+  Specialty(id: 8, label: "Cardiologista", image: "assets/assets/images/specialties/8.svg"),
+  Specialty(id: 9, label: "Gastroenterologista", image: "assets/assets/images/specialties/9.svg"),
+  Specialty(id: 10, label: "Fisioterapeuta", image: "assets/assets/images/specialties/10.svg"),
+  Specialty(id: 11, label: "Dermatologista", image: "assets/assets/images/specialties/11.svg"),
 ];
