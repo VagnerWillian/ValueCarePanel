@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:value_panel/app/shared/utils.dart';
 
 class HistoryColumnGrid extends StatelessWidget {
   final int value;
@@ -19,7 +17,7 @@ class HistoryColumnGrid extends StatelessWidget {
             shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)))
           ),
           onPressed: (){},
-          child: SvgPicture.network("assets/images/menu/history.svg", width: 20,)),
+          child: SvgPicture.network("assets/assets/images/menu/history.svg", width: 20,)),
     ));
   }
 }

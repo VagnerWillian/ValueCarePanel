@@ -23,13 +23,13 @@ class MonitoringDataSource extends DataGridSource {
   List<MonitoringDataEntity>  _paginatedMonitoringItems = [], monitoringItems = [];
   final List<ColumnConfig> columnNames = [
     ColumnConfig("Paciente", 100, double.nan),
-    ColumnConfig("Sintomas", 160, double.nan),
-    ColumnConfig("Classificação", 150, double.nan),
-    ColumnConfig("Data Solicitação", 70, double.nan),
-    ColumnConfig("Data agendamento", 125, double.nan),
+    ColumnConfig("Sintomas", 160, 250),
+    ColumnConfig("Classificação", 150, 200),
+    ColumnConfig("Data Solicitação", 70, 100),
+    ColumnConfig("Data agendamento", 125, 160),
     ColumnConfig("Especialidade", 160, double.nan),
-    ColumnConfig("Confirmado", 30, double.nan),
-    ColumnConfig("Histórico", 40, double.nan),
+    ColumnConfig("Confirmado", 30, 80),
+    ColumnConfig("Histórico", 40, 100),
   ];
 
   int rowsPerPage = 10;

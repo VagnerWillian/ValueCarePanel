@@ -109757,7 +109757,7 @@ return A.cW(A.aH(this.c,s,s,s,s,s,A.fN(s,12,B.D,s),s,s),s,s)},
 gl(a){return this.c}}
 A.Yw.prototype={
 K(a,b){var s=null,r=A.fr(s,s,s,s,s,s,s,s,s,s,s,new A.aY(new A.b1(5,5,5,5),t.sw),s,new A.aY(new A.cl(A.bh(100),B.r),t.l8),s,s,s,s,s)
-return A.cW(new A.aR(40,40,A.b_l(A.aGU("assets/images/menu/history.svg",s,20),new A.atn(),r),s),s,s)},
+return A.cW(new A.aR(40,40,A.b_l(A.aGU("assets/assets/images/menu/history.svg",s,20),new A.atn(),r),s),s,s)},
 gl(a){return this.c}}
 A.atn.prototype={
 $0(){},
@@ -110058,7 +110058,7 @@ try{s=this.acC(a)
 return s}finally{r.h9(q)}}}
 A.Oj.prototype={
 ahj(a,b,c,d){var s=t.Ft,r=t.KL
-this.r=new A.a16(this.gPn(),A.b([],s),A.b([],s),A.b([new A.jE("Paciente",100,0/0),new A.jE("Sintomas",160,0/0),new A.jE("Classifica\xe7\xe3o",150,0/0),new A.jE("Data Solicita\xe7\xe3o",70,0/0),new A.jE("Data agendamento",125,0/0),new A.jE("Especialidade",160,0/0),new A.jE("Confirmado",30,0/0),new A.jE("Hist\xf3rico",40,0/0)],t.b9),A.b([],r),A.b([],r),A.b([],r),A.b([],r),A.b([],t.eQ),0,new A.bb(A.b([],t.ei),t.ua),new A.bb(A.b([],t.s_),t.zN),A.ag(0,null,!1,t.Z))
+this.r=new A.a16(this.gPn(),A.b([],s),A.b([],s),A.b([new A.jE("Paciente",100,0/0),new A.jE("Sintomas",160,250),new A.jE("Classifica\xe7\xe3o",150,200),new A.jE("Data Solicita\xe7\xe3o",70,100),new A.jE("Data agendamento",125,160),new A.jE("Especialidade",160,0/0),new A.jE("Confirmado",30,80),new A.jE("Hist\xf3rico",40,100)],t.b9),A.b([],r),A.b([],r),A.b([],r),A.b([],r),A.b([],t.eQ),0,new A.bb(A.b([],t.ei),t.ua),new A.bb(A.b([],t.s_),t.zN),A.ag(0,null,!1,t.Z))
 this.za()},
 iC(a){this.sxM(a)
 return a},
