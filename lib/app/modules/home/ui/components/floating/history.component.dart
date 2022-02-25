@@ -19,9 +19,9 @@ class _HistoryFloatingState extends State<HistoryFloating> {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-        onPressed: ()=>collapsed(),
+        onPressed: collapsed,
       child: Container(
-          height: isExpanded?40:500,
+          height: !isExpanded?40:500,
           width: 320,
           decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
