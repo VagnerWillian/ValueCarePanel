@@ -19,6 +19,7 @@ class ColumnConfig{
 class MonitoringDataSource extends DataGridSource {
 
   final Function updateMonitoringItem;
+  final Function openHistoryFloating;
 
   List<MonitoringDataEntity>  _paginatedMonitoringItems = [], monitoringItems = [];
   final List<ColumnConfig> columnNames = [
@@ -40,7 +41,7 @@ class MonitoringDataSource extends DataGridSource {
   List<DataGridRow>  dataGridRows = [];
 
 
-  MonitoringDataSource({required this.updateMonitoringItem});
+  MonitoringDataSource({required this.updateMonitoringItem, required this.openHistoryFloating});
 
   void buildPaginatedDataGridRows() {
     dataGridRows = _paginatedMonitoringItems.map<DataGridRow>((m) => DataGridRow(cells: [
@@ -74,7 +75,7 @@ class MonitoringDataSource extends DataGridSource {
           }else if(dataGridCell.columnName==columnNames[6].label){
             return ConfirmColumnGrid(value: dataGridCell.value, updateMonitoringItem: updateMonitoringItem);
           }else if(dataGridCell.columnName==columnNames[7].label){
-            return HistoryColumnGrid(value: dataGridCell.value);
+            return HistoryColumnGrid(value: dataGridCell.value, openHistoryFloating: openHistoryFloating);
           }
           return Container(
             alignment: Alignment.center,

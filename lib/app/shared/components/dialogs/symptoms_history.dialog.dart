@@ -14,21 +14,19 @@ class SymptomsHistoryDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 700,
-      decoration: BoxDecoration(),
-      // padding: const EdgeInsets.all(20),
       child: Stack(
         children: [
           Container(
             margin: const EdgeInsets.only(bottom: 20, left: 20, right: 20, top: 100),
             child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.min,
-                children: symptoms.map((s) => Container(
-                  color: symptoms.indexOf(s)%2==0?Colors.grey.shade100:Colors.white,
-                  // margin: const EdgeInsets.all(20),
+              child: ListView.builder(
+                shrinkWrap: true,
+                padding: EdgeInsets.zero,
+                itemCount: symptoms.length,
+                itemBuilder: (context, item)=>Container(
+                  color: item%2==0?Colors.grey.shade100:Colors.white,
                   padding: const EdgeInsets.all(10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,15 +47,15 @@ class SymptomsHistoryDialog extends StatelessWidget {
                                     end: Alignment.bottomLeft,
                                   ),
                                   borderRadius: BorderRadius.circular(10)),
-                              child: Center(child: SvgPicture.network(s.srcImage, color: Colors.white))),
+                              child: Center(child: SvgPicture.network(symptoms[item].srcImage, color: Colors.white))),
                           const SizedBox(width: 5,),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(s.label,
+                              Text(symptoms[item].label,
                                   style:GoogleFonts.openSans(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black)
                               ),
-                              Text(s.intensity,
+                              Text(symptoms[item].intensity,
                                   style:GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.grey)
                               ),
                             ],
@@ -70,14 +68,14 @@ class SymptomsHistoryDialog extends StatelessWidget {
                           Text("Reportado em:",
                               style:GoogleFonts.openSans(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black)
                           ),
-                          Text(datePattern.format(DateTime.parse(s.dateReport)),
+                          Text(datePattern.format(DateTime.parse(symptoms[item].dateReport)),
                               style:GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.grey)
                           ),
                         ],
                       )
                     ],
                   ),
-                )).toList(),
+                ),
               ),
             ),
           ),

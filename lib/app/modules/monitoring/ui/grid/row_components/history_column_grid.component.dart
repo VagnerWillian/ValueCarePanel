@@ -3,8 +3,8 @@ import 'package:flutter_svg/svg.dart';
 
 class HistoryColumnGrid extends StatelessWidget {
   final int value;
-
-  const HistoryColumnGrid({Key? key, required this.value}) : super(key: key);
+  final Function openHistoryFloating;
+  const HistoryColumnGrid({required this.openHistoryFloating, Key? key, required this.value}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +13,10 @@ class HistoryColumnGrid extends StatelessWidget {
       width: 40,
       child: TextButton(
           style: ButtonStyle(
-            padding: MaterialStateProperty.all(EdgeInsets.all(5)),
+            padding: MaterialStateProperty.all(const EdgeInsets.all(5)),
             shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)))
           ),
-          onPressed: (){},
+          onPressed: ()=>openHistoryFloating(),
           child: SvgPicture.network("assets/assets/images/menu/history.svg", width: 20,)),
     ));
   }

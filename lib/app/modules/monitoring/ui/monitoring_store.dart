@@ -1,7 +1,9 @@
 import 'package:either_dart/either.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:mobx/mobx.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
+import 'package:value_panel/app/modules/home/ui/components/floating/history.component_store.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/download_archive.usecase.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/fetch_monitoring_from_interval_dates.usecase.dart';
@@ -22,13 +24,16 @@ abstract class _MonitoringStoreBase with Store {
   final DownloadArchiveUseCase downloadArchiveUseCase;
   final UpdateMonitoringItemUseCase updateMonitoringItemUseCase;
 
+  // Controllers
+  final HistoryFloatingStore  _historyFloatingStore = Modular.get();
+
   _MonitoringStoreBase({
     required this.fetchMonitoringDataFromIntervalDatesUseCase,
     required this.fetchReportDocSrcUseCase,
     required this.downloadArchiveUseCase,
     required this.updateMonitoringItemUseCase
   }){
-    monitoringDataSource = MonitoringDataSource(updateMonitoringItem: updateMonitoringItem);
+    monitoringDataSource = MonitoringDataSource(updateMonitoringItem: updateMonitoringItem, openHistoryFloating: openHistoryFloating);
     preDatesLogic();
   }
 
@@ -102,6 +107,8 @@ abstract class _MonitoringStoreBase with Store {
     setLoadingUpdateMonitoringItem(false);
     return response;
   }
+
+  void openHistoryFloating()=>_historyFloatingStore.open();
 
   /////////////////////////// SEARCH ///////////////////////////////////////////////////
     onChangedSearchText(String text)async{

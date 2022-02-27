@@ -7,7 +7,7 @@ class Symptom extends Equatable implements SymptomEntity {
   late final int id;
 
   @override
-  late String dateReport;
+  late final String dateReport;
 
   @override
   late final String label;
