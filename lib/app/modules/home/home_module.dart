@@ -1,6 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:value_panel/app/modules/dashboard/dashboard_module.dart';
-import 'package:value_panel/app/modules/home/ui/components/floating/history.component_store.dart';
 import 'package:value_panel/app/modules/home/ui/home_store.dart';
 import 'package:value_panel/app/modules/monitoring/monitoring_module.dart';
 import 'package:value_panel/app/modules/scheduling/scheduling_module.dart';
@@ -12,8 +11,7 @@ import 'ui/home_page.dart';
 class HomeModule extends Module {
   @override
   final List<Bind> binds = [
- Bind.lazySingleton((i) => HomeStore()),
- Bind.lazySingleton((i) => HistoryFloatingStore()),
+     Bind.lazySingleton((i) => HomeStore()),
  ];
 
  @override

@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:value_panel/app/modules/monitoring/ui/monitoring_store.dart';
 import 'package:value_panel/app/shared/core/domain/entities/hospital.entity.dart';
 import 'package:value_panel/app/shared/core/domain/entities/user.entity.dart';
 

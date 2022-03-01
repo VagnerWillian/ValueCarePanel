@@ -1,0 +1,122 @@
+[
+  {
+    "id": "620d9c3ccd2fcb09bfd644ec",
+    "foto": "assets/assets/images/photos/user_2.jpg",
+    "nome": "Pierce Mccullough",
+    "email": "pierce_mccullough@enfermagem.com",
+    "nivel": "Administrador",
+    "telefone": "(30) 305138274"
+  },
+  {
+    "id": "620d9c3c8a39c4d931919ae2",
+    "foto": "assets/assets/images/photos/user_4.jpg",
+    "nome": "Patton Rogers",
+    "email": "patton_rogers@hospital.com.br",
+    "nivel": "Operador",
+    "telefone": "(16) 613246513"
+  },
+  {
+    "id": "620d9c3ceb9560b9ddf498c1",
+    "foto": "assets/assets/images/photos/user_4.jpg",
+    "nome": "Diann Moses",
+    "email": "diann_moses@laboratorio.com",
+    "nivel": "Administrador",
+    "telefone": "(18) 794027236"
+  },
+  {
+    "id": "620d9c3c773fcdd7a1ecf66d",
+    "foto": "assets/assets/images/photos/user_4.jpg",
+    "nome": "Blanche Hoffman",
+    "email": "blanche_hoffman@valuecare.com",
+    "nivel": "Operador",
+    "telefone": "(29) 981867026"
+  },
+  {
+    "id": "620d9c3c597a48eb956800f0",
+    "foto": "assets/assets/images/photos/user_4.jpg",
+    "nome": "Aisha Frank",
+    "email": "aisha_frank@valuecare.com.br",
+    "nivel": "Gestor",
+    "telefone": "(32) 500468402"
+  },
+  {
+    "id": "620d9c3c82f3e0251193ae27",
+    "foto": "assets/assets/images/photos/user_2.jpg",
+    "nome": "Suzette Simon",
+    "email": "suzette_simon@valuecare.com",
+    "nivel": "Administrador",
+    "telefone": "(32) 794833464"
+  },
+  {
+    "id": "620d9c3ca09b1ca597f387e4",
+    "foto": "assets/assets/images/photos/user_1.jpg",
+    "nome": "Dorothy Rodriquez",
+    "email": "dorothy_rodriquez@enfermagem.com.br",
+    "nivel": "Gestor",
+    "telefone": "(16) 203523633"
+  },
+  {
+    "id": "620d9c3cd906ef7d0739103d",
+    "foto": "assets/assets/images/photos/user_2.jpg",
+    "nome": "Maria Winters",
+    "email": "maria_winters@laboratorio.com",
+    "nivel": "Operador",
+    "telefone": "(27) 499157658"
+  },
+  {
+    "id": "620d9c3c013276caaa0e1caa",
+    "foto": "assets/assets/images/photos/user_4.jpg",
+    "nome": "Maxwell Mathews",
+    "email": "maxwell_mathews@laboratorio.com",
+    "nivel": "Gestor",
+    "telefone": "(33) 834052389"
+  },
+  {
+    "id": "620d9c3c918d789391a7b28e",
+    "foto": "assets/assets/images/photos/user_1.jpg",
+    "nome": "Tisha White",
+    "email": "tisha_white@hospital.com.br",
+    "nivel": "Administrador",
+    "telefone": "(17) 801972514"
+  },
+  {
+    "id": "620d9c3c7a12c7ab86d3ee71",
+    "foto": "assets/assets/images/photos/user_3.jpg",
+    "nome": "Avery Pitts",
+    "email": "avery_pitts@valuecare.com.br",
+    "nivel": "Administrador",
+    "telefone": "(18) 744631451"
+  },
+  {
+    "id": "620d9c3ca6ac69be497cb91d",
+    "foto": "assets/assets/images/photos/user_1.jpg",
+    "nome": "Phyllis Summers",
+    "email": "phyllis_summers@laboratorio.com.br",
+    "nivel": "Gestor",
+    "telefone": "(28) 640721104"
+  },
+  {
+    "id": "620d9c3cb4b5249b3ab6b164",
+    "foto": "assets/assets/images/photos/user_4.jpg",
+    "nome": "Evelyn Mcclure",
+    "email": "evelyn_mcclure@valuecare.com",
+    "nivel": "Gestor",
+    "telefone": "(30) 896744475"
+  },
+  {
+    "id": "620d9c3cde2028decc038003",
+    "foto": "assets/assets/images/photos/user_3.jpg",
+    "nome": "Althea Giles",
+    "email": "althea_giles@laboratorio.com.br",
+    "nivel": "Gestor",
+    "telefone": "(19) 865433243"
+  },
+  {
+    "id": "620d9c3cf698cb7a4ac378b4",
+    "foto": "assets/assets/images/photos/user_4.jpg",
+    "nome": "Jerry Harvey",
+    "email": "jerry_harvey@enfermagem.com",
+    "nivel": "Administrador",
+    "telefone": "(29) 740552705"
+  }
+]

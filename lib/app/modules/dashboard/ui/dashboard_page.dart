@@ -34,8 +34,7 @@ class DashboardPage extends StatefulWidget {
   DashboardPageState createState() => DashboardPageState();
 }
 
-class DashboardPageState extends State<DashboardPage> {
-  final DashboardStore store = Modular.get();
+class DashboardPageState extends ModularState<DashboardPage, DashboardStore> {
 
   @override
   void initState() {

@@ -3,7 +3,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:mobx/mobx.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
-import 'package:value_panel/app/modules/home/ui/components/floating/history.component_store.dart';
+import 'package:value_panel/app/modules/history_chat/history_chat_module.dart';
+import 'package:value_panel/app/modules/history_chat/ui/history_chat_store.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/download_archive.usecase.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/fetch_monitoring_from_interval_dates.usecase.dart';
@@ -25,7 +26,7 @@ abstract class _MonitoringStoreBase with Store {
   final UpdateMonitoringItemUseCase updateMonitoringItemUseCase;
 
   // Controllers
-  final HistoryFloatingStore  _historyFloatingStore = Modular.get();
+  late final HistoryChatStore _historyChatStore = Modular.get();
 
   _MonitoringStoreBase({
     required this.fetchMonitoringDataFromIntervalDatesUseCase,
@@ -35,6 +36,7 @@ abstract class _MonitoringStoreBase with Store {
   }){
     monitoringDataSource = MonitoringDataSource(updateMonitoringItem: updateMonitoringItem, openHistoryFloating: openHistoryFloating);
     preDatesLogic();
+
   }
 
   //OTHERS
@@ -108,7 +110,7 @@ abstract class _MonitoringStoreBase with Store {
     return response;
   }
 
-  void openHistoryFloating()=>_historyFloatingStore.open();
+  void openHistoryFloating()=>_historyChatStore.open(idPatient: "");
 
   /////////////////////////// SEARCH ///////////////////////////////////////////////////
     onChangedSearchText(String text)async{

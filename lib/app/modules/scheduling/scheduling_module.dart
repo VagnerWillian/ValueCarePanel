@@ -8,6 +8,7 @@ import 'package:value_panel/app/modules/scheduling/domain/usecases/download_arch
 import 'package:value_panel/app/modules/scheduling/domain/usecases/fetch_report_doc_src.usecase.dart.dart';
 import 'package:value_panel/app/modules/scheduling/domain/usecases/fetch_scheduling_items_from_interval_dates.usecase.dart';
 import 'package:value_panel/app/modules/scheduling/domain/usecases/update_scheduling_item.usecase.dart';
+import 'package:value_panel/app/modules/scheduling/infra/repositories/asset.repository.dart';
 import 'package:value_panel/app/modules/scheduling/infra/repositories/json_generator.repository.dart';
 import 'package:value_panel/app/modules/scheduling/ui/scheduling_page.dart';
 import 'package:value_panel/app/modules/scheduling/ui/scheduling_store.dart';
@@ -30,8 +31,8 @@ class SchedulingModule extends Module {
     Bind.lazySingleton((i) => DownloadArchive()),
 
     // Repositories
-    Bind.lazySingleton((i) => JsonGeneratorRepository(i.get<CustomDio>())),
-    // Bind.lazySingleton((i) => APIRepository(i.get<CustomDio>())),
+    // Bind.lazySingleton((i) => JsonGeneratorRepository(i.get<CustomDio>())),
+    Bind.lazySingleton((i) => AssetSchedulingRepository()),
   ];
 
   @override

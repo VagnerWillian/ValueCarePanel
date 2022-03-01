@@ -10,10 +10,10 @@ import 'package:value_panel/app/modules/dashboard/domain/usecases/fetch_monitori
 import 'package:value_panel/app/modules/dashboard/domain/usecases/fetch_report_doc_src.usecase.dart.dart';
 import 'package:value_panel/app/modules/dashboard/domain/usecases/get_comparison_data.usecase.dart';
 import 'package:value_panel/app/modules/dashboard/domain/usecases/update_monitoring_item.usecase.dart';
+import 'package:value_panel/app/modules/dashboard/infra/repositories/asset.repository.dart';
 import 'package:value_panel/app/modules/dashboard/infra/repositories/json_generator.repository.dart';
 import 'package:value_panel/app/modules/dashboard/ui/dashboard_page.dart';
 import 'package:value_panel/app/modules/dashboard/ui/dashboard_store.dart';
-import 'package:value_panel/app/shared/custom_dio/custom.dio.dart';
 
 class DashboardModule extends Module {
   @override
@@ -27,14 +27,15 @@ class DashboardModule extends Module {
     )),
 
     // UseCases
-    Bind.lazySingleton((i) => GetComparisonGroupData(i.get<JsonGeneratorDashboardRepository>())),
+    Bind.lazySingleton((i) => GetComparisonGroupData(i.get<DashboardRepository>())),
     Bind.lazySingleton((i) => FetchMonitoringFromIntervalDates(dashBoardRepository: i.get<DashboardRepository>())),
     Bind.lazySingleton((i) => UpdateMonitoringItem(dasboardRepository: i.get<DashboardRepository>())),
     Bind.lazySingleton((i) => FetchReportDocSrc(dashboardRepository: i.get<DashboardRepository>())),
     Bind.lazySingleton((i) => DownloadArchive()),
 
     // Repositories
-    Bind.lazySingleton((i) => JsonGeneratorDashboardRepository(i.get<CustomDio>())),
+    // Bind.lazySingleton((i) => JsonGeneratorDashboardRepository(i.get<CustomDio>())),
+    Bind.lazySingleton((i) => AssetDashBoardRepository())
   ];
 
   @override

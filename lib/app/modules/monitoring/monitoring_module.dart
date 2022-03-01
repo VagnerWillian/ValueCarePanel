@@ -8,10 +8,9 @@ import 'package:value_panel/app/modules/monitoring/domain/usecases/download_arch
 import 'package:value_panel/app/modules/monitoring/domain/usecases/fetch_monitoring_from_interval_dates.usecase.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/fetch_report_doc_src.usecase.dart.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/update_monitoring_item.usecase.dart';
-import 'package:value_panel/app/modules/monitoring/infra/repositories/json_generator.repository.dart';
+import 'package:value_panel/app/modules/monitoring/infra/repositories/asset.repository.dart';
 import 'package:value_panel/app/modules/monitoring/ui/monitoring_page.dart';
 import 'package:value_panel/app/modules/monitoring/ui/monitoring_store.dart';
-import 'package:value_panel/app/shared/custom_dio/custom.dio.dart';
 
 class MonitoringModule extends Module {
   @override
@@ -24,17 +23,14 @@ class MonitoringModule extends Module {
         )),
 
     // UseCases
-    Bind.lazySingleton((i) => FetchMonitoringFromIntervalDates(
-        monitoringRepository: i.get<MonitoringRepository>())),
-    Bind.lazySingleton((i) =>
-        FetchReportDocSrc(monitoringRepository: i.get<MonitoringRepository>())),
-    Bind.lazySingleton(
-        (i) => UpdateMonitoringItem(i.get<MonitoringRepository>())),
+    Bind.lazySingleton((i) => FetchMonitoringFromIntervalDates(monitoringRepository: i.get<MonitoringRepository>())),
+    Bind.lazySingleton((i) => FetchReportDocSrc(monitoringRepository: i.get<MonitoringRepository>())),
+    Bind.lazySingleton((i) => UpdateMonitoringItem(i.get<MonitoringRepository>())),
     Bind.lazySingleton((i) => DownloadArchive()),
 
     // Repositories
-    Bind.lazySingleton((i) => JsonGeneratorRepository(i.get<CustomDio>())),
-    // Bind.lazySingleton((i) => APIRepository(i.get<CustomDio>())),
+    // Bind.lazySingleton((i) => JsonGeneratorRepository(i.get<CustomDio>())),
+    Bind.lazySingleton((i) => AssetMonitoringRepository()),
   ];
 
   @override

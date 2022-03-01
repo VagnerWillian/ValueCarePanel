@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:value_panel/app/modules/home/ui/components/floating/history.component.dart';
+import 'package:value_panel/app/modules/history_chat/history_chat_module.dart';
+import 'package:value_panel/app/modules/history_chat/ui/history_chat.dart';
 import 'package:value_panel/app/modules/home/ui/components/header/header.component.dart';
 import 'package:value_panel/app/modules/home/ui/components/menus/left_menu.component.dart';
 import 'package:value_panel/app/modules/home/ui/home_store.dart';
@@ -46,15 +47,15 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [const Header(), Expanded(child: RouterOutlet())],
+                  children: const [Header(), Expanded(child: RouterOutlet())],
                 ),
               ),
             ],
           ),
-          const Positioned(
+          Positioned(
             bottom: 0,
             right: 30,
-            child: HistoryFloating()
+            child: HistoryChatModule()
           )
         ],
       ),

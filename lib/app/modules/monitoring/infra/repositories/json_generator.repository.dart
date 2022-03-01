@@ -7,10 +7,10 @@ import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart
 import 'package:value_panel/app/modules/monitoring/infra/models/monitoring_data.model.dart';
 import 'package:value_panel/app/shared/custom_dio/custom.dio.dart';
 
-class JsonGeneratorRepository implements MonitoringRepository{
+class JsonGeneratorMonitoringRepository implements MonitoringRepository{
 
   final CustomDio _customDio;
-  JsonGeneratorRepository(this._customDio);
+  JsonGeneratorMonitoringRepository(this._customDio);
 
   final _header = {"Authorization":"Bearer ldhkns7svaq3wfb1faf6r4dfsa1bd8hua71d6lm6"};
 
