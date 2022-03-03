@@ -39,7 +39,7 @@ class Header extends StatelessWidget {
                       child: TextFormField(
                         style: GoogleFonts.cairo(textStyle: const TextStyle(fontSize: 14, color: Colors.grey)),
                         decoration: InputDecoration(
-                            border: InputBorder.none, hintText: "Pesquise aqui", hintStyle: GoogleFonts.cairo(textStyle: TextStyle(fontSize: 14, color: Colors.grey))),
+                            border: InputBorder.none, hintText: "Pesquise aqui", hintStyle: GoogleFonts.cairo(textStyle: const TextStyle(fontSize: 14, color: Colors.grey))),
                       ),
                     ),
                   ),

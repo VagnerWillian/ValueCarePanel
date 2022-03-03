@@ -20,7 +20,7 @@ class AppWidget extends StatelessWidget {
       supportedLocales: [Locale('pt', 'BR')],
       locale: Locale('pt', 'BR'),
       title: 'Painel de administração • Value Care',
-      initialRoute: DASHBOARD_ROUTE,
+      initialRoute: LOGIN_ROUTE,
     ).modular();
   }
 }

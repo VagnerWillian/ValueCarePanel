@@ -40,6 +40,36 @@ mixin _$HistoryChatStore on _HistoryChatStoreBase, Store {
     });
   }
 
+  final _$loadingAtom = Atom(name: '_HistoryChatStoreBase.loading');
+
+  @override
+  bool get loading {
+    _$loadingAtom.reportRead();
+    return super.loading;
+  }
+
+  @override
+  set loading(bool value) {
+    _$loadingAtom.reportWrite(value, super.loading, () {
+      super.loading = value;
+    });
+  }
+
+  final _$itemsAtom = Atom(name: '_HistoryChatStoreBase.items');
+
+  @override
+  ObservableList<HistoryItemEntity> get items {
+    _$itemsAtom.reportRead();
+    return super.items;
+  }
+
+  @override
+  set items(ObservableList<HistoryItemEntity> value) {
+    _$itemsAtom.reportWrite(value, super.items, () {
+      super.items = value;
+    });
+  }
+
   final _$_HistoryChatStoreBaseActionController =
       ActionController(name: '_HistoryChatStoreBase');
 
@@ -88,6 +118,39 @@ mixin _$HistoryChatStore on _HistoryChatStoreBase, Store {
   }
 
   @override
+  dynamic addAllItem(List<HistoryItemEntity> values) {
+    final _$actionInfo = _$_HistoryChatStoreBaseActionController.startAction(
+        name: '_HistoryChatStoreBase.addAllItem');
+    try {
+      return super.addAllItem(values);
+    } finally {
+      _$_HistoryChatStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic addItem(HistoryItemEntity value) {
+    final _$actionInfo = _$_HistoryChatStoreBaseActionController.startAction(
+        name: '_HistoryChatStoreBase.addItem');
+    try {
+      return super.addItem(value);
+    } finally {
+      _$_HistoryChatStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic setLoading(bool value) {
+    final _$actionInfo = _$_HistoryChatStoreBaseActionController.startAction(
+        name: '_HistoryChatStoreBase.setLoading');
+    try {
+      return super.setLoading(value);
+    } finally {
+      _$_HistoryChatStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void close() {
     final _$actionInfo = _$_HistoryChatStoreBaseActionController.startAction(
         name: '_HistoryChatStoreBase.close');
@@ -102,7 +165,9 @@ mixin _$HistoryChatStore on _HistoryChatStoreBase, Store {
   String toString() {
     return '''
 isExpanded: ${isExpanded},
-selectedIdPatient: ${selectedIdPatient}
+selectedIdPatient: ${selectedIdPatient},
+loading: ${loading},
+items: ${items}
     ''';
   }
 }

@@ -1,5 +1,4 @@
 import 'package:either_dart/either.dart';
-import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
 import 'package:value_panel/app/modules/history_chat/domain/entities/history_item.entity.dart';
 import 'package:value_panel/app/modules/history_chat/domain/usecases/get_all_history.usecase.dart';
@@ -23,7 +22,7 @@ abstract class _HistoryChatStoreBase with Store {
   bool loading = false;
 
   @observable
-  final ObservableList<HistoryItemEntity> items = ObservableList<HistoryItemEntity>();
+  ObservableList<HistoryItemEntity> items = ObservableList<HistoryItemEntity>();
 
   @action
   void expand() {
@@ -47,9 +46,13 @@ abstract class _HistoryChatStoreBase with Store {
   }
 
   @action
-  void open({required String idPatient}) async{
+  void open({required String idPatient}) {
     selectedIdPatient = idPatient;
+    loadhistory(idPatient: idPatient);
     isExpanded = true;
+  }
+
+  void loadhistory({required String idPatient})async{
     setLoading(true);
     Either<HistoryError, List<HistoryItemEntity>> response = await _getAllHistoryUseCase(idPatient: idPatient);
     response.fold((HistoryError failure) {
@@ -59,7 +62,6 @@ abstract class _HistoryChatStoreBase with Store {
       return items;
     });
     setLoading(false);
-    isExpanded = true;
   }
 
   @action
