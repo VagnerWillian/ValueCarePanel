@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:value_panel/app/shared/core/domain/entities/symptoms.entity.dart';
-import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 class SymptomsColumnGrid extends StatelessWidget {
   final List<SymptomEntity> value;

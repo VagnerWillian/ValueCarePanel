@@ -1,7 +1,8 @@
 import 'package:either_dart/either.dart';
 import 'package:mobx/mobx.dart';
+import 'package:value_panel/app/modules/users/domain/usecases/create_user.usecase.dart';
 import 'package:value_panel/app/modules/users/domain/usecases/get_users.usecase.dart';
-import 'package:value_panel/app/modules/users/errors/scheduling.errors.dart';
+import 'package:value_panel/app/modules/users/errors/users_errors.dart';
 import 'package:value_panel/app/shared/core/domain/entities/user.entity.dart';
 
 part 'users_store.g.dart';
@@ -9,8 +10,12 @@ part 'users_store.g.dart';
 class UsersStore = _UsersStoreBase with _$UsersStore;
 abstract class _UsersStoreBase with Store {
 
+  //UseCases
   final GetUsersUseCase _getUsersUseCase;
+
+  //Others
   final List<UserEntity> _usersBackup = [];
+
 
   // OBSERVABLES
 
@@ -63,4 +68,5 @@ abstract class _UsersStoreBase with Store {
       addAllUsers(_usersBackup);
     }
   }
+
 }

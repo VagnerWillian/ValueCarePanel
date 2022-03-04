@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:value_panel/app/shared/errors/unknown.error.dart';
-import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
-class AnotherErrorDialog extends StatefulWidget {
+class UnknownErrorDialog extends StatefulWidget {
   final UnknownError unknownError;
-  const AnotherErrorDialog({required this.unknownError, Key? key}) : super(key: key);
+  const UnknownErrorDialog({required this.unknownError, Key? key}) : super(key: key);
 
   @override
-  _AnotherErrorDialogState createState() => _AnotherErrorDialogState();
+  _UnknownErrorDialogState createState() => _UnknownErrorDialogState();
 }
 
-class _AnotherErrorDialogState extends State<AnotherErrorDialog> {
+class _UnknownErrorDialogState extends State<UnknownErrorDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(

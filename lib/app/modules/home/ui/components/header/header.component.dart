@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_network/image_network.dart';
 import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
-import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 class Header extends StatelessWidget {
   const Header({Key? key}) : super(key: key);

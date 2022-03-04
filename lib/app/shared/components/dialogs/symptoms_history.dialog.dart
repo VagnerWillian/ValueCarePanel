@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:value_panel/app/shared/core/domain/entities/symptoms.entity.dart';
-import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 class SymptomsHistoryDialog extends StatelessWidget {
   List<SymptomEntity> symptoms;

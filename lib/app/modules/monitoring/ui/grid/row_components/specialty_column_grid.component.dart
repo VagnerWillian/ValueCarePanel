@@ -7,7 +7,7 @@ import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart
 import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
 import 'package:value_panel/app/shared/components/dialogs/repository_error.dialog.dart';
 import 'package:value_panel/app/shared/core/domain/entities/specialty.entity.dart';
-import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 class SpecialtyColumnGrid extends StatefulWidget {
   final MonitoringDataEntity value;
@@ -104,7 +104,7 @@ class _SpecialtyColumnGridState extends State<SpecialtyColumnGrid> {
     if(failure is MonitoringRepositoryError){
       await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>RepositoryErrorDialog(repositoryError: failure));
     }else if(failure is MonitoringUnknownError){
-      await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>AnotherErrorDialog(unknownError: failure));
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>UnknownErrorDialog(unknownError: failure));
     }
   }
 }

@@ -25,7 +25,7 @@ import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.d
 import 'package:value_panel/app/shared/components/dialogs/loading.dialog.dart';
 import 'package:value_panel/app/shared/components/dialogs/repository_error.dialog.dart';
 import 'package:value_panel/app/shared/components/page_title_description.widget.dart';
-import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -488,7 +488,7 @@ class DashboardPageState extends ModularState<DashboardPage, DashboardStore> {
     if (failure is DashboardRepositoryError) {
       await showDialog(barrierColor: Colors.white70, context: context, builder: (_) => RepositoryErrorDialog(repositoryError: failure));
     } else if (failure is DashboardUnknownError) {
-      await showDialog(barrierColor: Colors.white70, context: context, builder: (_) => AnotherErrorDialog(unknownError: failure));
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_) => UnknownErrorDialog(unknownError: failure));
     }
   }
 }

@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:value_panel/app/shared/components/dialogs/symptoms_history.dialog.dart';
 import 'package:value_panel/app/shared/core/domain/entities/symptoms.entity.dart';
-import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 class SymptomsColumnGrid extends StatefulWidget {
   final List<SymptomEntity> value;

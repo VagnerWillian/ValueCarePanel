@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:value_panel/app/modules/history_chat/history_chat_module.dart';
-import 'package:value_panel/app/modules/history_chat/ui/history_chat.dart';
 import 'package:value_panel/app/modules/home/ui/components/header/header.component.dart';
 import 'package:value_panel/app/modules/home/ui/components/menus/left_menu.component.dart';
 import 'package:value_panel/app/modules/home/ui/home_store.dart';
 import 'package:value_panel/app/modules/home/ui/models/menu.model.dart';
-import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,6 +16,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends ModularState<HomePage, HomeStore> {
+
+  @override
+  void initState() {
+    super.initState();
+    store.navigateTo(DASHBOARD_ROUTE);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

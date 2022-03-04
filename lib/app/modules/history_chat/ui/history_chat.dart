@@ -7,7 +7,7 @@ import 'package:image_network/image_network.dart';
 import 'package:value_panel/app/modules/history_chat/ui/components/ballons.component.dart';
 import 'package:value_panel/app/modules/history_chat/ui/history_chat_store.dart';
 import 'package:flutter/material.dart';
-import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 class HistoryChat extends StatefulWidget {
   const HistoryChat({Key? key}) : super(key: key);

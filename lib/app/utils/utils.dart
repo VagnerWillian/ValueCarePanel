@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:value_panel/app/shared/core/infra/models/level.model.dart';
 import 'package:value_panel/app/shared/core/infra/models/specialty.model.dart';
 import 'package:value_panel/app/shared/core/domain/entities/specialty.entity.dart';
 import 'package:value_panel/app/shared/core/infra/models/classification.model.dart';
 
-import 'core/domain/entities/classification.entity.dart';
+import '../shared/core/domain/entities/classification.entity.dart';
+import '../shared/core/domain/entities/level.entity.dart';
 
 //////////////// ROUTES ////////////////////////////
 const String LOGIN_ROUTE = "/login/";
@@ -14,6 +16,10 @@ const String SCHEDULING_ROUTE = "/agendamento/";
 const String ANALYTICS_ROUTE = "/analytics/";
 const String USERS_ROUTE = "/users/";
 
+////////////// SHARED PREFERENCES KEYS /////////////
+const String FIRST_ACCESS_KEY = "FIRST_ACCESS_KEY_v1.0.0";
+const String TOKEN_USER_LOGGED_KEY = "TOKEN_USER_LOGGED_KEY";
+const String EMAIL_REMEMBER = "EMAIL_REMEMBER";
 
 /////////////// COLORS //////////////////////////
 final Color primaryColor = HexColor("#6418C3");
@@ -48,3 +54,24 @@ final List<SpecialtyEntity> specialties = [
   Specialty(id: 10, label: "Fisioterapeuta", image: "assets/assets/images/specialties/10.svg"),
   Specialty(id: 11, label: "Dermatologista", image: "assets/assets/images/specialties/11.svg"),
 ];
+
+//LEVELS
+List<LevelAdminEntity> levels  = [
+  LevelAdmin(id: 0, level: "Operador"),
+  LevelAdmin(id: 1, level: "Gestor"),
+  LevelAdmin(id: 2, level: "Administrador"),
+];
+
+final Map<int, String?> httpErrors = {
+  // Errors from Dio
+  0 :   "Tempo de limite esgotado",
+  1 :   "Tempo de envio esgotado",
+  2 :   "Tempo de recebimento esgotado",
+  5 :   "Verifique sua conexão com a internet",
+
+  // Erros from response
+  401 : "Solicitação não autorizada, sessão expirada, entre novamente para continuar.",
+  404 : "Não encontrado",
+  500 : "Erro no servidor interno",
+  503 : "Servidor indisponível"
+};

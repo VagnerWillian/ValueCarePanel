@@ -4,7 +4,7 @@ import 'package:value_panel/app/modules/dashboard/domain/entities/monitoring_dat
 import 'package:value_panel/app/modules/dashboard/errors/dashboard.errors.dart';
 import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
 import 'package:value_panel/app/shared/components/dialogs/repository_error.dialog.dart';
-import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 class ReferColumnGrid extends StatefulWidget {
   final MonitoringDataEntity value;
@@ -68,7 +68,7 @@ class _ReferColumnGridState extends State<ReferColumnGrid> {
     if(failure is DashboardRepositoryError){
       await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>RepositoryErrorDialog(repositoryError: failure));
     }else if(failure is DashboardUnknownError){
-      await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>AnotherErrorDialog(unknownError: failure));
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>UnknownErrorDialog(unknownError: failure));
     }
   }
 }

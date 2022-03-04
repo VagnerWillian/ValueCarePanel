@@ -3,24 +3,27 @@ import 'package:value_panel/app/shared/core/domain/entities/user.entity.dart';
 class UserModel implements UserEntity{
 
   @override
-  late String id;
+  late final int id;
 
   @override
-  late String levelAccess;
+  late final String levelAccess;
 
   @override
-  late String name;
+  late final String name;
 
   @override
-  late String picture;
+  late final String picture;
 
   @override
-  late String phone;
+  late final String phone;
 
   @override
-  late String email;
+  late final String email;
 
-  UserModel({required this.id, required this.name, required this.levelAccess, required this.picture, required this.phone, required this.email});
+  @override
+  late final String token;
+
+  UserModel({required this.id, required this.name, required this.levelAccess, required this.picture, required this.phone, required this.email, this.token = ''});
 
   UserModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -29,6 +32,7 @@ class UserModel implements UserEntity{
     picture = json['foto'];
     phone = json['telefone'];
     email = json['email'];
+    token = json['token']??'';
   }
 
   Map<String, dynamic> toJson() {
@@ -39,6 +43,7 @@ class UserModel implements UserEntity{
     data['picture'] = picture;
     data['phone'] = phone;
     data['email'] = email;
+    data['token'] = token;
     return data;
   }
 }

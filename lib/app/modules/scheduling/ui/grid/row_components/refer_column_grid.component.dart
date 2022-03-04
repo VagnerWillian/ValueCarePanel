@@ -4,7 +4,7 @@ import 'package:value_panel/app/modules/scheduling/domain/entities/scheduling_da
 import 'package:value_panel/app/modules/scheduling/errors/scheduling.errors.dart';
 import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
 import 'package:value_panel/app/shared/components/dialogs/repository_error.dialog.dart';
-import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 class ReferColumnGrid extends StatefulWidget {
   final SchedulingDataEntity value;
@@ -74,7 +74,7 @@ class _ReferColumnGridState extends State<ReferColumnGrid> {
     if(failure is SchedulingRepositoryError){
       await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>RepositoryErrorDialog(repositoryError: failure));
     }else if(failure is SchedulingUnknownError){
-      await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>AnotherErrorDialog(unknownError: failure));
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>UnknownErrorDialog(unknownError: failure));
     }
   }
 }

@@ -5,5 +5,5 @@ class RepositoryError{
   RepositoryError({this.statusCode = 0, this.message});
 
   // ============ RESPONSE ERROS ========================
-  Map<int, dynamic> get responseErrors => {};
+  Map<int, String?> get responseErrors => {};
 }

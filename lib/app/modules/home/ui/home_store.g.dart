@@ -28,11 +28,11 @@ mixin _$HomeStore on HomeStoreBase, Store {
       ActionController(name: 'HomeStoreBase');
 
   @override
-  void setRoute(String value) {
+  void _setRoute(String value) {
     final _$actionInfo = _$HomeStoreBaseActionController.startAction(
-        name: 'HomeStoreBase.setRoute');
+        name: 'HomeStoreBase._setRoute');
     try {
-      return super.setRoute(value);
+      return super._setRoute(value);
     } finally {
       _$HomeStoreBaseActionController.endAction(_$actionInfo);
     }

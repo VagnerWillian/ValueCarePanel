@@ -1,10 +1,9 @@
 import 'package:flare_flutter/flare_actor.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:value_panel/app/modules/users/errors/scheduling.errors.dart';
+import 'package:value_panel/app/modules/users/errors/users_errors.dart';
 import 'package:value_panel/app/modules/users/ui/components/cards/user.card.dart';
 import 'package:value_panel/app/modules/users/ui/components/dialogs/new_user.dialog.dart';
 import 'package:value_panel/app/modules/users/ui/users_store.dart';
@@ -13,7 +12,7 @@ import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.d
 import 'package:value_panel/app/shared/components/dialogs/repository_error.dialog.dart';
 import 'package:value_panel/app/shared/components/page_title_description.widget.dart';
 import 'package:value_panel/app/shared/components/search/main_search.widget.dart';
-import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 class UsersPage extends StatefulWidget {
   const UsersPage({Key? key}) : super(key: key);
@@ -22,8 +21,7 @@ class UsersPage extends StatefulWidget {
   UsersPageState createState() => UsersPageState();
 }
 
-class UsersPageState extends State<UsersPage> {
-  final UsersStore store = Modular.get();
+class UsersPageState extends ModularState<UsersPage, UsersStore> {
 
   @override
   void initState() {
@@ -113,15 +111,15 @@ class UsersPageState extends State<UsersPage> {
     );
   }
 
-  void onCreateUser() {
-    showDialog(barrierColor: Colors.white70, context: context, builder: (context) => const NewUserDialog());
+  void onCreateUser() async{
+    await showDialog(barrierColor: Colors.white70, context: context, builder: (context) => const NewUserDialog());
   }
 
   Future onError(UsersError failure) async {
     if (failure is UsersRepositoryError) {
       await showDialog(barrierColor: Colors.white70, context: context, builder: (_) => RepositoryErrorDialog(repositoryError: failure));
     } else if (failure is UsersUnknownError) {
-      await showDialog(barrierColor: Colors.white70, context: context, builder: (_) => AnotherErrorDialog(unknownError: failure));
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_) => UnknownErrorDialog(unknownError: failure));
     }
   }
 }

@@ -15,7 +15,7 @@ import 'package:value_panel/app/modules/dashboard/infra/models/groups_chart.mode
 import 'package:value_panel/app/modules/dashboard/ui/grid/monitoring.datasource.dart';
 import 'package:value_panel/app/modules/dashboard/ui/models/date_selector.model.dart';
 import 'package:value_panel/app/modules/home/ui/home_store.dart';
-import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 part 'dashboard_store.g.dart';
 

@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:value_panel/app/modules/dashboard/domain/entities/chart/symptoms_group_chart.entity.dart';
 import 'package:value_panel/app/modules/dashboard/infra/models/symptoms_value_chart.model.dart';
 import 'package:value_panel/app/modules/dashboard/ui/components/tiles/symptom_appointments.tile.dart';
-import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 class SymptomReportedCard extends StatelessWidget {
   SymptomsGroupChartDataEntity reportedSymptomsGroup;

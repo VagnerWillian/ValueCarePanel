@@ -1,3 +1,4 @@
 abstract class UserEntity{
-  late String id,name, picture, levelAccess, phone, email;
+  late final int id;
+  late final String name, picture, levelAccess, phone, email, token;
 }

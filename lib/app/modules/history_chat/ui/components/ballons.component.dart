@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_network/image_network.dart';
 import 'package:value_panel/app/modules/history_chat/domain/entities/history_item.entity.dart';
-import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 class Ballons extends StatelessWidget{
   late final HistoryItemEntity historyItemEntity;

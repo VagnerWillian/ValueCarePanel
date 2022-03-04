@@ -17,7 +17,7 @@ import 'package:value_panel/app/shared/components/dialogs/loading.dialog.dart';
 import 'package:value_panel/app/shared/components/dialogs/repository_error.dialog.dart';
 import 'package:value_panel/app/shared/components/page_title_description.widget.dart';
 import 'package:value_panel/app/shared/components/search/main_search.widget.dart';
-import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 class MonitoringPage extends StatefulWidget {
   const MonitoringPage({Key? key}) : super(key: key);
@@ -318,7 +318,7 @@ class MonitoringPageState extends State<MonitoringPage> {
     if(failure is MonitoringRepositoryError){
       await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>RepositoryErrorDialog(repositoryError: failure));
     }else if(failure is MonitoringUnknownError){
-      await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>AnotherErrorDialog(unknownError: failure));
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>UnknownErrorDialog(unknownError: failure));
     }
   }
 }

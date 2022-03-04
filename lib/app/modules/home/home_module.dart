@@ -4,7 +4,7 @@ import 'package:value_panel/app/modules/home/ui/home_store.dart';
 import 'package:value_panel/app/modules/monitoring/monitoring_module.dart';
 import 'package:value_panel/app/modules/scheduling/scheduling_module.dart';
 import 'package:value_panel/app/modules/users/users_module.dart';
-import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 import 'ui/home_page.dart';
  

@@ -7,7 +7,7 @@ import 'package:value_panel/app/modules/dashboard/infra/models/basic_value_chart
 import 'package:value_panel/app/shared/components/charts/line_h.chart.dart';
 import 'package:value_panel/app/shared/components/charts/models/chart.config.dart';
 import 'package:value_panel/app/shared/components/charts/models/chart.data.item.dart';
-import 'package:value_panel/app/shared/utils.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 class LineChartVertical extends StatelessWidget {
   final String description;

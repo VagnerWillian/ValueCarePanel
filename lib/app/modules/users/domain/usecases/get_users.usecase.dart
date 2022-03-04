@@ -1,7 +1,16 @@
 import 'package:either_dart/either.dart';
-import 'package:value_panel/app/modules/users/errors/scheduling.errors.dart';
-import 'package:value_panel/app/shared/core/domain/entities/user.entity.dart';
 
-abstract class GetUsersUseCase{
-  Future<Either<UsersError, List<UserEntity>>> call();
+import '../../../../shared/core/domain/entities/user.entity.dart';
+import '../../errors/users_errors.dart';
+import '../repositories/repository.dart';
+
+class GetUsersUseCase{
+
+  final UsersRepository _usersRepository;
+  GetUsersUseCase(this._usersRepository);
+
+  Future<Either<UsersError, List<UserEntity>>> call() async{
+    return await _usersRepository.getAllUsers();
+  }
+
 }

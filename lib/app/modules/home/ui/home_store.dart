@@ -3,6 +3,7 @@ import 'package:mobx/mobx.dart';
 import 'package:value_panel/app/modules/monitoring/ui/monitoring_store.dart';
 import 'package:value_panel/app/shared/core/domain/entities/hospital.entity.dart';
 import 'package:value_panel/app/shared/core/domain/entities/user.entity.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 part 'home_store.g.dart';
 
@@ -17,11 +18,11 @@ abstract class HomeStoreBase with Store {
   late String actuallyRoute = Modular.to.path;
 
   @action
-  void setRoute(String value)=>actuallyRoute=value;
+  void _setRoute(String value)=>actuallyRoute=value;
 
   void navigateTo(String path){
     Modular.to.navigate(path);
-    setRoute(path);
+    _setRoute(path);
   }
 
 }
