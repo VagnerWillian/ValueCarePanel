@@ -37,9 +37,10 @@ class Ballons extends StatelessWidget{
                   Align(
                     alignment: Alignment.centerRight,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Text(historyItemEntity.name, style: GoogleFonts.openSans(fontSize: 12, color: primaryColor, fontWeight: FontWeight.bold)),
-                        Text("28/02/2022 16:32", style: GoogleFonts.openSans(fontSize: 12, color: Colors.grey)),
+                        Text(historyItemEntity.data, style: GoogleFonts.openSans(fontSize: 12, color: Colors.grey)),
                       ],
                     ),
                   ),
@@ -60,8 +61,8 @@ class Ballons extends StatelessWidget{
             height: 40,
             width: 40,
             onLoading: Container(),
-            imageCache: const CachedNetworkImageProvider("https://uploaddeimagens.com.br/images/003/700/538/original/272146181_6804132162995563_4295433218327981100_n.jpg"),
-            image: "https://uploaddeimagens.com.br/images/003/700/538/original/272146181_6804132162995563_4295433218327981100_n.jpg",
+            imageCache: CachedNetworkImageProvider(historyItemEntity.photo),
+            image: historyItemEntity.photo,
           ),
         ),
       ],
@@ -81,8 +82,8 @@ class Ballons extends StatelessWidget{
             height: 40,
             width: 40,
             onLoading: Container(),
-            imageCache: const CachedNetworkImageProvider("https://uploaddeimagens.com.br/images/003/700/538/original/272146181_6804132162995563_4295433218327981100_n.jpg"),
-            image: "https://uploaddeimagens.com.br/images/003/700/538/original/272146181_6804132162995563_4295433218327981100_n.jpg",
+            imageCache: CachedNetworkImageProvider(historyItemEntity.photo),
+            image: historyItemEntity.photo,
           ),
         ),
         Expanded(
@@ -100,9 +101,10 @@ class Ballons extends StatelessWidget{
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Text(historyItemEntity.name, style: GoogleFonts.openSans(fontSize: 12, color: Colors.white, fontWeight: FontWeight.bold)),
-                        Text("28/02/2022 16:32", style: GoogleFonts.openSans(fontSize: 12, color: Colors.white)),
+                        Text(historyItemEntity.data, style: GoogleFonts.openSans(fontSize: 12, color: Colors.white)),
                       ],
                     ),
                   ),

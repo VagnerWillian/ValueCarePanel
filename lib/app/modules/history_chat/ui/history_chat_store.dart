@@ -111,8 +111,9 @@ abstract class _HistoryChatStoreBase with Store {
   void sendText()async{
     setLoadingSend(true);
     HistoryItemEntity newHistory = HistoryItem.send(
-        name: "Vagner Willian",
-        photo: "assets/ images/photos/user_1.jpg",
+        data: DateTime.now().toString(),
+        name: _homeStore.userLogged!.name,
+        photo: _homeStore.userLogged!.picture,
         text: textEditingController.text);
 
     await Future.delayed(const Duration(seconds: 1));

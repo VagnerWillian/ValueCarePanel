@@ -4,4 +4,5 @@ abstract class HistoryItemEntity{
   late final String name;
   late final String photo;
   late final String text;
+  late final String data;
 }

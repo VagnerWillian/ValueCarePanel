@@ -5,6 +5,7 @@ import 'package:value_panel/app/modules/home/domain/usecases/get_user_token.usec
 import 'package:value_panel/app/shared/core/domain/entities/hospital.entity.dart';
 import 'package:value_panel/app/shared/core/domain/entities/user.entity.dart';
 import 'package:value_panel/app/shared/core/managers/config.manager.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 import '../errors/home.errors.dart';
 
@@ -52,7 +53,7 @@ abstract class HomeStoreBase with Store {
       return failure;
     }, (UserEntity value) async{
       setUserLogged(value);
-      await Future.delayed(const Duration(seconds: 1));
+      navigateTo(DASHBOARD_ROUTE);
       return value;
     });
   }

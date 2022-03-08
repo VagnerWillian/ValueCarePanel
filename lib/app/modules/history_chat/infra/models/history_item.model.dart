@@ -17,7 +17,10 @@ class HistoryItem implements HistoryItemEntity{
   @override
   late final String text;
 
-  HistoryItem.send({this.isAnswer=true, required this.name, required this.photo, required this.text});
+  @override
+  late final String data;
+
+  HistoryItem.send({this.isAnswer=true, required this.name, required this.photo, required this.text, required this.data});
 
   HistoryItem.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -25,6 +28,7 @@ class HistoryItem implements HistoryItemEntity{
     name = json['nome']??"";
     photo = json['foto']??"";
     text = json['texto']??"";
+    data = json['data']??"";
   }
 
   Map<String, dynamic> toJson() {
@@ -34,6 +38,7 @@ class HistoryItem implements HistoryItemEntity{
     data['nome'] = name;
     data['foto'] = photo;
     data['texto'] = text;
+    data['data'] = data;
     return data;
   }
 }

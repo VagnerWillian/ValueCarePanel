@@ -39,12 +39,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             children: [
               Observer(
                 builder: (_) => LeftMenu(actuallyRoute: controller.actuallyRoute, navigateTo: controller.navigateTo, menus: [
-                  MenuLeftItem(
-                    assetIcon: 'assets/images/menu/inicio.svg',
-                    label: "Ínicio",
-                    badgeNum: 0,
-                    route: DASHBOARD_ROUTE,
-                  ),
+                  MenuLeftItem(assetIcon: 'assets/images/menu/inicio.svg', label: "Ínicio", badgeNum: 0, route: DASHBOARD_ROUTE),
                   MenuLeftItem(assetIcon: 'assets/images/menu/monitoramento.svg', label: "Monitoramento", badgeNum: 17, route: MONITORING_ROUTE),
                   MenuLeftItem(assetIcon: 'assets/images/menu/agendamento.svg', label: "Agendamento", badgeNum: 0, route: SCHEDULING_ROUTE),
                   MenuLeftItem(assetIcon: 'assets/images/menu/pacientes.svg', label: "Pacientes", badgeNum: 0, route: '#'),
