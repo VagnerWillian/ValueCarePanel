@@ -90,7 +90,7 @@ abstract class _DashboardStoreBase with Store {
   Future onChangedSelectorDate(DateSelector dateSelector, Function onError) async {
     setDateSelector(dateSelector);
     loadAnalyticsDataFromSelectorDate(dateSelector, onError);
-    loadMonitoringItemsFromSelectorDate(dateSelector, onError);
+    // loadMonitoringItemsFromSelectorDate(dateSelector, onError);
   }
 
   void loadAnalyticsDataFromSelectorDate(DateSelector dateSelector, Function onError)async {

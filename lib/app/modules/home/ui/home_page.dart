@@ -6,7 +6,12 @@ import 'package:value_panel/app/modules/home/ui/components/header/header.compone
 import 'package:value_panel/app/modules/home/ui/components/menus/left_menu.component.dart';
 import 'package:value_panel/app/modules/home/ui/home_store.dart';
 import 'package:value_panel/app/modules/home/ui/models/menu.model.dart';
+import 'package:value_panel/app/shared/core/infra/models/user.model.dart';
 import 'package:value_panel/app/utils/utils.dart';
+
+import '../../../shared/components/dialogs/another_error.dialog.dart';
+import '../../../shared/components/dialogs/repository_error.dialog.dart';
+import '../errors/home.errors.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,8 +24,8 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
 
   @override
   void initState() {
+    store.loadUser(onError: onError);
     super.initState();
-    store.navigateTo(DASHBOARD_ROUTE);
   }
 
   @override
@@ -53,18 +58,29 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: const [Header(), Expanded(child: RouterOutlet())],
+                  children: [
+                    Observer(
+                      builder: (_) => Header(
+                        userEntity: store.userLogged,
+                      ),
+                    ),
+                    Observer(builder: (_) => Expanded(child: store.userLogged == null ? Container() : const RouterOutlet()))
+                  ],
                 ),
               ),
             ],
           ),
-          Positioned(
-            bottom: 0,
-            right: 30,
-            child: HistoryChatModule()
-          )
+          Positioned(bottom: 0, right: 30, child: HistoryChatModule())
         ],
       ),
     );
+  }
+
+  Future onError(HomeError failure) async {
+    if (failure is HomeRepositoryError) {
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_) => RepositoryErrorDialog(repositoryError: failure));
+    } else if (failure is UnknownHomeError) {
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_) => UnknownErrorDialog(unknownError: failure));
+    }
   }
 }

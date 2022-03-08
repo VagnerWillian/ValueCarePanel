@@ -25,6 +25,7 @@ import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.d
 import 'package:value_panel/app/shared/components/dialogs/loading.dialog.dart';
 import 'package:value_panel/app/shared/components/dialogs/repository_error.dialog.dart';
 import 'package:value_panel/app/shared/components/page_title_description.widget.dart';
+import 'package:value_panel/app/shared/core/managers/config.manager.dart';
 import 'package:value_panel/app/utils/utils.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -35,6 +36,7 @@ class DashboardPage extends StatefulWidget {
 }
 
 class DashboardPageState extends ModularState<DashboardPage, DashboardStore> {
+  final ConfigManager configManager = Modular.get<ConfigManager>();
 
   @override
   void initState() {

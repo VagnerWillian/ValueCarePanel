@@ -1,5 +1,10 @@
+import 'package:either_dart/either.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
-import 'package:value_panel/app/modules/users/domain/usecases/create_user.usecase.dart';
+
+import '../../../../../shared/core/domain/entities/user.entity.dart';
+import '../../../domain/usecases/create_user.usecase.dart';
+import '../../../errors/users_errors.dart';
 
 part 'new_user.dialog_store.g.dart';
 
@@ -16,14 +21,29 @@ abstract class _NewUserDialogStoreBase with Store {
   @observable
   bool loading = false;
 
+  @observable
+  UserEntity? user;
+
   //ACTIONS
 
   @action
   void setLoading(bool value)=>loading=value;
 
-  Future newUser(Function onError, {required String name, required String email, required String phone, required String level})async{
+  @action
+  void setUserCreated(UserEntity value)=>user=value;
+
+  Future newUser(Function onError, {required String name, required String email, required String phone, required int level})async{
     setLoading(true);
-    await Future.delayed(const Duration(seconds: 3));
+    Either<UsersError, UserEntity> result = await _createUserUseCase.call(name: name, email: email, phone: phone, level: level);
+    result.fold((UsersError failure) {
+
+      return failure;
+    }, (UserEntity userEntity) async{
+      setUserCreated(userEntity);
+      await Future.delayed(const Duration(seconds: 1));
+      Modular.to.pop(userEntity);
+      return userEntity;
+    });
     setLoading(false);
   }
 

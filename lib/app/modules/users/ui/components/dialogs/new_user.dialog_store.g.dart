@@ -24,6 +24,21 @@ mixin _$NewUserDialogStore on _NewUserDialogStoreBase, Store {
     });
   }
 
+  final _$userAtom = Atom(name: '_NewUserDialogStoreBase.user');
+
+  @override
+  UserEntity? get user {
+    _$userAtom.reportRead();
+    return super.user;
+  }
+
+  @override
+  set user(UserEntity? value) {
+    _$userAtom.reportWrite(value, super.user, () {
+      super.user = value;
+    });
+  }
+
   final _$_NewUserDialogStoreBaseActionController =
       ActionController(name: '_NewUserDialogStoreBase');
 
@@ -39,9 +54,21 @@ mixin _$NewUserDialogStore on _NewUserDialogStoreBase, Store {
   }
 
   @override
+  void setUserCreated(UserEntity value) {
+    final _$actionInfo = _$_NewUserDialogStoreBaseActionController.startAction(
+        name: '_NewUserDialogStoreBase.setUserCreated');
+    try {
+      return super.setUserCreated(value);
+    } finally {
+      _$_NewUserDialogStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-loading: ${loading}
+loading: ${loading},
+user: ${user}
     ''';
   }
 }

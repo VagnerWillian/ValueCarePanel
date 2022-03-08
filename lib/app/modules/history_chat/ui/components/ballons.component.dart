@@ -32,6 +32,7 @@ class Ballons extends StatelessWidget{
             child: Padding(
               padding: const EdgeInsets.all(10),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Align(
                     alignment: Alignment.centerRight,
@@ -59,7 +60,7 @@ class Ballons extends StatelessWidget{
             height: 40,
             width: 40,
             onLoading: Container(),
-            imageCache: CachedNetworkImageProvider("https://uploaddeimagens.com.br/images/003/700/538/original/272146181_6804132162995563_4295433218327981100_n.jpg"),
+            imageCache: const CachedNetworkImageProvider("https://uploaddeimagens.com.br/images/003/700/538/original/272146181_6804132162995563_4295433218327981100_n.jpg"),
             image: "https://uploaddeimagens.com.br/images/003/700/538/original/272146181_6804132162995563_4295433218327981100_n.jpg",
           ),
         ),
@@ -94,6 +95,7 @@ class Ballons extends StatelessWidget{
             child: Padding(
               padding: const EdgeInsets.all(10),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Align(
                     alignment: Alignment.centerLeft,

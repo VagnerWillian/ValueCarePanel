@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class HistoryColumnGrid extends StatelessWidget {
-  final int value;
+  final String value;
   final Function openHistoryFloating;
   const HistoryColumnGrid({required this.openHistoryFloating, Key? key, required this.value}) : super(key: key);
 

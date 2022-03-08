@@ -4,10 +4,9 @@ import 'package:value_panel/app/modules/history_chat/domain/repositories/reposit
 import 'package:value_panel/app/modules/history_chat/domain/services/get_all_history.service.dart';
 import 'package:value_panel/app/modules/history_chat/domain/usecases/get_all_history.usecase.dart';
 import 'package:value_panel/app/modules/history_chat/infra/repositories/asset.repository.dart';
-import 'package:value_panel/app/modules/history_chat/infra/repositories/json_generator.repository.dart';
 import 'package:value_panel/app/modules/history_chat/ui/history_chat.dart';
 import 'package:value_panel/app/modules/history_chat/ui/history_chat_store.dart';
-import 'package:value_panel/app/shared/custom_dio/custom.dio.dart';
+import 'package:value_panel/app/modules/home/ui/home_store.dart';
 
 class HistoryChatModule extends WidgetModule {
 
@@ -15,7 +14,10 @@ class HistoryChatModule extends WidgetModule {
   final List<Bind> binds = [
 
     //Stories
-    Bind.lazySingleton((i) => HistoryChatStore(i.get<GetAllHistoryUseCase>())),
+    Bind.lazySingleton((i) => HistoryChatStore(
+        i.get<GetAllHistoryUseCase>(),
+        i.get<HomeStore>()
+    )),
 
     //Usecases
     Bind.lazySingleton((i) => GetAllHistory(i.get<HistoryRepository>())),

@@ -5,10 +5,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_network/image_network.dart';
 import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
+import 'package:value_panel/app/shared/core/domain/entities/user.entity.dart';
 import 'package:value_panel/app/utils/utils.dart';
 
 class Header extends StatelessWidget {
-  const Header({Key? key}) : super(key: key);
+  final UserEntity? userEntity;
+  const Header({required this.userEntity, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +128,7 @@ class Header extends StatelessWidget {
             width: 60,
             thickness: 0.5,
           ),
-          Row(
+          userEntity==null?Container():Row(
             children: [
               SizedBox(
                 width: 55,
@@ -136,8 +138,8 @@ class Header extends StatelessWidget {
                   height: 55,
                   width: 55,
                   onLoading: Container(),
-                  imageCache: const CachedNetworkImageProvider("https://uploaddeimagens.com.br/images/003/700/538/original/272146181_6804132162995563_4295433218327981100_n.jpg"),
-                  image: "https://uploaddeimagens.com.br/images/003/700/538/original/272146181_6804132162995563_4295433218327981100_n.jpg",
+                  imageCache: CachedNetworkImageProvider(userEntity!.picture),
+                  image: userEntity!.picture,
                 ),
               ),
               Padding(
@@ -147,11 +149,11 @@ class Header extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Vagner Willian",
+                      userEntity!.name,
                       style: GoogleFonts.cairo(textStyle: const TextStyle(fontWeight: FontWeight.bold)),
                     ),
                     Text(
-                      "Administrador",
+                      userEntity!.levelAccess,
                       style: GoogleFonts.cairo(textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: Colors.grey[400])),
                     ),
                   ],

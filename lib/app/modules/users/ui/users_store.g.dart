@@ -65,6 +65,17 @@ mixin _$UsersStore on _UsersStoreBase, Store {
   }
 
   @override
+  dynamic addUser(UserEntity userEntity) {
+    final _$actionInfo = _$_UsersStoreBaseActionController.startAction(
+        name: '_UsersStoreBase.addUser');
+    try {
+      return super.addUser(userEntity);
+    } finally {
+      _$_UsersStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 loading: ${loading},

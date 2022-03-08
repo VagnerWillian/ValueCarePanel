@@ -3,7 +3,7 @@ import 'package:value_panel/app/modules/history_chat/domain/entities/history_ite
 class HistoryItem implements HistoryItemEntity{
 
   @override
-  late final int id;
+  late final int? id;
 
   @override
   late final bool isAnswer;
@@ -17,10 +17,10 @@ class HistoryItem implements HistoryItemEntity{
   @override
   late final String text;
 
-  HistoryItem({this.id=0, this.isAnswer=false, this.name='', this.photo='', this.text=''});
+  HistoryItem.send({this.isAnswer=true, required this.name, required this.photo, required this.text});
 
   HistoryItem.fromJson(Map<String, dynamic> json) {
-    id = json['id']??0;
+    id = json['id'];
     isAnswer = json['resposta']??false;
     name = json['nome']??"";
     photo = json['foto']??"";

@@ -9,6 +9,21 @@ part of 'home_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$HomeStore on HomeStoreBase, Store {
+  final _$userLoggedAtom = Atom(name: 'HomeStoreBase.userLogged');
+
+  @override
+  UserEntity? get userLogged {
+    _$userLoggedAtom.reportRead();
+    return super.userLogged;
+  }
+
+  @override
+  set userLogged(UserEntity? value) {
+    _$userLoggedAtom.reportWrite(value, super.userLogged, () {
+      super.userLogged = value;
+    });
+  }
+
   final _$actuallyRouteAtom = Atom(name: 'HomeStoreBase.actuallyRoute');
 
   @override
@@ -39,8 +54,20 @@ mixin _$HomeStore on HomeStoreBase, Store {
   }
 
   @override
+  dynamic setUserLogged(UserEntity value) {
+    final _$actionInfo = _$HomeStoreBaseActionController.startAction(
+        name: 'HomeStoreBase.setUserLogged');
+    try {
+      return super.setUserLogged(value);
+    } finally {
+      _$HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
+userLogged: ${userLogged},
 actuallyRoute: ${actuallyRoute}
     ''';
   }

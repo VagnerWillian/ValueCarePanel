@@ -10,6 +10,6 @@ class SignInUseCase{
   SignInUseCase(this._loginRepository);
 
   Future<Either<LoginError, UserEntity>> call({required String email, required String pass})async{
-    return await _loginRepository.getUser(email: email, pass: pass);
+    return await _loginRepository.getUserFromEmailAndPassword(email: email, pass: pass);
   }
 }

@@ -52,7 +52,7 @@ class MonitoringDataSource extends DataGridSource {
       DataGridCell<MonitoringDataEntity>(columnName: columnNames[4].label, value: m),
       DataGridCell<MonitoringDataEntity>(columnName: columnNames[5].label, value: m),
       DataGridCell<MonitoringDataEntity>(columnName: columnNames[6].label, value: m),
-      DataGridCell<int>(columnName: columnNames[7].label, value: m.id),
+      DataGridCell<String>(columnName: columnNames[7].label, value: m.id),
     ])).toList(growable: false);
   }
 

@@ -1,10 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:value_panel/app/shared/core/managers/config.manager.dart';
 
 class CustomInterceptor extends InterceptorsWrapper {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
     print('REQUEST[${options.method}] => PATH: ${options.uri}');
+    final ConfigManager configManager = Modular.get<ConfigManager>();
+    print("TOKEN APLICADO **${configManager.tokenUserLogged}**");
     return super.onRequest(options, handler);
   }
 

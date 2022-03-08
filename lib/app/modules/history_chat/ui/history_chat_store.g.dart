@@ -55,6 +55,21 @@ mixin _$HistoryChatStore on _HistoryChatStoreBase, Store {
     });
   }
 
+  final _$loadingSendAtom = Atom(name: '_HistoryChatStoreBase.loadingSend');
+
+  @override
+  bool get loadingSend {
+    _$loadingSendAtom.reportRead();
+    return super.loadingSend;
+  }
+
+  @override
+  set loadingSend(bool value) {
+    _$loadingSendAtom.reportWrite(value, super.loadingSend, () {
+      super.loadingSend = value;
+    });
+  }
+
   final _$itemsAtom = Atom(name: '_HistoryChatStoreBase.items');
 
   @override
@@ -151,6 +166,17 @@ mixin _$HistoryChatStore on _HistoryChatStoreBase, Store {
   }
 
   @override
+  dynamic setLoadingSend(bool value) {
+    final _$actionInfo = _$_HistoryChatStoreBaseActionController.startAction(
+        name: '_HistoryChatStoreBase.setLoadingSend');
+    try {
+      return super.setLoadingSend(value);
+    } finally {
+      _$_HistoryChatStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void close() {
     final _$actionInfo = _$_HistoryChatStoreBaseActionController.startAction(
         name: '_HistoryChatStoreBase.close');
@@ -167,6 +193,7 @@ mixin _$HistoryChatStore on _HistoryChatStoreBase, Store {
 isExpanded: ${isExpanded},
 selectedIdPatient: ${selectedIdPatient},
 loading: ${loading},
+loadingSend: ${loadingSend},
 items: ${items}
     ''';
   }

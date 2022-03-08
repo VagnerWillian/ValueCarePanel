@@ -8,25 +8,25 @@ class MonitoringData implements MonitoringDataEntity {
   final datePattern = DateFormat("dd/MM/yyyy", "pt_BR");
 
   @override
-  int? classificationId;
+  late int classificationId;
 
   @override
-  int? specialtyId;
+  late int? specialtyId;
 
   @override
-  String? solicitationDate;
+  late final String solicitationDate;
 
   @override
-  bool? confirm;
+  late bool confirm;
 
   @override
-  int? id;
+  late final String id;
 
   @override
-  String? patient;
+  late final String patient;
 
   @override
-  List<SymptomEntity>? symptoms;
+  late final List<SymptomEntity> symptoms;
 
   @override
   String get idString => "#$id";
@@ -47,12 +47,12 @@ class MonitoringData implements MonitoringDataEntity {
       required this.confirm});
 
   MonitoringData.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+;    id = json['id'];
     symptoms = (json['sintomas'] as List).map((s) => Symptom.fromJson(s)).toList();
     patient = json['paciente'];
-    classificationId = json['classificacaoID'];
-    specialtyId = json['especialidadeID'];
-    solicitationDate = datePattern.format(DateTime.parse(json['dataSolicitada']));
+    classificationId = json['classificacaoId'];
+    specialtyId = json['especialidadeId'];
+    solicitationDate = datePattern.format(DateTime.parse(json['dataSolicitacao']));
     confirm = json['confirmado'];
     appointmentDate = json['dataAgendamento'];
   }
@@ -61,11 +61,11 @@ class MonitoringData implements MonitoringDataEntity {
   Map<String, dynamic> get toJson {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['sintomas'] = symptoms?.map((e) => e.toJson).toList();
+    data['sintomas'] = symptoms.map((e) => e.toJson).toList();
     data['paciente'] = patient;
-    data['classificacaoID'] = classificationId;
-    data['especialidadeID'] = specialtyId;
-    data['dataSolicitada'] = solicitationDate;
+    data['classificacaoId'] = classificationId;
+    data['especialidadeId'] = specialtyId;
+    data['dataSolicitacao'] = solicitationDate;
     data['confirmado'] = confirm;
     data['dataAgendamento'] = appointmentDate;
     return data;

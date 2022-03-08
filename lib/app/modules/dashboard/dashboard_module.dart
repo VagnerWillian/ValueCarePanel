@@ -15,6 +15,8 @@ import 'package:value_panel/app/modules/dashboard/infra/repositories/json_genera
 import 'package:value_panel/app/modules/dashboard/ui/dashboard_page.dart';
 import 'package:value_panel/app/modules/dashboard/ui/dashboard_store.dart';
 
+import '../../shared/custom_dio/custom.dio.dart';
+
 class DashboardModule extends Module {
   @override
   final List<Bind> binds = [
@@ -34,8 +36,8 @@ class DashboardModule extends Module {
     Bind.lazySingleton((i) => DownloadArchive()),
 
     // Repositories
-    // Bind.lazySingleton((i) => JsonGeneratorDashboardRepository(i.get<CustomDio>())),
-    Bind.lazySingleton((i) => AssetDashBoardRepository())
+    Bind.lazySingleton((i) => JsonGeneratorDashboardRepository(i.get<CustomDio>())),
+    // Bind.lazySingleton((i) => AssetDashBoardRepository())
   ];
 
   @override

@@ -3,7 +3,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:mobx/mobx.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
-import 'package:value_panel/app/modules/history_chat/history_chat_module.dart';
 import 'package:value_panel/app/modules/history_chat/ui/history_chat_store.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/download_archive.usecase.dart';
@@ -118,8 +117,8 @@ abstract class _MonitoringStoreBase with Store {
       if(text.isNotEmpty) {
         List<MonitoringDataEntity> searchList = backupList.where((m) {
         String? id = m.idString.toLowerCase();
-        String? name = m.patient?.toLowerCase();
-        return name!.contains(text.toLowerCase())||id.contains(text.toLowerCase());
+        String? name = m.patient.toLowerCase();
+        return name.contains(text.toLowerCase())||id.contains(text.toLowerCase());
       }).toList();
         monitoringDataSource.updateList(searchList);
       }else{

@@ -12,6 +12,7 @@ import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.d
 import 'package:value_panel/app/shared/components/dialogs/repository_error.dialog.dart';
 import 'package:value_panel/app/shared/components/page_title_description.widget.dart';
 import 'package:value_panel/app/shared/components/search/main_search.widget.dart';
+import 'package:value_panel/app/shared/core/domain/entities/user.entity.dart';
 import 'package:value_panel/app/utils/utils.dart';
 
 class UsersPage extends StatefulWidget {
@@ -83,16 +84,15 @@ class UsersPageState extends ModularState<UsersPage, UsersStore> {
             Observer(
               builder: (_) => store.loading
                   ? Center(
-                      child: SizedBox(
-                      width: 250,
-                      height: 250,
-                      child: FlareActor(
-                        'assets/anims/loading.flr',
-                        animation: 'loading',
-                        color: primaryColor,
-                      ),
-                    ))
-                  : Expanded(
+                  child: SizedBox(
+                    width: 250,
+                    height: 250,
+                    child: FlareActor(
+                      'assets/anims/loading.flr',
+                      animation: 'loading',
+                      color: primaryColor,
+                    ),
+                  )):Expanded(
                       child: SingleChildScrollView(
                         child: Padding(
                           padding: const EdgeInsets.all(20.0),
@@ -112,7 +112,8 @@ class UsersPageState extends ModularState<UsersPage, UsersStore> {
   }
 
   void onCreateUser() async{
-    await showDialog(barrierColor: Colors.white70, context: context, builder: (context) => const NewUserDialog());
+    UserEntity newUser = await showDialog(barrierColor: Colors.white70, context: context, builder: (context) => const NewUserDialog());
+    store.addUser(newUser);
   }
 
   Future onError(UsersError failure) async {

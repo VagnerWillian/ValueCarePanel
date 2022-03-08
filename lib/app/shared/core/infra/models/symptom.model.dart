@@ -4,7 +4,7 @@ import 'package:value_panel/app/shared/core/domain/entities/symptoms.entity.dart
 class Symptom extends Equatable implements SymptomEntity {
 
   @override
-  late final int id;
+  late final String id;
 
   @override
   late final String dateReport;
@@ -21,11 +21,11 @@ class Symptom extends Equatable implements SymptomEntity {
   Symptom({required this.id, required this.label, this.srcImage = '', this.dateReport = '', this.intensity = ''});
 
   Symptom.fromJson(Map<String, dynamic> json) {
-    id = json['id']??0;
-    label = json['label']??"Nan";
-    dateReport = json['reportado_em']??"Nan";
-    srcImage = json['imagem']??"Nan";
-    intensity = json['intensidade']??"Nan";
+    id = json['id'];
+    label = json['label'];
+    dateReport = json['reportadoEm'];
+    srcImage = json['imagem'];
+    intensity = json['intensidade'];
   }
 
   @override
@@ -33,7 +33,7 @@ class Symptom extends Equatable implements SymptomEntity {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['label'] = label;
-    data['reportado_em'] = dateReport;
+    data['reportadoEm'] = dateReport;
     data['imagem'] = srcImage;
     data['intensidade'] = intensity;
     return data;

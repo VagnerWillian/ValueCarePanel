@@ -1,5 +1,7 @@
 
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
@@ -53,103 +55,116 @@ class LoginPageState extends State<LoginPage> {
             width: 500,
             height: 500,
             padding: const EdgeInsets.all(15),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset("assets/images/logo_h.png",
-                  width: 120,
+            child: Observer(
+              builder:(_)=>store.loadingInitialing?Center(
+                child:  SizedBox(
+                  width: 250,
+                  height: 250,
+                  child: FlareActor(
+                    'assets/anims/loading.flr',
+                    animation: 'loading',
+                    color: primaryColor,
+                  ),
                 ),
-                const SizedBox(height: 20),
-                Text("Entrar", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 20),),
-                Text("Entre com a sua conta", style: GoogleFonts.cairo(fontSize: 14),),
-                const SizedBox(height: 20),
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 50),
-                  child: Form(
-                    key: store.loginFormKey,
-                    child: Column(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                              color: Colors.grey.shade100,
-                              borderRadius: BorderRadius.circular(10)
-                          ),
-                          child: TextFormField(
-                            controller: store.emailEditingController,
-                            keyboardType: TextInputType.emailAddress,
-                            style: GoogleFonts.openSans(fontWeight: FontWeight.w600, fontSize: 12),
-                            autofocus: false,
-                            validator: (str)=>Validators.validaEmail(str!),
-                            decoration: InputDecoration(
-                              hintText: "Digite seu email",
-                              errorBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: const BorderSide(color: Colors.red)
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(color: Colors.grey.shade100)
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(color: primaryColor)
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(color: primaryColor)
-                              ),
-                              errorStyle: GoogleFonts.cairo(fontWeight: FontWeight.bold)
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-                        Container(
+              ) :Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset("assets/images/logo_h.png",
+                    width: 120,
+                  ),
+                  const SizedBox(height: 20),
+                  Text("Entrar", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 20),),
+                  Text("Entre com a sua conta", style: GoogleFonts.cairo(fontSize: 14),),
+                  const SizedBox(height: 20),
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 50),
+                    child: Form(
+                      key: store.loginFormKey,
+                      child: Column(
+                        children: [
+                          Container(
                             decoration: BoxDecoration(
                                 color: Colors.grey.shade100,
                                 borderRadius: BorderRadius.circular(10)
                             ),
-                          child: TextFormField(
-                            controller: store.passEditingController,
-                            validator: (str)=>Validators.validatePassword(str!),
-                            keyboardType: TextInputType.text,
-                            style: GoogleFonts.openSans(fontWeight: FontWeight.w600,fontSize: 12),
-                            autofocus: false,
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              hintText: "Senha",
-                              errorBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: const BorderSide(color: Colors.red)
+                            child: TextFormField(
+                              controller: store.emailEditingController,
+                              keyboardType: TextInputType.emailAddress,
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.w600, fontSize: 12),
+                              autofocus: false,
+                              validator: (str)=>Validators.validaEmail(str!),
+                              decoration: InputDecoration(
+                                hintText: "Digite seu email",
+                                errorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(color: Colors.red)
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(color: Colors.grey.shade100)
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(color: primaryColor)
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      borderSide: BorderSide(color: primaryColor)
+                                ),
+                                errorStyle: GoogleFonts.cairo(fontWeight: FontWeight.bold)
                               ),
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(color: Colors.grey.shade100)
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(color: primaryColor)
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(color: primaryColor)
-                              ),
-                              errorStyle: GoogleFonts.cairo(fontWeight: FontWeight.bold)
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 15),
-                        RoundedLoadingButton(
-                          color: primaryColor,
-                          child: const Text('Entrar', style: TextStyle(color: Colors.white)),
-                          controller: store.btnController,
-                          onPressed: ()=>store.signIn(onError: onError),
-                        ),
-                      ],
+                          const SizedBox(height: 20),
+                          Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.grey.shade100,
+                                  borderRadius: BorderRadius.circular(10)
+                              ),
+                            child: TextFormField(
+                              controller: store.passEditingController,
+                              validator: (str)=>Validators.validatePassword(str!),
+                              keyboardType: TextInputType.text,
+                              style: GoogleFonts.openSans(fontWeight: FontWeight.w600,fontSize: 12),
+                              autofocus: false,
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                hintText: "Senha",
+                                errorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: const BorderSide(color: Colors.red)
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(color: Colors.grey.shade100)
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(color: primaryColor)
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(color: primaryColor)
+                                ),
+                                errorStyle: GoogleFonts.cairo(fontWeight: FontWeight.bold)
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 15),
+                          RoundedLoadingButton(
+                            color: primaryColor,
+                            successColor: secondColor,
+                            child: const Text('Entrar', style: TextStyle(color: Colors.white)),
+                            controller: store.btnController,
+                            onPressed: ()=>store.signIn(onError: onError),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

@@ -25,6 +25,8 @@ abstract class _UsersStoreBase with Store {
   @observable
   ObservableList<UserEntity> usersList = ObservableList<UserEntity>();
 
+  _UsersStoreBase(this._getUsersUseCase);
+
   // ACTIONS
 
   @action
@@ -36,7 +38,10 @@ abstract class _UsersStoreBase with Store {
     usersList.addAll(values);
   }
 
-  _UsersStoreBase(this._getUsersUseCase);
+  @action
+  addUser(UserEntity userEntity) {
+    usersList.add(userEntity);
+  }
 
   Future<void> getUsers(Function onError)async{
     setLoading(true);

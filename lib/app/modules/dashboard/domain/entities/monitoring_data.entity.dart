@@ -1,7 +1,7 @@
 import 'package:value_panel/app/shared/core/domain/entities/symptoms.entity.dart';
 
 abstract class MonitoringDataEntity {
-  int? id;
+  String? id;
   String? date;
   List<SymptomEntity>? symptoms;
   String? patient;

@@ -4,13 +4,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
-import 'package:value_panel/app/modules/home/ui/home_store.dart';
-import 'package:value_panel/app/modules/login/domain/usecases/get_token.usecase.dart';
 import 'package:value_panel/app/modules/login/domain/usecases/save_token.usecase.dart';
-import 'package:value_panel/app/modules/login/domain/usecases/signin.usecase.dart';
+import 'package:value_panel/app/modules/login/domain/usecases/signin_email_pass.usecase.dart';
 import 'package:value_panel/app/modules/login/errors/login.errors.dart';
 import 'package:value_panel/app/shared/core/domain/entities/user.entity.dart';
-import 'package:value_panel/app/utils/utils.dart';
+import 'package:value_panel/app/shared/core/managers/config.manager.dart';
 
 part 'login_store.g.dart';
 
@@ -28,12 +26,14 @@ abstract class _LoginStoreBase with Store {
   //UseCases
   final SignInUseCase _signInUseCase;
   final SaveTokenUseCase _saveTokenUseCase;
-  final GetTokenUseCase _getTokenUseCase;
+
+  //Managers
+  final ConfigManager _configManager;
 
   _LoginStoreBase(
+      this._configManager,
       this._signInUseCase,
-      this._saveTokenUseCase,
-      this._getTokenUseCase){
+      this._saveTokenUseCase){
     emailEditingController = TextEditingController();
     passEditingController = TextEditingController();
     btnController = RoundedLoadingButtonController();
@@ -41,11 +41,35 @@ abstract class _LoginStoreBase with Store {
       emailEditingController.text = "rodrigo@valuecare.com.br";
       passEditingController.text = "value@2022";
     }
+    initialize();
   }
+
+  //Observables
+
+  @observable
+  bool loadingInitialing = true;
+
+  //Actions
+  void setLoadingInitialing(bool value)=>loadingInitialing=value;
+
+
+  //Voids
 
   void dispose(){
     emailEditingController.dispose();
     passEditingController.dispose();
+  }
+
+  void initialize()async{
+    await _configManager.initialize();
+    await verifyUserLogged();
+  }
+
+  Future verifyUserLogged() async {
+    if(_configManager.tokenUserLogged.isNotEmpty) {
+      await openMain();
+    }
+    setLoadingInitialing(false);
   }
 
   void signIn({required Function onError})async{
@@ -55,8 +79,6 @@ abstract class _LoginStoreBase with Store {
         if(failure is LoginRepositoryError){
           btnController.error();
           onError(failure);
-        }else{
-
         }
         return failure;
       }, (UserEntity user) async{
@@ -67,9 +89,9 @@ abstract class _LoginStoreBase with Store {
       });
     }else{
       btnController.error();
+      await Future.delayed(const Duration(seconds: 1));
+      btnController.reset();
     }
-    await Future.delayed(const Duration(seconds: 1));
-    btnController.reset();
   }
 
   Future saveTokenAndOpenMain(UserEntity userEntity, Function onError)async{
@@ -77,13 +99,13 @@ abstract class _LoginStoreBase with Store {
     result.fold((LoginError failure) {
       onError(failure);
       return failure;
-    }, (String value) {
-      defineUserLoggedAndOpenMain(userEntity);
+    }, (String value) async{
+      await openMain();
       return value;
     });
   }
 
-  void defineUserLoggedAndOpenMain(UserEntity userEntity){
-    Modular.to.pushReplacementNamed(Modular.initialRoute);
+  Future openMain()async{
+   await Modular.to.pushReplacementNamed(Modular.initialRoute);
   }
 }

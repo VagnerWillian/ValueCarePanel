@@ -20,7 +20,7 @@ class MonitoringData implements MonitoringDataEntity {
   bool? forward;
 
   @override
-  int? id;
+  String? id;
 
   @override
   String? patient;

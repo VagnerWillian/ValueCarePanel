@@ -8,7 +8,7 @@ class SymptomsValueChartData implements SymptomValueChartDataEntity{
   double percentage = 0;
 
   @override
-  SymptomEntity symptom = Symptom(id: 0, label: '');
+  SymptomEntity symptom = Symptom(id: "0", label: '');
 
   @override
   int quantity = 0;

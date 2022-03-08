@@ -21,13 +21,13 @@ class _ConfirmColumnGridState extends State<ConfirmColumnGrid> {
 
   @override
   void initState() {
-    checkStatus = widget.value.confirm!;
+    checkStatus = widget.value.confirm;
     super.initState();
   }
 
   @override
   void didUpdateWidget(covariant ConfirmColumnGrid oldWidget) {
-    checkStatus = widget.value.confirm!;
+    checkStatus = widget.value.confirm;
     loading = false;
     super.didUpdateWidget(oldWidget);
   }

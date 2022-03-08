@@ -21,19 +21,9 @@ class LocalLoginRepository implements LoginRepository{
     }
   }
 
-  @override
-  Future<Either<LoginError, String>> getToken({required String token}) async{
-    try{
-      String savedToken = await _localPreferences.getDataFromString(key: TOKEN_USER_LOGGED_KEY);
-      return Right(savedToken);
-    }catch(e){
-      return Left(UnknownLoginError(message: e.toString()));
-    }
-  }
 
   @override
-  Future<Either<LoginError, UserEntity>> getUser({required String email, required String pass}) {
+  Future<Either<LoginError, UserEntity>> getUserFromEmailAndPassword({required String email, required String pass}) {
     throw UnimplementedError();
   }
-
 }

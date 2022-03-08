@@ -21,6 +21,12 @@ const String FIRST_ACCESS_KEY = "FIRST_ACCESS_KEY_v1.0.0";
 const String TOKEN_USER_LOGGED_KEY = "TOKEN_USER_LOGGED_KEY";
 const String EMAIL_REMEMBER = "EMAIL_REMEMBER";
 
+/////////////////// API /////////////////////////////
+
+const String azureCode = "17VKtJ/LwM6FEvSGyuC0b9QoYxX4QHgpKLTMFp/CopLl9Y2SLAepvw==";
+const String baseUrl = "https://poscovidapi-admin.azurewebsites.net/api";
+const String getMonitoringEP = "/Monitoramento?code=$azureCode";
+
 /////////////// COLORS //////////////////////////
 final Color primaryColor = HexColor("#6418C3");
 final Color secondColor = HexColor("#425AD2");

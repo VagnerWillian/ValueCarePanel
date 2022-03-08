@@ -5,12 +5,7 @@ import '../../errors/login.errors.dart';
 
 class AssetLoginRepository implements LoginRepository{
   @override
-  Future<Either<LoginError, UserEntity>> getUser({required String email, required String pass}) {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<LoginError, String>> getToken({required String token}) {
+  Future<Either<LoginError, UserEntity>> getUserFromEmailAndPassword({required String email, required String pass}) {
     throw UnimplementedError();
   }
 
