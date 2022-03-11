@@ -1,4 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:value_panel/app/modules/history_chat/ui/history_chat_store.dart';
+import 'package:value_panel/app/modules/home/ui/home_store.dart';
 import 'package:value_panel/app/modules/monitoring/domain/repositories/repository.dart';
 import 'package:value_panel/app/modules/monitoring/domain/services/download_archive.service.dart';
 import 'package:value_panel/app/modules/monitoring/domain/services/fetch_monitoring_from_interval_dates.service.dart';
@@ -8,8 +10,6 @@ import 'package:value_panel/app/modules/monitoring/domain/usecases/download_arch
 import 'package:value_panel/app/modules/monitoring/domain/usecases/fetch_monitoring_from_interval_dates.usecase.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/fetch_report_doc_src.usecase.dart.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/update_monitoring_item.usecase.dart';
-import 'package:value_panel/app/modules/monitoring/infra/repositories/api_repository.dart';
-import 'package:value_panel/app/modules/monitoring/infra/repositories/asset.repository.dart';
 import 'package:value_panel/app/modules/monitoring/infra/repositories/json_generator.repository.dart';
 import 'package:value_panel/app/modules/monitoring/ui/monitoring_page.dart';
 import 'package:value_panel/app/modules/monitoring/ui/monitoring_store.dart';
@@ -19,7 +19,10 @@ import '../../shared/custom_dio/custom.dio.dart';
 class MonitoringModule extends Module {
   @override
   final List<Bind> binds = [
+
     Bind.lazySingleton((i) => MonitoringStore(
+          homeStore: i.get<HomeStore>(),
+          historyChatStore: i.get<HistoryChatStore>(),
           fetchMonitoringDataFromIntervalDatesUseCase: i.get<FetchMonitoringDataFromIntervalDatesUseCase>(),
           fetchReportDocSrcUseCase: i.get<FetchReportDocSrcUseCase>(),
           downloadArchiveUseCase: i.get<DownloadArchiveUseCase>(),
@@ -40,6 +43,6 @@ class MonitoringModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, args) => const MonitoringPage()),
+    ChildRoute('/', child: (_, args) => const MonitoringPage(), children: []),
   ];
 }

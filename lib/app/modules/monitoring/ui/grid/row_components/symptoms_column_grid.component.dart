@@ -23,18 +23,21 @@ class _SymptomsColumnGridState extends State<SymptomsColumnGrid> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 10),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Badge(
-            position: BadgePosition.topStart(),
-            showBadge: widget.value.length>1,
-            padding: const EdgeInsets.all(7),
-            badgeContent: Text("!", style: GoogleFonts.bebasNeue(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 12),),
-            child: InkWell(
-              onTap: widget.value.length>1?openHistorySymptom:null,
+      child: TextButton(
+        style: const ButtonStyle(
+          alignment: Alignment.centerLeft
+        ),
+        onPressed: widget.value.length>1?openHistorySymptom:null,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Badge(
+              position: BadgePosition.topStart(),
+              showBadge: widget.value.length>1,
+              padding: const EdgeInsets.all(7),
+              badgeContent: Text("!", style: GoogleFonts.bebasNeue(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 12),),
               child: Container(
                   width: 40,
                   height: 40,
@@ -48,11 +51,8 @@ class _SymptomsColumnGridState extends State<SymptomsColumnGrid> {
                       borderRadius: BorderRadius.circular(10)),
                   child: Center(child: SvgPicture.network(widget.value[0].srcImage, color: Colors.white))),
             ),
-          ),
-          const SizedBox(width: 5,),
-          Flexible(
-            child: InkWell(
-              onTap: widget.value.length>1?openHistorySymptom:null,
+            const SizedBox(width: 5,),
+            Flexible(
               child: RichText(
                 maxLines: 3,
                 text: TextSpan(
@@ -69,9 +69,9 @@ class _SymptomsColumnGridState extends State<SymptomsColumnGrid> {
                     ]
                 ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

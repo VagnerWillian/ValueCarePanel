@@ -16,6 +16,9 @@ const String SCHEDULING_ROUTE = "/agendamento/";
 const String ANALYTICS_ROUTE = "/analytics/";
 const String USERS_ROUTE = "/users/";
 
+const String PATIENTS_ROUTE = "/pacientes/";
+const String PATIENT_DETAILS_ROUTE = "/pacientes/detalhes/";
+
 ////////////// SHARED PREFERENCES KEYS /////////////
 const String FIRST_ACCESS_KEY = "FIRST_ACCESS_KEY_v1.0.0";
 const String TOKEN_USER_LOGGED_KEY = "TOKEN_USER_LOGGED_KEY";

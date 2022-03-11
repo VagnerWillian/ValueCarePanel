@@ -108,8 +108,8 @@ abstract class _SchedulingStoreBase with Store {
     if (text.isNotEmpty) {
       List<SchedulingDataEntity> searchList = backupList.where((m) {
         String? id = m.idString.toLowerCase();
-        String? name = m.patient?.toLowerCase();
-        return name!.contains(text.toLowerCase()) || id.contains(text.toLowerCase());
+        String? name = m.patient.toLowerCase();
+        return name.contains(text.toLowerCase()) || id.contains(text.toLowerCase());
       }).toList();
       schedulingDataSource.updateList(searchList);
     } else {

@@ -17,6 +17,9 @@ class MonitoringData implements MonitoringDataEntity {
   late final String solicitationDate;
 
   @override
+  late final String idPatient;
+
+  @override
   late bool confirm;
 
   @override
@@ -44,12 +47,14 @@ class MonitoringData implements MonitoringDataEntity {
       required this.classificationId,
       required this.solicitationDate,
       required this.appointmentDate,
+      required this.idPatient,
       required this.confirm});
 
   MonitoringData.fromJson(Map<String, dynamic> json) {
-;    id = json['id'];
+    id = json['id'];
     symptoms = (json['sintomas'] as List).map((s) => Symptom.fromJson(s)).toList();
     patient = json['paciente'];
+    idPatient = json['idPaciente'];
     classificationId = json['classificacaoId'];
     specialtyId = json['especialidadeId'];
     solicitationDate = datePattern.format(DateTime.parse(json['dataSolicitacao']));

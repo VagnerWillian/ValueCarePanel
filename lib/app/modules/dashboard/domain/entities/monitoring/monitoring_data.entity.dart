@@ -1,11 +1,11 @@
 import 'package:value_panel/app/shared/core/domain/entities/symptoms.entity.dart';
 
 abstract class MonitoringDataEntity {
-  String? date;
-  List<SymptomEntity>? symptoms;
-  String? patient;
+  late final String date;
+  late final List<SymptomEntity> symptoms;
+  late final String patient;
   int? classification;
-  String? solicitationDate;
+  late final String solicitationDate;
   String? appointmentDate;
   bool? forward;
 
@@ -14,12 +14,12 @@ abstract class MonitoringDataEntity {
   DateTime get appointmentDateInDateTime;
 
   MonitoringDataEntity(
-      {this.date,
-        this.symptoms,
-        this.patient,
+      {required this.date,
+        required this.symptoms,
+        required this.patient,
         this.classification,
         this.appointmentDate,
-        this.solicitationDate,
+        required this.solicitationDate,
         this.forward});
 
 }

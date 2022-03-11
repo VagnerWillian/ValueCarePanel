@@ -4,6 +4,7 @@ import 'package:jiffy/jiffy.dart';
 import 'package:mobx/mobx.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:value_panel/app/modules/history_chat/ui/history_chat_store.dart';
+import 'package:value_panel/app/modules/home/ui/home_store.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/download_archive.usecase.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/fetch_monitoring_from_interval_dates.usecase.dart';
@@ -12,6 +13,10 @@ import 'package:value_panel/app/modules/monitoring/domain/usecases/update_monito
 import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
 import 'package:value_panel/app/modules/monitoring/ui/grid/monitoring.datasource.dart';
 import 'package:value_panel/app/shared/core/infra/models/date_selector.model.dart';
+import 'dart:html' as html;
+
+import 'package:value_panel/app/utils/utils.dart';
+
 
 part 'monitoring_store.g.dart';
 
@@ -24,16 +29,18 @@ abstract class _MonitoringStoreBase with Store {
   final DownloadArchiveUseCase downloadArchiveUseCase;
   final UpdateMonitoringItemUseCase updateMonitoringItemUseCase;
 
-  // Controllers
-  late final HistoryChatStore _historyChatStore = Modular.get();
-
+  // Stories
+  late final HistoryChatStore historyChatStore;
+  late final HomeStore homeStore;
   _MonitoringStoreBase({
+    required this.homeStore,
+    required this.historyChatStore,
     required this.fetchMonitoringDataFromIntervalDatesUseCase,
     required this.fetchReportDocSrcUseCase,
     required this.downloadArchiveUseCase,
     required this.updateMonitoringItemUseCase
   }){
-    monitoringDataSource = MonitoringDataSource(updateMonitoringItem: updateMonitoringItem, openHistoryFloating: openHistoryFloating);
+    monitoringDataSource = MonitoringDataSource(updateMonitoringItem: updateMonitoringItem, openHistoryFloating: openHistoryFloating, openPatientDetails: openPatientDetails);
     preDatesLogic();
 
   }
@@ -109,7 +116,13 @@ abstract class _MonitoringStoreBase with Store {
     return response;
   }
 
-  void openHistoryFloating()=>_historyChatStore.open(idPatient: "");
+  void openHistoryFloating() {
+    historyChatStore.open(idPatient: "");
+  }
+
+  void openPatientDetails(String idPatient)async{
+    Modular.to.pushNamed(PATIENT_DETAILS_ROUTE+idPatient);
+  }
 
   /////////////////////////// SEARCH ///////////////////////////////////////////////////
     onChangedSearchText(String text)async{

@@ -245,7 +245,7 @@ packages:
       name: fl_chart
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.41.0"
+    version: "0.45.1"
   flare_flutter:
     dependency: "direct main"
     description:
@@ -363,7 +363,7 @@ packages:
       name: google_fonts
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.0"
+    version: "2.3.1"
   graphs:
     dependency: transitive
     description:
@@ -405,7 +405,7 @@ packages:
       name: image_network
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.4.0"
+    version: "2.4.1+1"
   intl:
     dependency: "direct main"
     description:
@@ -678,7 +678,7 @@ packages:
       name: rounded_loading_button
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.9"
+    version: "2.1.0"
   rxdart:
     dependency: transitive
     description:
@@ -823,28 +823,28 @@ packages:
       name: syncfusion_flutter_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "19.4.53"
+    version: "19.4.55"
   syncfusion_flutter_datagrid:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_datagrid
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "19.4.53"
+    version: "19.4.55"
   syncfusion_flutter_datepicker:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_datepicker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "19.4.53"
+    version: "19.4.55"
   syncfusion_localizations:
     dependency: "direct main"
     description:
       name: syncfusion_localizations
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "19.4.53"
+    version: "19.4.55"
   synchronized:
     dependency: transitive
     description:
@@ -980,4 +980,4 @@ packages:
     version: "3.1.0"
 sdks:
   dart: ">=2.15.1 <3.0.0"
-  flutter: ">=2.8.0"
+  flutter: ">=2.10.0-0"

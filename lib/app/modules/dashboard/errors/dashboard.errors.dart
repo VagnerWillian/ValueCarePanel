@@ -24,7 +24,6 @@ class DashboardRepositoryError extends DashboardError implements RepositoryError
 
 class DownloadArchiveError extends DashboardError{
 
-  @override
   late String message;
 
   DownloadArchiveError({required this.message});

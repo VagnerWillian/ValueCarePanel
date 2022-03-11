@@ -2,6 +2,7 @@ import 'package:value_panel/app/shared/core/domain/entities/symptoms.entity.dart
 
 abstract class MonitoringDataEntity {
   late final String id;
+  late final String idPatient;
   late final List<SymptomEntity> symptoms;
   late final String patient;
   late int classificationId;

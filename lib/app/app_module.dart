@@ -8,6 +8,8 @@ import 'package:value_panel/app/shared/core/preferences/local_preferences.dart';
 import 'package:value_panel/app/shared/custom_dio/custom.dio.dart';
 import 'package:value_panel/app/utils/utils.dart';
 
+import 'modules/patients/patients_module.dart';
+
 class AppModule extends Module {
   @override
   final List<Bind> binds = [

@@ -14,22 +14,25 @@ class SchedulingData implements SchedulingDataEntity{
   String? appointmentDate;
 
   @override
-  String? contactDate;
+  late final String contactDate;
 
   @override
-  String? solicitationDate;
+  late final String solicitationDate;
 
   @override
   String? dateSolicited;
 
   @override
-  int? id;
+  late final String id;
 
   @override
-  String? patient;
+  late final String patient;
 
   @override
-  String? score;
+  late final String idPatient;
+
+  @override
+  late final String score;
 
   @override
   String get idString => "#$id";
@@ -40,20 +43,23 @@ class SchedulingData implements SchedulingDataEntity{
   @override
   DateTime? get appointmentDateInDateTime => appointmentDate==null?null:DateTime.parse(appointmentDate!);
 
+
   SchedulingData(
-      {id,
-        paciente,
-        dataSolicitacao,
-        dataContato,
-        score,
-        classificacao,
-        dataSolicitada,
-        dataConsulta,
-        confirmacao});
+      {this.classificationId,
+      this.confirmation,
+      this.appointmentDate,
+      required this.contactDate,
+      required this.solicitationDate,
+      this.dateSolicited,
+      required this.id,
+      required this.patient,
+      required this.idPatient,
+      required this.score});
 
   SchedulingData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     patient = json['paciente'];
+    idPatient = json['idPaciente'];
     solicitationDate = datePattern.format(DateTime.parse(json['dataSolicitacao']));
     contactDate = datePattern.format(DateTime.parse(json['dataContato']));
     score = json['score'];
@@ -67,6 +73,7 @@ class SchedulingData implements SchedulingDataEntity{
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['paciente'] = patient;
+    data['idPatient'] = idPatient;
     data['dataSolicitacao'] = solicitationDate;
     data['dataContato'] = contactDate;
     data['score'] = score;

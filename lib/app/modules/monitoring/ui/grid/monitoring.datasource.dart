@@ -20,6 +20,7 @@ class MonitoringDataSource extends DataGridSource {
 
   final Function updateMonitoringItem;
   final Function openHistoryFloating;
+  final Function openPatientDetails;
 
   List<MonitoringDataEntity>  _paginatedMonitoringItems = [], monitoringItems = [];
   final List<ColumnConfig> columnNames = [
@@ -41,11 +42,11 @@ class MonitoringDataSource extends DataGridSource {
   List<DataGridRow>  dataGridRows = [];
 
 
-  MonitoringDataSource({required this.updateMonitoringItem, required this.openHistoryFloating});
+  MonitoringDataSource({required this.updateMonitoringItem, required this.openHistoryFloating, required this.openPatientDetails});
 
   void buildPaginatedDataGridRows() {
     dataGridRows = _paginatedMonitoringItems.map<DataGridRow>((m) => DataGridRow(cells: [
-      DataGridCell<String>(columnName:  columnNames[0].label, value: m.patient),
+      DataGridCell<MonitoringDataEntity>(columnName: columnNames[0].label, value: m),
       DataGridCell<List<SymptomEntity>>(columnName: columnNames[1].label, value: m.symptoms),
       DataGridCell<MonitoringDataEntity>(columnName: columnNames[2].label, value: m),
       DataGridCell<String>(columnName: columnNames[3].label, value: m.solicitationDate),
@@ -61,7 +62,7 @@ class MonitoringDataSource extends DataGridSource {
     return DataGridRowAdapter(
         cells: row.getCells().map<Widget>((dataGridCell) {
          if(dataGridCell.columnName==columnNames[0].label){
-           return PatientNameColumnGrid(value: dataGridCell.value);
+           return PatientNameColumnGrid(value: dataGridCell.value, openPatientDetails: openPatientDetails);
          }else if(dataGridCell.columnName==columnNames[1].label){
             return SymptomsColumnGrid(value: dataGridCell.value);
          }else if(dataGridCell.columnName==columnNames[2].label){

@@ -3,10 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class PageTitleDescription extends StatelessWidget {
   final String title;
+  final double titleSize;
   final String? subtitle;
   const PageTitleDescription({
     Key? key,
     required this.title,
+    this.titleSize = 25,
     this.subtitle
   }) : super(key: key);
 
@@ -18,7 +20,7 @@ class PageTitleDescription extends StatelessWidget {
           text: TextSpan(
               children: [
                 TextSpan(text: title,
-                    style:GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 25, color: Colors.black)
+                    style:GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: titleSize, color: Colors.black)
                 ),
                 subtitle==null?WidgetSpan(child: Container()):TextSpan(text: "\n$subtitle",
                   style:GoogleFonts.cairo(fontSize: 14, color: Colors.grey),

@@ -48,14 +48,14 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   dio: ^4.0.4
-  flutter_modular: ^4.4.0
+  flutter_modular: ^4.5.0
   mobx: ^2.0.6+1
   flutter_mobx: ^2.0.4
   equatable: ^2.0.3
   jiffy: ^5.0.0
   intl: ^0.17.0
   either_dart: ^0.1.4
-  syncfusion_localizations: ^19.4.48+1
+  syncfusion_localizations: ^19.4.55
   shared_preferences: ^2.0.13
 
   #UI
@@ -64,17 +64,17 @@ dependencies:
   flutter_svg: ^1.0.3
   modern_form_line_awesome_icons: ^2.0.1
   badges: ^2.0.2
-  google_fonts: ^2.2.0
+  google_fonts: ^2.3.1
   cached_network_image: ^3.2.0
-  syncfusion_flutter_core: ^19.4.48
-  syncfusion_flutter_datagrid: ^19.4.48+1
-  syncfusion_flutter_datepicker: ^19.4.48
+  syncfusion_flutter_core: ^19.4.55
+  syncfusion_flutter_datagrid: ^19.4.55
+  syncfusion_flutter_datepicker: ^19.4.55
   flare_flutter: ^3.0.2
-  image_network: ^2.4.0
+  image_network: ^2.4.1+1
   font_awesome_flutter: ^9.2.0
   flutter_staggered_grid_view: ^0.6.1
-  fl_chart: ^0.41.0
-  rounded_loading_button: ^2.0.9
+  fl_chart: ^0.45.1
+  rounded_loading_button: ^2.1.0
   flutter_masked_text2: ^0.9.1
 
 dev_dependencies:
