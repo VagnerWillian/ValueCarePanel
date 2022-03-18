@@ -29,8 +29,6 @@ class AppModule extends Module {
 
 }
 
-
-
 class AuthGuard extends RouteGuard {
   AuthGuard() : super(redirectTo: LOGIN_ROUTE);
 

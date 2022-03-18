@@ -12,7 +12,7 @@ class JsonGeneratorMonitoringRepository implements MonitoringRepository{
   final CustomDio _customDio;
   JsonGeneratorMonitoringRepository(this._customDio);
 
-  final _header = {"Authorization":"Bearer ldhkns7svaq3wfb1faf6r4dfsa1bd8hua71d6lm6"};
+  final _header = {"Authorization":"Bearer lib361fjoaiy06cib24z0fub3531yhpzxv214iro"};
 
   @override
   Future<Either<MonitoringError, List<MonitoringDataEntity>>> fetchMonitoringFromIntervalDates({required DateTime startDate, required DateTime endDate}) async {

@@ -32,8 +32,8 @@ const String getMonitoringEP = "/Monitoramento?code=$azureCode";
 
 /////////////// COLORS //////////////////////////
 final Color primaryColor = HexColor("#6418C3");
-final Color secondColor = HexColor("#425AD2");
-final Color terciaryColor = HexColor("#7E1FE1");
+final Color secondColor = HexColor("#504EDF");
+final Color tertiaryColor = HexColor("#7E1FE1");
 final Color greyColor = HexColor("#A5A5A5");
 final Color greenColor = HexColor("#38E25D");
 final Color redColor = HexColor("#FF5E5E");

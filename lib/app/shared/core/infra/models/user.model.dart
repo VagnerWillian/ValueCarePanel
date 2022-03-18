@@ -3,7 +3,7 @@ import 'package:value_panel/app/shared/core/domain/entities/user.entity.dart';
 class UserModel implements UserEntity{
 
   @override
-  late final int id;
+  late final String id;
 
   @override
   late final String levelAccess;

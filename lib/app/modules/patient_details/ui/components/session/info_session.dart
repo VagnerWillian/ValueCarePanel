@@ -5,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_network/image_network.dart';
-import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
 import 'package:value_panel/app/modules/patient_details/ui/components/tiles/info_label.tile.dart';
 import 'package:value_panel/app/utils/utils.dart';
 
@@ -15,8 +14,6 @@ class InfoSession extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 600,
-      margin: const EdgeInsets.only(bottom: 20),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -31,86 +28,99 @@ class InfoSession extends StatelessWidget {
         ],
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10),
-                width: 100,
-                height: 100,
-                child: ImageNetwork(
-                  borderRadius: BorderRadius.circular(10),
-                  height: 100,
-                  width: 100  ,
-                  onLoading: Container(),
-                  imageCache: const CachedNetworkImageProvider("https://images.unsplash.com/photo-1567784177951-6fa58317e16b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"),
-                  image: "https://images.unsplash.com/photo-1567784177951-6fa58317e16b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-                ),
-              ),
-              Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Flexible(
+                child: Wrap(
+                  alignment: WrapAlignment.start,
+                  crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Text("Franklin Jr.", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14),),
-                          Text("(11) 981154569", style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 12, color: primaryColor)),
-                        ],
+                    SizedBox(
+                      width: 100,
+                      height: 100,
+                      child: ImageNetwork(
+                        borderRadius: BorderRadius.circular(10),
+                        height: 100,
+                        width: 100  ,
+                        onLoading: Container(),
+                        imageCache: const CachedNetworkImageProvider("https://images.unsplash.com/photo-1567784177951-6fa58317e16b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"),
+                        image: "https://images.unsplash.com/photo-1567784177951-6fa58317e16b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
                       ),
                     ),
-                    Column(
-                      children: [
-                        Text("Classificação", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 12),),
-                        Row(
-                          children: [
-                            Text("", style: GoogleFonts.cairo(fontSize: 25, fontWeight: FontWeight.bold, color: primaryColor)),
-                            Container(
-                              padding: const EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(100),
-                                  color: classifications[1].color!.withOpacity(0.2)
-                              ),
-                              child: Row(
-                                children: [
-                                  SvgPicture.asset("assets/images/classifications/${classifications[1].label}.svg", color: classifications[1].color, width: 14,),
-                                  const SizedBox(width: 10),
-                                  Text(classifications[1].label, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 12, color: classifications[1].color)),
-                                ],
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    const SizedBox(width: 10),
+                    SizedBox(width: 10),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Score", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 12),),
-                        Row(
-                          children: [
-                            Text("65", style: GoogleFonts.cairo(fontSize: 25, fontWeight: FontWeight.bold, color: primaryColor)),
-                            const SizedBox(width: 5),
-                            Container(
-                              padding: const EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(100),
-                                  color: greenColor
-                              ),
-                              child: Row(
-                                children: [
-                                  const Icon(Icons.show_chart_rounded, color: Colors.white, size: 14,),
-                                  const SizedBox(width: 10),
-                                  Text("Melhorando", style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 12, color: Colors.white)),
-                                ],
-                              ),
-                            ),
-                          ],
-                        )
+                        Text("Franklin Jr.", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14), softWrap: true,),
+                        Text("(11) 981154569", style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 12, color: primaryColor), softWrap: true,),
                       ],
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Wrap(
+                  children: [
+                    SizedBox(
+                      width: 120,
+                      child: Column(
+                        children: [
+                          Text("Classificação", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 12),),
+                          Row(
+                            children: [
+                              Text("", style: GoogleFonts.cairo(fontSize: 25, fontWeight: FontWeight.bold, color: primaryColor)),
+                              Container(
+                                padding: const EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    color: classifications[1].color!.withOpacity(0.2)
+                                ),
+                                child: Row(
+                                  children: [
+                                    SvgPicture.asset("assets/images/classifications/${classifications[1].label}.svg", color: classifications[1].color, width: 14,),
+                                    const SizedBox(width: 10),
+                                    Text(classifications[1].label, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 12, color: classifications[1].color)),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    SizedBox(
+                      width: 150,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Score", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 12),),
+                          Row(
+                            children: [
+                              Text("65", style: GoogleFonts.cairo(fontSize: 25, fontWeight: FontWeight.bold, color: primaryColor)),
+                              const SizedBox(width: 5),
+                              Container(
+                                padding: const EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    color: greenColor
+                                ),
+                                child: Row(
+                                  children: [
+                                    const Icon(Icons.show_chart_rounded, color: Colors.white, size: 14,),
+                                    const SizedBox(width: 10),
+                                    Text("Melhorando", style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 12, color: Colors.white)),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     )
                   ],
                 ),

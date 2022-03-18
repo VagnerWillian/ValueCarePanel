@@ -20,6 +20,7 @@ class CustomInterceptor extends InterceptorsWrapper {
 
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) async {
+    print(err);
     print('ERROR[${err.response?.statusCode}] => PATH: ${err.requestOptions.path}');
     /*if(Modular.to.path!=LOGIN_ROUTE&&err.response!=null&&err.response.statusCode==401){
       await Modular.to.showDialog(builder: (_)=>Material(child: RequestErrorDialog(response: ResponseModel(errorStatusCode: 401, sucess: false, result: null))));

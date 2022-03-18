@@ -75,10 +75,12 @@ abstract class _LoginStoreBase with Store {
   void signIn({required Function onError})async{
     if(loginFormKey.currentState!.validate()){
       Either<LoginError, UserEntity> result = await _signInUseCase(email: emailEditingController.text, pass: passEditingController.text);
-      result.fold((LoginError failure) {
+      await result.fold((LoginError failure)async{
         if(failure is LoginRepositoryError){
-          btnController.error();
           onError(failure);
+          btnController.error();
+          await Future.delayed(const Duration(seconds: 1));
+          btnController.reset();
         }
         return failure;
       }, (UserEntity user) async{

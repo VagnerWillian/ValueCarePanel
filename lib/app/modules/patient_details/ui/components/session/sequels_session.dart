@@ -10,9 +10,7 @@ class SequelsSession extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Container(
-      width: 600,
       padding: const EdgeInsets.all(20),
-      margin: const EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -26,10 +24,13 @@ class SequelsSession extends StatelessWidget {
         ],
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text("Sequelas", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black)),
           Wrap(
+            direction: Axis.horizontal,
+            alignment: WrapAlignment.spaceBetween,
             spacing: 15,
             children: const [
               SequelLabelTile(label: "Uso oxigênio em casa?", value: "SIM"),
