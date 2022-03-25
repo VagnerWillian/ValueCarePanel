@@ -53,8 +53,9 @@ class ReportedSymptomTile extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 10),
             child: Badge(
               shape: BadgeShape.square,
+              badgeColor: Colors.white,
               showBadge: hasWarning,
-              badgeContent: const Icon(LineAwesomeIcons.warning, color: Colors.white, size: 12,),
+              badgeContent: const Icon(LineAwesomeIcons.warning, color: Colors.red, size: 12,),
               borderRadius: BorderRadius.circular(5),
               child: Container(
                 padding: const EdgeInsets.all(8),

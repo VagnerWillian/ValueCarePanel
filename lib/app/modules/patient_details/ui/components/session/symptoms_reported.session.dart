@@ -124,7 +124,7 @@ class _SymptomsReportedSessionState extends State<SymptomsReportedSession> {
           ),
           const ReportedSymptomTile(
             isNew: false,
-            hasWarning: true,
+            hasWarning: false,
             situationColor: "#6418C3",
             symptomName: "Febre",
             momentDate: "2min Atrás",
@@ -135,7 +135,7 @@ class _SymptomsReportedSessionState extends State<SymptomsReportedSession> {
           ),
           const ReportedSymptomTile(
             isNew: true,
-            hasWarning: false,
+            hasWarning: true,
             situationColor: "#FF4A55",
             symptomName: "Queda de Cabelo",
             momentDate: "5h Atrás",

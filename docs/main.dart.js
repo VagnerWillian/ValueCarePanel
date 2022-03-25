@@ -112330,7 +112330,7 @@ s=A.a_(l,A.bi(A.X(new A.Z(i,new A.aSc(m),s),!0,s.i("ao.E")),B.aw,B.p,B.m),B.f,l,
 if(!m.d)i=A.a_(l,l,B.f,l,l,l,l,l,l,l,l,l)
 else{i=A.aw(30)
 n=$.lJ()
-n=A.bi(A.b([A.cn(A.a_(l,A.bi(A.b([A.o2("assets/images/others/drag.svg",l,l),B.fk,A.ae("Conhe\xe7a o Analytics",l,l,l,l,l,A.a1(l,l,B.k,B.agA),l,l),B.fk,B.U4],o),B.aw,B.p,B.bp),B.f,l,l,new A.aY(l,B.RW,l,i,l,new A.hy(B.df,B.de,B.Q,n,l,l),B.x),l,l,l,l,B.a4,250),l,l),B.cO,A.ae("Value Care - P\xf3s-Covid Dashboard",l,l,l,l,l,A.a1(B.Y,12,l,l),B.bK,l)],o),B.o,B.p,B.m)
+n=A.bi(A.b([A.cn(A.a_(l,A.bi(A.b([A.o2("assets/images/others/drag.svg",l,l),B.fk,A.ae("Conhe\xe7a o Analytics",l,l,l,l,l,A.a1(l,l,B.k,B.agA),l,l),B.fk,B.U5],o),B.aw,B.p,B.bp),B.f,l,l,new A.aY(l,B.RW,l,i,l,new A.hy(B.df,B.de,B.Q,n,l,l),B.x),l,l,l,l,B.a4,250),l,l),B.cO,A.ae("Value Care - P\xf3s-Covid Dashboard",l,l,l,l,l,A.a1(B.Y,12,l,l),B.bK,l)],o),B.o,B.p,B.m)
 i=n}return A.a_(l,A.q6(A.bi(A.b([r,s,B.acA,i],o),B.ah,B.p,B.m),B.J,l,l,B.K),B.f,l,l,new A.aY(B.j,l,l,l,q,l,B.x),l,l,l,l,l,p)},
 a1s(a){return this.a5(new A.aSd(this,a))}}
 A.aSb.prototype={
@@ -113936,7 +113936,7 @@ l=A.a_(n,n,B.f,n,n,new A.aY(j?$.bd():new A.ik(A.m8(k)>>>0),n,n,l,n,n,B.x),n,n,n,
 s=A.aw(5)
 r=A.aw(10)
 q=j?$.bd():new A.ik(A.m8(k)>>>0)
-r=A.a_(n,A.Gy(B.hd,B.U5,s,A.a_(n,A.cn(A.Do(o.e,B.j,n),n,n),B.f,n,n,new A.aY(q,n,n,r,n,n,B.x),n,n,n,n,B.cJ,45),B.aT,n,B.IE,o.Q),B.f,n,n,n,n,n,n,B.dn,n,n)
+r=A.a_(n,A.Gy(B.j,B.U3,s,A.a_(n,A.cn(A.Do(o.e,B.j,n),n,n),B.f,n,n,new A.aY(q,n,n,r,n,n,B.x),n,n,n,n,B.cJ,45),B.aT,n,B.IE,o.Q),B.f,n,n,n,n,n,n,B.dn,n,n)
 s=o.d
 s=o.z?"[NOVO] "+s+" - ":s+" - "
 s=A.bx(n,A.a1(n,n,B.k,n),s)
@@ -115515,7 +115515,7 @@ q=q.geR(q)
 q.toString
 q=A.ae(q,o,o,o,o,o,A.a1(B.Y,14,o,o),o,o)
 p=A.e0(o,o,o,o,o,o,o,o,o,o,o,o,o,o,new A.aI(new A.bA(s,1,B.T),t.Pg),o,o,o,o)
-return A.kV(new A.c0(B.a4,A.bi(A.b([B.U3,m,r,q,B.cO,new A.az(100,60,A.L3(!1,A.ae("OK",o,o,o,o,o,A.cc(o,o,s,o,o,o,o,o,o,o,o,o,o,o,o,o,!0,o,o,o,o,o,o,o,o),o,o),B.f,o,o,o,new A.aV_(b),p),o)],t.p),B.o,B.p,B.bp),o),new A.bS(n,B.t))}}
+return A.kV(new A.c0(B.a4,A.bi(A.b([B.U4,m,r,q,B.cO,new A.az(100,60,A.L3(!1,A.ae("OK",o,o,o,o,o,A.cc(o,o,s,o,o,o,o,o,o,o,o,o,o,o,o,o,!0,o,o,o,o,o,o,o,o),o,o),B.f,o,o,o,new A.aV_(b),p),o)],t.p),B.o,B.p,B.bp),o),new A.bS(n,B.t))}}
 A.aV_.prototype={
 $0(){A.nB(this.a,!1).hG(0,null)
 return null},
@@ -120953,12 +120953,12 @@ B.U0=new A.dd(B.lo,100,B.Y,null)
 B.ua=new A.dx(983412,"MaterialIcons",null,!0)
 B.U2=new A.dd(B.ua,12,B.j,null)
 B.U1=new A.dd(B.ua,14,B.j,null)
-B.TI=new A.dx(57711,"MaterialIcons",null,!1)
-B.U3=new A.dd(B.TI,100,B.Y,null)
-B.Tu=new A.il(61729,"IconFont","modern_form_line_awesome_icons",!1)
-B.U4=new A.dd(B.Tu,null,B.j,null)
 B.Ts=new A.il(62326,"IconFont","modern_form_line_awesome_icons",!1)
-B.U5=new A.dd(B.Ts,12,B.j,null)
+B.U3=new A.dd(B.Ts,12,B.hd,null)
+B.TI=new A.dx(57711,"MaterialIcons",null,!1)
+B.U4=new A.dd(B.TI,100,B.Y,null)
+B.Tu=new A.il(61729,"IconFont","modern_form_line_awesome_icons",!1)
+B.U5=new A.dd(B.Tu,null,B.j,null)
 B.Tt=new A.il(62135,"IconFont","modern_form_line_awesome_icons",!1)
 B.ls=new A.dd(B.Tt,null,B.j,null)
 B.Tx=new A.po(61574,"FontAwesomeSolid","font_awesome_flutter",!1)
@@ -123692,8 +123692,8 @@ B.en=new A.C6(0,"identical")
 B.aaq=new A.C6(2,"paint")
 B.eo=new A.C6(3,"layout")
 B.aar=new A.to("1d Atr\xe1s","Tosse","assets/assets/images/symptoms/5.svg","N\xe3o sinto mais nada","#38E25D","N\xe3o tinha antes do covid","Domingo, 25 de Setembro de 2021",!1,!1,null)
-B.aas=new A.to("5h Atr\xe1s","Queda de Cabelo","assets/assets/images/symptoms/2.svg","Piorando","#FF4A55","N\xe3o tinha antes do covid","Domingo, 27 de Setembro de 2021",!0,!1,null)
-B.aat=new A.to("2min Atr\xe1s","Febre","assets/assets/images/symptoms/1.svg","35,9\xbaC - Igual","#6418C3","N\xe3o tinha antes do covid","Segunda, 27 de Setembro de 2021",!1,!0,null)
+B.aas=new A.to("5h Atr\xe1s","Queda de Cabelo","assets/assets/images/symptoms/2.svg","Piorando","#FF4A55","N\xe3o tinha antes do covid","Domingo, 27 de Setembro de 2021",!0,!0,null)
+B.aat=new A.to("2min Atr\xe1s","Febre","assets/assets/images/symptoms/1.svg","35,9\xbaC - Igual","#6418C3","N\xe3o tinha antes do covid","Segunda, 27 de Setembro de 2021",!1,!1,null)
 B.aau=new A.to("23h Atr\xe1s","Can\xe7a\xe7o, Fadiga","assets/assets/images/symptoms/4.svg","Igual","","N\xe3o tinha antes do covid","Domingo, 25 de Setembro de 2021",!1,!1,null)
 B.aav=new A.to("10h Atr\xe1s","Dificuldade de concentra\xe7\xe3o, esquecimento e cabe\xe7a vazia","assets/assets/images/symptoms/3.svg","Melhorando","#5ECFFF","J\xe1 tinha antes do covid","Domingo, 26 de Setembro de 2021",!1,!1,null)
 B.jL=new A.wS(0,"json")
