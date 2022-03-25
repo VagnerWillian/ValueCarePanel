@@ -134,9 +134,16 @@ class _ScoreChartSessionState extends State<ScoreChartSession> {
              margin: const EdgeInsets.only(top: 15),
              child: DoubleLineChart(
                 chartDataConfig: ChartDataConfig(group: [
-              ChartDataItem("A", 1, secondValue: 2),
-              ChartDataItem("B", 4, secondValue: 8),
-              ChartDataItem("C", 3, secondValue: 2),
+              ChartDataItem("01/10", 65, secondValue: 80),
+              ChartDataItem("02/10", 40, secondValue: 35),
+              ChartDataItem("03/10", 57, secondValue: 90),
+              ChartDataItem("04/10", 59, secondValue: 90),
+              ChartDataItem("05/10", 22, secondValue: 38),
+              ChartDataItem("06/10", 65, secondValue: 19),
+              ChartDataItem("07/10", 37, secondValue: 79),
+              ChartDataItem("08/10", 12, secondValue: 40),
+              ChartDataItem("09/10", 50, secondValue: 50),
+              ChartDataItem("10/10", 24, secondValue: 85),
           ])),
            )
         ],
