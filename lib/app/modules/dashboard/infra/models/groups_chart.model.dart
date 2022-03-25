@@ -30,7 +30,7 @@ class GroupsChart implements ComparisonGroupChartDataEntity{
   WeekGroupChartDataEntity weekGroup = WeekGroupChartData<BasicValueChartData>();
 
   @override
-  SymptomsGroupChartDataEntity reportedSymptonsComparison = SymptomsGroupChartData<SymptomValueChartDataEntity>();
+  SymptomsGroupChartDataEntity reportedSymptomsComparison = SymptomsGroupChartData<SymptomValueChartDataEntity>();
 
   @override
   BasicGroupChartDataEntity classifications = BasicGroupChartData();
@@ -40,7 +40,7 @@ class GroupsChart implements ComparisonGroupChartDataEntity{
   GroupsChart.fromJson(Map<String, dynamic> json){
     activeUsers = BasicValueChartData.fromJson(json['pacientes_ativos']);
     reportedSymptons = BasicValueChartData.fromJson(json['sintomas_reportados']);
-    reportedSymptonsComparison = SymptomsGroupChartData.fromJson(json['sintomas_reportados_lista']);
+    reportedSymptomsComparison = SymptomsGroupChartData.fromJson(json['sintomas_reportados_lista']);
     appointments = BasicValueChartData.fromJson(json['consultas_periodo']);
     newUsers = BasicValueChartData.fromJson(json['novos_usuarios']);
     newCases = BasicValueChartData.fromJson(json['novos_casos_pendentes']);

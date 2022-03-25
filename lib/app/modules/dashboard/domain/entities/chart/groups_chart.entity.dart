@@ -17,5 +17,5 @@ abstract class ComparisonGroupChartDataEntity{
   BasicValueChartDataEntity newCases = BasicValueChartData();
   BasicGroupChartDataEntity classifications = BasicGroupChartData();
   WeekGroupChartDataEntity weekGroup = WeekGroupChartData();
-  SymptomsGroupChartDataEntity reportedSymptonsComparison = SymptomsGroupChartData<SymptomValueChartDataEntity>();
+  SymptomsGroupChartDataEntity reportedSymptomsComparison = SymptomsGroupChartData<SymptomValueChartDataEntity>();
 }

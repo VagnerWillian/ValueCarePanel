@@ -22,7 +22,11 @@ class AdditionInfoTile extends StatelessWidget {
               margin: const EdgeInsets.only(right: 10),
               width: 50,
               height: 50,
-              child: ImageNetwork(
+              child: urlImage.isEmpty?Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: primaryColor.withOpacity(0.2)),
+                  ):ImageNetwork(
                 borderRadius: BorderRadius.circular(100),
                 height: 50,
                 width: 50,

@@ -19,7 +19,6 @@ import 'package:value_panel/app/modules/dashboard/ui/components/cards/schedules_
 import 'package:value_panel/app/modules/dashboard/ui/components/cards/simple.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/components/cards/simple_with_v_chart.card.dart';
 import 'package:value_panel/app/modules/dashboard/ui/dashboard_store.dart';
-import 'package:value_panel/app/modules/dashboard/ui/models/date_selector.model.dart';
 import 'package:value_panel/app/shared/components/custom/gradient.button.dart';
 import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
 import 'package:value_panel/app/shared/components/dialogs/loading.dialog.dart';
@@ -27,6 +26,8 @@ import 'package:value_panel/app/shared/components/dialogs/repository_error.dialo
 import 'package:value_panel/app/shared/components/page_title_description.widget.dart';
 import 'package:value_panel/app/shared/core/managers/config.manager.dart';
 import 'package:value_panel/app/utils/utils.dart';
+
+import '../../../shared/core/infra/models/date_selector.model.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -137,7 +138,7 @@ class DashboardPageState extends ModularState<DashboardPage, DashboardStore> {
                         StaggeredGridTile.count(
                           crossAxisCellCount: MediaQuery.of(context).size.width < 1355 ? 2 : 1,
                           mainAxisCellCount: MediaQuery.of(context).size.width < 1355 ? 3 : 2,
-                          child: SymptomReportedCard(reportedSymptomsGroup: _cGroup.reportedSymptonsComparison, goAnalytics: store.goAnalytics),
+                          child: SymptomReportedCard(reportedSymptomsGroup: _cGroup.reportedSymptomsComparison, goAnalytics: store.goAnalytics),
                         ),
                         StaggeredGridTile.count(
                           crossAxisCellCount: MediaQuery.of(context).size.width < 1355 ? 2 : 1,

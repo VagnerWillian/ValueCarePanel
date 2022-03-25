@@ -26,8 +26,8 @@ const String EMAIL_REMEMBER = "EMAIL_REMEMBER";
 
 /////////////////// API /////////////////////////////
 
-const String azureCode = "17VKtJ/LwM6FEvSGyuC0b9QoYxX4QHgpKLTMFp/CopLl9Y2SLAepvw==";
-const String baseUrl = "https://poscovidapi-admin.azurewebsites.net/api";
+const String azureCode = "a6BpQlwHJoPw/5xNWHLJK9nhENctbinG8f9F/jw61QaEDERrHUespQ==";
+const String baseUrl = "https://poscovidapp-admin.azurewebsites.net/api";
 const String getMonitoringEP = "/Monitoramento?code=$azureCode";
 
 /////////////// COLORS //////////////////////////

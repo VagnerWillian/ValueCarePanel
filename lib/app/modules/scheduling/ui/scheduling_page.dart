@@ -8,7 +8,6 @@ import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:value_panel/app/modules/scheduling/errors/scheduling.errors.dart';
-import 'package:value_panel/app/modules/scheduling/ui/models/date_selector.model.dart';
 import 'package:value_panel/app/modules/scheduling/ui/scheduling_store.dart';
 import 'package:value_panel/app/shared/components/custom/gradient.button.dart';
 import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
@@ -17,6 +16,8 @@ import 'package:value_panel/app/shared/components/dialogs/repository_error.dialo
 import 'package:value_panel/app/shared/components/page_title_description.widget.dart';
 import 'package:value_panel/app/shared/components/search/main_search.widget.dart';
 import 'package:value_panel/app/utils/utils.dart';
+
+import '../../../shared/core/infra/models/date_selector.model.dart';
 
 class SchedulingPage extends StatefulWidget {
   const SchedulingPage({Key? key}) : super(key: key);

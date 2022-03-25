@@ -13,9 +13,10 @@ import 'package:value_panel/app/modules/dashboard/domain/usecases/update_monitor
 import 'package:value_panel/app/modules/dashboard/errors/dashboard.errors.dart';
 import 'package:value_panel/app/modules/dashboard/infra/models/groups_chart.model.dart';
 import 'package:value_panel/app/modules/dashboard/ui/grid/monitoring.datasource.dart';
-import 'package:value_panel/app/modules/dashboard/ui/models/date_selector.model.dart';
 import 'package:value_panel/app/modules/home/ui/home_store.dart';
 import 'package:value_panel/app/utils/utils.dart';
+
+import '../../../shared/core/infra/models/date_selector.model.dart';
 
 part 'dashboard_store.g.dart';
 

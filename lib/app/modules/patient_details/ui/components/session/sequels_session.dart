@@ -18,7 +18,7 @@ class SequelsSession extends StatelessWidget {
           BoxShadow(
             color: Colors.blueGrey.withOpacity(0.1),
             spreadRadius: 1,
-            blurRadius: 80,
+            blurRadius: 20,
             offset: const Offset(0, 0), // changes position of shadow
           )
         ],

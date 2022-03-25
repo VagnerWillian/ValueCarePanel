@@ -13,7 +13,7 @@ class JsonGeneratorDashboardRepository implements DashboardRepository{
   final CustomDio _customDio;
   JsonGeneratorDashboardRepository(this._customDio);
 
-  final _header = {"Authorization":"Bearer kf62xpo2f9fwi8c2vtmoqfpxwfvs3okngz58pgam"};
+  final _header = {"Authorization":"Bearer lib361fjoaiy06cib24z0fub3531yhpzxv214iro"};
 
   @override
   Future<Either<DashboardError, ComparisonGroupChartDataEntity>> getAllComparisonGroupChartData({required DateTime startDate, required DateTime endDate}) async{

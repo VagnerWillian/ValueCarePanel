@@ -9,7 +9,8 @@ import 'package:value_panel/app/modules/scheduling/domain/usecases/fetch_schedul
 import 'package:value_panel/app/modules/scheduling/domain/usecases/update_scheduling_item.usecase.dart';
 import 'package:value_panel/app/modules/scheduling/errors/scheduling.errors.dart';
 import 'package:value_panel/app/modules/scheduling/ui/grid/scheduling.datasource.dart';
-import 'package:value_panel/app/modules/scheduling/ui/models/date_selector.model.dart';
+
+import '../../../shared/core/infra/models/date_selector.model.dart';
 
 part 'scheduling_store.g.dart';
 

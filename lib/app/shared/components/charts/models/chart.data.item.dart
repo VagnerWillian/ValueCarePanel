@@ -1,5 +1,6 @@
 class ChartDataItem{
   final String bottomLabel;
-  late double value;
-  ChartDataItem(this.bottomLabel, this.value);
+  late final double value;
+  late final double? secondValue;
+  ChartDataItem(this.bottomLabel, this.value, {this.secondValue});
 }
