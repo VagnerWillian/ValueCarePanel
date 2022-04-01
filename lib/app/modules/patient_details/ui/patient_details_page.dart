@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:value_panel/app/modules/patient_details/ui/components/session/additional_info.session.dart';
@@ -9,6 +10,9 @@ import 'package:value_panel/app/modules/patient_details/ui/components/session/se
 import 'package:value_panel/app/modules/patient_details/ui/components/tiles/symptom.tile.dart';
 import 'package:value_panel/app/modules/patient_details/ui/patient_details_store.dart';
 
+import '../../../shared/components/dialogs/another_error.dialog.dart';
+import '../../../shared/components/dialogs/repository_error.dialog.dart';
+import '../errors/patient_details.errors.dart';
 import 'components/session/symptoms_reported.session.dart';
 
 class PatientDetailsPage extends StatefulWidget {
@@ -42,7 +46,9 @@ class PatientDetailsPageState extends ModularState<PatientDetailsPage, PatientDe
                         ],
                       ),
                     ),
-                    const ScoreChartSession(),
+                    Observer(
+                      builder: (_) => ScoreChartSession(values: store.scoreGraphicDataList, getScoreGraphicOfDates: store.getScoreGraphicOfDates, onError: onError)
+                    ),
                     Table(children: [
                       TableRow(children: [
                         Column(
@@ -124,6 +130,14 @@ class PatientDetailsPageState extends ModularState<PatientDetailsPage, PatientDe
         ],
       ),
     );
+  }
+
+  Future onError(PatientDetailsError failure) async {
+    if (failure is PatientDetailsRepositoryError) {
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_) => RepositoryErrorDialog(repositoryError: failure));
+    } else if (failure is PatientDetailsUnknownError) {
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_) => UnknownErrorDialog(unknownError: failure));
+    }
   }
 }
 

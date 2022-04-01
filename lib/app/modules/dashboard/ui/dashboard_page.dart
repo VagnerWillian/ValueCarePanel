@@ -90,8 +90,8 @@ class DashboardPageState extends ModularState<DashboardPage, DashboardStore> {
                               height: (.7 % 5 + 1) * 100,
                               child: SimpleCard(
                                   label: "Sintomas Reportados",
-                                  value: _cGroup.reportedSymptons.value,
-                                  comparation: _cGroup.reportedSymptons.comparison),
+                                  value: _cGroup.reportedSymptoms.value,
+                                  comparation: _cGroup.reportedSymptoms.comparison),
                             );
                           case 2:
                             return SizedBox(

@@ -1,27 +1,35 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:value_panel/app/modules/patient_details/errors/patient_details.errors.dart';
 
 import '../../../../../shared/components/charts/models/chart.config.dart';
 import '../../../../../shared/components/charts/models/chart.data.item.dart';
 import '../../../../../shared/components/charts/models/double_line.chart.dart';
 import '../../../../../shared/core/infra/models/date_selector.model.dart';
 import '../../../../../utils/utils.dart';
+import '../../../domain/entities/basic_value_data_chart.entity.dart';
 
 class ScoreChartSession extends StatefulWidget {
-  const ScoreChartSession({Key? key}) : super(key: key);
+  final List<BasicValueChartDataEntity> values;
+  final Function(PatientDetailsError failure) onError;
+  final Function({required DateTime startDate, required DateTime endDate, required Function(PatientDetailsError failure) onError}) getScoreGraphicOfDates;
+  const ScoreChartSession({required this.onError, required this.getScoreGraphicOfDates, required this.values, Key? key}) : super(key: key);
 
   @override
   State<ScoreChartSession> createState() => _ScoreChartSessionState();
 }
 
 class _ScoreChartSessionState extends State<ScoreChartSession> {
-  List<DateSelector> preDates = [];
+
+  final List<DateSelector> preDates = [];
+  final List<ChartDataItem> chartData = [];
   late DateSelector selectedDate;
+  bool loading = false;
 
   @override
   void initState() {
@@ -33,6 +41,15 @@ class _ScoreChartSessionState extends State<ScoreChartSession> {
 
   void setDateSelector(DateSelector dateSelector) {
     setState(() => selectedDate = dateSelector);
+    getScoreGraphicOfDates();
+  }
+
+  Future getScoreGraphicOfDates()async{
+    setState(() => loading = true);
+    await widget.getScoreGraphicOfDates(startDate: selectedDate.startDate!, endDate: selectedDate.endDate!, onError: widget.onError);
+    chartData.clear();
+    widget.values.map((e) => chartData.add(ChartDataItem(e.label, e.value, secondValue: e.secondValue))).toList();
+    setState(() => loading = false);
   }
 
   @override
@@ -52,7 +69,18 @@ class _ScoreChartSessionState extends State<ScoreChartSession> {
           )
         ],
       ),
-      child: Column(
+      child: loading ? Center(
+        child: SizedBox(
+          width: 250,
+          height: 250,
+          child: FlareActor(
+            'assets/anims/loading.flr',
+            animation: 'loading',
+            color: primaryColor,
+          ),
+        ),
+      )
+          : Column(
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -133,18 +161,7 @@ class _ScoreChartSessionState extends State<ScoreChartSession> {
            Container(
              margin: const EdgeInsets.only(top: 15),
              child: DoubleLineChart(
-                chartDataConfig: ChartDataConfig(group: [
-              ChartDataItem("01/10", 65, secondValue: 80),
-              ChartDataItem("02/10", 40, secondValue: 35),
-              ChartDataItem("03/10", 57, secondValue: 90),
-              ChartDataItem("04/10", 59, secondValue: 90),
-              ChartDataItem("05/10", 22, secondValue: 38),
-              ChartDataItem("06/10", 65, secondValue: 19),
-              ChartDataItem("07/10", 37, secondValue: 79),
-              ChartDataItem("08/10", 12, secondValue: 40),
-              ChartDataItem("09/10", 50, secondValue: 50),
-              ChartDataItem("10/10", 24, secondValue: 85),
-          ])),
+                chartDataConfig: ChartDataConfig(group: chartData)),
            )
         ],
       ),

@@ -11,7 +11,7 @@ import 'basic_group_chart.entity.dart';
 
 abstract class ComparisonGroupChartDataEntity{
   BasicValueChartDataEntity activeUsers = BasicValueChartData();
-  BasicValueChartDataEntity reportedSymptons = BasicValueChartData();
+  BasicValueChartDataEntity reportedSymptoms = BasicValueChartData();
   BasicValueChartDataEntity appointments = BasicValueChartData();
   BasicValueChartDataEntity newUsers = BasicValueChartData();
   BasicValueChartDataEntity newCases = BasicValueChartData();

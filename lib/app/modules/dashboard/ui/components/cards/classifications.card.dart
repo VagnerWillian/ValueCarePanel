@@ -93,7 +93,7 @@ class _ClassificationsCardState extends State<ClassificationsCard> {
       final radius = isTouched ? 60.0 : 50.0;
       return PieChartSectionData(
         color: HexColor(i.color),
-        value: i.situation,
+        value: i.value,
         title: i.percent,
         radius: radius,
         titleStyle: GoogleFonts.cairo(fontSize: fontSize, fontWeight: FontWeight.bold, color: const Color(0xffffffff)),
