@@ -26,10 +26,81 @@ mixin _$PatientDetailsStore on _PatientDetailsStoreBase, Store {
     });
   }
 
+  final _$reportedSymptomGroupEntityAtom =
+      Atom(name: '_PatientDetailsStoreBase.reportedSymptomGroupEntity');
+
+  @override
+  ReportedSymptomGroupEntity? get reportedSymptomGroupEntity {
+    _$reportedSymptomGroupEntityAtom.reportRead();
+    return super.reportedSymptomGroupEntity;
+  }
+
+  @override
+  set reportedSymptomGroupEntity(ReportedSymptomGroupEntity? value) {
+    _$reportedSymptomGroupEntityAtom
+        .reportWrite(value, super.reportedSymptomGroupEntity, () {
+      super.reportedSymptomGroupEntity = value;
+    });
+  }
+
+  final _$patientDetailsAtom =
+      Atom(name: '_PatientDetailsStoreBase.patientDetails');
+
+  @override
+  PatientEntity? get patientDetails {
+    _$patientDetailsAtom.reportRead();
+    return super.patientDetails;
+  }
+
+  @override
+  set patientDetails(PatientEntity? value) {
+    _$patientDetailsAtom.reportWrite(value, super.patientDetails, () {
+      super.patientDetails = value;
+    });
+  }
+
+  final _$_PatientDetailsStoreBaseActionController =
+      ActionController(name: '_PatientDetailsStoreBase');
+
+  @override
+  dynamic setPatientDetails(PatientEntity patient) {
+    final _$actionInfo = _$_PatientDetailsStoreBaseActionController.startAction(
+        name: '_PatientDetailsStoreBase.setPatientDetails');
+    try {
+      return super.setPatientDetails(patient);
+    } finally {
+      _$_PatientDetailsStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic setReportedSymptomGroup(ReportedSymptomGroupEntity value) {
+    final _$actionInfo = _$_PatientDetailsStoreBaseActionController.startAction(
+        name: '_PatientDetailsStoreBase.setReportedSymptomGroupEntity');
+    try {
+      return super.setReportedSymptomGroup(value);
+    } finally {
+      _$_PatientDetailsStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic addAllScoreGraphicData(List<BasicValueChartDataEntity> values) {
+    final _$actionInfo = _$_PatientDetailsStoreBaseActionController.startAction(
+        name: '_PatientDetailsStoreBase.addAllScoreGraphicData');
+    try {
+      return super.addAllScoreGraphicData(values);
+    } finally {
+      _$_PatientDetailsStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
-scoreGraphicDataList: ${scoreGraphicDataList}
+scoreGraphicDataList: ${scoreGraphicDataList},
+reportedSymptomGroupEntity: ${reportedSymptomGroupEntity},
+patientDetails: ${patientDetails}
     ''';
   }
 }

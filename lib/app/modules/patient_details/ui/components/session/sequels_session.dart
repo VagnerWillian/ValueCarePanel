@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:value_panel/app/modules/patient_details/domain/entities/sequel_info.entity.dart';
+import 'package:value_panel/app/modules/patient_details/infra/models/sequel_info.model.dart';
 import 'package:value_panel/app/modules/patient_details/ui/components/tiles/sequel_label.tile.dart';
-import 'package:value_panel/app/shared/components/page_title_description.widget.dart';
 
 class SequelsSession extends StatelessWidget {
-  const SequelsSession({Key? key}) : super(key: key);
+  final List<SequelInfoEntity> values;
+  const SequelsSession({this.values = const [], Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,15 +34,7 @@ class SequelsSession extends StatelessWidget {
             direction: Axis.horizontal,
             alignment: WrapAlignment.spaceBetween,
             spacing: 15,
-            children: const [
-              SequelLabelTile(label: "Uso oxigênio em casa?", value: "SIM"),
-              SequelLabelTile(label: "Embolia que precise de tratamento?", value: "SIM"),
-              SequelLabelTile(label: "Paralisia ou fraqueza em um lado?", value: "SIM"),
-              SequelLabelTile(label: "Pressão alta?", value: "SIM"),
-              SequelLabelTile(label: "Dor generalizada?", value: "SIM"),
-              SequelLabelTile(label: "Problema nos rins(hemodiálise)?", value: "SIM"),
-              SequelLabelTile(label: "Problemas no coração(insuficiência, arritmia) que precise de tratamento?", value: "SIM"),
-            ],
+            children: values.map((v) => SequelLabelTile(label: v.label, value: v.value)).toList(),
           )
         ],
       ),

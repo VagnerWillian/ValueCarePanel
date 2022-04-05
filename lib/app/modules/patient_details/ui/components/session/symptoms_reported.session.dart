@@ -1,24 +1,35 @@
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:value_panel/app/modules/patient_details/domain/entities/reported_symptom_group.entity.dart';
 import 'package:value_panel/app/modules/patient_details/ui/components/tiles/reported_symptom.tile.dart';
 import 'package:value_panel/app/shared/components/custom/dashed_divider.dart';
 import 'package:value_panel/app/shared/core/infra/models/date_selector.model.dart';
 import 'package:value_panel/app/utils/utils.dart';
 
 class SymptomsReportedSession extends StatefulWidget {
-  const SymptomsReportedSession({Key? key}) : super(key: key);
+  final ReportedSymptomGroupEntity? value;
+  final Function onError;
+  final Function({required DateTime startDate, required DateTime endDate, required Function onError}) onChangedDate;
+  const SymptomsReportedSession({required this.value, required this.onChangedDate, required this.onError, Key? key}) : super(key: key);
 
   @override
   State<SymptomsReportedSession> createState() => _SymptomsReportedSessionState();
 }
 
 class _SymptomsReportedSessionState extends State<SymptomsReportedSession> {
+
   List<DateSelector> preDates = [];
   late DateSelector dateSelector;
+  bool loading = true;
+
+  setLoading(bool value){
+    setState(() => loading = value);
+  }
 
   @override
   void initState() {
@@ -28,8 +39,11 @@ class _SymptomsReportedSessionState extends State<SymptomsReportedSession> {
     super.initState();
   }
 
-  void setDateSelector(DateSelector dateSelector) {
+  void setDateSelector(DateSelector dateSelector) async{
+    setLoading(true);
     setState(() => dateSelector = dateSelector);
+    await widget.onChangedDate(startDate: dateSelector.startDate!, endDate: dateSelector.endDate!, onError: widget.onError);
+    setLoading(false);
   }
 
   @override
@@ -45,7 +59,17 @@ class _SymptomsReportedSessionState extends State<SymptomsReportedSession> {
           offset: const Offset(0, 0), // changes position of shadow
         )
       ]),
-      child: Column(
+      child: widget.value==null||loading?Center(
+        child: SizedBox(
+          width: 250,
+          height: 250,
+          child: FlareActor(
+            'assets/anims/loading.flr',
+            animation: 'loading',
+            color: primaryColor,
+          ),
+        ),
+      ):Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(
@@ -111,72 +135,32 @@ class _SymptomsReportedSessionState extends State<SymptomsReportedSession> {
               RichText(
                 text: TextSpan(
                   children: <InlineSpan>[
-                    TextSpan(text: 'Hoje - ', style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
+                    TextSpan(text: "${widget.value!.periodName} - ", style: GoogleFonts.cairo(fontWeight: FontWeight.bold)),
                     const TextSpan(
                       text: 'Score',
                     ),
-                    TextSpan(text: ' 45', style: GoogleFonts.cairo(fontWeight: FontWeight.bold, color: primaryColor)),
+                    TextSpan(text: ' ${widget.value!.score}', style: GoogleFonts.cairo(fontWeight: FontWeight.bold, color: primaryColor)),
                   ],
                 ),
               ),
               Expanded(child: Container(margin: const EdgeInsets.symmetric(horizontal: 20), child: const DashedDivider()))
             ],
           ),
-          const ReportedSymptomTile(
-            isNew: false,
-            hasWarning: false,
-            situationColor: "#6418C3",
-            symptomName: "Febre",
-            momentDate: "2min Atrás",
-            srcImage: "assets/assets/images/symptoms/1.svg",
-            situation: "35,9ºC - Igual",
-            description: "Não tinha antes do covid",
-            descriptionDate: "Segunda, 27 de Setembro de 2021",
-          ),
-          const ReportedSymptomTile(
-            isNew: true,
-            hasWarning: true,
-            situationColor: "#FF4A55",
-            symptomName: "Queda de Cabelo",
-            momentDate: "5h Atrás",
-            srcImage: "assets/assets/images/symptoms/2.svg",
-            situation: "Piorando",
-            description: "Não tinha antes do covid",
-            descriptionDate: "Domingo, 27 de Setembro de 2021",
-          ),
-          const ReportedSymptomTile(
-            isNew: false,
-            hasWarning: false,
-            situationColor: "#5ECFFF",
-            symptomName: "Dificuldade de concentração, esquecimento e cabeça vazia",
-            momentDate: "10h Atrás",
-            srcImage: "assets/assets/images/symptoms/3.svg",
-            situation: "Melhorando",
-            description: "Já tinha antes do covid",
-            descriptionDate: "Domingo, 26 de Setembro de 2021",
-          ),
-          const ReportedSymptomTile(
-            isNew: false,
-            hasWarning: false,
-            situationColor: "",
-            symptomName: "Cançaço, Fadiga",
-            momentDate: "23h Atrás",
-            srcImage: "assets/assets/images/symptoms/4.svg",
-            situation: "Igual",
-            description: "Não tinha antes do covid",
-            descriptionDate: "Domingo, 25 de Setembro de 2021",
-          ),
-          const ReportedSymptomTile(
-            isNew: false,
-            hasWarning: false,
-            situationColor: "#38E25D",
-            symptomName: "Tosse",
-            momentDate: "1d Atrás",
-            srcImage: "assets/assets/images/symptoms/5.svg",
-            situation: "Não sinto mais nada",
-            description: "Não tinha antes do covid",
-            descriptionDate: "Domingo, 25 de Setembro de 2021",
-          ),
+          ListView(
+            shrinkWrap: true,
+            children: widget.value!.items
+                .map((v) => ReportedSymptomTile(
+                    momentDate: v.moment,
+                    symptomName: v.symptomName,
+                    srcImage: v.image,
+                    situation: v.symptomSituation,
+                    situationColor: v.color,
+                    description: v.comparison,
+                    descriptionDate: v.comparisonDate,
+                    isNew: v.isNew,
+                    hasWarning: v.isWarning))
+                .toList(),
+          )
         ],
       ),
     );

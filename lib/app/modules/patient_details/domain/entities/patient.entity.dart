@@ -1,5 +1,6 @@
 import 'package:value_panel/app/modules/patient_details/domain/entities/additional_info.entity.dart';
 import 'package:value_panel/app/modules/patient_details/domain/entities/sequel_info.entity.dart';
+import 'package:value_panel/app/modules/patient_details/domain/entities/symptom_info.entity.dart';
 import 'package:value_panel/app/shared/core/domain/entities/classification.entity.dart';
 
 abstract class PatientEntity{
@@ -13,6 +14,7 @@ abstract class PatientEntity{
   late final String origin;
   late final int score;
   late final ClassificationEntity classificationEntity;
-  late final List<SequelInfoEntity> sequels;
-  late final List<AdditionalInfoEntity> additionalInfo;
+  List<SequelInfoEntity> sequels = [];
+  List<AdditionalInfoEntity> additionalInfo = [];
+  List<SymptomInfoEntity> symptoms = [];
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:value_panel/app/modules/patient_details/domain/entities/additional_info.entity.dart';
 
 import '../tiles/additional_info.tile.dart';
 
 class AdditionalInfoSession extends StatelessWidget {
-  const AdditionalInfoSession({Key? key}) : super(key: key);
+  final List<AdditionalInfoEntity> values;
+  const AdditionalInfoSession({required this.values, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,15 +29,7 @@ class AdditionalInfoSession extends StatelessWidget {
           Text("Informações Adicionais", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black)),
           Expanded(
             child: ListView(
-              children: const [
-                AdditionInfoTile(urlImage: '', title: 'Covid Desde', value: "02/01/2020"),
-                AdditionInfoTile(urlImage: '', title: 'Doenças Prévias', value: "Hipertensão, enfisema e/ou bronquite e/ou asma"),
-                AdditionInfoTile(urlImage: '', title: 'Sintomas após 2 semanas?', value: "SIM"),
-                AdditionInfoTile(urlImage: '', title: 'Perdeu peso?', value: "SIM • 10kg"),
-                AdditionInfoTile(urlImage: '', title: 'Sentiu Febre?', value: "SIM • 37ºC"),
-                AdditionInfoTile(urlImage: '', title: 'Vomitou?', value: "SIM"),
-                AdditionInfoTile(urlImage: '', title: 'Altura', value: "1,65  "),
-              ],
+              children: values.map((v) => AdditionInfoTile(urlImage: v.urlImage, title: v.title, value: v.value)).toList(),
             ),
           )
         ],

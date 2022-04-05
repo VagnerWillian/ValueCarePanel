@@ -3,6 +3,9 @@ import 'package:value_panel/app/modules/patient_details/domain/entities/sequel_i
 class SequelInfo implements SequelInfoEntity{
 
   @override
+  late final int id;
+
+  @override
   late final String label;
 
   @override
@@ -11,7 +14,8 @@ class SequelInfo implements SequelInfoEntity{
   SequelInfo({required this.label, required this.value});
 
   SequelInfo.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
     label = json['label'];
-    value = json['value'];
+    value = json['valor'];
   }
 }

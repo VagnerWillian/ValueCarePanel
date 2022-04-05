@@ -24,7 +24,7 @@ class MonitoringDataSource extends DataGridSource {
 
   List<MonitoringDataEntity>  _paginatedMonitoringItems = [], monitoringItems = [];
   final List<ColumnConfig> columnNames = [
-    ColumnConfig("Paciente", 100, double.nan),
+    ColumnConfig("Paciente", 150, double.nan),
     ColumnConfig("Sintomas", 160, 250),
     ColumnConfig("Classificação", 150, 200),
     ColumnConfig("Data Solicitação", 70, 100),

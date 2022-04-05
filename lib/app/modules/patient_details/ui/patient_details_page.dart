@@ -1,3 +1,4 @@
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -12,6 +13,7 @@ import 'package:value_panel/app/modules/patient_details/ui/patient_details_store
 
 import '../../../shared/components/dialogs/another_error.dialog.dart';
 import '../../../shared/components/dialogs/repository_error.dialog.dart';
+import '../../../utils/utils.dart';
 import '../errors/patient_details.errors.dart';
 import 'components/session/symptoms_reported.session.dart';
 
@@ -24,6 +26,13 @@ class PatientDetailsPage extends StatefulWidget {
 }
 
 class PatientDetailsPageState extends ModularState<PatientDetailsPage, PatientDetailsStore> {
+
+  @override
+  void initState() {
+    store.getPatientInfoDetails(onError: onError);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -49,26 +58,39 @@ class PatientDetailsPageState extends ModularState<PatientDetailsPage, PatientDe
                     Observer(
                       builder: (_) => ScoreChartSession(values: store.scoreGraphicDataList, getScoreGraphicOfDates: store.getScoreGraphicOfDates, onError: onError)
                     ),
-                    Table(children: [
-                      TableRow(children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: const [
-                            InfoSession(),
-                            SizedBox(height: 20),
-                            SequelsSession(),
-                          ],
+                    Observer(
+                      builder: (_) => store.patientDetails==null ? Center(
+                        child: SizedBox(
+                          width: 250,
+                          height: 250,
+                          child: FlareActor(
+                            'assets/anims/loading.flr',
+                            animation: 'loading',
+                            color: primaryColor,
+                          ),
                         ),
-                        TableCell(
-                            verticalAlignment: TableCellVerticalAlignment.fill,
-                            child: Row(
-                              children: const [
-                                SizedBox(width: 20),
-                                Expanded(child: AdditionalInfoSession()),
+                      )
+                          : Table(children: [
+                          TableRow(children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                InfoSession(patientEntity: store.patientDetails!),
+                                const SizedBox(height: 20),
+                                SequelsSession(values: store.patientDetails!.sequels),
                               ],
-                            )),
-                      ]),
-                    ]),
+                            ),
+                            TableCell(
+                                verticalAlignment: TableCellVerticalAlignment.fill,
+                                child: Row(
+                                  children: [
+                                    const SizedBox(width: 20),
+                                    Expanded(child: AdditionalInfoSession(values: store.patientDetails!.additionalInfo)),
+                                  ],
+                                )),
+                          ]),
+                        ])
+                    ),
                     Container(
                       margin: const EdgeInsets.symmetric(vertical: 10),
                       child: Column(
@@ -78,28 +100,21 @@ class PatientDetailsPageState extends ModularState<PatientDetailsPage, PatientDe
                         ],
                       ),
                     ),
-                    SizedBox(
-                      height: 65,
-                      child: ScrollConfiguration(
-                        behavior: HorizontalScrollBehavior(),
-                        child: ListView(
-                          // shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          children: const [
-                            SymptomTile(urlImage: "assets/assets/images/symptoms/1.svg", title: "Insônia", description: "Você tem dificuldade para dormir"),
-                            SymptomTile(urlImage: "assets/assets/images/symptoms/2.svg", title: "Insônia", description: "Você tem dificuldade para dormir"),
-                            SymptomTile(urlImage: "assets/assets/images/symptoms/3.svg", title: "Insônia", description: "Você tem dificuldade para dormir"),
-                            SymptomTile(urlImage: "assets/assets/images/symptoms/4.svg", title: "Insônia", description: "Você tem dificuldade para dormir"),
-                            SymptomTile(urlImage: "assets/assets/images/symptoms/5.svg", title: "Insônia", description: "Você tem dificuldade para dormir"),
-                            SymptomTile(urlImage: "assets/assets/images/symptoms/5.svg", title: "Insônia", description: "Você tem dificuldade para dormir"),
-                            SymptomTile(urlImage: "assets/assets/images/symptoms/6.svg", title: "Insônia", description: "Você tem dificuldade para dormir"),
-                            SymptomTile(urlImage: "assets/assets/images/symptoms/7.svg", title: "Insônia", description: "Você tem dificuldade para dormir"),
-                            SymptomTile(urlImage: "assets/assets/images/symptoms/8.svg", title: "Insônia", description: "Você tem dificuldade para dormir"),
-                          ],
-                        ),
-                      ),
+                    Observer(
+                      builder: (_) => store.patientDetails==null?Container():SizedBox(
+                          height: 65,
+                          child: ScrollConfiguration(
+                            behavior: HorizontalScrollBehavior(),
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: store.patientDetails!.symptoms.map((v) => SymptomTile(urlImage: v.image, title: v.label, description: v.description)).toList(),
+                            ),
+                          ),
+                        )
                     ),
-                    const SymptomsReportedSession()
+                    Observer(
+                      builder: (_) => SymptomsReportedSession(value: store.reportedSymptomGroupEntity, onChangedDate: store.getReportedSymptomsOfPatientFromDate, onError: onError)
+                    )
                   ],
                 ),
               ),

@@ -3,6 +3,9 @@ import 'package:value_panel/app/modules/patient_details/domain/entities/addition
 class AdditionalInfo implements AdditionalInfoEntity{
 
   @override
+  late final int id;
+
+  @override
   late final String title;
 
   @override
@@ -14,9 +17,10 @@ class AdditionalInfo implements AdditionalInfoEntity{
   AdditionalInfo({required this.urlImage, required this.title, required this.value});
 
   AdditionalInfo.fromJson(Map<String, dynamic> json) {
-    urlImage = json['urlImage'];
+    id = json['id'];
+    urlImage = json['image'];
     title = json['title'];
-    value = json['value'];
+    value = json['valor'];
   }
 
 }

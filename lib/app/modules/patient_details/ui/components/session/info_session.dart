@@ -5,11 +5,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_network/image_network.dart';
+import 'package:value_panel/app/modules/patient_details/domain/entities/patient.entity.dart';
 import 'package:value_panel/app/modules/patient_details/ui/components/tiles/info_label.tile.dart';
 import 'package:value_panel/app/utils/utils.dart';
 
 class InfoSession extends StatelessWidget {
-  const InfoSession({Key? key}) : super(key: key);
+  final PatientEntity patientEntity;
+  const InfoSession({required this.patientEntity, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,16 +49,16 @@ class InfoSession extends StatelessWidget {
                         height: 100,
                         width: 100  ,
                         onLoading: Container(),
-                        imageCache: const CachedNetworkImageProvider("https://images.unsplash.com/photo-1567784177951-6fa58317e16b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"),
-                        image: "https://images.unsplash.com/photo-1567784177951-6fa58317e16b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+                        imageCache: CachedNetworkImageProvider(patientEntity.photo),
+                        image: patientEntity.photo,
                       ),
                     ),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Franklin Jr.", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14), softWrap: true,),
-                        Text("(11) 981154569", style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 12, color: primaryColor), softWrap: true,),
+                        Text(patientEntity.name, style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14), softWrap: true,),
+                        Text(patientEntity.phone, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 12, color: primaryColor), softWrap: true,),
                       ],
                     ),
                   ],
@@ -74,16 +76,18 @@ class InfoSession extends StatelessWidget {
                             children: [
                               Text("", style: GoogleFonts.cairo(fontSize: 25, fontWeight: FontWeight.bold, color: primaryColor)),
                               Container(
-                                padding: const EdgeInsets.all(5),
+                                width: 120,
+                                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(100),
-                                    color: classifications[1].color!.withOpacity(0.2)
+                                    color: patientEntity.classificationEntity.color!.withOpacity(0.2)
                                 ),
                                 child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    SvgPicture.asset("assets/images/classifications/${classifications[1].label}.svg", color: classifications[1].color, width: 14,),
+                                    SvgPicture.asset(patientEntity.classificationEntity.image, color: patientEntity.classificationEntity.color, width: 16),
                                     const SizedBox(width: 10),
-                                    Text(classifications[1].label, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 12, color: classifications[1].color)),
+                                    Text(patientEntity.classificationEntity.label, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 10, color: patientEntity.classificationEntity.color)),
                                   ],
                                 ),
                               ),
@@ -94,14 +98,14 @@ class InfoSession extends StatelessWidget {
                     ),
                     const SizedBox(width: 10),
                     SizedBox(
-                      width: 150,
+                      width: 140,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Score", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 12),),
                           Row(
                             children: [
-                              Text("65", style: GoogleFonts.cairo(fontSize: 25, fontWeight: FontWeight.bold, color: primaryColor)),
+                              Text(patientEntity.score.toString(), style: GoogleFonts.cairo(fontSize: 22, fontWeight: FontWeight.bold, color: primaryColor)),
                               const SizedBox(width: 5),
                               Container(
                                 padding: const EdgeInsets.all(5),
@@ -113,7 +117,7 @@ class InfoSession extends StatelessWidget {
                                   children: [
                                     const Icon(Icons.show_chart_rounded, color: Colors.white, size: 14,),
                                     const SizedBox(width: 10),
-                                    Text("Melhorando", style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 12, color: Colors.white)),
+                                    Text("Melhorando", style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 10, color: Colors.white)),
                                   ],
                                 ),
                               ),

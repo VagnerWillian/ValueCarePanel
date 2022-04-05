@@ -12,6 +12,9 @@ class Classification extends Equatable implements ClassificationEntity{
   late final int id;
 
   @override
+  late final String image;
+
+  @override
   Color? color;
 
   Classification({required this.label, required this.id, required this.color});
@@ -20,12 +23,14 @@ class Classification extends Equatable implements ClassificationEntity{
     label = json['label'];
     id = json['id'];
     color = HexColor(json['cor']);
+    image = json['image'];
   }
 
   @override
   Map<String, dynamic> get toJson {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['label'] = label;
+    data['image'] = image;
     data['id'] = id;
     data['cor'] = ColorToHex(color!).toString();
     return data;

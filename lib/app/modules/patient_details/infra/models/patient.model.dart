@@ -1,7 +1,9 @@
 import 'package:value_panel/app/modules/patient_details/domain/entities/additional_info.entity.dart';
 import 'package:value_panel/app/modules/patient_details/domain/entities/patient.entity.dart';
 import 'package:value_panel/app/modules/patient_details/domain/entities/sequel_info.entity.dart';
+import 'package:value_panel/app/modules/patient_details/domain/entities/symptom_info.entity.dart';
 import 'package:value_panel/app/modules/patient_details/infra/models/sequel_info.model.dart';
+import 'package:value_panel/app/modules/patient_details/infra/models/symptom_info.model.dart';
 import 'package:value_panel/app/shared/core/domain/entities/classification.entity.dart';
 
 import '../../../../shared/core/infra/models/classification.model.dart';
@@ -40,10 +42,13 @@ class Patient implements PatientEntity{
   late final int score;
 
   @override
-  late final List<AdditionalInfoEntity> additionalInfo;
+  List<AdditionalInfoEntity> additionalInfo = [];
 
   @override
-  late final List<SequelInfoEntity> sequels;
+  List<SequelInfoEntity> sequels = [];
+
+  @override
+  List<SymptomInfoEntity> symptoms = [];
 
   Patient.fromJson(Map<String, dynamic> json) {
     birthday = json['nascimento'];
@@ -57,8 +62,8 @@ class Patient implements PatientEntity{
     score = json['score'];
     classificationEntity = Classification.fromJson(json['classificacao']);
     sequels = (json['sequelas'] as List).map((json) => SequelInfo.fromJson(json)).toList();
-    additionalInfo = (json['adicional'] as List).map((json) => AdditionalInfo.fromJson(json)).toList();
+    additionalInfo = (json['adicionais'] as List).map((json) => AdditionalInfo.fromJson(json)).toList();
+    symptoms = (json['sintomas_cadastrados'] as List).map((json) => SymptomInfo.fromJson(json)).toList();
   }
-
 
 }
