@@ -16,6 +16,7 @@ import 'package:value_panel/app/modules/dashboard/ui/dashboard_page.dart';
 import 'package:value_panel/app/modules/dashboard/ui/dashboard_store.dart';
 
 import '../../shared/custom_dio/custom.dio.dart';
+import 'infra/repositories/api.repository.dart';
 
 class DashboardModule extends Module {
   @override
@@ -36,6 +37,7 @@ class DashboardModule extends Module {
     Bind.lazySingleton((i) => DownloadArchive()),
 
     // Repositories
+    // Bind.lazySingleton((i) => ApiDashboardRepository(i.get<CustomDio>())),
     Bind.lazySingleton((i) => JsonGeneratorDashboardRepository(i.get<CustomDio>())),
     // Bind.lazySingleton((i) => AssetDashBoardRepository())
   ];

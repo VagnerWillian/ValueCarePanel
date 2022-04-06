@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:intl/intl.dart';
 import 'package:value_panel/app/shared/core/infra/models/level.model.dart';
 import 'package:value_panel/app/shared/core/infra/models/specialty.model.dart';
 import 'package:value_panel/app/shared/core/domain/entities/specialty.entity.dart';
@@ -26,9 +27,10 @@ const String EMAIL_REMEMBER = "EMAIL_REMEMBER";
 
 /////////////////// API /////////////////////////////
 
-const String azureCode = "a6BpQlwHJoPw/5xNWHLJK9nhENctbinG8f9F/jw61QaEDERrHUespQ==";
+const String azureCode = "C5EwLNUjH3yItLs6PPuRH4RTVCLbiO9HEiIS4VdORxL8JWY/OatFZQ==";
 const String baseUrl = "https://poscovidapp-admin.azurewebsites.net/api";
 const String getMonitoringEP = "/Monitoramento?code=$azureCode";
+const String getUsuarioEP = "/Usuarios?code=$azureCode";
 
 /////////////// COLORS //////////////////////////
 final Color primaryColor = HexColor("#6418C3");
@@ -39,6 +41,13 @@ final Color greenColor = HexColor("#38E25D");
 final Color redColor = HexColor("#FF5E5E");
 const Color dialogBackgroundColor = Colors.white70;
 final List<Color> gradientColors = [HexColor("#4159D0"), HexColor("#4F01C4"), HexColor("#8A2CE6")];
+
+//////////////// DATE PATTERNS FORMATS////////////////
+
+final patternDdMm = DateFormat("dd/MM", "pt_BR");
+final patternHHmm = DateFormat("HH:mm", "pt_BR");
+final patternWeekName = DateFormat("EEEE", "pt_BR");
+final patternExtensive = DateFormat("EEEE, d 'de' MMMM 'de' y'\nàs' HH'h'mm'", "pt_BR");
 
 /////////////// CLASSIFICATIONS //////////////////////
 final List<ClassificationEntity> classifications = [

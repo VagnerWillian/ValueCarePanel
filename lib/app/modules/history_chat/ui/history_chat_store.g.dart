@@ -133,33 +133,33 @@ mixin _$HistoryChatStore on _HistoryChatStoreBase, Store {
   }
 
   @override
-  dynamic addAllItem(List<HistoryItemEntity> values) {
+  dynamic _addAllItem(List<HistoryItemEntity> values) {
     final _$actionInfo = _$_HistoryChatStoreBaseActionController.startAction(
         name: '_HistoryChatStoreBase.addAllItem');
     try {
-      return super.addAllItem(values);
+      return super._addAllItem(values);
     } finally {
       _$_HistoryChatStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  dynamic addItem(HistoryItemEntity value) {
+  dynamic _addItem(HistoryItemEntity value) {
     final _$actionInfo = _$_HistoryChatStoreBaseActionController.startAction(
         name: '_HistoryChatStoreBase.addItem');
     try {
-      return super.addItem(value);
+      return super._addItem(value);
     } finally {
       _$_HistoryChatStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  dynamic setLoading(bool value) {
+  dynamic _setLoading(bool value) {
     final _$actionInfo = _$_HistoryChatStoreBaseActionController.startAction(
         name: '_HistoryChatStoreBase.setLoading');
     try {
-      return super.setLoading(value);
+      return super._setLoading(value);
     } finally {
       _$_HistoryChatStoreBaseActionController.endAction(_$actionInfo);
     }

@@ -28,7 +28,8 @@ class HomeModule extends Module {
     Bind.lazySingleton((i) => GetUseWithTokenUseCase(i.get<HomeRepository>())),
 
     //Repositories
-    Bind.lazySingleton((i) => JsonGeneratorHomeRepository(i.get<CustomDio>()))
+    Bind.lazySingleton((i) => JsonGeneratorHomeRepository(i.get<CustomDio>())),
+    // Bind.lazySingleton((i) => ApiHomeRepository(i.get<CustomDio>())),
  ];
 
  @override

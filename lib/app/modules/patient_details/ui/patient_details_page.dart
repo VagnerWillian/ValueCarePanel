@@ -1,9 +1,11 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:value_panel/app/modules/history_chat/ui/history_chat_store.dart';
 import 'package:value_panel/app/modules/patient_details/ui/components/session/additional_info.session.dart';
 import 'package:value_panel/app/modules/patient_details/ui/components/session/info_session.dart';
 import 'package:value_panel/app/modules/patient_details/ui/components/session/score_chart.session.dart';
@@ -14,6 +16,7 @@ import 'package:value_panel/app/modules/patient_details/ui/patient_details_store
 import '../../../shared/components/dialogs/another_error.dialog.dart';
 import '../../../shared/components/dialogs/repository_error.dialog.dart';
 import '../../../utils/utils.dart';
+import '../../history_chat/history_chat_module.dart';
 import '../errors/patient_details.errors.dart';
 import 'components/session/symptoms_reported.session.dart';
 
@@ -30,6 +33,9 @@ class PatientDetailsPageState extends ModularState<PatientDetailsPage, PatientDe
   @override
   void initState() {
     store.getPatientInfoDetails(onError: onError);
+    SchedulerBinding.instance!.addPostFrameCallback((_) {
+      Modular.get<HistoryChatStore>().open(idPatient: "teste");
+    });
     super.initState();
   }
 
@@ -124,23 +130,6 @@ class PatientDetailsPageState extends ModularState<PatientDetailsPage, PatientDe
           Container(
             width: 300,
             margin: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.blueGrey.withOpacity(0.1),
-                  spreadRadius: 1,
-                  blurRadius: 80,
-                  offset: const Offset(0, 0), // changes position of shadow
-                )
-              ],
-            ),
-            child: Column(
-              children: const [
-
-              ],
-            ),
           )
         ],
       ),

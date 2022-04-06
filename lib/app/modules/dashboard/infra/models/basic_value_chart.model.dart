@@ -1,4 +1,4 @@
-import 'package:value_panel/app/modules/dashboard/domain/entities/chart/basic_value_chart.entity.dart';
+import '../../domain/entities/chart/basic_value_chart.entity.dart';
 
 class BasicValueChartData implements BasicValueChartDataEntity{
 

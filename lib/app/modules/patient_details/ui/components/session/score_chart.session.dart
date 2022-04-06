@@ -48,7 +48,7 @@ class _ScoreChartSessionState extends State<ScoreChartSession> {
     setState(() => loading = true);
     await widget.getScoreGraphicOfDates(startDate: selectedDate.startDate!, endDate: selectedDate.endDate!, onError: widget.onError);
     chartData.clear();
-    widget.values.map((e) => chartData.add(ChartDataItem(e.label, e.value, secondValue: e.secondValue))).toList();
+    widget.values.map((e) => chartData.add(ChartDataItem(patternDdMm.format(DateTime.parse(e.label)), e.value, secondValue: e.secondValue))).toList();
     setState(() => loading = false);
   }
 

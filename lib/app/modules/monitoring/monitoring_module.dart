@@ -15,12 +15,14 @@ import 'package:value_panel/app/modules/monitoring/ui/monitoring_page.dart';
 import 'package:value_panel/app/modules/monitoring/ui/monitoring_store.dart';
 
 import '../../shared/custom_dio/custom.dio.dart';
+import 'infra/repositories/api_repository.dart';
 
 class MonitoringModule extends Module {
   @override
   final List<Bind> binds = [
 
     Bind.lazySingleton((i) => MonitoringStore(
+          chatStore: i.get<HistoryChatStore>(),
           homeStore: i.get<HomeStore>(),
           historyChatStore: i.get<HistoryChatStore>(),
           fetchMonitoringDataFromIntervalDatesUseCase: i.get<FetchMonitoringDataFromIntervalDatesUseCase>(),
@@ -38,7 +40,7 @@ class MonitoringModule extends Module {
     // Repositories
     Bind.lazySingleton((i) => JsonGeneratorMonitoringRepository(i.get<CustomDio>())),
     // Bind.lazySingleton((i) => AssetMonitoringRepository()),
-    // Bind.lazySingleton((i) => ApiMonitoringRepository(i.get())),
+    // Bind.lazySingleton((i) => ApiMonitoringRepository(i.get<CustomDio>())),
   ];
 
   @override

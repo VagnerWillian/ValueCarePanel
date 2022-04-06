@@ -13,7 +13,6 @@ import 'package:value_panel/app/modules/monitoring/domain/usecases/update_monito
 import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
 import 'package:value_panel/app/modules/monitoring/ui/grid/monitoring.datasource.dart';
 import 'package:value_panel/app/shared/core/infra/models/date_selector.model.dart';
-import 'dart:html' as html;
 
 import 'package:value_panel/app/utils/utils.dart';
 
@@ -32,7 +31,9 @@ abstract class _MonitoringStoreBase with Store {
   // Stories
   late final HistoryChatStore historyChatStore;
   late final HomeStore homeStore;
+  late final HistoryChatStore chatStore;
   _MonitoringStoreBase({
+    required this.chatStore,
     required this.homeStore,
     required this.historyChatStore,
     required this.fetchMonitoringDataFromIntervalDatesUseCase,

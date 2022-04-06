@@ -21,6 +21,10 @@ abstract class _HistoryChatStoreBase with Store {
   //Store
   final HomeStore _homeStore;
 
+  //Keys
+  final formKey = GlobalKey<FormState>();
+
+
   _HistoryChatStoreBase(this._getAllHistoryUseCase, this._homeStore){
    textEditingController = TextEditingController();
   }
@@ -68,18 +72,18 @@ abstract class _HistoryChatStoreBase with Store {
   @action
   void open({required String idPatient}) {
     selectedIdPatient = idPatient;
-    loadhistory(idPatient: idPatient);
+    _loadHistory(idPatient: idPatient);
     isExpanded = true;
   }
 
   @action
-  addAllItem(List<HistoryItemEntity> values)=>items.addAll(values);
+  _addAllItem(List<HistoryItemEntity> values)=>items.addAll(values);
 
   @action
-  addItem(HistoryItemEntity value)=>items.insert(0, value);
+  _addItem(HistoryItemEntity value)=>items.insert(0, value);
 
   @action
-  setLoading(bool value)=>loading=value;
+  _setLoading(bool value)=>loading=value;
 
   @action
   setLoadingSend(bool value)=>loadingSend=value;
@@ -92,34 +96,32 @@ abstract class _HistoryChatStoreBase with Store {
 
   //Voids
 
-  void dispose(){
-    textEditingController.dispose();
-  }
-
-  void loadhistory({required String idPatient})async{
-    setLoading(true);
+  void _loadHistory({required String idPatient})async{
+    _setLoading(true);
     Either<HistoryError, List<HistoryItemEntity>> response = await _getAllHistoryUseCase(idPatient: idPatient);
     response.fold((HistoryError failure) {
       return failure;
     }, (List<HistoryItemEntity> items) {
-      addAllItem(items);
+      _addAllItem(items);
       return items;
     });
-    setLoading(false);
+    _setLoading(false);
   }
 
   void sendText()async{
-    setLoadingSend(true);
-    HistoryItemEntity newHistory = HistoryItem.send(
-        data: DateTime.now().toString(),
-        name: _homeStore.userLogged!.name,
-        photo: _homeStore.userLogged!.picture,
-        text: textEditingController.text);
+    if(formKey.currentState!.validate()){
+      setLoadingSend(true);
+      HistoryItemEntity newHistory = HistoryItem.send(
+          data: DateTime.now().toString(),
+          name: _homeStore.userLogged!.name,
+          photo: _homeStore.userLogged!.picture,
+          text: textEditingController.text);
 
-    await Future.delayed(const Duration(seconds: 1));
-    addItem(newHistory);
-    textEditingController.clear();
-    setLoadingSend(false);
+      await Future.delayed(const Duration(seconds: 1));
+      _addItem(newHistory);
+      textEditingController.clear();
+      setLoadingSend(false);
+    }
   }
 
 

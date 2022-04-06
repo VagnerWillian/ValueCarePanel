@@ -14,16 +14,16 @@ class BasicValueChartData implements BasicValueChartDataEntity{
   BasicValueChartData({required this.label, required this.secondValue, required this.value});
 
   BasicValueChartData.fromJson(Map<String, dynamic> json) {
-    label = json['label'];
-    secondValue = json['segundo_valor'];
-    value = json['primeiro_valor'];
+    label = json['data'];
+    secondValue = json['score2'];
+    value = json['score1'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['label'] = label;
-    data['segundo_valor'] = secondValue;
-    data['primeiro_valor'] = value;
+    data['score2'] = secondValue;
+    data['score1'] = value;
     return data;
   }
 }

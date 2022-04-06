@@ -13,17 +13,19 @@ class ApiMonitoringRepository implements MonitoringRepository{
   final CustomDio _customDio;
   ApiMonitoringRepository(this._customDio);
 
+  final _header = {"Authorization":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InJvZHJpZ29AdmFsdWVjYXJlLmNvbS5iciIsImlkIjoidGRGbXJUdEFGdUpOY1VpZ0RtSTUiLCJyb2xlIjoiYWRtaW4ifQ.egHPUWLXrfLhoQ5sZIW12AkKIGBfEWg_V6Tm8YOSVFw"};
+
   @override
   Future<Either<MonitoringError, List<MonitoringDataEntity>>> fetchMonitoringFromIntervalDates({required DateTime startDate, required DateTime endDate}) async {
-    try{
-      var response = await _customDio.client.get(getMonitoringEP);
+    // try{
+      var response = await _customDio.client.get(getMonitoringEP, options: Options(headers: _header));
       List<MonitoringDataEntity> monitoringDataItems = (response.data['result'] as List).map((i) => MonitoringData.fromJson(i)).toList();
       return Right(monitoringDataItems);
-    }on DioError catch(e){
-      return Left(MonitoringRepositoryError(statusCode: e.response?.statusCode));
-    }catch(e){
-      return Left(MonitoringRepositoryError(message: e.toString()));
-    }
+    // }on DioError catch(e){
+    //   return Left(MonitoringRepositoryError(statusCode: e.response?.statusCode));
+    // }catch(e){
+    //   return Left(MonitoringRepositoryError(message: e.toString()));
+    // }
   }
 
   @override

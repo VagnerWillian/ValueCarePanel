@@ -16,15 +16,15 @@ class JsonGeneratorMonitoringRepository implements MonitoringRepository{
 
   @override
   Future<Either<MonitoringError, List<MonitoringDataEntity>>> fetchMonitoringFromIntervalDates({required DateTime startDate, required DateTime endDate}) async {
-    // try{
+    try{
       var response = await _customDio.client.get("https://api.json-generator.com/templates/JU04s1dTWKtl/data", options: Options(headers: _header));
       List<MonitoringDataEntity> monitoringDataItems = (response.data as List).map((i) => MonitoringData.fromJson(i)).toList();
       return Right(monitoringDataItems);
-    // }on DioError catch(e){
-    //   return Left(MonitoringRepositoryError(statusCode: e.response?.statusCode));
-    // }catch(e){
-    //   return Left(MonitoringRepositoryError(message: e.toString()));
-    // }
+    }on DioError catch(e){
+      return Left(MonitoringRepositoryError(statusCode: e.response?.statusCode));
+    }catch(e){
+      return Left(MonitoringRepositoryError(message: e.toString()));
+    }
   }
 
   @override

@@ -18,48 +18,41 @@ class Ballons extends StatelessWidget{
   }
 
   Widget question()=>Container(
-    margin: const EdgeInsets.symmetric(vertical: 10),
+    margin: const EdgeInsets.only(bottom: 20),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(
-          child: Container(
-            margin: const EdgeInsets.only(right: 5),
-            decoration: BoxDecoration(
-                color: Colors.grey.shade200,
-                borderRadius: const BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Text(historyItemEntity.name, style: GoogleFonts.openSans(fontSize: 12, color: primaryColor, fontWeight: FontWeight.bold)),
-                        Text(historyItemEntity.data, style: GoogleFonts.openSans(fontSize: 12, color: Colors.grey)),
-                      ],
-                    ),
+        Flexible(
+          child: Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: Column(
+              children: [
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(historyItemEntity.name, style: GoogleFonts.openSans(fontSize: 10, color: Colors.black, fontWeight: FontWeight.bold),textAlign: TextAlign.right),
+                      Text(historyItemEntity.data, style: GoogleFonts.openSans(fontSize: 10, color: Colors.black),textAlign: TextAlign.right,),
+                    ],
                   ),
-                  const SizedBox(height: 15),
-                  Text(historyItemEntity.text,
-                    style: GoogleFonts.openSans(fontSize: 12, color: Colors.grey),
-                  ),
-                ],
-              ),
+                ),
+                const SizedBox(height: 15),
+                Text(historyItemEntity.text,
+                  textAlign: TextAlign.right,
+                  style: GoogleFonts.openSans(fontSize: 10, color: Colors.black),
+                ),
+              ],
             ),
           ),
         ),
         SizedBox(
-          width: 30,
-          height: 30,
+          width: 25,
+          height: 25,
           child: ImageNetwork(
             borderRadius: BorderRadius.circular(100),
-            height: 40,
-            width: 40,
+            height: 35,
+            width: 35,
             onLoading: Container(),
             imageCache: CachedNetworkImageProvider(historyItemEntity.photo),
             image: historyItemEntity.photo,
@@ -70,50 +63,43 @@ class Ballons extends StatelessWidget{
   );
 
   Widget answer()=>Container(
-    margin: const EdgeInsets.symmetric(vertical: 10),
+    margin: const EdgeInsets.only(bottom: 20),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          width: 30,
-          height: 30,
+          width: 25,
+          height: 25,
           child: ImageNetwork(
             borderRadius: BorderRadius.circular(100),
-            height: 40,
-            width: 40,
+            height: 35,
+            width: 35,
             onLoading: Container(),
             imageCache: CachedNetworkImageProvider(historyItemEntity.photo),
             image: historyItemEntity.photo,
           ),
         ),
         Expanded(
-          child: Container(
-            margin: const EdgeInsets.only(left: 5),
-            decoration: BoxDecoration(
-                color: primaryColor,
-                borderRadius: const BorderRadius.only(topRight: Radius.circular(10), bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Text(historyItemEntity.name, style: GoogleFonts.openSans(fontSize: 12, color: Colors.white, fontWeight: FontWeight.bold)),
-                        Text(historyItemEntity.data, style: GoogleFonts.openSans(fontSize: 12, color: Colors.white)),
-                      ],
-                    ),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(historyItemEntity.name, style: GoogleFonts.openSans(fontSize: 10, color: primaryColor, fontWeight: FontWeight.bold)),
+                      Text(historyItemEntity.data, style: GoogleFonts.openSans(fontSize: 10, color: primaryColor)),
+                    ],
                   ),
-                  const SizedBox(height: 15),
-                  Text(historyItemEntity.text,
-                    style: GoogleFonts.openSans(fontSize: 12, color: Colors.white),
-                  ),
-                ],
-              ),
+                ),
+                const SizedBox(height: 15),
+                Text(historyItemEntity.text,
+                  style: GoogleFonts.openSans(fontSize: 10, color: primaryColor),
+                ),
+              ],
             ),
           ),
         )

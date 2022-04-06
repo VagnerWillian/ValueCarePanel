@@ -11,6 +11,7 @@ import 'package:value_panel/app/shared/custom_dio/custom.dio.dart';
 
 import 'domain/services/get_patient_details.service.dart';
 import 'domain/services/get_score_graphic_of_dates.service.dart';
+import 'infra/repositories/api.repository.dart';
 
 class PatientsDetailsModule extends Module {
 
@@ -18,7 +19,7 @@ class PatientsDetailsModule extends Module {
   final List<Bind> binds = [
 
     //Stores
-    Bind.lazySingleton((i) => PatientDetailsStore(
+    Bind((i) => PatientDetailsStore(
         i.get<GetScoreGraphicOfDatesUseCase>(),
         i.get<GetPatientDetailsUseCase>(),
         i.get<GetReportedSymptomsOfPatientFromDateUseCase>(),
@@ -30,6 +31,7 @@ class PatientsDetailsModule extends Module {
     Bind.lazySingleton((i) => GetReportedSymptomsOfPatientFromDate(i.get<PatientDetailsRepository>())),
 
     //Repositories
+    // Bind.lazySingleton((i) => ApiPatientDetailsRepository(i.get<CustomDio>())),
     Bind.lazySingleton((i) => JsonGeneratorPatientDetailsRepository(i.get<CustomDio>())),
 
   ];
