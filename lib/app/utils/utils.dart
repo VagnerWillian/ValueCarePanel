@@ -15,7 +15,7 @@ const String DASHBOARD_ROUTE = "/dashboard/";
 const String MONITORING_ROUTE = "/monitoramento/";
 const String SCHEDULING_ROUTE = "/agendamento/";
 const String ANALYTICS_ROUTE = "/analytics/";
-const String USERS_ROUTE = "/users/";
+const String USERS_ROUTE = "/usuarios/";
 
 const String PATIENTS_ROUTE = "/pacientes/";
 const String PATIENT_DETAILS_ROUTE = "/pacientes/detalhes/";
@@ -30,7 +30,13 @@ const String EMAIL_REMEMBER = "EMAIL_REMEMBER";
 const String azureCode = "C5EwLNUjH3yItLs6PPuRH4RTVCLbiO9HEiIS4VdORxL8JWY/OatFZQ==";
 const String baseUrl = "https://poscovidapp-admin.azurewebsites.net/api";
 const String getMonitoringEP = "/Monitoramento?code=$azureCode";
-const String getUsuarioEP = "/Usuarios?code=$azureCode";
+const String getUserEP = "/Operador?code=$azureCode";
+const String getUsersEP = "/Operadores?code=$azureCode";
+const String getPatientDetailsInfoEP = "/usuario-paciente/";
+// --> Configuracoes Remotas API
+const String getClassificationsEP = "/Classificacao?code=$azureCode";
+const String getSpecialtiesEP = "/especialidade?code=$azureCode";
+
 
 /////////////// COLORS //////////////////////////
 final Color primaryColor = HexColor("#6418C3");
@@ -48,30 +54,6 @@ final patternDdMm = DateFormat("dd/MM", "pt_BR");
 final patternHHmm = DateFormat("HH:mm", "pt_BR");
 final patternWeekName = DateFormat("EEEE", "pt_BR");
 final patternExtensive = DateFormat("EEEE, d 'de' MMMM 'de' y'\nàs' HH'h'mm'", "pt_BR");
-
-/////////////// CLASSIFICATIONS //////////////////////
-final List<ClassificationEntity> classifications = [
-  Classification(label: "Pendente", id: 0, color: HexColor("#6418C3")),
-  Classification(label: "Não Urgente", id: 1, color: HexColor("#34A8D9")),
-  Classification(label: "Emergência", id: 2, color: HexColor("#E23838")),
-  Classification(label: "Urgente", id: 3, color: HexColor("#FFAB2D")),
-  Classification(label: "Pouco Urgente", id: 4, color: HexColor("#38E25D")),
-];
-
-final List<SpecialtyEntity> specialties = [
-  Specialty(id: 0, label: "Clínico Geral", image: "assets/assets/images/specialties/0.svg"),
-  Specialty(id: 1, label: "Oftalmologista", image: "assets/assets/images/specialties/1.svg"),
-  Specialty(id: 2, label: "Psicólogo", image: "assets/assets/images/specialties/2.svg"),
-  Specialty(id: 3, label: "Pneumologista", image: "assets/assets/images/specialties/3.svg"),
-  Specialty(id: 4, label: "Nefrologista", image: "assets/assets/images/specialties/4.svg"),
-  Specialty(id: 5, label: "Traumatologista", image: "assets/assets/images/specialties/5.svg"),
-  Specialty(id: 6, label: "Otorrinolaringologista", image: "assets/assets/images/specialties/6.svg"),
-  Specialty(id: 7, label: "Endócrinologista", image: "assets/assets/images/specialties/7.svg"),
-  Specialty(id: 8, label: "Cardiologista", image: "assets/assets/images/specialties/8.svg"),
-  Specialty(id: 9, label: "Gastroenterologista", image: "assets/assets/images/specialties/9.svg"),
-  Specialty(id: 10, label: "Fisioterapeuta", image: "assets/assets/images/specialties/10.svg"),
-  Specialty(id: 11, label: "Dermatologista", image: "assets/assets/images/specialties/11.svg"),
-];
 
 //LEVELS
 List<LevelAdminEntity> levels  = [

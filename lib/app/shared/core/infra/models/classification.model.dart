@@ -17,20 +17,20 @@ class Classification extends Equatable implements ClassificationEntity{
   @override
   Color? color;
 
-  Classification({required this.label, required this.id, required this.color});
+  Classification({required this.label, required this.image, required this.id, required this.color});
 
   Classification.fromJson(Map<String, dynamic> json) {
-    label = json['label'];
+    label = json['nome'];
     id = json['id'];
     color = HexColor(json['cor']);
-    image = json['image'];
+    image = json['imagem'];
   }
 
   @override
   Map<String, dynamic> get toJson {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['label'] = label;
-    data['image'] = image;
+    data['nome'] = label;
+    data['imagem'] = image;
     data['id'] = id;
     data['cor'] = ColorToHex(color!).toString();
     return data;

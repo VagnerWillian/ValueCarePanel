@@ -13,41 +13,45 @@ class AdditionInfoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 5),
-      child: Row(
-        children: [
-          Center(
-            child: Container(
-              margin: const EdgeInsets.only(right: 10),
-              width: 50,
-              height: 50,
-              child: urlImage.isEmpty?Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      color: primaryColor.withOpacity(0.2)),
-                  ):ImageNetwork(
-                borderRadius: BorderRadius.circular(100),
-                height: 50,
+    return Visibility(
+      visible: value.isNotEmpty,
+      maintainState: true,
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 5),
+        child: Row(
+          children: [
+            Center(
+              child: Container(
+                margin: const EdgeInsets.only(right: 10),
                 width: 50,
-                onError: Container(color: primaryColor.withOpacity(0.2)),
-                onLoading: Container(),
-                imageCache: CachedNetworkImageProvider(urlImage),
-                image: urlImage,
+                height: 50,
+                child: urlImage.isEmpty?Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: primaryColor.withOpacity(0.2)),
+                    ):ImageNetwork(
+                  borderRadius: BorderRadius.circular(100),
+                  height: 50,
+                  width: 50,
+                  onError: Container(color: primaryColor.withOpacity(0.2)),
+                  onLoading: Container(),
+                  imageCache: CachedNetworkImageProvider(urlImage),
+                  image: urlImage,
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, color: Colors.grey, fontSize: 12)),
-                Text(value, style: GoogleFonts.openSans(fontWeight: FontWeight.w600, color: primaryColor, fontSize: 10),),
-              ],
-            ),
-          )
-        ],
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, color: Colors.grey, fontSize: 12)),
+                  Text(value, style: GoogleFonts.openSans(fontWeight: FontWeight.w600, color: primaryColor, fontSize: 10),),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

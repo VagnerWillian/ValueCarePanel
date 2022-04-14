@@ -9,6 +9,8 @@ import 'package:value_panel/app/modules/monitoring/ui/grid/row_components/patien
 import 'package:value_panel/app/modules/monitoring/ui/grid/row_components/confirm_column_grid.component.dart';
 import 'package:value_panel/app/modules/monitoring/ui/grid/row_components/specialty_column_grid.component.dart';
 import 'package:value_panel/app/modules/monitoring/ui/grid/row_components/symptoms_column_grid.component.dart';
+import 'package:value_panel/app/shared/core/domain/entities/classification.entity.dart';
+import 'package:value_panel/app/shared/core/domain/entities/specialty.entity.dart';
 import 'package:value_panel/app/shared/core/domain/entities/symptoms.entity.dart';
 class ColumnConfig{
   String label;
@@ -21,10 +23,12 @@ class MonitoringDataSource extends DataGridSource {
   final Function updateMonitoringItem;
   final Function openHistoryFloating;
   final Function openPatientDetails;
+  final List<ClassificationEntity> classifications;
+  final List<SpecialtyEntity> specialties;
 
   List<MonitoringDataEntity>  _paginatedMonitoringItems = [], monitoringItems = [];
   final List<ColumnConfig> columnNames = [
-    ColumnConfig("Paciente", 150, double.nan),
+    ColumnConfig("Paciente", double.nan, double.nan),
     ColumnConfig("Sintomas", 160, 250),
     ColumnConfig("Classificação", 150, 200),
     ColumnConfig("Data Solicitação", 70, 100),
@@ -42,7 +46,7 @@ class MonitoringDataSource extends DataGridSource {
   List<DataGridRow>  dataGridRows = [];
 
 
-  MonitoringDataSource({required this.updateMonitoringItem, required this.openHistoryFloating, required this.openPatientDetails});
+  MonitoringDataSource({required this.updateMonitoringItem, required this.classifications, required this.specialties, required this.openHistoryFloating, required this.openPatientDetails});
 
   void buildPaginatedDataGridRows() {
     dataGridRows = _paginatedMonitoringItems.map<DataGridRow>((m) => DataGridRow(cells: [
@@ -53,7 +57,7 @@ class MonitoringDataSource extends DataGridSource {
       DataGridCell<MonitoringDataEntity>(columnName: columnNames[4].label, value: m),
       DataGridCell<MonitoringDataEntity>(columnName: columnNames[5].label, value: m),
       DataGridCell<MonitoringDataEntity>(columnName: columnNames[6].label, value: m),
-      DataGridCell<String>(columnName: columnNames[7].label, value: m.id),
+      DataGridCell<String>(columnName: columnNames[7].label, value: m.idUserPatient),
     ])).toList(growable: false);
   }
 
@@ -66,13 +70,13 @@ class MonitoringDataSource extends DataGridSource {
          }else if(dataGridCell.columnName==columnNames[1].label){
             return SymptomsColumnGrid(value: dataGridCell.value);
          }else if(dataGridCell.columnName==columnNames[2].label){
-            return ClassificationColumnGrid(value: dataGridCell.value, updateMonitoringItem: updateMonitoringItem);
+            return ClassificationColumnGrid(value: dataGridCell.value, updateMonitoringItem: updateMonitoringItem, classifications: classifications);
           }else if(dataGridCell.columnName==columnNames[3].label){
             return DateColumnGrid(value: dataGridCell.value);
           }else if(dataGridCell.columnName==columnNames[4].label){
             return AppointmentDateColumnGrid(value: dataGridCell.value, updateMonitoringItem: updateMonitoringItem);
           }else if(dataGridCell.columnName==columnNames[5].label){
-            return SpecialtyColumnGrid(value: dataGridCell.value, updateMonitoringItem: updateMonitoringItem);
+            return SpecialtyColumnGrid(value: dataGridCell.value, updateMonitoringItem: updateMonitoringItem, specialties: specialties);
           }else if(dataGridCell.columnName==columnNames[6].label){
             return ConfirmColumnGrid(value: dataGridCell.value, updateMonitoringItem: updateMonitoringItem);
           }else if(dataGridCell.columnName==columnNames[7].label){

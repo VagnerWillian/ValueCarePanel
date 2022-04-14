@@ -6,7 +6,8 @@ import 'package:value_panel/app/utils/utils.dart';
 
 class ClassificationColumnGrid extends StatefulWidget {
   final int value;
-  const ClassificationColumnGrid({Key? key, required this.value}) : super(key: key);
+  final List<ClassificationEntity> classifications;
+  const ClassificationColumnGrid({Key? key, required this.classifications, required this.value}) : super(key: key);
 
   @override
   _ClassificationColumnGridState createState() => _ClassificationColumnGridState();
@@ -19,14 +20,14 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
 
   @override
   void initState() {
-    selectedClassification = classifications.singleWhere((c) => c.id==widget.value);
+    selectedClassification = widget.classifications.singleWhere((c) => c.id==widget.value);
     loading = false;
     super.initState();
   }
 
   @override
   void didUpdateWidget(covariant ClassificationColumnGrid oldWidget) {
-    selectedClassification = classifications.singleWhere((c) => c.id==widget.value);
+    selectedClassification = widget.classifications.singleWhere((c) => c.id==widget.value);
     loading = false;
     super.didUpdateWidget(oldWidget);
   }
@@ -57,7 +58,7 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
           icon: Container(),
           iconDisabledColor: Colors.transparent,
           iconEnabledColor: selectedClassification.color,
-          items: classifications.map((c) {
+          items: widget.classifications.map((c) {
             return DropdownMenuItem<ClassificationEntity>(
                 value: c,
                 child: Center(

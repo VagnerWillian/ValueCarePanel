@@ -13,6 +13,7 @@ import 'package:value_panel/app/modules/monitoring/domain/usecases/update_monito
 import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
 import 'package:value_panel/app/modules/monitoring/ui/grid/monitoring.datasource.dart';
 import 'package:value_panel/app/shared/core/infra/models/date_selector.model.dart';
+import 'package:value_panel/app/shared/core/managers/config.manager.dart';
 
 import 'package:value_panel/app/utils/utils.dart';
 
@@ -28,11 +29,15 @@ abstract class _MonitoringStoreBase with Store {
   final DownloadArchiveUseCase downloadArchiveUseCase;
   final UpdateMonitoringItemUseCase updateMonitoringItemUseCase;
 
+  //Managers
+  final ConfigManager configManager;
+
   // Stories
   late final HistoryChatStore historyChatStore;
   late final HomeStore homeStore;
   late final HistoryChatStore chatStore;
   _MonitoringStoreBase({
+    required this.configManager,
     required this.chatStore,
     required this.homeStore,
     required this.historyChatStore,
@@ -41,7 +46,7 @@ abstract class _MonitoringStoreBase with Store {
     required this.downloadArchiveUseCase,
     required this.updateMonitoringItemUseCase
   }){
-    monitoringDataSource = MonitoringDataSource(updateMonitoringItem: updateMonitoringItem, openHistoryFloating: openHistoryFloating, openPatientDetails: openPatientDetails);
+    monitoringDataSource = MonitoringDataSource(updateMonitoringItem: updateMonitoringItem, openHistoryFloating: openHistoryFloating, openPatientDetails: openPatientDetails, specialties: configManager.specialties, classifications: configManager.classifications);
     preDatesLogic();
 
   }
@@ -121,8 +126,8 @@ abstract class _MonitoringStoreBase with Store {
     historyChatStore.open(idPatient: "");
   }
 
-  void openPatientDetails(String idPatient)async{
-    Modular.to.pushNamed(PATIENT_DETAILS_ROUTE+idPatient);
+  void openPatientDetails(String idUserPatient, String idPatient)async{
+    Modular.to.pushNamed(PATIENT_DETAILS_ROUTE+idPatient+"/"+idUserPatient);
   }
 
   /////////////////////////// SEARCH ///////////////////////////////////////////////////

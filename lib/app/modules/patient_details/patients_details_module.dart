@@ -7,6 +7,7 @@ import 'package:value_panel/app/modules/patient_details/domain/usecases/get_scor
 import 'package:value_panel/app/modules/patient_details/infra/repositories/json_generator.repository.dart';
 import 'package:value_panel/app/modules/patient_details/ui/patient_details_page.dart';
 import 'package:value_panel/app/modules/patient_details/ui/patient_details_store.dart';
+import 'package:value_panel/app/shared/core/managers/config.manager.dart';
 import 'package:value_panel/app/shared/custom_dio/custom.dio.dart';
 
 import 'domain/services/get_patient_details.service.dart';
@@ -20,6 +21,7 @@ class PatientsDetailsModule extends Module {
 
     //Stores
     Bind((i) => PatientDetailsStore(
+        i.get<ConfigManager>(),
         i.get<GetScoreGraphicOfDatesUseCase>(),
         i.get<GetPatientDetailsUseCase>(),
         i.get<GetReportedSymptomsOfPatientFromDateUseCase>(),
@@ -31,13 +33,13 @@ class PatientsDetailsModule extends Module {
     Bind.lazySingleton((i) => GetReportedSymptomsOfPatientFromDate(i.get<PatientDetailsRepository>())),
 
     //Repositories
-    // Bind.lazySingleton((i) => ApiPatientDetailsRepository(i.get<CustomDio>())),
-    Bind.lazySingleton((i) => JsonGeneratorPatientDetailsRepository(i.get<CustomDio>())),
+    Bind.lazySingleton((i) => ApiPatientDetailsRepository(i.get<CustomDio>())),
+    // Bind.lazySingleton((i) => JsonGeneratorPatientDetailsRepository(i.get<CustomDio>())),
 
   ];
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/:id', child: (_, args) => PatientDetailsPage(idPatient: args.params['id'],)),
+    ChildRoute('/:usuario/:paciente', child: (_, args) => PatientDetailsPage(idUserPatient: args.params['usuario'], idPatient: args.params['paciente'])),
   ];
 }

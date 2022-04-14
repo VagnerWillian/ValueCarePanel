@@ -18,8 +18,8 @@ class JsonGeneratorPatientDetailsRepository implements PatientDetailsRepository{
 
   final _header = {"Authorization":"Bearer lib361fjoaiy06cib24z0fub3531yhpzxv214iro"};
 
-  @override
-  Future<Either<PatientDetailsError, List<BasicValueChartDataEntity>>> getScoreGraphicOfDates({required DateTime startDate, required DateTime endDate}) async {
+/*  @override
+  Future<Either<PatientDetailsError, List<BasicValueChartDataEntity>>> getScoreGraphicOfDates({required DateTime startDate, required DateTime endDate, }) async {
     try{
       var response = await _customDio.client.get("https://api.json-generator.com/templates/4LpiMFnYz7XX/data", options: Options(headers: _header));
       List<BasicValueChartDataEntity> values = (response.data as List).map((json) => BasicValueChartData.fromJson(json)).toList();
@@ -29,10 +29,10 @@ class JsonGeneratorPatientDetailsRepository implements PatientDetailsRepository{
     }catch(e){
       return Left(PatientDetailsRepositoryError(message: e.toString()));
     }
-  }
+  }*/
 
   @override
-  Future<Either<PatientDetailsError, PatientEntity>> getPatientDetails() async{
+  Future<Either<PatientDetailsError, PatientEntity>> getPatientDetails({required String idUserPatient, required String idPatient}) async{
     try{
       var response = await _customDio.client.get("https://api.json-generator.com/templates/tbYfiMYogpAs/data", options: Options(headers: _header));
       PatientEntity values = Patient.fromJson(response.data);
@@ -45,7 +45,7 @@ class JsonGeneratorPatientDetailsRepository implements PatientDetailsRepository{
   }
 
   @override
-  Future<Either<PatientDetailsError, ReportedSymptomGroupEntity>> getReportedSymptomsOfPatient({required DateTime startDate, required DateTime endDate}) async{
+  Future<Either<PatientDetailsError, ReportedSymptomGroupEntity>> getReportedSymptomsOfPatient({required DateTime startDate, required DateTime endDate, required String idUserPatient, required String idPatient}) async{
     try{
       var response = await _customDio.client.get("https://api.json-generator.com/templates/1Ojq-0EEASAN/data", options: Options(headers: _header));
       ReportedSymptomGroupEntity values = ReportedSymptomGroup.fromJson(response.data);

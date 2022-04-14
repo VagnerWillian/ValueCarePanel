@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,11 +6,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_network/image_network.dart';
 import 'package:value_panel/app/modules/patient_details/domain/entities/patient.entity.dart';
 import 'package:value_panel/app/modules/patient_details/ui/components/tiles/info_label.tile.dart';
+import 'package:value_panel/app/shared/core/domain/entities/classification.entity.dart';
 import 'package:value_panel/app/utils/utils.dart';
 
 class InfoSession extends StatelessWidget {
   final PatientEntity patientEntity;
-  const InfoSession({required this.patientEntity, Key? key}) : super(key: key);
+  final List<ClassificationEntity> classifications;
+  const InfoSession({required this.patientEntity, required this.classifications, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -80,14 +81,14 @@ class InfoSession extends StatelessWidget {
                                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(100),
-                                    color: patientEntity.classificationEntity.color!.withOpacity(0.2)
+                                    color: classifications.singleWhere((c) => c.id==patientEntity.classification.id).color!.withOpacity(0.2)
                                 ),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    SvgPicture.asset(patientEntity.classificationEntity.image, color: patientEntity.classificationEntity.color, width: 16),
+                                    SvgPicture.asset(classifications.singleWhere((c) => c.id==patientEntity.classification.id).image, color: classifications.singleWhere((c) => c.id==patientEntity.classification.id).color, width: 16),
                                     const SizedBox(width: 10),
-                                    Text(patientEntity.classificationEntity.label, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 10, color: patientEntity.classificationEntity.color)),
+                                    Text(classifications.singleWhere((c) => c.id==patientEntity.classification.id).label, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 10, color: classifications.singleWhere((c) => c.id==patientEntity.classification.id).color)),
                                   ],
                                 ),
                               ),

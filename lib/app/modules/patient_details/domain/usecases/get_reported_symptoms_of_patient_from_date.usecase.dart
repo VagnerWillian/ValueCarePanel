@@ -3,5 +3,5 @@ import 'package:value_panel/app/modules/patient_details/domain/entities/reported
 import 'package:value_panel/app/modules/patient_details/errors/patient_details.errors.dart';
 
 abstract class GetReportedSymptomsOfPatientFromDateUseCase{
-  Future<Either<PatientDetailsError, ReportedSymptomGroupEntity>> call({required DateTime startDate, required DateTime endDate});
+  Future<Either<PatientDetailsError, ReportedSymptomGroupEntity>> call({required DateTime startDate, required DateTime endDate, required String idUserPatient, required String idPatient});
 }

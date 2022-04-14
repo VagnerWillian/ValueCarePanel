@@ -8,7 +8,7 @@ class CustomInterceptor extends InterceptorsWrapper {
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
     print('REQUEST[${options.method}] => PATH: ${options.uri}');
     final ConfigManager configManager = Modular.get<ConfigManager>();
-    // options.headers = {"Authorization":"Bearer ${configManager.tokenUserLogged}"};
+    options.headers = {"Authorization":"Bearer ${configManager.tokenUserLogged}"};
     print("TOKEN APLICADO **${configManager.tokenUserLogged}**");
     print(options.headers);
     return super.onRequest(options, handler);

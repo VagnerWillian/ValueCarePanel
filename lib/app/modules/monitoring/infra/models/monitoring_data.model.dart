@@ -23,7 +23,7 @@ class MonitoringData implements MonitoringDataEntity {
   late bool confirm;
 
   @override
-  late final String id;
+  late final String idUserPatient;
 
   @override
   late final String patient;
@@ -32,7 +32,7 @@ class MonitoringData implements MonitoringDataEntity {
   late final List<SymptomEntity> symptoms;
 
   @override
-  String get idString => "#$id";
+  String get idString => "#$idUserPatient";
 
   @override
   String? appointmentDate;
@@ -41,7 +41,7 @@ class MonitoringData implements MonitoringDataEntity {
   DateTime? get appointmentDateInDateTime => appointmentDate==null?null:DateTime.parse(appointmentDate!);
 
   MonitoringData(
-      {required this.id,
+      {required this.idUserPatient,
       required this.symptoms,
       required this.patient,
       required this.classificationId,
@@ -51,10 +51,10 @@ class MonitoringData implements MonitoringDataEntity {
       required this.confirm});
 
   MonitoringData.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    idUserPatient = json['usuarioPacienteId'];
     symptoms = (json['sintomas'] as List).map((s) => Symptom.fromJson(s)).toList();
     patient = json['paciente'];
-    idPatient = json['idPaciente'];
+    idPatient = json['pacienteId'];
     classificationId = json['classificacaoId'];
     specialtyId = json['especialidadeId'];
     solicitationDate = datePattern.format(DateTime.parse(json['dataSolicitacao']));
@@ -65,7 +65,8 @@ class MonitoringData implements MonitoringDataEntity {
   @override
   Map<String, dynamic> get toJson {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
+    data['usuarioPacienteId'] = idUserPatient;
+    data['pacienteId'] = idPatient;
     data['sintomas'] = symptoms.map((e) => e.toJson).toList();
     data['paciente'] = patient;
     data['classificacaoId'] = classificationId;

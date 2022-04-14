@@ -33,7 +33,7 @@ class Patient implements PatientEntity{
   late final String photo;
 
   @override
-  late final ClassificationEntity classificationEntity;
+  late final Classification classification;
 
   @override
   late final String origin;
@@ -60,10 +60,10 @@ class Patient implements PatientEntity{
     photo = json['foto'];
     origin = json['origem'];
     score = json['score'];
-    classificationEntity = Classification.fromJson(json['classificacao']);
+    classification = Classification.fromJson(json['classificacao']);
     sequels = (json['sequelas'] as List).map((json) => SequelInfo.fromJson(json)).toList();
     additionalInfo = (json['adicionais'] as List).map((json) => AdditionalInfo.fromJson(json)).toList();
-    symptoms = (json['sintomas_cadastrados'] as List).map((json) => SymptomInfo.fromJson(json)).toList();
+    symptoms = (json['sintomasCadastrados'] as List).map((json) => SymptomInfo.fromJson(json)).toList();
   }
 
 }

@@ -8,7 +8,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:value_panel/app/modules/history_chat/ui/history_chat_store.dart';
 import 'package:value_panel/app/modules/patient_details/ui/components/session/additional_info.session.dart';
 import 'package:value_panel/app/modules/patient_details/ui/components/session/info_session.dart';
-import 'package:value_panel/app/modules/patient_details/ui/components/session/score_chart.session.dart';
 import 'package:value_panel/app/modules/patient_details/ui/components/session/sequels_session.dart';
 import 'package:value_panel/app/modules/patient_details/ui/components/tiles/symptom.tile.dart';
 import 'package:value_panel/app/modules/patient_details/ui/patient_details_store.dart';
@@ -16,13 +15,13 @@ import 'package:value_panel/app/modules/patient_details/ui/patient_details_store
 import '../../../shared/components/dialogs/another_error.dialog.dart';
 import '../../../shared/components/dialogs/repository_error.dialog.dart';
 import '../../../utils/utils.dart';
-import '../../history_chat/history_chat_module.dart';
 import '../errors/patient_details.errors.dart';
 import 'components/session/symptoms_reported.session.dart';
 
 class PatientDetailsPage extends StatefulWidget {
   final String idPatient;
-  const PatientDetailsPage({required this.idPatient, Key? key}) : super(key: key);
+  final String idUserPatient;
+  const PatientDetailsPage({required this.idPatient, required this.idUserPatient, Key? key}) : super(key: key);
 
   @override
   PatientDetailsPageState createState() => PatientDetailsPageState();
@@ -32,9 +31,9 @@ class PatientDetailsPageState extends ModularState<PatientDetailsPage, PatientDe
 
   @override
   void initState() {
-    store.getPatientInfoDetails(onError: onError);
+    store.getPatientInfoDetails(onError: onError, idUserPatient: widget.idUserPatient, idPatient: widget.idPatient);
     SchedulerBinding.instance!.addPostFrameCallback((_) {
-      Modular.get<HistoryChatStore>().open(idPatient: "teste");
+      Modular.get<HistoryChatStore>().open(idPatient: widget.idPatient);
     });
     super.initState();
   }
@@ -61,9 +60,9 @@ class PatientDetailsPageState extends ModularState<PatientDetailsPage, PatientDe
                         ],
                       ),
                     ),
-                    Observer(
+                    /*Observer(
                       builder: (_) => ScoreChartSession(values: store.scoreGraphicDataList, getScoreGraphicOfDates: store.getScoreGraphicOfDates, onError: onError)
-                    ),
+                    ),*/
                     Observer(
                       builder: (_) => store.patientDetails==null ? Center(
                         child: SizedBox(
@@ -81,7 +80,7 @@ class PatientDetailsPageState extends ModularState<PatientDetailsPage, PatientDe
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
-                                InfoSession(patientEntity: store.patientDetails!),
+                                InfoSession(patientEntity: store.patientDetails!, classifications: store.configManager.classifications),
                                 const SizedBox(height: 20),
                                 SequelsSession(values: store.patientDetails!.sequels),
                               ],
@@ -119,7 +118,10 @@ class PatientDetailsPageState extends ModularState<PatientDetailsPage, PatientDe
                         )
                     ),
                     Observer(
-                      builder: (_) => SymptomsReportedSession(value: store.reportedSymptomGroupEntity, onChangedDate: store.getReportedSymptomsOfPatientFromDate, onError: onError)
+                      builder: (_) => SymptomsReportedSession(
+                          idUserPatient: widget.idUserPatient,
+                          idPatient: widget.idPatient,
+                          value: store.reportedSymptomGroupEntity, onChangedDate: store.getReportedSymptomsOfPatientFromDate, onError: onError)
                     )
                   ],
                 ),

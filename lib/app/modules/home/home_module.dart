@@ -14,6 +14,7 @@ import 'package:value_panel/app/shared/custom_dio/custom.dio.dart';
 import 'package:value_panel/app/utils/utils.dart';
 
 import '../patient_details/patients_details_module.dart';
+import 'infra/repositories/api.repository.dart';
 
 class HomeModule extends Module {
   @override
@@ -28,8 +29,8 @@ class HomeModule extends Module {
     Bind.lazySingleton((i) => GetUseWithTokenUseCase(i.get<HomeRepository>())),
 
     //Repositories
-    Bind.lazySingleton((i) => JsonGeneratorHomeRepository(i.get<CustomDio>())),
-    // Bind.lazySingleton((i) => ApiHomeRepository(i.get<CustomDio>())),
+    // Bind.lazySingleton((i) => JsonGeneratorHomeRepository(i.get<CustomDio>())),
+    Bind.lazySingleton((i) => ApiHomeRepository(i.get<CustomDio>())),
  ];
 
  @override

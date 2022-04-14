@@ -56,7 +56,8 @@ class Header extends StatelessWidget {
                 icon: Badge(
                     badgeColor: gradientColors[0],
                     padding: const EdgeInsets.all(5),
-                    badgeContent: Text("12",
+                    showBadge: false,
+                    badgeContent: Text("0",
                         style: GoogleFonts.poppins(textStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 10))),
                     child: SvgPicture.asset(
                       'assets/images/menu/notificacoes.svg',
@@ -67,6 +68,7 @@ class Header extends StatelessWidget {
               IconButton(
                 onPressed: () {},
                 icon: Badge(
+                  showBadge: false,
                     badgeColor: gradientColors[0],
                     padding: const EdgeInsets.all(5),
                     badgeContent: Text("14",
@@ -80,9 +82,10 @@ class Header extends StatelessWidget {
               IconButton(
                 onPressed: () {},
                 icon: Badge(
+                  showBadge: false,
                     badgeColor: gradientColors[1],
                     padding: const EdgeInsets.all(5),
-                    badgeContent: Text("12",
+                    badgeContent: Text("0",
                         style: GoogleFonts.poppins(textStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 10))),
                     child: SvgPicture.asset('assets/images/menu/agendamento.svg', width: 23, color: greyColor)),
               )

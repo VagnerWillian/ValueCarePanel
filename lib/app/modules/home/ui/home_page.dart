@@ -41,7 +41,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                 builder: (_) => LeftMenu(actuallyRoute: controller.actuallyRoute, navigateTo: controller.navigateTo, menus: [
                   MenuLeftItem(assetIcon: 'assets/images/menu/inicio.svg', label: "Ínicio", badgeNum: 0, route: DASHBOARD_ROUTE),
                   MenuLeftItem(assetIcon: 'assets/images/menu/monitoramento.svg', label: "Monitoramento", badgeNum: 17, route: MONITORING_ROUTE),
-                  MenuLeftItem(assetIcon: 'assets/images/menu/agendamento.svg', label: "Agendamento", badgeNum: 0, route: SCHEDULING_ROUTE),
+                  // MenuLeftItem(assetIcon: 'assets/images/menu/agendamento.svg', label: "Agendamento", badgeNum: 0, route: SCHEDULING_ROUTE),
                   MenuLeftItem(assetIcon: 'assets/images/menu/pacientes.svg', label: "Pacientes", badgeNum: 0, route: PATIENTS_ROUTE),
                   MenuLeftItem(assetIcon: 'assets/images/menu/notificacoes.svg', label: "Notificações", badgeNum: 0, route: '#'),
                   MenuLeftItem(assetIcon: 'assets/images/menu/analytics.svg', label: "Analytics", badgeNum: 0, route: ANALYTICS_ROUTE),

@@ -73,6 +73,7 @@ class HistoryChatState extends ModularState<HistoryChat, HistoryChatStore> {
                             )):Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 10),
                               child: ListView.builder(
+                                controller: store.scrollController,
                                 reverse: true,
                                 shrinkWrap: true,
                                 itemCount: store.items.length,

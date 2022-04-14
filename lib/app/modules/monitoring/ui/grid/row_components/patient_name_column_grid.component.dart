@@ -18,7 +18,7 @@ class PatientNameColumnGrid extends StatelessWidget {
         style: ButtonStyle(
           foregroundColor: MaterialStateProperty.all(Colors.grey)
         ),
-        onPressed: ()=>openPatientDetails(value.id),
+        onPressed: ()=>openPatientDetails(value.idUserPatient, value.idPatient),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,

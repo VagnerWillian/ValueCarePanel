@@ -34,11 +34,12 @@ class UserCard extends StatelessWidget {
                           width: 80,
                           height: 80,
                           decoration: BoxDecoration(
+                            color: Colors.grey.shade200,
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
                               fit: BoxFit.cover,
                               image: CachedNetworkImageProvider(
-                                  userEntity.picture
+                                  userEntity.picture,
                               )
                             )
                           ),
@@ -78,7 +79,7 @@ class UserCard extends StatelessWidget {
                         const SizedBox(
                           width: 5,
                         ),
-                        Expanded(child: Text(userEntity.phone, style: GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis, softWrap: false)),
+                        Expanded(child: Text(userEntity.phone.isEmpty?"-":userEntity.phone, style: GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.bold), overflow: TextOverflow.ellipsis, softWrap: false)),
                       ],
                     ),
                     const SizedBox(
@@ -102,7 +103,7 @@ class UserCard extends StatelessWidget {
                         const SizedBox(
                           width: 5,
                         ),
-                        Flexible(child: Text(userEntity.email, style: GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.bold))),
+                        Expanded(child: Text(userEntity.email.isEmpty?"-":userEntity.email, style: GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.bold))),
                       ],
                     )
                   ])),

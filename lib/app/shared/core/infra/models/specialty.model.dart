@@ -15,15 +15,15 @@ class Specialty implements SpecialtyEntity {
 
   Specialty.fromJson(Map<String, dynamic> json) {
     id = json['id']??"Nan";
-    label = json['label']??"Nan";
-    image = json['imagem']??"Nan";
+    label = json['nome']??"Nan";
+    image = "assets/${json['icone']}";
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['label'] = label;
-    data['imagem'] = image;
+    data['nome'] = label;
+    data['icone'] = image;
     return data;
   }
 }

@@ -12,7 +12,7 @@ class GetScoreGraphicOfDates implements GetScoreGraphicOfDatesUseCase{
 
   @override
   Future<Either<PatientDetailsError, List<BasicValueChartDataEntity>>> call({required DateTime startDate, required DateTime endDate}) async{
-    return await _patientDetailsRepository.getScoreGraphicOfDates(startDate: startDate, endDate: endDate);
+    throw UnimplementedError();
   }
 
 }

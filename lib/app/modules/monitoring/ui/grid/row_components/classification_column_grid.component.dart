@@ -11,8 +11,9 @@ import 'package:value_panel/app/utils/utils.dart';
 
 class ClassificationColumnGrid extends StatefulWidget {
   final MonitoringDataEntity value;
+  final List<ClassificationEntity> classifications;
   final Function updateMonitoringItem;
-  const ClassificationColumnGrid({Key? key, required this.value, required this.updateMonitoringItem}) : super(key: key);
+  const ClassificationColumnGrid({Key? key, required this.value, required this.classifications, required this.updateMonitoringItem}) : super(key: key);
 
   @override
   _ClassificationColumnGridState createState() => _ClassificationColumnGridState();
@@ -25,14 +26,14 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
 
   @override
   void initState() {
-    selectedClassification = classifications.singleWhere((c) => c.id==widget.value.classificationId);
+    selectedClassification = widget.classifications.singleWhere((c) => c.id==widget.value.classificationId);
     loading = false;
     super.initState();
   }
 
   @override
   void didUpdateWidget(covariant ClassificationColumnGrid oldWidget) {
-    selectedClassification = classifications.singleWhere((c) => c.id==widget.value.classificationId);
+    selectedClassification = widget.classifications.singleWhere((c) => c.id==widget.value.classificationId);
     loading = false;
     super.didUpdateWidget(oldWidget);
   }
@@ -61,7 +62,7 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
           underline: Container(),
           isExpanded: true,
           iconEnabledColor: selectedClassification.color,
-          items: classifications.map((c) {
+          items: widget.classifications.map((c) {
             return DropdownMenuItem<ClassificationEntity>(
                 value: c,
                 child: Wrap(

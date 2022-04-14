@@ -17,6 +17,7 @@ abstract class _HistoryChatStoreBase with Store {
 
   //Controllers
   late final TextEditingController textEditingController;
+  late final ScrollController scrollController;
 
   //Store
   final HomeStore _homeStore;
@@ -27,6 +28,7 @@ abstract class _HistoryChatStoreBase with Store {
 
   _HistoryChatStoreBase(this._getAllHistoryUseCase, this._homeStore){
    textEditingController = TextEditingController();
+   scrollController = ScrollController();
   }
 
   //Observables
@@ -108,7 +110,7 @@ abstract class _HistoryChatStoreBase with Store {
     _setLoading(false);
   }
 
-  void sendText()async{
+  Future sendText()async{
     if(formKey.currentState!.validate()){
       setLoadingSend(true);
       HistoryItemEntity newHistory = HistoryItem.send(
@@ -116,9 +118,8 @@ abstract class _HistoryChatStoreBase with Store {
           name: _homeStore.userLogged!.name,
           photo: _homeStore.userLogged!.picture,
           text: textEditingController.text);
-
-      await Future.delayed(const Duration(seconds: 1));
       _addItem(newHistory);
+      scrollController.animateTo(-scrollController.offset, duration: const Duration(seconds: 1), curve: Curves.bounceIn);
       textEditingController.clear();
       setLoadingSend(false);
     }

@@ -17,8 +17,8 @@ class AdditionalInfo implements AdditionalInfoEntity{
   AdditionalInfo({required this.urlImage, required this.title, required this.value});
 
   AdditionalInfo.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    urlImage = json['image'];
+    id = json['id']??0;
+    urlImage = json['image']??"";
     title = json['title'];
     value = json['valor'];
   }

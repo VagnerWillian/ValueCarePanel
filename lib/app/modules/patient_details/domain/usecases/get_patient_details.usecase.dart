@@ -3,5 +3,5 @@ import '../../errors/patient_details.errors.dart';
 import '../entities/patient.entity.dart';
 
 abstract class GetPatientDetailsUseCase{
-  Future<Either<PatientDetailsError, PatientEntity>> call();
+  Future<Either<PatientDetailsError, PatientEntity>> call({required String idUserPatient, required String idPatient});
 }

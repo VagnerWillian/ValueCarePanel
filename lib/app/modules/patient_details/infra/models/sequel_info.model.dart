@@ -14,7 +14,6 @@ class SequelInfo implements SequelInfoEntity{
   SequelInfo({required this.label, required this.value});
 
   SequelInfo.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
     label = json['label'];
     value = json['valor'];
   }

@@ -16,7 +16,7 @@ class ApiHomeRepository implements HomeRepository{
   @override
   Future<Either<HomeError, UserEntity>> getUserWithToken({required String token}) async {
     try{
-      var response = await _customDio.client.get(getUsuarioEP);
+      var response = await _customDio.client.get(getUserEP);
       UserEntity value = UserModel.fromJson(response.data['result']);
       return Right(value);
     }on DioError catch(e){

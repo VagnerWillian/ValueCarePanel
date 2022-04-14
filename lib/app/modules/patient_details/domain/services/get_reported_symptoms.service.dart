@@ -11,7 +11,7 @@ class GetReportedSymptomsOfPatientFromDate implements GetReportedSymptomsOfPatie
   GetReportedSymptomsOfPatientFromDate(this._patientDetailsRepository);
 
   @override
-  Future<Either<PatientDetailsError, ReportedSymptomGroupEntity>> call({required DateTime startDate, required DateTime endDate})async{
-    return await _patientDetailsRepository.getReportedSymptomsOfPatient(startDate: startDate, endDate: endDate);
+  Future<Either<PatientDetailsError, ReportedSymptomGroupEntity>> call({required DateTime startDate, required DateTime endDate, required String idUserPatient, required String idPatient})async{
+    return await _patientDetailsRepository.getReportedSymptomsOfPatient(startDate: startDate, endDate: endDate, idUserPatient: idUserPatient, idPatient: idPatient);
   }
 }

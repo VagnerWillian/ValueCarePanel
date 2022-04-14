@@ -10,7 +10,7 @@ class GetPatientDetails implements GetPatientDetailsUseCase{
   GetPatientDetails(this._patientDetailsRepository);
 
   @override
-  Future<Either<PatientDetailsError, PatientEntity>> call()async{
-    return _patientDetailsRepository.getPatientDetails();
+  Future<Either<PatientDetailsError, PatientEntity>> call({required String idUserPatient, required String idPatient})async{
+    return _patientDetailsRepository.getPatientDetails(idUserPatient: idUserPatient, idPatient: idPatient);
   }
 }

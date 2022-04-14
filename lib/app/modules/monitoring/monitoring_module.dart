@@ -13,6 +13,7 @@ import 'package:value_panel/app/modules/monitoring/domain/usecases/update_monito
 import 'package:value_panel/app/modules/monitoring/infra/repositories/json_generator.repository.dart';
 import 'package:value_panel/app/modules/monitoring/ui/monitoring_page.dart';
 import 'package:value_panel/app/modules/monitoring/ui/monitoring_store.dart';
+import 'package:value_panel/app/shared/core/managers/config.manager.dart';
 
 import '../../shared/custom_dio/custom.dio.dart';
 import 'infra/repositories/api_repository.dart';
@@ -22,6 +23,7 @@ class MonitoringModule extends Module {
   final List<Bind> binds = [
 
     Bind.lazySingleton((i) => MonitoringStore(
+          configManager: i.get<ConfigManager>(),
           chatStore: i.get<HistoryChatStore>(),
           homeStore: i.get<HomeStore>(),
           historyChatStore: i.get<HistoryChatStore>(),
@@ -38,9 +40,9 @@ class MonitoringModule extends Module {
     Bind.lazySingleton((i) => DownloadArchive()),
 
     // Repositories
-    Bind.lazySingleton((i) => JsonGeneratorMonitoringRepository(i.get<CustomDio>())),
+    // Bind.lazySingleton((i) => JsonGeneratorMonitoringRepository(i.get<CustomDio>())),
     // Bind.lazySingleton((i) => AssetMonitoringRepository()),
-    // Bind.lazySingleton((i) => ApiMonitoringRepository(i.get<CustomDio>())),
+    Bind.lazySingleton((i) => ApiMonitoringRepository(i.get<CustomDio>())),
   ];
 
   @override

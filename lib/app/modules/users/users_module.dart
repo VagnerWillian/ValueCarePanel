@@ -20,8 +20,8 @@ class UsersModule extends Module {
     Bind.lazySingleton((i) => CreateUserUseCase(Modular.get<UsersRepository>())),
 
     // Repositories
-    // Bind.lazySingleton((i) => ApiUsersRepository(i.get<CustomDio>())),
-    Bind.lazySingleton((i) => JsonGeneratorRepository(Modular.get<CustomDio>())),
+    Bind.lazySingleton((i) => ApiUsersRepository(i.get<CustomDio>())),
+    // Bind.lazySingleton((i) => JsonGeneratorRepository(Modular.get<CustomDio>())),
   ];
 
   @override

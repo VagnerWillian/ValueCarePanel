@@ -71,7 +71,7 @@ class SchedulingDataSource extends DataGridSource {
           }else if(dataGridCell.columnName==columnNames[4].label){
             return ScoreColumnGrid(value: dataGridCell.value);
           }else if(dataGridCell.columnName==columnNames[5].label){
-            return ClassificationColumnGrid(value: dataGridCell.value);
+            return ClassificationColumnGrid(value: dataGridCell.value, classifications: const []);
           }else if(dataGridCell.columnName==columnNames[6].label){
             return SolicitedDateColumnGrid(schedulingDataEntity: dataGridCell.value, updateSchedulingItem: updateSchedulingItem);
           }else if(dataGridCell.columnName==columnNames[7].label){

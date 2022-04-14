@@ -28,7 +28,7 @@ class _SymptomsColumnGridState extends State<SymptomsColumnGrid> {
           alignment: Alignment.centerLeft
         ),
         onPressed: widget.value.length>1?openHistorySymptom:null,
-        child: Row(
+        child: widget.value.isEmpty?Center(child: Text("Nenhum", style: GoogleFonts.cairo(fontSize: 12),)):Row(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,

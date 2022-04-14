@@ -9,10 +9,14 @@ import 'package:value_panel/app/shared/components/dialogs/repository_error.dialo
 import 'package:value_panel/app/shared/core/domain/entities/specialty.entity.dart';
 import 'package:value_panel/app/utils/utils.dart';
 
+import '../../../../../shared/core/domain/entities/classification.entity.dart';
+import '../../../../../shared/core/domain/entities/symptoms.entity.dart';
+
 class SpecialtyColumnGrid extends StatefulWidget {
   final MonitoringDataEntity value;
+  final List<SpecialtyEntity> specialties;
   final Function updateMonitoringItem;
-  const SpecialtyColumnGrid({Key? key, required this.value, required this.updateMonitoringItem}) : super(key: key);
+  const SpecialtyColumnGrid({Key? key, required this.value, required this.specialties, required this.updateMonitoringItem}) : super(key: key);
 
   @override
   _SpecialtyColumnGridState createState() => _SpecialtyColumnGridState();
@@ -26,7 +30,7 @@ class _SpecialtyColumnGridState extends State<SpecialtyColumnGrid> {
   @override
   void initState() {
     if(widget.value.specialtyId!=null){
-      selectedSpecialty = specialties.singleWhere((c) => c.id==widget.value.specialtyId);
+      selectedSpecialty = widget.specialties.singleWhere((c) => c.id==widget.value.specialtyId);
     }
     loading = false;
     super.initState();
@@ -35,7 +39,7 @@ class _SpecialtyColumnGridState extends State<SpecialtyColumnGrid> {
   @override
   void didUpdateWidget(covariant SpecialtyColumnGrid oldWidget) {
     if(widget.value.specialtyId!=null){
-      selectedSpecialty = specialties.singleWhere((c) => c.id==widget.value.specialtyId);
+      selectedSpecialty = widget.specialties.singleWhere((c) => c.id==widget.value.specialtyId);
     }
     loading = false;
     super.didUpdateWidget(oldWidget);
@@ -67,7 +71,7 @@ class _SpecialtyColumnGridState extends State<SpecialtyColumnGrid> {
               isExpanded: true,
               hint: Text("Selecionar...", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 12), overflow: TextOverflow.ellipsis),
               iconEnabledColor: primaryColor,
-              items: specialties.map((s) {
+              items: widget.specialties.map((s) {
                 return DropdownMenuItem<SpecialtyEntity>(
                     value: s,
                     child: Row(

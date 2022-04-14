@@ -12,10 +12,12 @@ import 'package:value_panel/app/shared/core/infra/models/date_selector.model.dar
 import 'package:value_panel/app/utils/utils.dart';
 
 class SymptomsReportedSession extends StatefulWidget {
+  final String idUserPatient;
+  final String idPatient;
   final ReportedSymptomGroupEntity? value;
   final Function onError;
-  final Function({required DateTime startDate, required DateTime endDate, required Function onError}) onChangedDate;
-  const SymptomsReportedSession({required this.value, required this.onChangedDate, required this.onError, Key? key}) : super(key: key);
+  final Function({required DateTime startDate, required DateTime endDate, required Function onError, required String idUserPatient, required String idPatient}) onChangedDate;
+  const SymptomsReportedSession({required this.idUserPatient, required this.idPatient, required this.value, required this.onChangedDate, required this.onError, Key? key}) : super(key: key);
 
   @override
   State<SymptomsReportedSession> createState() => _SymptomsReportedSessionState();
@@ -42,7 +44,7 @@ class _SymptomsReportedSessionState extends State<SymptomsReportedSession> {
   void setDateSelector(DateSelector dateSelector) async{
     setLoading(true);
     setState(() => dateSelector = dateSelector);
-    await widget.onChangedDate(startDate: dateSelector.startDate!, endDate: dateSelector.endDate!, onError: widget.onError);
+    await widget.onChangedDate(startDate: dateSelector.startDate!, endDate: dateSelector.endDate!, onError: widget.onError, idUserPatient: widget.idUserPatient, idPatient: widget.idPatient);
     setLoading(false);
   }
 

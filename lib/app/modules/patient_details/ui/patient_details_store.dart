@@ -6,6 +6,7 @@ import 'package:value_panel/app/modules/patient_details/domain/usecases/get_pati
 import 'package:value_panel/app/modules/patient_details/domain/usecases/get_reported_symptoms_of_patient_from_date.usecase.dart';
 import 'package:value_panel/app/modules/patient_details/domain/usecases/get_score_graphic_of_dates.usecase.dart';
 import 'package:value_panel/app/modules/patient_details/errors/patient_details.errors.dart';
+import 'package:value_panel/app/shared/core/managers/config.manager.dart';
 
 import '../domain/entities/reported_symptom_group.entity.dart';
 
@@ -14,11 +15,16 @@ part 'patient_details_store.g.dart';
 class PatientDetailsStore = _PatientDetailsStoreBase with _$PatientDetailsStore;
 abstract class _PatientDetailsStoreBase with Store {
 
+
+  //Managers
+  final ConfigManager configManager;
+
+  //UseCases
   final GetScoreGraphicOfDatesUseCase _getScoreGraphicOfDatesUseCase;
   final GetReportedSymptomsOfPatientFromDateUseCase _getReportedSymptomsOfPatientFromDateUseCase;
   final GetPatientDetailsUseCase _getPatientDetailsUseCase;
 
-  _PatientDetailsStoreBase(this._getScoreGraphicOfDatesUseCase, this._getPatientDetailsUseCase, this._getReportedSymptomsOfPatientFromDateUseCase);
+  _PatientDetailsStoreBase(this.configManager, this._getScoreGraphicOfDatesUseCase, this._getPatientDetailsUseCase, this._getReportedSymptomsOfPatientFromDateUseCase);
 
   //Observable
 
@@ -51,8 +57,8 @@ abstract class _PatientDetailsStoreBase with Store {
 
   //Voids
 
-  Future getPatientInfoDetails({required Function onError})async{
-    Either<PatientDetailsError, PatientEntity> result = await _getPatientDetailsUseCase();
+  Future getPatientInfoDetails({required Function onError, required String idUserPatient, required String idPatient})async{
+    Either<PatientDetailsError, PatientEntity> result = await _getPatientDetailsUseCase(idUserPatient: idUserPatient, idPatient: idPatient);
     result.fold((PatientDetailsError failure) async{
       await onError(failure);
       return failure;
@@ -73,8 +79,8 @@ abstract class _PatientDetailsStoreBase with Store {
     });
   }
 
-  Future getReportedSymptomsOfPatientFromDate({required DateTime startDate, required DateTime endDate, required Function onError})async{
-    Either<PatientDetailsError, ReportedSymptomGroupEntity> result = await _getReportedSymptomsOfPatientFromDateUseCase(startDate: startDate, endDate: endDate);
+  Future getReportedSymptomsOfPatientFromDate({required DateTime startDate, required DateTime endDate, required Function onError, required String idUserPatient, required String idPatient})async{
+    Either<PatientDetailsError, ReportedSymptomGroupEntity> result = await _getReportedSymptomsOfPatientFromDateUseCase(startDate: startDate, endDate: endDate, idUserPatient: idUserPatient, idPatient: idPatient);
     result.fold((PatientDetailsError failure) async{
       await onError(failure);
       return failure;

@@ -1,24 +1,41 @@
+import 'package:value_panel/app/shared/core/domain/entities/classification.entity.dart';
+import 'package:value_panel/app/shared/core/domain/entities/specialty.entity.dart';
+import 'package:value_panel/app/shared/core/domain/usecases/get_classifications.usecase.dart';
+import 'package:value_panel/app/shared/core/domain/usecases/get_especialties.usecase.dart';
+
 import '../../../utils/utils.dart';
 import '../preferences/local_preferences.dart';
 
 class ConfigManager {
 
   final LocalPreferences _localPreferences;
+  final GetSpecialtiesUseCase _getSpecialtiesUseCase;
+  final GetClassificationsUseCase _getClassificationsUseCase;
 
-  ConfigManager(this._localPreferences);
+  ConfigManager(this._localPreferences, this._getClassificationsUseCase, this._getSpecialtiesUseCase);
 
   late bool isFirstAccess;
   late String tokenUserLogged;
   late String rememberEmail;
+  late List<ClassificationEntity> classifications = [];
+  late List<SpecialtyEntity> specialties = [];
 
   Future initialize()async{
-    await loadConfigFromLocalData();
+    await loadConfigOfLocalData();
+    await remoteConfigOfRemoteData();
   }
 
-  Future loadConfigFromLocalData() async {
+  Future loadConfigOfLocalData() async {
     isFirstAccess = await _getHasFirstAccess;
     tokenUserLogged = await _getHasTokenUserLogged;
     rememberEmail = await _getRememberEmail;
+  }
+
+  Future remoteConfigOfRemoteData()async{
+    if(classifications.isEmpty||specialties.isEmpty){
+      classifications = await _getClassificationsUseCase();
+      specialties = await _getSpecialtiesUseCase();
+    }
   }
 
   // CONFIGURAÇÕES PRINCIPAIS

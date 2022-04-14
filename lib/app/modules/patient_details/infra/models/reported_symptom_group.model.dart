@@ -14,8 +14,8 @@ class ReportedSymptomGroup implements ReportedSymptomGroupEntity{
   late final int score;
 
   ReportedSymptomGroup.fromJson(Map<String, dynamic> json) {
-    periodName = json['periodo_nome'];
-    score = json['score'];
-    items = (json['items'] as List).map((json) => ReportedSymptomInfo.fromJson(json)).toList();
+    periodName = json['periodo_nome']??"";
+    score = json['score']??0;
+    items = (json['result'] as List).map((json) => ReportedSymptomInfo.fromJson(json)).toList();
   }
 }

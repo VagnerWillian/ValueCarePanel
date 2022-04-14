@@ -16,9 +16,8 @@ class ApiUsersRepository implements UsersRepository{
   @override
   Future<Either<UsersError, List<UserEntity>>> getAllUsers() async  {
     try{
-      await Future.delayed(const Duration(seconds: 2));
-      var response = await _customDio.client.get(getUsuarioEP);
-      List<UserEntity> users = (response.data as List).map((u) => UserModel.fromJson(u)).toList();
+      var response = await _customDio.client.get(getUsersEP);
+      List<UserEntity> users = (response.data['result'] as List).map((u) => UserModel.fromJson(u)).toList();
       return Right(users);
     }on DioError catch(e){
       return Left(UsersRepositoryError(statusCode: e.response?.statusCode));
