@@ -251,7 +251,7 @@ class DashboardPageState extends ModularState<DashboardPage, DashboardStore> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const PageTitleDescription(title: "Bem vindo Vagner", subtitle: "Estamos felizes por tê-lo aqui."),
+            PageTitleDescription(title: "Bem vindo ${store.homeStore.userLogged!.name}", subtitle: "Estamos felizes por tê-lo aqui."),
             Row(
               children: [
                 Container(

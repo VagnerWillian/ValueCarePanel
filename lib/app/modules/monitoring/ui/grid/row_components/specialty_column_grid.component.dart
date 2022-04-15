@@ -76,7 +76,7 @@ class _SpecialtyColumnGridState extends State<SpecialtyColumnGrid> {
                     value: s,
                     child: Row(
                       children: [
-                        SvgPicture.network(s.image, width: 20),
+                        SvgPicture.network("assets/images/specialties/${s.id}.svg", width: 20),
                         const SizedBox(width: 10),
                         Expanded(child: Text(s.label, style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 12), overflow: TextOverflow.ellipsis))
                       ],

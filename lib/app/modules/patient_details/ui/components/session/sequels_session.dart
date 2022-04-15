@@ -30,7 +30,7 @@ class SequelsSession extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text("Sequelas", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black)),
-          Wrap(
+          values.isEmpty?Text("Nenhuma sequela cadastrada", style: GoogleFonts.cairo(color: Colors.grey, fontSize: 12)):Wrap(
             direction: Axis.horizontal,
             alignment: WrapAlignment.spaceBetween,
             spacing: 15,

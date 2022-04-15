@@ -7,7 +7,7 @@ import 'package:value_panel/app/modules/users/ui/users_store.dart';
 import 'package:value_panel/app/shared/custom_dio/custom.dio.dart';
 
 import '../scheduling/infra/repositories/json_generator.repository.dart';
-import 'infra/repositories/api.repositories.dart';
+import 'infra/repositories/api.repository.dart';
 import 'ui/components/dialogs/new_user.dialog_store.dart';
 class UsersModule extends Module {
   @override

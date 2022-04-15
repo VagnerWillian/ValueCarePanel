@@ -18,7 +18,6 @@ class ApiPatientDetailsRepository implements PatientDetailsRepository{
   ApiPatientDetailsRepository(this._customDio);
 
   final _header = {"Authorization":"Bearer lib361fjoaiy06cib24z0fub3531yhpzxv214iro"};
-  final _apiHeader = {"Authorization":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InJvZHJpZ29AdmFsdWVjYXJlLmNvbS5iciIsImlkIjoidGRGbXJUdEFGdUpOY1VpZ0RtSTUiLCJyb2xlIjoiYWRtaW4ifQ.egHPUWLXrfLhoQ5sZIW12AkKIGBfEWg_V6Tm8YOSVFw"};
 
   /*@override
   Future<Either<PatientDetailsError, List<BasicValueChartDataEntity>>> getScoreGraphicOfDates({required DateTime startDate, required DateTime endDate}) async {
@@ -43,7 +42,7 @@ class ApiPatientDetailsRepository implements PatientDetailsRepository{
   Future<Either<PatientDetailsError, PatientEntity>> getPatientDetails({required String idUserPatient, required String idPatient}) async{
     // try{
       // var response = await _customDio.client.get(getPatientDetailsInfo+idUserPatient+"/paciente/"+idPatient+"/perfil?code=$azureCode", options: Options(headers: _apiHeader));
-      var response = await _customDio.client.get(getPatientDetailsInfoEP+"6Dx7dtIHPEYeVcGuBwVp9FBQyYX2"+"/paciente/"+"zaxOATwkVGx6QZabswmF"+"/perfil?code=$azureCode", options: Options(headers: _apiHeader));
+      var response = await _customDio.client.get(getPatientDetailsInfoEP+"6Dx7dtIHPEYeVcGuBwVp9FBQyYX2"+"/paciente/"+"zaxOATwkVGx6QZabswmF"+"/perfil?code=$azureCode");
       PatientEntity values = Patient.fromJson(response.data['result']);
       return Right(values);
     // }on DioError catch(e){
@@ -61,7 +60,7 @@ class ApiPatientDetailsRepository implements PatientDetailsRepository{
         "dataFinal":endDate.toString()
       };
       // var response = await _customDio.client.get(getPatientDetailsInfo+idUserPatient+"/paciente/"+idPatient+"/perfil?code=$azureCode", options: Options(headers: _apiHeader));
-      var response = await _customDio.client.post(getPatientDetailsInfoEP+"6Dx7dtIHPEYeVcGuBwVp9FBQyYX2"+"/paciente/"+"zaxOATwkVGx6QZabswmF"+"/sintomas-reportados?code=$azureCode", options: Options(headers: _apiHeader), data: data);
+      var response = await _customDio.client.post(getPatientDetailsInfoEP+"6Dx7dtIHPEYeVcGuBwVp9FBQyYX2"+"/paciente/"+"zaxOATwkVGx6QZabswmF"+"/sintomas-reportados?code=$azureCode", data: data);
       ReportedSymptomGroupEntity values = ReportedSymptomGroup.fromJson(response.data);
       return Right(values);
     // }on DioError catch(e){

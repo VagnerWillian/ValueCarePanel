@@ -110,7 +110,12 @@ class PatientDetailsPageState extends ModularState<PatientDetailsPage, PatientDe
                           height: 65,
                           child: ScrollConfiguration(
                             behavior: HorizontalScrollBehavior(),
-                            child: ListView(
+                            child: store.patientDetails!.symptoms.isEmpty?Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Text("Nenhuma sequela cadastrada", style: GoogleFonts.cairo(color: Colors.grey, fontSize: 12)),
+                              ],
+                            ):ListView(
                               scrollDirection: Axis.horizontal,
                               children: store.patientDetails!.symptoms.map((v) => SymptomTile(urlImage: v.image, title: v.label, description: v.description)).toList(),
                             ),

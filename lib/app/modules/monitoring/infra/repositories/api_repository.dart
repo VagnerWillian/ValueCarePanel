@@ -13,19 +13,17 @@ class ApiMonitoringRepository implements MonitoringRepository{
   final CustomDio _customDio;
   ApiMonitoringRepository(this._customDio);
 
-  final _header = {"Authorization":"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InJvZHJpZ29AdmFsdWVjYXJlLmNvbS5iciIsImlkIjoidGRGbXJUdEFGdUpOY1VpZ0RtSTUiLCJyb2xlIjoiYWRtaW4ifQ.egHPUWLXrfLhoQ5sZIW12AkKIGBfEWg_V6Tm8YOSVFw"};
-
   @override
   Future<Either<MonitoringError, List<MonitoringDataEntity>>> fetchMonitoringFromIntervalDates({required DateTime startDate, required DateTime endDate}) async {
-    // try{
-      var response = await _customDio.client.get(getMonitoringEP, options: Options(headers: _header));
+    try{
+      var response = await _customDio.client.get(getMonitoringEP);
       List<MonitoringDataEntity> monitoringDataItems = (response.data['result'] as List).map((i) => MonitoringData.fromJson(i)).toList();
       return Right(monitoringDataItems);
-    // }on DioError catch(e){
-    //   return Left(MonitoringRepositoryError(statusCode: e.response?.statusCode));
-    // }catch(e){
-    //   return Left(MonitoringRepositoryError(message: e.toString()));
-    // }
+    }on DioError catch(e){
+      return Left(MonitoringRepositoryError(statusCode: e.response?.statusCode));
+    }catch(e){
+      return Left(MonitoringRepositoryError(message: e.toString()));
+    }
   }
 
   @override
@@ -43,8 +41,15 @@ class ApiMonitoringRepository implements MonitoringRepository{
   @override
   Future<Either<MonitoringError, bool>> updateMonitoringItem({required MonitoringDataEntity monitoringDataEntity}) async{
     try{
-      await Future.delayed(const Duration(seconds: 2));
-      // var response = await _customDio.client.post("https://api.json-generator.com/templates/-Yly0aK_l3oM/data");
+      Map<String, dynamic> data = {
+        "usuarioPacienteId": "6Dx7dtIHPEYeVcGuBwVp9FBQyYX2",
+        "PacienteId": "zaxOATwkVGx6QZabswmF",
+        "confirmado": monitoringDataEntity.confirm,
+        "classificacao":monitoringDataEntity.classificationId,
+        "especialidadeId":monitoringDataEntity.specialtyId,
+        "dataAgendamento":monitoringDataEntity.appointmentDateInDateTime.toString()
+      };
+      var response = await _customDio.client.post(postMonitoringUpdateEP, data: data);
       return const Right(true);
     }on DioError catch(e){
       return Left(MonitoringRepositoryError(statusCode: e.response?.statusCode));

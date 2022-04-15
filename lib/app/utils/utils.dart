@@ -31,8 +31,10 @@ const String azureCode = "C5EwLNUjH3yItLs6PPuRH4RTVCLbiO9HEiIS4VdORxL8JWY/OatFZQ
 const String baseUrl = "https://poscovidapp-admin.azurewebsites.net/api";
 const String getMonitoringEP = "/Monitoramento?code=$azureCode";
 const String getUserEP = "/Operador?code=$azureCode";
+const String postUserEP = "/Operador?code=$azureCode";
 const String getUsersEP = "/Operadores?code=$azureCode";
 const String getPatientDetailsInfoEP = "/usuario-paciente/";
+const String postMonitoringUpdateEP = "/Monitoramento?code=$azureCode";
 // --> Configuracoes Remotas API
 const String getClassificationsEP = "/Classificacao?code=$azureCode";
 const String getSpecialtiesEP = "/especialidade?code=$azureCode";

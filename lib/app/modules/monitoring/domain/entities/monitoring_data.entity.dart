@@ -13,4 +13,6 @@ abstract class MonitoringDataEntity {
 
   String get idString;
   DateTime? get appointmentDateInDateTime;
+
+  Map get toJson => {};
 }

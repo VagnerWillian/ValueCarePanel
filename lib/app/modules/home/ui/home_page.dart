@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:value_panel/app/modules/history_chat/history_chat_module.dart';
@@ -24,7 +25,9 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
 
   @override
   void initState() {
-    store.loadUser(onError: onError);
+    SchedulerBinding.instance!.addPostFrameCallback((_) {
+      store.loadUser(onError: onError);
+    });
     super.initState();
   }
 

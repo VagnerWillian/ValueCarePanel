@@ -23,7 +23,7 @@ class Classification extends Equatable implements ClassificationEntity{
     label = json['nome'];
     id = json['id'];
     color = HexColor(json['cor']);
-    image = json['imagem'];
+    image = json['imagem']??"";
   }
 
   @override

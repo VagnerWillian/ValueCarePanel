@@ -33,10 +33,11 @@ abstract class _NewUserDialogStoreBase with Store {
   void setUserCreated(UserEntity value)=>user=value;
 
   Future newUser(Function onError, {required String name, required String email, required String phone, required int level})async{
+    print(name);
     setLoading(true);
     Either<UsersError, UserEntity> result = await _createUserUseCase.call(name: name, email: email, phone: phone, level: level);
-    result.fold((UsersError failure) {
-
+    await result.fold((UsersError failure) async{
+      await onError(failure);
       return failure;
     }, (UserEntity userEntity) async{
       setUserCreated(userEntity);

@@ -108,6 +108,6 @@ abstract class _LoginStoreBase with Store {
   }
 
   Future openMain()async{
-   await Modular.to.pushReplacementNamed(Modular.initialRoute);
+    Modular.to.pushNamedAndRemoveUntil(Modular.initialRoute, (route) => false);
   }
 }

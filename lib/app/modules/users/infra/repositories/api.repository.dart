@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:either_dart/either.dart';
 import 'package:value_panel/app/modules/users/domain/repositories/repository.dart';
@@ -27,9 +29,23 @@ class ApiUsersRepository implements UsersRepository{
   }
 
   @override
-  Future<Either<UsersError, UserEntity>> createUser({required String name, required String email, required String phone, required int level}) {
-    // TODO: implement createUser
-    throw UnimplementedError();
+  Future<Either<UsersError, UserEntity>> createUser({required String name, required String email, required String phone, required int level}) async{
+    try{
+      Map data = {
+        'nome':name,
+        'foto':"",
+        'email':email,
+        'telefone':phone,
+        'nivel':level
+      };
+      var response = await _customDio.client.post(postUserEP, data: data);
+      UserEntity value = UserModel.fromJson(response.data['result']);
+      return Right(value);
+    }on DioError catch(e){
+    return Left(UsersRepositoryError(statusCode: e.response?.statusCode));
+    }catch(e){
+    return Left(UsersRepositoryError(message: e.toString()));
+    }
   }
 
 }

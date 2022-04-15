@@ -65,81 +65,80 @@ class InfoSession extends StatelessWidget {
                   ],
                 ),
               ),
-              Expanded(
-                child: Wrap(
-                  children: [
-                    SizedBox(
-                      width: 120,
-                      child: Column(
-                        children: [
-                          Text("Classificação", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 12),),
-                          Row(
-                            children: [
-                              Text("", style: GoogleFonts.cairo(fontSize: 25, fontWeight: FontWeight.bold, color: primaryColor)),
-                              Container(
-                                width: 120,
-                                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(100),
-                                    color: classifications.singleWhere((c) => c.id==patientEntity.classification.id).color!.withOpacity(0.2)
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    SvgPicture.asset(classifications.singleWhere((c) => c.id==patientEntity.classification.id).image, color: classifications.singleWhere((c) => c.id==patientEntity.classification.id).color, width: 16),
-                                    const SizedBox(width: 10),
-                                    Text(classifications.singleWhere((c) => c.id==patientEntity.classification.id).label, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 10, color: classifications.singleWhere((c) => c.id==patientEntity.classification.id).color)),
-                                  ],
-                                ),
+              Wrap(
+                children: [
+                  SizedBox(
+                    width: 120,
+                    height: 80,
+                    child: Column(
+                      children: [
+                        Text("Classificação", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 12),),
+                        Row(
+                          children: [
+                            Text("", style: GoogleFonts.cairo(fontSize: 25, fontWeight: FontWeight.bold, color: primaryColor)),
+                            Container(
+                              width: 120,
+                              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(100),
+                                  color: patientEntity.classification.color!.withOpacity(0.2)
                               ),
-                            ],
-                          )
-                        ],
-                      ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SvgPicture.asset(patientEntity.classification.image, color: patientEntity.classification.color, width: 16),
+                                  const SizedBox(width: 10),
+                                  Text(patientEntity.classification.label, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 10, color: patientEntity.classification.color)),
+                                ],
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
                     ),
-                    const SizedBox(width: 10),
-                    SizedBox(
-                      width: 140,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Score", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 12),),
-                          Row(
-                            children: [
-                              Text(patientEntity.score.toString(), style: GoogleFonts.cairo(fontSize: 22, fontWeight: FontWeight.bold, color: primaryColor)),
-                              const SizedBox(width: 5),
-                              Container(
-                                padding: const EdgeInsets.all(5),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(100),
-                                    color: greenColor
-                                ),
-                                child: Row(
-                                  children: [
-                                    const Icon(Icons.show_chart_rounded, color: Colors.white, size: 14,),
-                                    const SizedBox(width: 10),
-                                    Text("Melhorando", style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 10, color: Colors.white)),
-                                  ],
-                                ),
+                  ),
+                 /* const SizedBox(width: 10),
+                  SizedBox(
+                    width: 140,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Score", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 12),),
+                        Row(
+                          children: [
+                            Text(patientEntity.score.toString(), style: GoogleFonts.cairo(fontSize: 22, fontWeight: FontWeight.bold, color: primaryColor)),
+                            const SizedBox(width: 5),
+                            Container(
+                              padding: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(100),
+                                  color: greenColor
                               ),
-                            ],
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.show_chart_rounded, color: Colors.white, size: 14,),
+                                  const SizedBox(width: 10),
+                                  Text("Melhorando", style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 10, color: Colors.white)),
+                                ],
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  )*/
+                ],
               ),
             ],
           ),
           const SizedBox(height: 10),
           Wrap(
-            children: const [
-              InfoLabelTile(label: "CPF:", value: "477.354.788-15"),
-              InfoLabelTile(label: "Nascimento:", value: "03/01/1996"),
-              InfoLabelTile(label: "Gênero:", value: "Masculino"),
-              InfoLabelTile(label: "Email:", value: "vagner@outlook.com"),
-              InfoLabelTile(label: "Origem:", value: "Internet"),
+            children: [
+              InfoLabelTile(label: "CPF:", value: patientEntity.cpf),
+              InfoLabelTile(label: "Nascimento:", value: patientEntity.birthday),
+              InfoLabelTile(label: "Gênero:", value: patientEntity.gen),
+              InfoLabelTile(label: "Email:", value: patientEntity.email),
+              InfoLabelTile(label: "Origem:", value: patientEntity.origin),
             ],
           ),
           const SizedBox(height: 10),

@@ -69,7 +69,7 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
                   alignment: WrapAlignment.center,
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
-                    SvgPicture.asset("assets/images/classifications/${c.label}.svg", color: c.color, width: 20,),
+                    SvgPicture.asset(c.image, color: c.color, width: 20,),
                     const SizedBox(width: 10),
                     Text(c.label, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 10, color: c.color), overflow: TextOverflow.fade, softWrap: true,)
                   ],

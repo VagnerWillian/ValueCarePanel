@@ -131,7 +131,7 @@ class _SymptomsReportedSessionState extends State<SymptomsReportedSession> {
                   ))
             ],
           ),
-          const SizedBox(height: 10),
+          /*const SizedBox(height: 10),
           Row(
             children: [
               RichText(
@@ -147,8 +147,8 @@ class _SymptomsReportedSessionState extends State<SymptomsReportedSession> {
               ),
               Expanded(child: Container(margin: const EdgeInsets.symmetric(horizontal: 20), child: const DashedDivider()))
             ],
-          ),
-          ListView(
+          ),*/
+          widget.value!.items.isEmpty?Text("Nenhum sintoma reportado", style: GoogleFonts.cairo(color: Colors.grey, fontSize: 12)):ListView(
             shrinkWrap: true,
             children: widget.value!.items
                 .map((v) => ReportedSymptomTile(

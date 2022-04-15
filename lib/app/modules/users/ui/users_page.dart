@@ -112,7 +112,9 @@ class UsersPageState extends ModularState<UsersPage, UsersStore> {
   }
 
   void onCreateUser() async{
-    UserEntity newUser = await showDialog(barrierColor: Colors.white70, context: context, builder: (context) => const NewUserDialog());
+    UserEntity newUser = await showDialog(
+        barrierDismissible: false,
+        barrierColor: Colors.white70, context: context, builder: (context) => const NewUserDialog());
     store.addUser(newUser);
   }
 

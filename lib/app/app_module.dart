@@ -50,7 +50,7 @@ class AuthGuard extends RouteGuard {
     final ConfigManager _configManager = Modular.get();
     await _configManager.initialize();
     if(_configManager.tokenUserLogged.isEmpty){
-      Modular.to.pushReplacementNamed(LOGIN_ROUTE);
+      Modular.to.pushNamedAndRemoveUntil(LOGIN_ROUTE, (route) => false);
     }
     return true;
   }

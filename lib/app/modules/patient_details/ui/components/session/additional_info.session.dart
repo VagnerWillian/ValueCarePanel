@@ -27,7 +27,7 @@ class AdditionalInfoSession extends StatelessWidget {
       child: Column(
         children: [
           Text("Informações Adicionais", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black)),
-          Expanded(
+          values.isEmpty?Text("Nenhuma sequela cadastrada", style: GoogleFonts.cairo(color: Colors.grey, fontSize: 12)):Expanded(
             child: ListView(
               children: values.map((v) => AdditionInfoTile(urlImage: v.urlImage, title: v.title, value: v.value)).toList(),
             ),
