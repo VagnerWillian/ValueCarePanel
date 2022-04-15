@@ -1,10 +1,12 @@
 import 'package:flare_flutter/flare_actor.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
 import 'package:value_panel/app/modules/history_chat/ui/history_chat_store.dart';
 import 'package:value_panel/app/modules/patient_details/ui/components/session/additional_info.session.dart';
 import 'package:value_panel/app/modules/patient_details/ui/components/session/info_session.dart';
@@ -33,7 +35,7 @@ class PatientDetailsPageState extends ModularState<PatientDetailsPage, PatientDe
   void initState() {
     store.getPatientInfoDetails(onError: onError, idUserPatient: widget.idUserPatient, idPatient: widget.idPatient);
     SchedulerBinding.instance!.addPostFrameCallback((_) {
-      Modular.get<HistoryChatStore>().open(idPatient: widget.idPatient);
+      Modular.get<HistoryChatStore>().open(idPatient: widget.idPatient, isFullHeight: true);
     });
     super.initState();
   }
@@ -49,8 +51,30 @@ class PatientDetailsPageState extends ModularState<PatientDetailsPage, PatientDe
               child: Container(
                 margin: const EdgeInsets.all(20),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisSize: MainAxisSize.max,
                   children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 45,
+                          width: 110,
+                          child: OutlinedButton.icon(
+                            style: ButtonStyle(
+                              shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
+                              side: MaterialStateProperty.all(BorderSide(color: primaryColor))
+                            ),
+                            onPressed: () {
+                              Navigator.pop(context);
+                              Modular.get<HistoryChatStore>().isFullHeight = false;
+                            },
+                            label: Text("Voltar", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, color: primaryColor),),
+                            icon: Icon(LineAwesomeIcons.reply, color: primaryColor),
+                          ),
+                        ),
+                      ],
+                    ),
                     Container(
                       margin: const EdgeInsets.symmetric(vertical: 10),
                       child: Column(

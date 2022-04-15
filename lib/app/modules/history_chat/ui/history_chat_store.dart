@@ -37,6 +37,9 @@ abstract class _HistoryChatStoreBase with Store {
   bool isExpanded = false;
 
   @observable
+  bool isFullHeight = false;
+
+  @observable
   String? selectedIdPatient;
 
   @observable
@@ -72,10 +75,11 @@ abstract class _HistoryChatStoreBase with Store {
   }
 
   @action
-  void open({required String idPatient}) {
+  void open({required String idPatient, isFullHeight = false}) {
     selectedIdPatient = idPatient;
     _loadHistory(idPatient: idPatient);
     isExpanded = true;
+    this.isFullHeight = isFullHeight;
   }
 
   @action

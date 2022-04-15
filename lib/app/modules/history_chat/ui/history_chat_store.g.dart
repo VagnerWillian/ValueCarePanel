@@ -24,6 +24,21 @@ mixin _$HistoryChatStore on _HistoryChatStoreBase, Store {
     });
   }
 
+  final _$isFullHeightAtom = Atom(name: '_HistoryChatStoreBase.isFullHeight');
+
+  @override
+  bool get isFullHeight {
+    _$isFullHeightAtom.reportRead();
+    return super.isFullHeight;
+  }
+
+  @override
+  set isFullHeight(bool value) {
+    _$isFullHeightAtom.reportWrite(value, super.isFullHeight, () {
+      super.isFullHeight = value;
+    });
+  }
+
   final _$selectedIdPatientAtom =
       Atom(name: '_HistoryChatStoreBase.selectedIdPatient');
 
@@ -122,11 +137,11 @@ mixin _$HistoryChatStore on _HistoryChatStoreBase, Store {
   }
 
   @override
-  void open({required String idPatient}) {
+  void open({required String idPatient, dynamic isFullHeight = false}) {
     final _$actionInfo = _$_HistoryChatStoreBaseActionController.startAction(
         name: '_HistoryChatStoreBase.open');
     try {
-      return super.open(idPatient: idPatient);
+      return super.open(idPatient: idPatient, isFullHeight: isFullHeight);
     } finally {
       _$_HistoryChatStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -135,7 +150,7 @@ mixin _$HistoryChatStore on _HistoryChatStoreBase, Store {
   @override
   dynamic _addAllItem(List<HistoryItemEntity> values) {
     final _$actionInfo = _$_HistoryChatStoreBaseActionController.startAction(
-        name: '_HistoryChatStoreBase.addAllItem');
+        name: '_HistoryChatStoreBase._addAllItem');
     try {
       return super._addAllItem(values);
     } finally {
@@ -146,7 +161,7 @@ mixin _$HistoryChatStore on _HistoryChatStoreBase, Store {
   @override
   dynamic _addItem(HistoryItemEntity value) {
     final _$actionInfo = _$_HistoryChatStoreBaseActionController.startAction(
-        name: '_HistoryChatStoreBase.addItem');
+        name: '_HistoryChatStoreBase._addItem');
     try {
       return super._addItem(value);
     } finally {
@@ -157,7 +172,7 @@ mixin _$HistoryChatStore on _HistoryChatStoreBase, Store {
   @override
   dynamic _setLoading(bool value) {
     final _$actionInfo = _$_HistoryChatStoreBaseActionController.startAction(
-        name: '_HistoryChatStoreBase.setLoading');
+        name: '_HistoryChatStoreBase._setLoading');
     try {
       return super._setLoading(value);
     } finally {
@@ -191,6 +206,7 @@ mixin _$HistoryChatStore on _HistoryChatStoreBase, Store {
   String toString() {
     return '''
 isExpanded: ${isExpanded},
+isFullHeight: ${isFullHeight},
 selectedIdPatient: ${selectedIdPatient},
 loading: ${loading},
 loadingSend: ${loadingSend},

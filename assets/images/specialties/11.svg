@@ -1,9 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="51.79" height="39.253" viewBox="0 0 51.79 39.253">
-  <g id="Dermatolog" transform="translate(0 1.5)">
-    <path id="Line_01" d="M56,652h51.785" transform="translate(-56 -615.747)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
-    <path id="Line_02" d="M56,633.936H72.941a11.494,11.494,0,0,0-1.906,6.378,10.644,10.644,0,1,0,21.263,0,11.494,11.494,0,0,0-1.906-6.378h17.4" transform="translate(-56 -621.071)" fill="none" stroke="#8a2ce6" stroke-linejoin="round" stroke-width="3"/>
-    <path id="Line_03" d="M84.5,639H98.742" transform="translate(-47.6 -619.579)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
-    <path id="Line_04" d="M56,639H70.242" transform="translate(-56 -619.579)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
-    <path id="Line_05" data-name="Line 05" d="M75.585,649.542C63.784,646.615,79.7,624,80.49,624c-4.091,7.033-4.905,12.295-.971,14.61C86.167,642.523,81.847,651.1,75.585,649.542Z" transform="translate(-51.506 -624)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="41.066" height="37.958" viewBox="0 0 41.066 37.958">
+  <g id="Therapy" transform="translate(1.5 1.5)">
+    <path id="Line_01" d="M287,635.474h8.565" transform="translate(-287 -616.734)" fill="none" stroke="#8a2ce6" stroke-linecap="round" stroke-width="3"/>
+    <path id="Line_02" d="M298.76,635.474H321.6" transform="translate(-283.534 -616.734)" fill="none" stroke="#8a2ce6" stroke-linecap="round" stroke-width="3"/>
+    <path id="Line_03" d="M289.94,635.474v16.218" transform="translate(-286.133 -616.734)" fill="none" stroke="#8a2ce6" stroke-linecap="round" stroke-width="3"/>
+    <path id="Line_04" d="M313.46,635.474v16.218" transform="translate(-279.201 -616.734)" fill="none" stroke="#8a2ce6" stroke-linecap="round" stroke-width="3"/>
+    <path id="Circle_01" d="M300.59,624a2.988,2.988,0,1,1-2.988-3A2.993,2.993,0,0,1,300.59,624Z" transform="translate(-284.755 -621)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
+    <path id="Line_05" d="M299.091,631.872l-4.306,4.318a2.343,2.343,0,0,0,3.124,3.482l2.566-2.059a2.029,2.029,0,0,0,.249-.236l1.19-1.325c1.327-1.479,3.734-.945,3.879,1.037.051.7.051,1.308.051,1.846v12.411a2.855,2.855,0,0,0,5.71,0V636.074A11.923,11.923,0,0,0,308.5,628.5c-2.176-2.6-6.014-1.691-7.893,1.133l-1.356,2.04A1.247,1.247,0,0,1,299.091,631.872Z" transform="translate(-284.907 -619.242)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
   </g>
 </svg>

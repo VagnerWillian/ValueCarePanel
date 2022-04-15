@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="51.79" height="39.253" viewBox="0 0 51.79 39.253">
+  <g id="Dermatolog" transform="translate(0 1.5)">
+    <path id="Line_01" d="M56,652h51.785" transform="translate(-56 -615.747)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
+    <path id="Line_02" d="M56,633.936H72.941a11.494,11.494,0,0,0-1.906,6.378,10.644,10.644,0,1,0,21.263,0,11.494,11.494,0,0,0-1.906-6.378h17.4" transform="translate(-56 -621.071)" fill="none" stroke="#8a2ce6" stroke-linejoin="round" stroke-width="3"/>
+    <path id="Line_03" d="M84.5,639H98.742" transform="translate(-47.6 -619.579)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
+    <path id="Line_04" d="M56,639H70.242" transform="translate(-56 -619.579)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
+    <path id="Line_05" data-name="Line 05" d="M75.585,649.542C63.784,646.615,79.7,624,80.49,624c-4.091,7.033-4.905,12.295-.971,14.61C86.167,642.523,81.847,651.1,75.585,649.542Z" transform="translate(-51.506 -624)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
+  </g>
+</svg>

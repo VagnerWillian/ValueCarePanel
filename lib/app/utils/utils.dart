@@ -16,6 +16,7 @@ const String MONITORING_ROUTE = "/monitoramento/";
 const String SCHEDULING_ROUTE = "/agendamento/";
 const String ANALYTICS_ROUTE = "/analytics/";
 const String USERS_ROUTE = "/usuarios/";
+const String CONFIG_ROUTE = "/configuracao/";
 
 const String PATIENTS_ROUTE = "/pacientes/";
 const String PATIENT_DETAILS_ROUTE = "/pacientes/detalhes/";

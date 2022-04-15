@@ -76,7 +76,7 @@ mixin _$PatientDetailsStore on _PatientDetailsStoreBase, Store {
   @override
   dynamic setReportedSymptomGroup(ReportedSymptomGroupEntity value) {
     final _$actionInfo = _$_PatientDetailsStoreBaseActionController.startAction(
-        name: '_PatientDetailsStoreBase.setReportedSymptomGroupEntity');
+        name: '_PatientDetailsStoreBase.setReportedSymptomGroup');
     try {
       return super.setReportedSymptomGroup(value);
     } finally {

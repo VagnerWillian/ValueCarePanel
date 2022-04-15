@@ -1,8 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="44.432" height="37.753" viewBox="0 0 44.432 37.753">
-  <g id="Lung" transform="translate(1.5 0)">
-    <path id="Line_01" d="M77.881,403v11.244m0,0v14.311c0,8.178-8.085,10.7-13.176,10.7h0A4.7,4.7,0,0,1,60,434.548V426.51c0-11.448,7.837-12.266,12.811-12.266Z" transform="translate(-60 -403)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
-    <path id="Line_02" d="M76.12,413c.531,4.315-.8,12.948-10.35,12.948" transform="translate(-58.299 -400.052)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
-    <path id="Line_03" d="M78.189,403v11.244m0,0v14.311c0,8.178,8.085,10.7,13.176,10.7h0a4.7,4.7,0,0,0,4.706-4.705V426.51c0-11.448-7.837-12.266-12.811-12.266Z" transform="translate(-54.639 -403)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
-    <path id="Line_04" d="M78.259,413c-.531,4.315.8,12.948,10.35,12.948" transform="translate(-54.648 -400.052)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="41.847" height="38.294" viewBox="0 0 41.847 38.294">
+  <g id="Psychology" transform="translate(1.5 1.5)">
+    <path id="Line_01" d="M299.645,319.137a4.5,4.5,0,0,0-4.163,4.726c0,4.422,7.556,4.726,7.556,0V300.232c0-2.439-1.08-8.232-7.556-8.232S287,296.269,287,300.232c0,3.171,1.336,4.574,2,4.879" transform="translate(-287 -292)" fill="none" stroke="#8a2ce6" stroke-linejoin="round" stroke-width="3"/>
+    <path id="Line_02" d="M295.484,316.939c-1.388.763-5.521,1.158-6.63-2.135-1.388-4.116,2.466-6.554,5.242-6.554" transform="translate(-286.54 -287.21)" fill="none" stroke="#8a2ce6" stroke-linejoin="round" stroke-width="3"/>
+    <path id="Line_03" d="M290.665,311.633a5.957,5.957,0,0,1-3.546-5.03c0-3.2,2-5.184,4.318-5.184" transform="translate(-286.965 -289.224)" fill="none" stroke="#8a2ce6" stroke-linejoin="round" stroke-width="3"/>
+    <path id="Line_04" d="M311.07,292c-5.118,0-7.539,4.722-7.886,6.4v25.953a2.4,2.4,0,0,0,3.52,2.21c12.014-6.568,13.925-16.661,14.334-22.527C321.485,297.636,317.468,292,311.07,292Z" transform="translate(-282.23 -292)" fill="none" stroke="#8a2ce6" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    <path id="Line_05" d="M301,313.428c0-.975-.442-4.13-3.883-4.13a2.924,2.924,0,0,0-3.211,2.715" transform="translate(-284.964 -286.901)" fill="none" stroke="#8a2ce6" stroke-linejoin="round" stroke-width="3"/>
+    <path id="Line_06" d="M301,306.145c0-.975-.442-4.13-3.883-4.13a2.924,2.924,0,0,0-3.211,2.715" transform="translate(-284.964 -289.048)" fill="none" stroke="#8a2ce6" stroke-linejoin="round" stroke-width="3"/>
+    <path id="Line_07" d="M301,298.862c0-.975-.442-4.13-3.883-4.13a2.924,2.924,0,0,0-3.211,2.715" transform="translate(-284.964 -291.195)" fill="none" stroke="#8a2ce6" stroke-linejoin="round" stroke-width="3"/>
   </g>
 </svg>

@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48.316" height="37.804" viewBox="0 0 48.316 37.804">
-  <g id="Nephrolog" transform="translate(1.5 1.551)">
-    <path id="Line_01" d="M178.129,514.24c-4.481,1.217-7.129,6.087-7.129,11.667,0,3.55,1.528,10.651,7.129,11.666s7.3-4.058,5.6-6.594c-1.018-1.521-3.054-5.072-.509-8.623S183.729,512.718,178.129,514.24Z" transform="translate(-171 -514)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
-    <path id="Line_02" d="M179.652,523.2l2.852,1.6a10.358,10.358,0,0,1,5.294,9.036v13.713" transform="translate(-168.45 -511.29)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
-    <path id="Line_03" d="M201.912,514.24c4.481,1.217,7.129,6.087,7.129,11.667,0,3.55-1.528,10.651-7.129,11.666s-7.3-4.058-5.6-6.594c1.018-1.521,3.054-5.072.509-8.623S196.312,512.718,201.912,514.24Z" transform="translate(-163.725 -514)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
-    <path id="Line_04" d="M199.2,523.2l-2.852,1.6a10.358,10.358,0,0,0-5.294,9.036v13.713" transform="translate(-165.088 -511.29)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="44.432" height="37.753" viewBox="0 0 44.432 37.753">
+  <g id="Lung" transform="translate(1.5 0)">
+    <path id="Line_01" d="M77.881,403v11.244m0,0v14.311c0,8.178-8.085,10.7-13.176,10.7h0A4.7,4.7,0,0,1,60,434.548V426.51c0-11.448,7.837-12.266,12.811-12.266Z" transform="translate(-60 -403)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
+    <path id="Line_02" d="M76.12,413c.531,4.315-.8,12.948-10.35,12.948" transform="translate(-58.299 -400.052)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
+    <path id="Line_03" d="M78.189,403v11.244m0,0v14.311c0,8.178,8.085,10.7,13.176,10.7h0a4.7,4.7,0,0,0,4.706-4.705V426.51c0-11.448-7.837-12.266-12.811-12.266Z" transform="translate(-54.639 -403)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
+    <path id="Line_04" d="M78.259,413c-.531,4.315.8,12.948,10.35,12.948" transform="translate(-54.648 -400.052)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
   </g>
 </svg>

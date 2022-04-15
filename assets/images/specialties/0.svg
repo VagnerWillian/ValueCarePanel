@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="40.375" height="39.253" viewBox="0 0 40.375 39.253">
-  <g id="Icon_Physician" transform="translate(1.5 1.5)">
-    <path id="Line_01" d="M65.96,179h-2.2A2.762,2.762,0,0,0,61,181.762v5.7a10.875,10.875,0,0,0,10.876,10.876h0a10.875,10.875,0,0,0,10.876-10.876v-5.7A2.762,2.762,0,0,0,79.99,179h-2.5" transform="translate(-61 -179)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
-    <path id="Line_02" d="M69.4,195.15v4.688a10.876,10.876,0,0,0,10.876,10.876h0a10.876,10.876,0,0,0,10.876-10.876V194.4" transform="translate(-58.524 -174.461)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
-    <path id="Line_03" d="M92.028,192.214a4.747,4.747,0,1,1-4.747-4.747A4.748,4.748,0,0,1,92.028,192.214Z" transform="translate(-54.653 -176.504)" fill="none" stroke="#8a2ce6" stroke-width="3"/>
-  </g>
-</svg>

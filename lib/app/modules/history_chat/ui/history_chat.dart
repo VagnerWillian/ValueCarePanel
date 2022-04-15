@@ -23,7 +23,7 @@ class HistoryChatState extends ModularState<HistoryChat, HistoryChatStore> {
       builder: (_)=> Visibility(
         visible: store.selectedIdPatient!=null,
         child: Container(
-            height: !store.isExpanded?77:500,
+            height: !store.isExpanded?77:store.isFullHeight?MediaQuery.of(context).size.height-120:500,
             width: 320,
             decoration: BoxDecoration(
                 borderRadius: const BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),

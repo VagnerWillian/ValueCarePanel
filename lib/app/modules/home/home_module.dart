@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:value_panel/app/modules/configurations/configurations_module.dart';
 import 'package:value_panel/app/modules/dashboard/dashboard_module.dart';
 import 'package:value_panel/app/modules/home/domain/repositories/home.repository.dart';
 import 'package:value_panel/app/modules/home/domain/usecases/get_user_token.usecase.dart';
@@ -43,6 +44,7 @@ class HomeModule extends Module {
        ModuleRoute(USERS_ROUTE, module: UsersModule(), transition: TransitionType.fadeIn),
        ModuleRoute(PATIENTS_ROUTE, module: PatientsModule(), transition: TransitionType.fadeIn),
        ModuleRoute(PATIENT_DETAILS_ROUTE, module: PatientsDetailsModule(), transition: TransitionType.fadeIn),
+       ModuleRoute(CONFIG_ROUTE, module: ConfigurationsModule(), transition: TransitionType.fadeIn),
      ]),
  ];
 }
