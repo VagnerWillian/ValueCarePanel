@@ -83,6 +83,7 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
 
   Future setClassification(ClassificationEntity classificationEntity)async{
     setState(() => loading = true);
+    int backupId = widget.value.classificationId;
     widget.value.classificationId = classificationEntity.id;
     Either<MonitoringError, bool> response = await widget.updateMonitoringItem(widget.value, onError);
     if(response.isRight){
@@ -90,7 +91,7 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
         selectedClassification = classificationEntity;
       });
     }else{
-
+      widget.value.classificationId = backupId;
     }
     setState(() => loading=false);
   }

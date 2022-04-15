@@ -54,12 +54,15 @@ class _ConfirmColumnGridState extends State<ConfirmColumnGrid> {
 
   Future setClassification(bool check) async {
     setState(() => loading = true);
+    bool backupConfirm = widget.value.confirm;
     widget.value.confirm = check;
     Either<MonitoringError, bool> response = await widget.updateMonitoringItem(widget.value, onError);
     if (response.isRight) {
       setState(() {
         checkStatus = check;
       });
+    }else{
+      widget.value.confirm = backupConfirm;
     }
     setState(() => loading = false);
   }

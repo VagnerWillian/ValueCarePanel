@@ -28,6 +28,8 @@ class _AppointmentDateColumnGridState extends State<AppointmentDateColumnGrid> {
   void initState() {
     if(widget.value.appointmentDate!=null) {
       selectedDate = DateTime.parse(widget.value.appointmentDate!);
+    }else{
+      selectedDate = null;
     }
     super.initState();
   }
@@ -36,6 +38,8 @@ class _AppointmentDateColumnGridState extends State<AppointmentDateColumnGrid> {
   void didUpdateWidget(covariant AppointmentDateColumnGrid oldWidget) {
     if(widget.value.appointmentDate!=null) {
       selectedDate = DateTime.parse(widget.value.appointmentDate!);
+    }else{
+      selectedDate = null;
     }
     super.didUpdateWidget(oldWidget);
   }
@@ -126,6 +130,7 @@ class _AppointmentDateColumnGridState extends State<AppointmentDateColumnGrid> {
 
   void onChangedDate(DateTime value) async {
     setState(() => loading = true);
+    String? backupDate = widget.value.appointmentDate;
     widget.value.appointmentDate = value.toString();
     Either<MonitoringError, bool> response = await widget.updateMonitoringItem(widget.value, onError);
     if (response.isRight) {
@@ -133,7 +138,7 @@ class _AppointmentDateColumnGridState extends State<AppointmentDateColumnGrid> {
         selectedDate = value;
       });
     }else{
-      widget.value.appointmentDate = selectedDate.toString();
+      widget.value.appointmentDate = backupDate;
     }
     setState(() => loading = false);
   }

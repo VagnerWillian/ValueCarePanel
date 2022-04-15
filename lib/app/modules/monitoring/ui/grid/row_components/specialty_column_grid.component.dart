@@ -76,7 +76,7 @@ class _SpecialtyColumnGridState extends State<SpecialtyColumnGrid> {
                     value: s,
                     child: Row(
                       children: [
-                        SvgPicture.network("assets/images/specialties/${s.id}.svg", width: 20),
+                        SvgPicture.network(s.image, width: 20),
                         const SizedBox(width: 10),
                         Expanded(child: Text(s.label, style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 12), overflow: TextOverflow.ellipsis))
                       ],
@@ -92,6 +92,7 @@ class _SpecialtyColumnGridState extends State<SpecialtyColumnGrid> {
 
   Future setClassification(SpecialtyEntity specialtyEntity)async{
     setState(() => loading = true);
+    int? backupId = widget.value.specialtyId;
     widget.value.specialtyId = specialtyEntity.id;
     Either<MonitoringError, bool> response = await widget.updateMonitoringItem(widget.value, onError);
     if(response.isRight){
@@ -99,7 +100,7 @@ class _SpecialtyColumnGridState extends State<SpecialtyColumnGrid> {
         selectedSpecialty = specialtyEntity;
       });
     }else{
-
+      widget.value.specialtyId = backupId;
     }
     setState(() => loading=false);
   }

@@ -1,215 +1,227 @@
 {
-  "classificacoes": {
-    "valores": [
-      {
-        "cor": "#6418C3",
-        "label": "Pendente",
-        "valor": 18,
-        "porcentagem": "16.0%"
-      },
-      {
-        "cor": "#34A8D9",
-        "label": "Não Urgente",
-        "valor": 63,
-        "porcentagem": "66.0%"
-      },
-      {
-        "cor": "#E23838",
-        "label": "Emergência",
-        "valor": 68,
-        "porcentagem": "18.0%"
-      },
-      {
-        "cor": "#FFAB2D",
-        "label": "Urgente",
-        "valor": 42,
-        "porcentagem": "36.0%"
-      },
-      {
-        "cor": "#38E25D",
-        "label": "Pouco Urgente",
-        "valor": 76,
-        "porcentagem": "94.0%"
-      }
-    ]
-  },
-  "novos_usuarios": {
-    "valor": 87,
-    "comparacao": "-13.0%"
-  },
   "pacientes_ativos": {
-    "valor": 65,
-    "comparacao": "+62.0%"
-  },
-  "consultas_periodo": {
-    "valor": 10,
-    "comparacao": "-54.0%"
+    "valor": 67,
+    "comparacao": "-98.0%"
   },
   "sintomas_reportados": {
-    "valor": 30,
-    "comparacao": "+28.0%"
+    "valor": 10,
+    "comparacao": "+86.0%"
+  },
+  "consultas_periodo": {
+    "valor": 31,
+    "comparacao": "-43.0%"
+  },
+  "novos_usuarios": {
+    "valor": 43,
+    "comparacao": "+38.0%"
   },
   "novos_casos_pendentes": {
-    "valor": 80,
-    "comparacao": "74.0%"
+    "valor": 61,
+    "comparacao": "24.0%"
   },
   "sintomas_reportados_lista": {
-    "data": "25/10/2020",
+    "data": "27/10/2020",
     "valores": [
       {
+        "porcentagem": 51.3,
+        "quantidade": 72,
         "sintoma": {
-          "id": 6,
-          "label": "Dor no Corpo",
-          "imagem": "assets/assets/images/symptoms/6.svg",
-          "reportado_em": "2020-06-29 10:07"
-        },
-        "quantidade": 78,
-        "porcentagem": 59.5
-      },
-      {
-        "sintoma": {
-          "id": 15,
-          "label": "Taquicardia",
-          "imagem": "assets/assets/images/symptoms/15.svg",
-          "reportado_em": "2020-06-20 12:45"
-        },
-        "quantidade": 73,
-        "porcentagem": 15.8
-      },
-      {
-        "sintoma": {
-          "id": 13,
-          "label": "Não sente cheiro",
-          "imagem": "assets/assets/images/symptoms/13.svg",
-          "reportado_em": "2020-07-16 17:20"
-        },
-        "quantidade": 84,
-        "porcentagem": 58.9
-      },
-      {
-        "sintoma": {
-          "id": 15,
-          "label": "Taquicardia",
-          "imagem": "assets/assets/images/symptoms/15.svg",
-          "reportado_em": "2020-12-16 00:24"
-        },
-        "quantidade": 99,
-        "porcentagem": 18.6
-      },
-      {
-        "sintoma": {
-          "id": 15,
-          "label": "Taquicardia",
-          "imagem": "assets/assets/images/symptoms/15.svg",
-          "reportado_em": "2020-11-29 16:27"
-        },
-        "quantidade": 11,
-        "porcentagem": 30.1
-      },
-      {
-        "sintoma": {
-          "id": 10,
-          "label": "Insonia",
-          "imagem": "assets/assets/images/symptoms/10.svg",
-          "reportado_em": "2020-09-12 01:57"
-        },
-        "quantidade": 49,
-        "porcentagem": 37.9
-      },
-      {
-        "sintoma": {
-          "id": 5,
-          "label": "Dor nas articulações",
+          "id": "5",
+          "reportadoEm": "2020-06-18 12:31",
+          "intensidade": "Muito",
           "imagem": "assets/assets/images/symptoms/5.svg",
-          "reportado_em": "2020-06-13 16:21"
-        },
-        "quantidade": 65,
-        "porcentagem": 21.5
+          "label": "Dor nas articulações"
+        }
       },
       {
+        "porcentagem": 66.3,
+        "quantidade": 88,
         "sintoma": {
-          "id": 3,
-          "label": "Diarréia",
-          "imagem": "assets/assets/images/symptoms/3.svg",
-          "reportado_em": "2020-10-20 21:10"
-        },
-        "quantidade": 65,
-        "porcentagem": 91.4
+          "id": "13",
+          "reportadoEm": "2020-08-07 23:38",
+          "intensidade": "Pouco",
+          "imagem": "assets/assets/images/symptoms/13.svg",
+          "label": "Não sente cheiro"
+        }
       },
       {
+        "porcentagem": 86.2,
+        "quantidade": 12,
         "sintoma": {
-          "id": 4,
-          "label": "Dificuldade de Concentração, Esquecimento, Cabeça vazia",
-          "imagem": "assets/assets/images/symptoms/4.svg",
-          "reportado_em": "2020-05-23 20:21"
-        },
-        "quantidade": 16,
-        "porcentagem": 97.2
+          "id": "5",
+          "reportadoEm": "2020-08-05 08:02",
+          "intensidade": "Muito",
+          "imagem": "assets/assets/images/symptoms/5.svg",
+          "label": "Dor nas articulações"
+        }
       },
       {
+        "porcentagem": 82.6,
+        "quantidade": 96,
         "sintoma": {
-          "id": 15,
-          "label": "Taquicardia",
-          "imagem": "assets/assets/images/symptoms/15.svg",
-          "reportado_em": "2020-06-19 00:49"
-        },
-        "quantidade": 44,
-        "porcentagem": 63.2
+          "id": "16",
+          "reportadoEm": "2020-01-04 06:52",
+          "intensidade": "Pouco",
+          "imagem": "assets/assets/images/symptoms/16.svg",
+          "label": "Tosse"
+        }
       },
       {
+        "porcentagem": 62.5,
+        "quantidade": 24,
         "sintoma": {
-          "id": 11,
-          "label": "Intestino Preso",
-          "imagem": "assets/assets/images/symptoms/11.svg",
-          "reportado_em": "2020-11-28 07:46"
-        },
-        "quantidade": 28,
-        "porcentagem": 95.1
+          "id": "9",
+          "reportadoEm": "2020-02-16 13:01",
+          "intensidade": "Muito",
+          "imagem": "assets/assets/images/symptoms/9.svg",
+          "label": "Febre"
+        }
       },
       {
+        "porcentagem": 39.2,
+        "quantidade": 37,
         "sintoma": {
-          "id": 2,
-          "label": "Desânimo Ansiedade",
-          "imagem": "assets/assets/images/symptoms/2.svg",
-          "reportado_em": "2020-12-08 11:08"
-        },
-        "quantidade": 81,
-        "porcentagem": 59.9
+          "id": "1",
+          "reportadoEm": "2020-01-18 20:44",
+          "intensidade": "Muito",
+          "imagem": "assets/assets/images/symptoms/1.svg",
+          "label": "Chiado no Peito"
+        }
+      },
+      {
+        "porcentagem": 58.8,
+        "quantidade": 57,
+        "sintoma": {
+          "id": "7",
+          "reportadoEm": "2020-11-24 10:15",
+          "intensidade": "Muito",
+          "imagem": "assets/assets/images/symptoms/7.svg",
+          "label": "Dores de Cabeça"
+        }
+      },
+      {
+        "porcentagem": 36.5,
+        "quantidade": 41,
+        "sintoma": {
+          "id": "14",
+          "reportadoEm": "2020-11-14 22:02",
+          "intensidade": "Extremo",
+          "imagem": "assets/assets/images/symptoms/14.svg",
+          "label": "Não sente gosto"
+        }
+      },
+      {
+        "porcentagem": 32.8,
+        "quantidade": 32,
+        "sintoma": {
+          "id": "1",
+          "reportadoEm": "2020-05-30 04:39",
+          "intensidade": "Pouco",
+          "imagem": "assets/assets/images/symptoms/1.svg",
+          "label": "Chiado no Peito"
+        }
+      },
+      {
+        "porcentagem": 82.1,
+        "quantidade": 88,
+        "sintoma": {
+          "id": "17",
+          "reportadoEm": "2020-11-04 11:45",
+          "intensidade": "Muito",
+          "imagem": "assets/assets/images/symptoms/17.svg",
+          "label": "Tremores"
+        }
+      },
+      {
+        "porcentagem": 61.9,
+        "quantidade": 21,
+        "sintoma": {
+          "id": "7",
+          "reportadoEm": "2020-10-08 17:00",
+          "intensidade": "Muito",
+          "imagem": "assets/assets/images/symptoms/7.svg",
+          "label": "Dores de Cabeça"
+        }
+      },
+      {
+        "porcentagem": 34.5,
+        "quantidade": 27,
+        "sintoma": {
+          "id": "10",
+          "reportadoEm": "2020-12-12 01:27",
+          "intensidade": "Extremo",
+          "imagem": "assets/assets/images/symptoms/10.svg",
+          "label": "Insonia"
+        }
       }
     ]
   },
   "agendadas_ultima_semana_periodo": {
+    "quantidade": 416,
+    "comparacao": "52.0%",
     "valores": [
       {
-        "valor": 31,
-        "comparacao": "D"
+        "comparacao": "D",
+        "valor": 87
       },
       {
-        "valor": 82,
-        "comparacao": "S"
+        "comparacao": "S",
+        "valor": 52
       },
       {
-        "valor": 81,
-        "comparacao": "T"
+        "comparacao": "T",
+        "valor": 82
       },
       {
-        "valor": 32,
-        "comparacao": "Q"
+        "comparacao": "Q",
+        "valor": 15
       },
       {
-        "valor": 15,
-        "comparacao": "Q"
+        "comparacao": "Q",
+        "valor": 20
       },
       {
-        "valor": 23,
-        "comparacao": "S"
+        "comparacao": "S",
+        "valor": 91
       },
       {
-        "valor": 46,
-        "comparacao": "S"
+        "comparacao": "S",
+        "valor": 56
       }
-    ],
-    "comparacao": "94.0%",
-    "quantidade": 243
+    ]
+  },
+  "classificacoes": {
+    "valores": [
+      {
+        "label": "Pendente",
+        "cor": "#6418C3",
+        "valor": 90,
+        "porcentagem": "32.0%"
+      },
+      {
+        "label": "Não Urgente",
+        "cor": "#34A8D9",
+        "valor": 71,
+        "porcentagem": "33.0%"
+      },
+      {
+        "label": "Emergência",
+        "cor": "#E23838",
+        "valor": 24,
+        "porcentagem": "34.0%"
+      },
+      {
+        "label": "Urgente",
+        "cor": "#FFAB2D",
+        "valor": 70,
+        "porcentagem": "43.0%"
+      },
+      {
+        "label": "Pouco Urgente",
+        "cor": "#38E25D",
+        "valor": 82,
+        "porcentagem": "1.0%"
+      }
+    ]
   }
 }

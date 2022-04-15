@@ -1,6 +1,6 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:value_panel/app/modules/configurations/ui/configurations_page.dart';
 import 'package:value_panel/app/modules/configurations/ui/configurations_store.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 class ConfigurationsModule extends Module {
   @override
