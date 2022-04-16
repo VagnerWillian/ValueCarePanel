@@ -5,7 +5,7 @@ void main() {
   late ConfigurationsStore store;
 
   setUpAll(() {
-    store = ConfigurationsStore();
+    // store = ConfigurationsStore();
   });
 
   test('increment count', () async {

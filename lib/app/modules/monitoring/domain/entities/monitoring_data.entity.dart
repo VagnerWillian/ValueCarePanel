@@ -5,7 +5,7 @@ abstract class MonitoringDataEntity {
   late final String idPatient;
   late final List<SymptomEntity> symptoms;
   late final String patient;
-  late int classificationId;
+  late int? classificationId;
   late int? specialtyId;
   late final String solicitationDate;
   late String? appointmentDate;

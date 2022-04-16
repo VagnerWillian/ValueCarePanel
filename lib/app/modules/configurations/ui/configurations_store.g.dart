@@ -24,18 +24,18 @@ mixin _$ConfigurationsStore on _ConfigurationsStoreBase, Store {
     });
   }
 
-  final _$levelIdAtom = Atom(name: '_ConfigurationsStoreBase.levelId');
+  final _$levelAtom = Atom(name: '_ConfigurationsStoreBase.level');
 
   @override
-  int? get levelId {
-    _$levelIdAtom.reportRead();
-    return super.levelId;
+  int? get level {
+    _$levelAtom.reportRead();
+    return super.level;
   }
 
   @override
-  set levelId(int? value) {
-    _$levelIdAtom.reportWrite(value, super.levelId, () {
-      super.levelId = value;
+  set level(int? value) {
+    _$levelAtom.reportWrite(value, super.level, () {
+      super.level = value;
     });
   }
 
@@ -102,8 +102,34 @@ mixin _$ConfigurationsStore on _ConfigurationsStoreBase, Store {
     });
   }
 
+  final _$imageAtom = Atom(name: '_ConfigurationsStoreBase.image');
+
+  @override
+  String get image {
+    _$imageAtom.reportRead();
+    return super.image;
+  }
+
+  @override
+  set image(String value) {
+    _$imageAtom.reportWrite(value, super.image, () {
+      super.image = value;
+    });
+  }
+
   final _$_ConfigurationsStoreBaseActionController =
       ActionController(name: '_ConfigurationsStoreBase');
+
+  @override
+  void setImagePath(String value) {
+    final _$actionInfo = _$_ConfigurationsStoreBaseActionController.startAction(
+        name: '_ConfigurationsStoreBase.setImagePath');
+    try {
+      return super.setImagePath(value);
+    } finally {
+      _$_ConfigurationsStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setBirthday(DateTime value) {
@@ -175,11 +201,12 @@ mixin _$ConfigurationsStore on _ConfigurationsStoreBase, Store {
   String toString() {
     return '''
 birthday: ${birthday},
-levelId: ${levelId},
+level: ${level},
 smsNotifies: ${smsNotifies},
 emailNotifies: ${emailNotifies},
 pushNotifies: ${pushNotifies},
-desktopNotifies: ${desktopNotifies}
+desktopNotifies: ${desktopNotifies},
+image: ${image}
     ''';
   }
 }

@@ -21,19 +21,23 @@ class ClassificationColumnGrid extends StatefulWidget {
 
 class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
 
-  late ClassificationEntity selectedClassification;
+  ClassificationEntity? selectedClassification;
   bool loading = false;
 
   @override
   void initState() {
-    selectedClassification = widget.classifications.singleWhere((c) => c.id==widget.value.classificationId);
+    if(widget.value.classificationId!=null){
+      selectedClassification = widget.classifications.singleWhere((c) => c.id==widget.value.classificationId);
+    }
     loading = false;
     super.initState();
   }
 
   @override
   void didUpdateWidget(covariant ClassificationColumnGrid oldWidget) {
-    selectedClassification = widget.classifications.singleWhere((c) => c.id==widget.value.classificationId);
+    if(widget.value.classificationId!=null){
+      selectedClassification = widget.classifications.singleWhere((c) => c.id==widget.value.classificationId);
+    }
     loading = false;
     super.didUpdateWidget(oldWidget);
   }
@@ -51,7 +55,7 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         margin: const EdgeInsets.symmetric(vertical: 15),
         decoration: BoxDecoration(
-            color: selectedClassification.color!.withOpacity(0.1),
+            color: selectedClassification!.color!.withOpacity(0.1),
             borderRadius: BorderRadius.circular(10)
         ),
         height: 80,
@@ -61,7 +65,7 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
           value: selectedClassification,
           underline: Container(),
           isExpanded: true,
-          iconEnabledColor: selectedClassification.color,
+          iconEnabledColor: selectedClassification!.color,
           items: widget.classifications.map((c) {
             return DropdownMenuItem<ClassificationEntity>(
                 value: c,
@@ -83,7 +87,7 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
 
   Future setClassification(ClassificationEntity classificationEntity)async{
     setState(() => loading = true);
-    int backupId = widget.value.classificationId;
+    int? backupId = widget.value.classificationId;
     widget.value.classificationId = classificationEntity.id;
     Either<MonitoringError, bool> response = await widget.updateMonitoringItem(widget.value, onError);
     if(response.isRight){

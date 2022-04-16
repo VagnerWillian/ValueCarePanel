@@ -16,7 +16,7 @@ const String MONITORING_ROUTE = "/monitoramento/";
 const String SCHEDULING_ROUTE = "/agendamento/";
 const String ANALYTICS_ROUTE = "/analytics/";
 const String USERS_ROUTE = "/usuarios/";
-const String CONFIG_ROUTE = "/configuracao/";
+const String CONFIG_ROUTE = "/configurações/";
 
 const String PATIENTS_ROUTE = "/pacientes/";
 const String PATIENT_DETAILS_ROUTE = "/pacientes/detalhes/";
@@ -54,6 +54,7 @@ final List<Color> gradientColors = [HexColor("#4159D0"), HexColor("#4F01C4"), He
 //////////////// DATE PATTERNS FORMATS////////////////
 
 final patternDdMm = DateFormat("dd/MM", "pt_BR");
+final patternDdMmm = DateFormat("dd/MMM/yy", "pt_BR");
 final patternHHmm = DateFormat("HH:mm", "pt_BR");
 final patternWeekName = DateFormat("EEEE", "pt_BR");
 final patternExtensive = DateFormat("EEEE, d 'de' MMMM 'de' y'\nàs' HH'h'mm'", "pt_BR");

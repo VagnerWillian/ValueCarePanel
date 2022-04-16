@@ -8,7 +8,7 @@ class MonitoringData implements MonitoringDataEntity {
   final datePattern = DateFormat("dd/MM/yyyy", "pt_BR");
 
   @override
-  late int classificationId;
+  late int? classificationId;
 
   @override
   late int? specialtyId;
@@ -55,7 +55,7 @@ class MonitoringData implements MonitoringDataEntity {
     symptoms = (json['sintomas'] as List).map((s) => Symptom.fromJson(s)).toList();
     patient = json['paciente'];
     idPatient = json['pacienteId'];
-    classificationId = json['classificacaoId'];
+    classificationId = json['classificacaoId']??1;
     specialtyId = json['especialidadeId'];
     solicitationDate = datePattern.format(DateTime.parse(json['dataSolicitacao']));
     confirm = json['confirmado'];

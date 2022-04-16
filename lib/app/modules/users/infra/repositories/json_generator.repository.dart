@@ -47,4 +47,22 @@ class JsonGeneratorRepository implements UsersRepository{
     }
   }
 
+  @override
+  Future<Either<UsersError, bool>> activateUser({required String operatorId}) async{
+    await Future.delayed(const Duration(seconds: 2));
+    return const Right(true);
+  }
+
+  @override
+  Future<Either<UsersError, bool>> deactivateUser({required String operatorId}) async{
+    await Future.delayed(const Duration(seconds: 2));
+    return const Right(true);
+  }
+
+  @override
+  Future<Either<UsersError, bool>> deleteUser({required String operatorId}) async{
+    await Future.delayed(const Duration(seconds: 2));
+    return const Right(true);
+  }
+
 }

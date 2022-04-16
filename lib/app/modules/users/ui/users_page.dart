@@ -99,7 +99,7 @@ class UsersPageState extends ModularState<UsersPage, UsersStore> {
                           child: Wrap(
                             spacing: 10,
                             runSpacing: 10,
-                            children: store.usersList.map((user) => UserCard(user)).toList(),
+                            children: store.usersList.map((user) => UserCard(user, onError ,store.activateOperator, store.deactivateOperator, store.deleteOperator)).toList(),
                           ),
                         ),
                       ),

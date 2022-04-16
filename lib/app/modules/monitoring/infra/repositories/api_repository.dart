@@ -45,7 +45,7 @@ class ApiMonitoringRepository implements MonitoringRepository{
         "usuarioPacienteId": "6Dx7dtIHPEYeVcGuBwVp9FBQyYX2",
         "PacienteId": "zaxOATwkVGx6QZabswmF",
         "confirmado": monitoringDataEntity.confirm,
-        "classificacao":monitoringDataEntity.classificationId,
+        "classificacaoId":monitoringDataEntity.classificationId,
         "especialidadeId":monitoringDataEntity.specialtyId,
         "dataAgendamento":monitoringDataEntity.appointmentDateInDateTime.toString()
       };

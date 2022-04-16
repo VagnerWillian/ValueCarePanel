@@ -65,11 +65,33 @@ mixin _$UsersStore on _UsersStoreBase, Store {
   }
 
   @override
-  dynamic addUser(UserEntity userEntity) {
+  void addUser(UserEntity userEntity) {
     final _$actionInfo = _$_UsersStoreBaseActionController.startAction(
         name: '_UsersStoreBase.addUser');
     try {
       return super.addUser(userEntity);
+    } finally {
+      _$_UsersStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void insertUser(UserEntity userEntity, int position) {
+    final _$actionInfo = _$_UsersStoreBaseActionController.startAction(
+        name: '_UsersStoreBase.insertUser');
+    try {
+      return super.insertUser(userEntity, position);
+    } finally {
+      _$_UsersStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void removeUser(UserEntity userEntity) {
+    final _$actionInfo = _$_UsersStoreBaseActionController.startAction(
+        name: '_UsersStoreBase.removeUser');
+    try {
+      return super.removeUser(userEntity);
     } finally {
       _$_UsersStoreBaseActionController.endAction(_$actionInfo);
     }

@@ -32,7 +32,7 @@ class PatientNameColumnGrid extends StatelessWidget {
             const SizedBox(width: 5,),
             Expanded(child: Row(
               children: [
-                Expanded(child: Text(value.patient, style: GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.w600), overflow: TextOverflow.fade,)),
+                Text(value.patient, style: GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.w600), overflow: TextOverflow.fade,),
                 const Icon(LineAwesomeIcons.external_link, size: 14,)
               ],
             )),

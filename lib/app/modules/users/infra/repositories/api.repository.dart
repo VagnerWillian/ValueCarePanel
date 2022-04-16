@@ -48,4 +48,40 @@ class ApiUsersRepository implements UsersRepository{
     }
   }
 
+  @override
+  Future<Either<UsersError, bool>> activateUser({required String operatorId}) async{
+    try{
+      var response = await _customDio.client.patch("/operador/$operatorId/ativar?code=$azureCode");
+      return const Right(true);
+    }on DioError catch(e){
+      return Left(UsersRepositoryError(statusCode: e.response?.statusCode));
+    }catch(e){
+      return Left(UsersRepositoryError(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<UsersError, bool>> deactivateUser({required String operatorId}) async{
+    try{
+      var response = await _customDio.client.patch("/operador/$operatorId/inativar?code=$azureCode");
+      return const Right(true);
+    }on DioError catch(e){
+      return Left(UsersRepositoryError(statusCode: e.response?.statusCode));
+    }catch(e){
+      return Left(UsersRepositoryError(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<UsersError, bool>> deleteUser({required String operatorId}) async{
+    try{
+      var response = await _customDio.client.patch("/operador/$operatorId/excluir?code=$azureCode");
+      return const Right(true);
+    }on DioError catch(e){
+      return Left(UsersRepositoryError(statusCode: e.response?.statusCode));
+    }catch(e){
+      return Left(UsersRepositoryError(message: e.toString()));
+    }
+  }
+
 }
