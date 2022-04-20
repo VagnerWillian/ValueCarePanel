@@ -47,7 +47,7 @@ class ApiMonitoringRepository implements MonitoringRepository{
         "confirmado": monitoringDataEntity.confirm,
         "classificacaoId":monitoringDataEntity.classificationId,
         "especialidadeId":monitoringDataEntity.specialtyId,
-        "dataAgendamento":monitoringDataEntity.appointmentDateInDateTime==null?null: monitoringDataEntity.appointmentDateInDateTime.toString()
+        "dataAgendamento":monitoringDataEntity.appointmentDateInDateTime?.toString()
       };
       var response = await _customDio.client.post(postMonitoringUpdateEP, data: data);
       return const Right(true);
