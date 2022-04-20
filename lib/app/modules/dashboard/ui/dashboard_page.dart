@@ -280,9 +280,6 @@ class DashboardPageState extends ModularState<DashboardPage, DashboardStore> {
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: Observer(
                           builder: (_) {
-                            print("store.preDates.length");
-                            print(store.preDates.length);
-                            print("store.preDates.length");
                             return DropdownButton<DateSelector>(
                               underline: Container(),
                               borderRadius: BorderRadius.circular(10),

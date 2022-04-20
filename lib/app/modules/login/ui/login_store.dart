@@ -38,8 +38,8 @@ abstract class _LoginStoreBase with Store {
     passEditingController = TextEditingController();
     btnController = RoundedLoadingButtonController();
     if(kDebugMode){
-      emailEditingController.text = "rodrigo@valuecare.com.br";
-      passEditingController.text = "value@2022";
+      // emailEditingController.text = "rodrigo@valuecare.com.br";
+      // passEditingController.text = "value@2022";
     }
     initialize();
   }
