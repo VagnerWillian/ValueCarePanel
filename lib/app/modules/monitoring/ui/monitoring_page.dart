@@ -160,7 +160,7 @@ class MonitoringPageState extends State<MonitoringPage> {
               ),
             ],
           )),
-      Observer(
+      /*Observer(
         builder: (_) => GradientButton(
           height: 55,
           onPressed: generateReportDoc(),
@@ -186,7 +186,7 @@ class MonitoringPageState extends State<MonitoringPage> {
             ],
           ),
         ),
-      )
+      )*/
     ],
   );
 

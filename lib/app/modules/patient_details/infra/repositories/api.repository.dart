@@ -40,16 +40,15 @@ class ApiPatientDetailsRepository implements PatientDetailsRepository{
 
   @override
   Future<Either<PatientDetailsError, PatientEntity>> getPatientDetails({required String idUserPatient, required String idPatient}) async{
-    // try{
-      // var response = await _customDio.client.get(getPatientDetailsInfo+idUserPatient+"/paciente/"+idPatient+"/perfil?code=$azureCode", options: Options(headers: _apiHeader));
-      var response = await _customDio.client.get(getPatientDetailsInfoEP+"6Dx7dtIHPEYeVcGuBwVp9FBQyYX2"+"/paciente/"+"zaxOATwkVGx6QZabswmF"+"/perfil?code=$azureCode");
+    try{
+      var response = await _customDio.client.get(getPatientDetailsInfoEP+idUserPatient+"/paciente/"+idPatient+"/perfil?code=$azureCode");
       PatientEntity values = Patient.fromJson(response.data['result']);
       return Right(values);
-    // }on DioError catch(e){
-    //   return Left(PatientDetailsRepositoryError(statusCode: e.response?.statusCode));
-    // }catch(e){
-    //   return Left(PatientDetailsRepositoryError(message: e.toString()));
-    // }
+    }on DioError catch(e){
+      return Left(PatientDetailsRepositoryError(statusCode: e.response?.statusCode));
+    }catch(e){
+      return Left(PatientDetailsRepositoryError(message: e.toString()));
+    }
   }
 
   @override

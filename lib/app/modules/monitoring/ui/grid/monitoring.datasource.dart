@@ -34,8 +34,8 @@ class MonitoringDataSource extends DataGridSource {
     ColumnConfig("Data Solicitação", 70, 100),
     ColumnConfig("Data agendamento", 125, 160),
     ColumnConfig("Especialidade", 160, double.nan),
-    ColumnConfig("Confirmado", 30, 80),
-    ColumnConfig("Histórico", 40, 100),
+    ColumnConfig("Confirmado", 30, 100),
+    // ColumnConfig("Histórico", 40, 100),
   ];
 
   int rowsPerPage = 10;
@@ -57,7 +57,7 @@ class MonitoringDataSource extends DataGridSource {
       DataGridCell<MonitoringDataEntity>(columnName: columnNames[4].label, value: m),
       DataGridCell<MonitoringDataEntity>(columnName: columnNames[5].label, value: m),
       DataGridCell<MonitoringDataEntity>(columnName: columnNames[6].label, value: m),
-      DataGridCell<String>(columnName: columnNames[7].label, value: m.idUserPatient),
+      // DataGridCell<String>(columnName: columnNames[7].label, value: m.idUserPatient),
     ])).toList(growable: false);
   }
 

@@ -1,12 +1,9 @@
-import 'dart:html' as html;
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_network/image_network.dart';
-import 'package:image_picker_web/image_picker_web.dart';
 import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:value_panel/app/modules/configurations/ui/configurations_store.dart';
@@ -147,7 +144,7 @@ class ConfigurationsPageState extends State<ConfigurationsPage> {
                                         controller: store.phoneEditingController,
                                         style: GoogleFonts.cairo(fontWeight: FontWeight.w600, fontSize: 14),
                                         decoration: InputDecoration(
-                                            contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                                            contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                                             enabledBorder: _enableInputBorder,
                                             border: _focusedInputBorder,
                                             focusedBorder: _focusedInputBorder,
@@ -205,11 +202,7 @@ class ConfigurationsPageState extends State<ConfigurationsPage> {
                                         errorBorder: _errorInputBorder,
                                         focusedErrorBorder: _focusedInputBorder,
                                       ),
-                                      items: [
-                                        DropdownMenuItem(child: Text("OPERADOR", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14)), value: LevelAdmin(id: 0, level: "OPERADOR"),),
-                                        DropdownMenuItem(child: Text("GESTOR", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14)), value: LevelAdmin(id: 0, level: "GESTOR"),),
-                                        DropdownMenuItem(child: Text("ADMINISTRADOR", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14)), value: LevelAdmin(id: 0, level: "ADMINISTRADOR"),),
-                                      ],
+                                      items: levels.map((l) => DropdownMenuItem(child: Text(l.level, style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14)), value: LevelAdmin(id: l.id, level: l.level),)).toList(),
                                       hint: Text("SELECIONAR...", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 14)),
                                       onChanged: (v)=>store.setLevel(v!.id),
                                     ),

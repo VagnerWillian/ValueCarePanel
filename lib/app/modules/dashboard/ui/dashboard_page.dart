@@ -1,6 +1,7 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -37,12 +38,14 @@ class DashboardPage extends StatefulWidget {
 }
 
 class DashboardPageState extends ModularState<DashboardPage, DashboardStore> {
-  final ConfigManager configManager = Modular.get<ConfigManager>();
 
   @override
   void initState() {
-    store.setDateSelector(store.preDates.first);
-    onChangedDate(store.preDates.first);
+    SchedulerBinding.instance!.addPostFrameCallback((_) {
+      store.preDatesLogic();
+      store.setDateSelector(store.preDates.first);
+      onChangedDate(store.preDates.first);
+    });
     super.initState();
   }
 
@@ -246,36 +249,41 @@ class DashboardPageState extends ModularState<DashboardPage, DashboardStore> {
         ),
       );
 
-  Widget _headerAnalyticsBuild() => Container(
-        margin: const EdgeInsets.symmetric(vertical: 10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            PageTitleDescription(title: "Bem vindo ${store.homeStore.userLogged!.name}", subtitle: "Estamos felizes por tê-lo aqui."),
-            Row(
-              children: [
-                Container(
-                    height: 60,
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    decoration: BoxDecoration(boxShadow: [
-                      BoxShadow(
-                        color: Colors.blueGrey.withOpacity(0.2),
-                        spreadRadius: 5,
-                        blurRadius: 80,
-                        offset: const Offset(0, 0), // changes position of shadow
+  Widget _headerAnalyticsBuild() {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const PageTitleDescription(title: "Bem vindo", subtitle: "Estamos felizes por tê-lo aqui."),
+          Row(
+            children: [
+              Container(
+                  height: 60,
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  decoration: BoxDecoration(boxShadow: [
+                    BoxShadow(
+                      color: Colors.blueGrey.withOpacity(0.2),
+                      spreadRadius: 5,
+                      blurRadius: 80,
+                      offset: const Offset(0, 0), // changes position of shadow
+                    ),
+                  ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
+                  child: Row(
+                    children: [
+                      Icon(
+                        LineAwesomeIcons.calendar,
+                        color: primaryColor,
                       ),
-                    ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
-                    child: Row(
-                      children: [
-                        Icon(
-                          LineAwesomeIcons.calendar,
-                          color: primaryColor,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Observer(
-                            builder: (_) => DropdownButton<DateSelector>(
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Observer(
+                          builder: (_) {
+                            print("store.preDates.length");
+                            print(store.preDates.length);
+                            print("store.preDates.length");
+                            return DropdownButton<DateSelector>(
                               underline: Container(),
                               borderRadius: BorderRadius.circular(10),
                               value: store.dateSelector,
@@ -295,19 +303,20 @@ class DashboardPageState extends ModularState<DashboardPage, DashboardStore> {
                                       d.startDate == null
                                           ? Container()
                                           : Text(d.startDate == null ? "Nenhuma data selecionada" : d.description,
-                                              style: const TextStyle(color: Colors.grey, fontSize: 10), textAlign: TextAlign.start),
+                                          style: const TextStyle(color: Colors.grey, fontSize: 10), textAlign: TextAlign.start),
                                     ],
                                   ),
                                   value: d,
                                 );
                               }).toList(),
                               onChanged: (v) => onChangedDate(v),
-                            ),
-                          ),
+                            );
+                          },
                         ),
-                      ],
-                    )),
-                Observer(
+                      ),
+                    ],
+                  )),
+              /*Observer(
                   builder: (_) => GradientButton(
                     height: 50,
                     onPressed: ()=>store.exportReportDoc(onError),
@@ -333,12 +342,13 @@ class DashboardPageState extends ModularState<DashboardPage, DashboardStore> {
                       ],
                     ),
                   ),
-                ),
-              ],
-            )
-          ],
-        ),
-      );
+                ),*/
+            ],
+          )
+        ],
+      ),
+    );
+  }
 
   Widget _headerMonitoringBuild() => Container(
         margin: const EdgeInsets.symmetric(vertical: 10),

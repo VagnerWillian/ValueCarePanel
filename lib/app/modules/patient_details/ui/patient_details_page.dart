@@ -34,9 +34,9 @@ class PatientDetailsPageState extends ModularState<PatientDetailsPage, PatientDe
   @override
   void initState() {
     store.getPatientInfoDetails(onError: onError, idUserPatient: widget.idUserPatient, idPatient: widget.idPatient);
-    SchedulerBinding.instance!.addPostFrameCallback((_) {
+   /* SchedulerBinding.instance!.addPostFrameCallback((_) {
       Modular.get<HistoryChatStore>().open(idPatient: widget.idPatient, isFullHeight: true);
-    });
+    });*/
     super.initState();
   }
 

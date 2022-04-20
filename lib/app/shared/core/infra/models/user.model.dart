@@ -56,7 +56,7 @@ class UserModel implements UserEntity {
     name = json['nome'];
     userActive = json['ativo'];
     levelAccess = json['nivel'];
-    picture = json['foto'];
+    picture = "";
     phone = json['telefone'];
     email = json['email'];
     token = json['token'] ?? '';

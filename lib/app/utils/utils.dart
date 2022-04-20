@@ -31,6 +31,7 @@ const String EMAIL_REMEMBER = "EMAIL_REMEMBER";
 const String azureCode = "C5EwLNUjH3yItLs6PPuRH4RTVCLbiO9HEiIS4VdORxL8JWY/OatFZQ==";
 const String baseUrl = "https://poscovidapp-admin.azurewebsites.net/api";
 const String getMonitoringEP = "/Monitoramento?code=$azureCode";
+const String getDashboardEP = "/Dashboard?code=$azureCode";
 const String getUserEP = "/Operador?code=$azureCode";
 const String postUserEP = "/Operador?code=$azureCode";
 const String getUsersEP = "/Operadores?code=$azureCode";

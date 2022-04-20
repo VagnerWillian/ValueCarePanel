@@ -41,7 +41,7 @@ class SymptomReportedCard extends StatelessWidget {
               },
             ),
           ),
-          Container(
+          /*Container(
             height: 50,
             margin: const EdgeInsets.all(10),
             child: OutlinedButton(
@@ -52,7 +52,7 @@ class SymptomReportedCard extends StatelessWidget {
               ),
               child: Text("Ver Analytics", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 12, color: primaryColor)),
             ),
-          )
+          )*/
         ],
       ),
     );

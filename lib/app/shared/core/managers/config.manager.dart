@@ -22,9 +22,6 @@ class ConfigManager {
 
   Future initialize()async{
     await loadConfigOfLocalData();
-    if(tokenUserLogged.isNotEmpty){
-      await remoteConfigOfRemoteData();
-    }
   }
 
   Future loadConfigOfLocalData() async {

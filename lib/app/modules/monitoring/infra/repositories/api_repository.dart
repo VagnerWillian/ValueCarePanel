@@ -42,12 +42,12 @@ class ApiMonitoringRepository implements MonitoringRepository{
   Future<Either<MonitoringError, bool>> updateMonitoringItem({required MonitoringDataEntity monitoringDataEntity}) async{
     try{
       Map<String, dynamic> data = {
-        "usuarioPacienteId": "6Dx7dtIHPEYeVcGuBwVp9FBQyYX2",
-        "PacienteId": "zaxOATwkVGx6QZabswmF",
+        "usuarioPacienteId": monitoringDataEntity.idUserPatient,
+        "PacienteId": monitoringDataEntity.idUserPatient,
         "confirmado": monitoringDataEntity.confirm,
         "classificacaoId":monitoringDataEntity.classificationId,
         "especialidadeId":monitoringDataEntity.specialtyId,
-        "dataAgendamento":monitoringDataEntity.appointmentDateInDateTime.toString()
+        "dataAgendamento":monitoringDataEntity.appointmentDateInDateTime
       };
       var response = await _customDio.client.post(postMonitoringUpdateEP, data: data);
       return const Right(true);

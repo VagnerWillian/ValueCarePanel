@@ -78,7 +78,7 @@ class NewCasesCard extends StatelessWidget {
                           backgroundColor: MaterialStateProperty.all(primaryColor)),
                       child: Text("Monitoramento", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14, color: Colors.white))),
                 ),
-                const SizedBox(width: 20),
+                /*const SizedBox(width: 20),
                 SizedBox(
                   width: 150,
                   height: 40,
@@ -88,7 +88,7 @@ class NewCasesCard extends StatelessWidget {
                           shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))),
                           backgroundColor: MaterialStateProperty.all(Colors.white)),
                       child: Text("Agendamentos", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14, color: Colors.grey))),
-                ),
+                ),*/
               ],
             )
           ],

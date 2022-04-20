@@ -137,7 +137,7 @@ class _LeftMenuState extends State<LeftMenu> {
                 )).toList(),
               ),
             ),
-            const SizedBox(height: 50,),
+            /*const SizedBox(height: 50,),
             !isExpanded?Container():Column(
               children: [
                 Center(
@@ -175,7 +175,7 @@ class _LeftMenuState extends State<LeftMenu> {
                 const SizedBox(height: 20),
                 Text("Value Care - Pós-Covid Dashboard", style: GoogleFonts.cairo(color: Colors.grey, fontSize: 12), textAlign: TextAlign.center,)
               ],
-            ),
+            ),*/
           ],
         ),
       ),

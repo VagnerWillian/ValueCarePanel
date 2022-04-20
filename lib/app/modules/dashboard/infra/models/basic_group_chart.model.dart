@@ -9,7 +9,7 @@ class BasicGroupChartData<T> implements BasicGroupChartDataEntity{
   BasicGroupChartData();
 
   BasicGroupChartData.fromJson(Map<String, dynamic> json){
-    values = (json['valores'] as List).map((e) {
+    values = (json['classificacoes'] as List).map((e) {
       return ClassificationValueChartData.fromJson(e);
     }).toList();
   }

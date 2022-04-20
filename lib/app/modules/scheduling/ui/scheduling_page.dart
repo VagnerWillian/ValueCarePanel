@@ -158,7 +158,7 @@ class SchedulingPageState extends State<SchedulingPage> {
               ),
             ],
           )),
-      Observer(
+      /*Observer(
         builder: (_) => GradientButton(
           height: 55,
           onPressed: generateReportDoc(),
@@ -184,7 +184,7 @@ class SchedulingPageState extends State<SchedulingPage> {
             ],
           ),
         ),
-      )
+      )*/
     ],
   );
 

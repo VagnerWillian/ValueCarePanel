@@ -25,8 +25,8 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
 
   @override
   void initState() {
-    SchedulerBinding.instance!.addPostFrameCallback((_) {
-      store.loadUser(onError: onError);
+    SchedulerBinding.instance!.addPostFrameCallback((_) async{
+      await store.loadUser(onError: onError);
     });
     super.initState();
   }
@@ -45,11 +45,11 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                   MenuLeftItem(assetIcon: 'assets/images/menu/inicio.svg', label: "Ínicio", badgeNum: 0, route: DASHBOARD_ROUTE),
                   MenuLeftItem(assetIcon: 'assets/images/menu/monitoramento.svg', label: "Monitoramento", badgeNum: 17, route: MONITORING_ROUTE),
                   // MenuLeftItem(assetIcon: 'assets/images/menu/agendamento.svg', label: "Agendamento", badgeNum: 0, route: SCHEDULING_ROUTE),
-                  MenuLeftItem(assetIcon: 'assets/images/menu/pacientes.svg', label: "Pacientes", badgeNum: 0, route: PATIENTS_ROUTE),
-                  MenuLeftItem(assetIcon: 'assets/images/menu/notificacoes.svg', label: "Notificações", badgeNum: 0, route: '#'),
-                  MenuLeftItem(assetIcon: 'assets/images/menu/analytics.svg', label: "Analytics", badgeNum: 0, route: ANALYTICS_ROUTE),
+                  // MenuLeftItem(assetIcon: 'assets/images/menu/pacientes.svg', label: "Pacientes", badgeNum: 0, route: PATIENTS_ROUTE),
+                  // MenuLeftItem(assetIcon: 'assets/images/menu/notificacoes.svg', label: "Notificações", badgeNum: 0, route: '#'),
+                  // MenuLeftItem(assetIcon: 'assets/images/menu/analytics.svg', label: "Analytics", badgeNum: 0, route: ANALYTICS_ROUTE),
                   MenuLeftItem(assetIcon: 'assets/images/menu/pacientes.svg', label: "Usuários", badgeNum: 0, route: USERS_ROUTE),
-                  MenuLeftItem(assetIcon: 'assets/images/menu/configuracoes.svg', label: "Configurações", badgeNum: 0, route: CONFIG_ROUTE),
+                  // MenuLeftItem(assetIcon: 'assets/images/menu/configuracoes.svg', label: "Configurações", badgeNum: 0, route: CONFIG_ROUTE),
                 ]),
               ),
               Expanded(
@@ -60,6 +60,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                     Observer(
                       builder: (_) => Header(
                         userEntity: store.userLogged,
+                        signOut: store.signOut,
                       ),
                     ),
                     Observer(builder: (_) => Expanded(child: store.userLogged == null ? Container() : const RouterOutlet()))

@@ -49,11 +49,6 @@ class _NewUserDialogState extends ModularState<NewUserDialog, NewUserDialogStore
     _emailEditingController = TextEditingController();
     _phoneEditingController = MaskedTextController(mask: '(00) 0 00000000');
 
-    if(kDebugMode){
-      _nameEditingController.text = "Rodrigo Zimmer";
-      _emailEditingController.text = "rodrigo@valuecare.com.br";
-      _phoneEditingController.text = "11981458755";
-    }
     super.initState();
   }
 
@@ -222,7 +217,7 @@ class _NewUserDialogState extends ModularState<NewUserDialog, NewUserDialogStore
                                 elevation: MaterialStateProperty.all(0),
                                 backgroundColor: MaterialStateProperty.all(redColor),
                                 shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))),
-                            onPressed: () {},
+                            onPressed: ()=>Navigator.pop(context),
                             icon: const Icon(
                               FontAwesomeIcons.times,
                               size: 18,

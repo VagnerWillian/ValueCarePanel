@@ -38,14 +38,14 @@ class GroupsChart implements ComparisonGroupChartDataEntity{
   GroupsChart();
 
   GroupsChart.fromJson(Map<String, dynamic> json){
-    activeUsers = BasicValueChartData.fromJson(json['pacientes_ativos']);
-    reportedSymptoms = BasicValueChartData.fromJson(json['sintomas_reportados']);
-    reportedSymptomsComparison = SymptomsGroupChartData.fromJson(json['sintomas_reportados_lista']);
-    appointments = BasicValueChartData.fromJson(json['consultas_periodo']);
-    newUsers = BasicValueChartData.fromJson(json['novos_usuarios']);
-    newCases = BasicValueChartData.fromJson(json['novos_casos_pendentes']);
-    weekGroup = WeekGroupChartData.fromJson(json['agendadas_ultima_semana_periodo']);
-    classifications = BasicGroupChartData.fromJson(json['classificacoes']);
+    activeUsers = BasicValueChartData.fromJson(json['pacientesAtivos']);
+    reportedSymptoms = BasicValueChartData.fromJson(json['sintomasReportados']);
+    reportedSymptomsComparison = SymptomsGroupChartData.fromJson(json['sintomasReportadosLista']);
+    appointments = BasicValueChartData.fromJson(json['consultasPeriodo']);
+    newUsers = BasicValueChartData.fromJson(json['novosUsuarios']);
+    newCases = BasicValueChartData.fromJson(json['novosCasosPendentes']);
+    weekGroup = WeekGroupChartData.fromJson(json['agendadasUltimaSemanaPeriodo']);
+    classifications = BasicGroupChartData.fromJson(json);
   }
 
 }

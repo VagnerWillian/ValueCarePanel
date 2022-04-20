@@ -54,7 +54,7 @@ mixin _$HomeStore on HomeStoreBase, Store {
   }
 
   @override
-  dynamic setUserLogged(UserEntity value) {
+  dynamic setUserLogged(UserEntity? value) {
     final _$actionInfo = _$HomeStoreBaseActionController.startAction(
         name: 'HomeStoreBase.setUserLogged');
     try {

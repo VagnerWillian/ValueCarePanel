@@ -51,6 +51,8 @@ class AuthGuard extends RouteGuard {
     await _configManager.initialize();
     if(_configManager.tokenUserLogged.isEmpty){
       Modular.to.pushNamedAndRemoveUntil(LOGIN_ROUTE, (route) => false);
+    }else{
+        await _configManager.remoteConfigOfRemoteData();
     }
     return true;
   }

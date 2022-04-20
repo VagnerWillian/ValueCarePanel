@@ -31,26 +31,27 @@ abstract class _DashboardStoreBase with Store {
   final DownloadArchiveUseCase downloadArchive;
 
   // Stores
-  final HomeStore homeStore = Modular.get();
+  final HomeStore homeStore;
 
   //OTHERS
   final DataPagerController dataPagerController = DataPagerController();
   late MonitoringDataSource monitoringDataSource;
 
   _DashboardStoreBase(
-      {required this.getComparisonGroupDataUseCase,
+      {
+        required this.homeStore,
+        required this.getComparisonGroupDataUseCase,
         required this.fetchMonitoringDataFromIntervalDatesUseCase,
         required this.updateMonitoringItemUseCase,
         required this.fetchReportDocSrc,
         required this.downloadArchive}){
-    monitoringDataSource = MonitoringDataSource(updateMonitoringItem: updateMonitoringItem);
-    preDatesLogic();
+    // monitoringDataSource = MonitoringDataSource(updateMonitoringItem: updateMonitoringItem);
   }
 
   // OSERVABLES
 
   @observable
-  bool loadingAnalytics = false;
+  bool loadingAnalytics = true;
 
   @observable
   bool loadingMonitoringItems = false;
@@ -183,6 +184,7 @@ abstract class _DashboardStoreBase with Store {
     final DateSelector anotherDate = DateSelector(label: "Selecionar período...", startDate: null, endDate: null, dynamic: true);
 
     final List<DateSelector> dates = [todaySelector, thisWeekSelector, thisMonthSelector, previousMonthSelector, anotherDate];
+    preDates.clear();
     dates.map((v) => addPreDates(v)).toList();
   }
 }

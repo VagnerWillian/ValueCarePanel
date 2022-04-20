@@ -50,7 +50,6 @@ abstract class _MonitoringStoreBase with Store {
   }){
     monitoringDataSource = MonitoringDataSource(updateMonitoringItem: updateMonitoringItem, openHistoryFloating: openHistoryFloating, openPatientDetails: openPatientDetails, specialties: configManager.specialties, classifications: configManager.classifications);
     preDatesLogic();
-
   }
 
   //OTHERS
@@ -129,7 +128,7 @@ abstract class _MonitoringStoreBase with Store {
   }
 
   void openPatientDetails(String idUserPatient, String idPatient)async{
-    Modular.to.pushNamed(PATIENT_DETAILS_ROUTE+idPatient+"/"+idUserPatient);
+    Modular.to.pushNamed(PATIENT_DETAILS_ROUTE+idUserPatient+"/"+idPatient);
   }
 
   /////////////////////////// SEARCH ///////////////////////////////////////////////////

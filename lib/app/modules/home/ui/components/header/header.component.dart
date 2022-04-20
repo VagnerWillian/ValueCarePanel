@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:badges/badges.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +12,8 @@ import 'package:value_panel/app/utils/utils.dart';
 
 class Header extends StatelessWidget {
   final UserEntity? userEntity;
-  const Header({required this.userEntity, Key? key}) : super(key: key);
+  final Function signOut;
+  const Header({required this.userEntity, required this.signOut, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +74,7 @@ class Header extends StatelessWidget {
                   showBadge: false,
                     badgeColor: gradientColors[0],
                     padding: const EdgeInsets.all(5),
-                    badgeContent: Text("14",
+                    badgeContent: Text("0",
                         style: GoogleFonts.poppins(textStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 10))),
                     child: SvgPicture.asset(
                       'assets/images/menu/monitoramento.svg',
@@ -141,6 +144,7 @@ class Header extends StatelessWidget {
                   height: 55,
                   width: 55,
                   onLoading: Container(),
+                  onError: Container(color: Colors.grey.shade200,),
                   imageCache: CachedNetworkImageProvider(userEntity!.picture),
                   image: userEntity!.picture,
                 ),
@@ -159,6 +163,14 @@ class Header extends StatelessWidget {
                       userEntity!.levelAccess,
                       style: GoogleFonts.cairo(textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: Colors.grey[400])),
                     ),
+                    TextButton.icon(
+                        onPressed: ()=>signOut(),
+                        style: ButtonStyle(
+                          padding: MaterialStateProperty.all(EdgeInsets.zero)
+                        ),
+                        label: Text("Sair", style: GoogleFonts.cairo(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 14, decoration: TextDecoration.underline)),
+                        icon: const Icon(LineAwesomeIcons.sign_out, color: Colors.red, size: 16),
+                    )
                   ],
                 ),
               )
