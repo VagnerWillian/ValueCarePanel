@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:html' as html;
 
 import 'package:either_dart/either.dart';
@@ -50,6 +51,10 @@ abstract class _MonitoringStoreBase with Store {
   }){
     monitoringDataSource = MonitoringDataSource(updateMonitoringItem: updateMonitoringItem, openHistoryFloating: openHistoryFloating, openPatientDetails: openPatientDetails, specialties: configManager.specialties, classifications: configManager.classifications);
     preDatesLogic();
+    Timer.periodic(const Duration(seconds: 30), (timer) {
+      onChangedSelectorDate(dateSelector!, (){});
+      print("Lista de Monitoramento Atualizado.");
+    });
   }
 
   //OTHERS
@@ -91,7 +96,9 @@ abstract class _MonitoringStoreBase with Store {
   // FUNCTIONS AND VOIDS
   Future onChangedSelectorDate(DateSelector dateSelector, Function onError) async {
     setDateSelector(dateSelector);
-    setLoadingMonitoringItems(true);
+    if(monitoringDataSource.monitoringItems.isEmpty) {
+      setLoadingMonitoringItems(true);
+    }
     Either<MonitoringError, List<MonitoringDataEntity>> response = await fetchMonitoringDataFromIntervalDatesUseCase(
       startDate: dateSelector.startDate!,
       endDate: dateSelector.endDate!

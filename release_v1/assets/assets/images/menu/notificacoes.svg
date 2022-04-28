@@ -1,0 +1,7 @@
+<svg id="notificacoes" xmlns="http://www.w3.org/2000/svg" width="73.923" height="73.923" viewBox="0 0 73.923 73.923">
+  <g id="bell_1" data-name="bell 1" transform="translate(0)">
+    <path id="bell_1_Background_Mask_" data-name="bell 1 (Background/Mask)" d="M0,0H73.923V73.923H0Z" fill="none"/>
+    <path id="Vector" d="M55.44,36.029V24.641a24.641,24.641,0,1,0-49.282,0V36.029L.515,44.493a3.083,3.083,0,0,0,2.563,4.789H58.52a3.083,3.083,0,0,0,2.563-4.789h0Z" transform="translate(6.163 6.16)" fill="#a5a5a5"/>
+    <path id="Vector-2" data-name="Vector" d="M19.463,6.663A12.3,12.3,0,0,0,23.84,0H0A12.3,12.3,0,0,0,4.377,6.663,12.3,12.3,0,0,0,11.92,9.24h0A12.3,12.3,0,0,0,19.463,6.663Z" transform="translate(25.041 58.522)" fill="#a5a5a5"/>
+  </g>
+</svg>

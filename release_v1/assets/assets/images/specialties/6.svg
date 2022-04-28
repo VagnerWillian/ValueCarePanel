@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="61.695" height="28.895" viewBox="0 0 61.695 28.895">
+  <g id="Orthopedics" transform="translate(1.5 1.5)">
+    <path id="Line_1" d="M303,537.494a6.706,6.706,0,0,1,6.975-6.4c-5.561,0-6.975-4.073-6.975-6.4A6.627,6.627,0,0,1,309.975,518a6.955,6.955,0,0,1,6.975,6.691l13.671-.368v12.8l-13.671.366a7,7,0,0,1-13.95,0Z" transform="translate(-271.926 -518)" fill="none" stroke="#8a2ce6" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    <path id="Line_2" d="M306.621,537.494a6.706,6.706,0,0,0-6.975-6.4c5.561,0,6.975-4.073,6.975-6.4A6.627,6.627,0,0,0,299.646,518a6.956,6.956,0,0,0-6.975,6.691L279,524.324v12.8l13.671.366a7,7,0,0,0,13.95,0Z" transform="translate(-279 -518)" fill="none" stroke="#8a2ce6" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  </g>
+</svg>
