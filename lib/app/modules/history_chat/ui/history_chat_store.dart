@@ -1,11 +1,11 @@
 import 'package:either_dart/either.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';
+import 'package:value_panel/app/app_store.dart';
 import 'package:value_panel/app/modules/history_chat/domain/entities/history_item.entity.dart';
 import 'package:value_panel/app/modules/history_chat/domain/usecases/get_all_history.usecase.dart';
 import 'package:value_panel/app/modules/history_chat/errors/history.errors.dart';
 import 'package:value_panel/app/modules/history_chat/infra/models/history_item.model.dart';
-import 'package:value_panel/app/modules/home/ui/home_store.dart';
 
 part 'history_chat_store.g.dart';
 
@@ -20,13 +20,13 @@ abstract class _HistoryChatStoreBase with Store {
   late final ScrollController scrollController;
 
   //Store
-  final HomeStore _homeStore;
+  final AppStore _appStore;
 
   //Keys
   final formKey = GlobalKey<FormState>();
 
 
-  _HistoryChatStoreBase(this._getAllHistoryUseCase, this._homeStore){
+  _HistoryChatStoreBase(this._getAllHistoryUseCase, this._appStore){
    textEditingController = TextEditingController();
    scrollController = ScrollController();
   }
@@ -119,8 +119,8 @@ abstract class _HistoryChatStoreBase with Store {
       setLoadingSend(true);
       HistoryItemEntity newHistory = HistoryItem.send(
           data: DateTime.now().toString(),
-          name: _homeStore.userLogged!.name,
-          photo: _homeStore.userLogged!.picture,
+          name: _appStore.loggedUser!.name,
+          photo: _appStore.loggedUser!.picture,
           text: textEditingController.text);
       _addItem(newHistory);
       scrollController.animateTo(-scrollController.offset, duration: const Duration(seconds: 1), curve: Curves.bounceIn);

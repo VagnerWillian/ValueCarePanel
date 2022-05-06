@@ -18,8 +18,10 @@ class ApiDashboardRepository implements DashboardRepository{
   Future<Either<DashboardError, ComparisonGroupChartDataEntity>> getAllComparisonGroupChartData({required DateTime startDate, required DateTime endDate}) async{
     // try{
       Map<String, dynamic> data = {
-        "dataInicial":startDate.toString(),
-        "dataFinal":endDate.toString()
+        // "dataInicial":startDate.toIso8601String().substring(0, endDate.toIso8601String().length-4),
+        // "dataFinal":endDate.toIso8601String().substring(0, endDate.toIso8601String().length-4)
+        "dataInicial":"2022-04-04T00:00:00",
+        "dataFinal":"2022-05-04T00:00:00"
       };
       var response = await _customDio.client.post(getDashboardEP, data: data);
       GroupsChart comparisonGroupChartData = GroupsChart.fromJson(response.data['result']);

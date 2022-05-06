@@ -56,7 +56,7 @@ class ProgressCard extends StatelessWidget {
             text: TextSpan(
                 children: <TextSpan>[
                   TextSpan(text: comparation,
-                    style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14, color: comparation.contains("+")?greenColor:redColor),
+                    style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14, color: getColor()),
                   ),
                   TextSpan(text: ' relativo ao periodo anterior',
                     style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 14, color: Colors.grey.shade500),
@@ -66,5 +66,14 @@ class ProgressCard extends StatelessWidget {
           )
       ],),
     );
+  }
+
+  Color getColor(){
+    if(comparation.contains("+")){
+      return greenColor;
+    }else if(comparation.contains("-")){
+      return redColor;
+    }
+    return Colors.grey.shade500;
   }
 }

@@ -40,7 +40,7 @@ class VChart extends StatelessWidget {
                   children: [
                     Text(value.toString(), style: GoogleFonts.cairo(fontWeight: FontWeight.w900, fontSize: 25),),
                     const SizedBox(width: 10,),
-                    Container(
+                    !comparation.contains("+")&&!comparation.contains("-")?Container():Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                       child: Stack(
                         children: [

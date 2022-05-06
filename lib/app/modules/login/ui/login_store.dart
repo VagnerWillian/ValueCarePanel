@@ -38,8 +38,8 @@ abstract class _LoginStoreBase with Store {
     passEditingController = TextEditingController();
     btnController = RoundedLoadingButtonController();
     if(kDebugMode){
-      // emailEditingController.text = "rodrigo@valuecare.com.br";
-      // passEditingController.text = "value@2022";
+      emailEditingController.text = "rodrigo@valuecare.com.br";
+      passEditingController.text = "value@2022";
     }
     initialize();
   }
@@ -85,8 +85,9 @@ abstract class _LoginStoreBase with Store {
         return failure;
       }, (UserEntity user) async{
         btnController.success();
-        await Future.delayed(const Duration(seconds: 1));
         await saveTokenAndOpenMain(user, onError);
+        await Future.delayed(const Duration(seconds: 1));
+        btnController.reset();
         return user;
       });
     }else{

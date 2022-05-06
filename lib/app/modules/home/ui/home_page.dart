@@ -24,14 +24,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends ModularState<HomePage, HomeStore> {
 
   @override
-  void initState() {
-    SchedulerBinding.instance!.addPostFrameCallback((_) async{
-      await store.loadUser(onError: onError);
-    });
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
@@ -42,7 +34,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             children: [
               Observer(
                 builder: (_) => LeftMenu(actuallyRoute: controller.actuallyRoute, navigateTo: controller.navigateTo, menus: [
-                  MenuLeftItem(assetIcon: 'assets/images/menu/inicio.svg', label: "Ínicio", badgeNum: 0, route: DASHBOARD_ROUTE),
+                  MenuLeftItem(assetIcon: 'assets/images/menu/inicio.svg', label: "Dashboard", badgeNum: 0, route: DASHBOARD_ROUTE),
                   MenuLeftItem(assetIcon: 'assets/images/menu/monitoramento.svg', label: "Monitoramento", badgeNum: 17, route: MONITORING_ROUTE),
                   // MenuLeftItem(assetIcon: 'assets/images/menu/agendamento.svg', label: "Agendamento", badgeNum: 0, route: SCHEDULING_ROUTE),
                   // MenuLeftItem(assetIcon: 'assets/images/menu/pacientes.svg', label: "Pacientes", badgeNum: 0, route: PATIENTS_ROUTE),
@@ -59,11 +51,11 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                   children: [
                     Observer(
                       builder: (_) => Header(
-                        userEntity: store.userLogged,
-                        signOut: store.signOut,
+                        userEntity: store.appStore.loggedUser,
+                        signOut: store.appStore.signOut,
                       ),
                     ),
-                    Observer(builder: (_) => Expanded(child: store.userLogged == null ? Container() : const RouterOutlet()))
+                    Observer(builder: (_) => Expanded(child: store.appStore.loggedUser == null ? Container() : const RouterOutlet()))
                   ],
                 ),
               ),

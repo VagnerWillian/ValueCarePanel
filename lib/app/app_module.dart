@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:value_panel/app/modules/home/home_module.dart';
 import 'package:value_panel/app/modules/login/login_module.dart';
+import 'package:value_panel/app/modules/splash/splash_module.dart';
 import 'package:value_panel/app/shared/core/domain/repositories/repository.dart';
 import 'package:value_panel/app/shared/core/domain/services/get_classifications.service.dart';
 import 'package:value_panel/app/shared/core/domain/services/get_specialties.service.dart';
@@ -14,11 +15,14 @@ import 'package:value_panel/app/shared/core/preferences/local_preferences.dart';
 import 'package:value_panel/app/shared/custom_dio/custom.dio.dart';
 import 'package:value_panel/app/utils/utils.dart';
 
-import 'modules/patients/patients_module.dart';
+import 'app_store.dart';
 
 class AppModule extends Module {
   @override
   final List<Bind> binds = [
+    Bind.lazySingleton((i) => AppStore(
+      i.get<ConfigManager>()
+    )),
     Bind.lazySingleton((i) => CustomDio(i.get<Dio>())),
     Bind.lazySingleton((i) => ConfigManager(i.get<LocalPreferences>(), i.get<GetClassificationsUseCase>(), i.get<GetSpecialtiesUseCase>())),
     Bind.lazySingleton((i) => LocalPreferences()),
@@ -37,22 +41,20 @@ class AppModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ModuleRoute(LOGIN_ROUTE, module: LoginModule()),
-    ModuleRoute(Modular.initialRoute, module: HomeModule(), guards: [AuthGuard()]),
+    ModuleRoute(SPLASH_ROUTE, module: SplashModule()),
+    ModuleRoute(Modular.initialRoute, module: HomeModule(), guards: [SplashGuard()]),
   ];
 
 }
 
-class AuthGuard extends RouteGuard {
-  AuthGuard() : super(redirectTo: LOGIN_ROUTE);
+class SplashGuard extends RouteGuard {
+  SplashGuard() : super(redirectTo: SPLASH_ROUTE);
 
   @override
   Future<bool> canActivate(String path, ModularRoute route) async{
-    final ConfigManager _configManager = Modular.get();
-    await _configManager.initialize();
-    if(_configManager.tokenUserLogged.isEmpty){
-      Modular.to.pushNamedAndRemoveUntil(LOGIN_ROUTE, (route) => false);
-    }else{
-        await _configManager.remoteConfigOfRemoteData();
+    AppStore _appStore = Modular.get<AppStore>();
+    if(_appStore.loggedUser==null&&path!=LOGIN_ROUTE){
+      Modular.to.pushNamedAndRemoveUntil(SPLASH_ROUTE, (route) => false);
     }
     return true;
   }

@@ -16,7 +16,7 @@ class AssetDashBoardRepository implements DashboardRepository{
     await Future.delayed(const Duration(seconds: 2));
     String data = await rootBundle.loadString('assets/static_jsons/dashboard_today.json');
     var jsonResult = json.decode(data);
-    GroupsChart comparisonGroupChartData = GroupsChart.fromJson(jsonResult);
+    GroupsChart comparisonGroupChartData = GroupsChart.fromJson(jsonResult['result']);
     return Right(comparisonGroupChartData);
   }
 

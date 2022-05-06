@@ -83,17 +83,17 @@ class LineChartVertical extends StatelessWidget {
                         children: [
                           Text(weekGroup.quantity.toString(), style: GoogleFonts.cairo(fontWeight: FontWeight.w900, fontSize: 35)),
                           const SizedBox(width: 15),
-                          Icon(FontAwesomeIcons.solidArrowAltCircleUp, color: greenColor, size: 30,)
+                          Icon(weekGroup.comparison.contains("+")?FontAwesomeIcons.solidArrowAltCircleUp:FontAwesomeIcons.solidArrowAltCircleDown, color: getColor(), size: 30,)
                         ],
                       ),
                       Text("Total de consultas", style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14)),
-                      RichText(
+                      !weekGroup.comparison.contains("+")&&!weekGroup.comparison.contains("-")?Container():RichText(
                         text: TextSpan(
                             children: <TextSpan>[
                               TextSpan(text: weekGroup.comparison,
-                                  style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14, color: greenColor),
+                                  style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14, color: getColor()),
                               ),
-                              TextSpan(text: ' de aumento',
+                              TextSpan(text: ' de ${getTextComparison()}',
                                 style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14, color: Colors.grey.shade500),
                               )
                             ]
@@ -108,5 +108,23 @@ class LineChartVertical extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Color getColor(){
+    if(weekGroup.comparison.contains("+")){
+      return greenColor;
+    }else if(weekGroup.comparison.contains("-")){
+      return redColor;
+    }
+    return Colors.grey.shade500;
+  }
+
+  String getTextComparison(){
+    if(weekGroup.comparison.contains("+")){
+      return "aumento";
+    }else if(weekGroup.comparison.contains("-")){
+      return "redução";
+    }
+    return "";
   }
 }

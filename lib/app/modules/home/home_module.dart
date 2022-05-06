@@ -1,9 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:value_panel/app/app_store.dart';
 import 'package:value_panel/app/modules/configurations/configurations_module.dart';
 import 'package:value_panel/app/modules/dashboard/dashboard_module.dart';
-import 'package:value_panel/app/modules/home/domain/repositories/home.repository.dart';
-import 'package:value_panel/app/modules/home/domain/usecases/get_user_token.usecase.dart';
-import 'package:value_panel/app/modules/home/infra/repositories/json_generator.repository.dart';
 import 'package:value_panel/app/modules/home/ui/home_page.dart';
 import 'package:value_panel/app/modules/home/ui/home_store.dart';
 import 'package:value_panel/app/modules/monitoring/monitoring_module.dart';
@@ -11,27 +9,18 @@ import 'package:value_panel/app/modules/patients/patients_module.dart';
 import 'package:value_panel/app/modules/scheduling/scheduling_module.dart';
 import 'package:value_panel/app/modules/users/users_module.dart';
 import 'package:value_panel/app/shared/core/managers/config.manager.dart';
-import 'package:value_panel/app/shared/custom_dio/custom.dio.dart';
 import 'package:value_panel/app/utils/utils.dart';
 
 import '../patient_details/patients_details_module.dart';
-import 'infra/repositories/api.repository.dart';
 
 class HomeModule extends Module {
   @override
   final List<Bind> binds = [
      //Stores
      Bind.lazySingleton((i) => HomeStore(
-       i.get<GetUseWithTokenUseCase>(),
-       i.get<ConfigManager>()
+       i.get<ConfigManager>(),
+       i.get<AppStore>()
      )),
-
-    //UseCases
-    Bind.lazySingleton((i) => GetUseWithTokenUseCase(i.get<HomeRepository>())),
-
-    //Repositories
-    // Bind.lazySingleton((i) => JsonGeneratorHomeRepository(i.get<CustomDio>())),
-    Bind.lazySingleton((i) => ApiHomeRepository(i.get<CustomDio>())),
  ];
 
  @override

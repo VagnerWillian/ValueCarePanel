@@ -33,10 +33,10 @@ class SimpleCard extends StatelessWidget {
             children: [
               Text(value.toString(), style: GoogleFonts.cairo(fontWeight: FontWeight.w900, fontSize: 25),),
               const SizedBox(width: 10,),
-              Container(
+              !comparation.contains("+")&&!comparation.contains("-")?Container():Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 decoration: BoxDecoration(
-                    color: comparation.contains("+")?greenColor:Colors.redAccent,
+                    color: comparation.contains("+")?greenColor:redColor,
                     borderRadius: BorderRadius.circular(10)
                 ),
                 child: Row(

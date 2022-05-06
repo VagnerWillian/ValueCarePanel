@@ -31,10 +31,8 @@ class ConfigManager {
   }
 
   Future remoteConfigOfRemoteData()async{
-    if(classifications.isEmpty||specialties.isEmpty){
-      classifications = await _getClassificationsUseCase();
-      specialties = await _getSpecialtiesUseCase();
-    }
+    classifications = await _getClassificationsUseCase();
+    specialties = await _getSpecialtiesUseCase();
   }
 
   // CONFIGURAÇÕES PRINCIPAIS

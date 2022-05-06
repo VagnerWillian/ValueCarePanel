@@ -10,6 +10,7 @@ import '../shared/core/domain/entities/classification.entity.dart';
 import '../shared/core/domain/entities/level.entity.dart';
 
 //////////////// ROUTES ////////////////////////////
+const String SPLASH_ROUTE = "/carregando/";
 const String LOGIN_ROUTE = "/login/";
 const String DASHBOARD_ROUTE = "/dashboard/";
 const String MONITORING_ROUTE = "/monitoramento/";

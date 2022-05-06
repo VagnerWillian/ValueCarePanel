@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:value_panel/app/app_store.dart';
 import 'package:value_panel/app/modules/history_chat/domain/repositories/repository.dart';
 import 'package:value_panel/app/modules/history_chat/domain/services/get_all_history.service.dart';
 import 'package:value_panel/app/modules/history_chat/domain/usecases/get_all_history.usecase.dart';
 import 'package:value_panel/app/modules/history_chat/infra/repositories/asset.repository.dart';
 import 'package:value_panel/app/modules/history_chat/ui/history_chat.dart';
 import 'package:value_panel/app/modules/history_chat/ui/history_chat_store.dart';
-import 'package:value_panel/app/modules/home/ui/home_store.dart';
 
 class HistoryChatModule extends WidgetModule {
 
@@ -16,7 +16,7 @@ class HistoryChatModule extends WidgetModule {
     //Stories
     Bind.lazySingleton((i) => HistoryChatStore(
         i.get<GetAllHistoryUseCase>(),
-        i.get<HomeStore>()
+        i.get<AppStore>()
     )),
 
     //Usecases

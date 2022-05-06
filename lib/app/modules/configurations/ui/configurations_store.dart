@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:mobx/mobx.dart';
+import 'package:value_panel/app/app_store.dart';
 import 'package:value_panel/app/modules/home/ui/home_store.dart';
 
 part 'configurations_store.g.dart';
@@ -9,7 +10,7 @@ class ConfigurationsStore = _ConfigurationsStoreBase with _$ConfigurationsStore;
 abstract class _ConfigurationsStoreBase with Store {
 
   //Stores
-  HomeStore _homeStore;
+  final AppStore _appStore;
 
   //Controllers
   late final TextEditingController nameEditingController;
@@ -38,21 +39,21 @@ abstract class _ConfigurationsStoreBase with Store {
   @observable
   String image = "";
 
-  _ConfigurationsStoreBase(this._homeStore){
+  _ConfigurationsStoreBase(this._appStore){
     nameEditingController = TextEditingController();
     passEditingController = TextEditingController();
     emailEditingController = TextEditingController();
     phoneEditingController = MaskedTextController(mask: '(00) 0 00000000');
 
-    if(_homeStore.userLogged!=null){
-      nameEditingController.text = _homeStore.userLogged!.name;
-      emailEditingController.text = _homeStore.userLogged!.email;
-      phoneEditingController.text = _homeStore.userLogged!.phone;
-      image = _homeStore.userLogged!.picture;
-      desktopNotifies = _homeStore.userLogged!.desktopNotifies;
-      smsNotifies = _homeStore.userLogged!.smsNotifies;
-      emailNotifies = _homeStore.userLogged!.emailNotifies;
-      pushNotifies = _homeStore.userLogged!.pushNotifies;
+    if(_appStore.loggedUser!=null){
+      nameEditingController.text = _appStore.loggedUser!.name;
+      emailEditingController.text = _appStore.loggedUser!.email;
+      phoneEditingController.text = _appStore.loggedUser!.phone;
+      image = _appStore.loggedUser!.picture;
+      desktopNotifies = _appStore.loggedUser!.desktopNotifies;
+      smsNotifies = _appStore.loggedUser!.smsNotifies;
+      emailNotifies = _appStore.loggedUser!.emailNotifies;
+      pushNotifies = _appStore.loggedUser!.pushNotifies;
     }
 
   }

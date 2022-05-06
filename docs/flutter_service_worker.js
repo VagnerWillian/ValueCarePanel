@@ -60,7 +60,7 @@ const RESOURCES = {
 "assets/assets/images/symptoms/7.svg": "da97f41a701ffd0a9352e066ace5b7c2",
 "assets/assets/images/symptoms/8.svg": "85af72aca7435dffd8a12fc053d0b2dd",
 "assets/assets/images/symptoms/9.svg": "a4489e83f1f8ec8946b2f208d258e1c0",
-"assets/assets/static_jsons/dashboard_today.json": "61b8f7a7d2b36bbbe4fed84fa389e6b0",
+"assets/assets/static_jsons/dashboard_today.json": "a984d4bc93ff9f2321de30371ab51d0c",
 "assets/assets/static_jsons/history_items.json": "c55c40867a9ce8d3a445f97861153b76",
 "assets/assets/static_jsons/monitoring_today.json": "dced09ff4938a4235fa422a9a9c17197",
 "assets/assets/static_jsons/report_doc.json": "947498c807fd11f4e3eddc7414daa7e2",
@@ -83,9 +83,9 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "a566eab49480a63c396ef8b71108f6ed",
-"/": "a566eab49480a63c396ef8b71108f6ed",
-"main.dart.js": "0d2bc45b5ce6781f3125d537ef2a3a2f",
+"index.html": "c63a92562613f3d5129fde170251d971",
+"/": "c63a92562613f3d5129fde170251d971",
+"main.dart.js": "d9f960d3fe7f07851130bf92970e27a1",
 "manifest.json": "a6bf733c5ff7cd5775faad23095ee26a",
 "version.json": "03f5412e45d2df3d844a7cbea420b6f4"
 };
