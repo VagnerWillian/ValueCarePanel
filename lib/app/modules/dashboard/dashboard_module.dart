@@ -39,9 +39,9 @@ class DashboardModule extends Module {
     Bind.lazySingleton((i) => DownloadArchive()),
 
     // Repositories
-    // Bind.lazySingleton((i) => ApiDashboardRepository(i.get<CustomDio>())),
+    Bind.lazySingleton((i) => ApiDashboardRepository(i.get<CustomDio>())),
     // Bind.lazySingleton((i) => JsonGeneratorDashboardRepository(i.get<CustomDio>())),
-    Bind.lazySingleton((i) => AssetDashBoardRepository())
+    // Bind.lazySingleton((i) => AssetDashBoardRepository())
   ];
 
   @override

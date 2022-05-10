@@ -11,7 +11,6 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
 import 'package:value_panel/app/shared/core/infra/models/date_selector.model.dart';
 import 'package:value_panel/app/modules/monitoring/ui/monitoring_store.dart';
-import 'package:value_panel/app/shared/components/custom/gradient.button.dart';
 import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
 import 'package:value_panel/app/shared/components/dialogs/loading.dialog.dart';
 import 'package:value_panel/app/shared/components/dialogs/repository_error.dialog.dart';
@@ -295,7 +294,7 @@ class MonitoringPageState extends State<MonitoringPage> {
       }
     } else {
       store.preDates.replaceRange(store.preDates.length - 1, store.preDates.length, [DateSelector(label: "Selecionar período...", startDate: null, endDate: null, dynamic: true)]);
-      store.onChangedSelectorDate(v, onError);
+      store.onChangedSelectorDate(v, onError, autoUpdated: true);
     }
   }
 

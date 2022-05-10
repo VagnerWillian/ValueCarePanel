@@ -43,7 +43,7 @@ class ApiMonitoringRepository implements MonitoringRepository{
     try{
       Map<String, dynamic> data = {
         "usuarioPacienteId": monitoringDataEntity.idUserPatient,
-        "PacienteId": monitoringDataEntity.idUserPatient,
+        "pacienteId": monitoringDataEntity.idPatient,
         "confirmado": monitoringDataEntity.confirm,
         "classificacaoId":monitoringDataEntity.classificationId,
         "especialidadeId":monitoringDataEntity.specialtyId,

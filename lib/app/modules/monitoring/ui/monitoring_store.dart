@@ -94,9 +94,9 @@ abstract class _MonitoringStoreBase with Store {
   addPreDates(DateSelector value)=>preDates.add(value);
 
   // FUNCTIONS AND VOIDS
-  Future onChangedSelectorDate(DateSelector dateSelector, Function onError) async {
+  Future onChangedSelectorDate(DateSelector dateSelector, Function onError, {bool autoUpdated = false}) async {
     setDateSelector(dateSelector);
-    if(monitoringDataSource.monitoringItems.isEmpty) {
+    if(autoUpdated) {
       setLoadingMonitoringItems(true);
     }
     Either<MonitoringError, List<MonitoringDataEntity>> response = await fetchMonitoringDataFromIntervalDatesUseCase(
