@@ -45,11 +45,12 @@ class InfoSession extends StatelessWidget {
                     SizedBox(
                       width: 100,
                       height: 100,
-                      child: ImageNetwork(
+                      child: patientEntity.photo.isEmpty?Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.grey.shade200)):ImageNetwork(
                         borderRadius: BorderRadius.circular(10),
                         height: 100,
                         width: 100  ,
                         onLoading: Container(),
+                        onError: Container(color: Colors.grey),
                         imageCache: CachedNetworkImageProvider(patientEntity.photo),
                         image: patientEntity.photo,
                       ),

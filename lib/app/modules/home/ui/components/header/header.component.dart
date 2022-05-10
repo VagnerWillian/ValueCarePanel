@@ -112,8 +112,8 @@ class Header extends StatelessWidget {
                         height: 40,
                         width: 40,
                         onLoading: Container(),
-                        imageCache: const CachedNetworkImageProvider("http://uploaddeimagens.com.br/images/003/636/566/original/unnamed.png?1642545325"),
-                        image: "http://uploaddeimagens.com.br/images/003/636/566/original/unnamed.png?1642545325",
+                        imageCache: const CachedNetworkImageProvider("https://hospitalsaolucas.pucrs.br/static/images/logo-facebook.png"),
+                        image: "https://hospitalsaolucas.pucrs.br/static/images/logo-facebook.png",
                       ),
                     ),
                     const SizedBox(

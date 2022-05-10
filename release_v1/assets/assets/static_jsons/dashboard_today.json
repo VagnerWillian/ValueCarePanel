@@ -1,227 +1,293 @@
 {
-  "pacientes_ativos": {
-    "valor": 67,
-    "comparacao": "-98.0%"
-  },
-  "sintomas_reportados": {
-    "valor": 10,
-    "comparacao": "+86.0%"
-  },
-  "consultas_periodo": {
-    "valor": 31,
-    "comparacao": "-43.0%"
-  },
-  "novos_usuarios": {
-    "valor": 43,
-    "comparacao": "+38.0%"
-  },
-  "novos_casos_pendentes": {
-    "valor": 61,
-    "comparacao": "24.0%"
-  },
-  "sintomas_reportados_lista": {
-    "data": "27/10/2020",
-    "valores": [
-      {
-        "porcentagem": 51.3,
-        "quantidade": 72,
-        "sintoma": {
-          "id": "5",
-          "reportadoEm": "2020-06-18 12:31",
-          "intensidade": "Muito",
-          "imagem": "assets/assets/images/symptoms/5.svg",
-          "label": "Dor nas articulações"
-        }
-      },
-      {
-        "porcentagem": 66.3,
-        "quantidade": 88,
-        "sintoma": {
-          "id": "13",
-          "reportadoEm": "2020-08-07 23:38",
-          "intensidade": "Pouco",
-          "imagem": "assets/assets/images/symptoms/13.svg",
-          "label": "Não sente cheiro"
-        }
-      },
-      {
-        "porcentagem": 86.2,
-        "quantidade": 12,
-        "sintoma": {
-          "id": "5",
-          "reportadoEm": "2020-08-05 08:02",
-          "intensidade": "Muito",
-          "imagem": "assets/assets/images/symptoms/5.svg",
-          "label": "Dor nas articulações"
-        }
-      },
-      {
-        "porcentagem": 82.6,
-        "quantidade": 96,
-        "sintoma": {
-          "id": "16",
-          "reportadoEm": "2020-01-04 06:52",
-          "intensidade": "Pouco",
-          "imagem": "assets/assets/images/symptoms/16.svg",
-          "label": "Tosse"
-        }
-      },
-      {
-        "porcentagem": 62.5,
-        "quantidade": 24,
-        "sintoma": {
-          "id": "9",
-          "reportadoEm": "2020-02-16 13:01",
-          "intensidade": "Muito",
-          "imagem": "assets/assets/images/symptoms/9.svg",
-          "label": "Febre"
-        }
-      },
-      {
-        "porcentagem": 39.2,
-        "quantidade": 37,
-        "sintoma": {
-          "id": "1",
-          "reportadoEm": "2020-01-18 20:44",
-          "intensidade": "Muito",
-          "imagem": "assets/assets/images/symptoms/1.svg",
-          "label": "Chiado no Peito"
-        }
-      },
-      {
-        "porcentagem": 58.8,
-        "quantidade": 57,
-        "sintoma": {
-          "id": "7",
-          "reportadoEm": "2020-11-24 10:15",
-          "intensidade": "Muito",
-          "imagem": "assets/assets/images/symptoms/7.svg",
-          "label": "Dores de Cabeça"
-        }
-      },
-      {
-        "porcentagem": 36.5,
-        "quantidade": 41,
-        "sintoma": {
-          "id": "14",
-          "reportadoEm": "2020-11-14 22:02",
-          "intensidade": "Extremo",
-          "imagem": "assets/assets/images/symptoms/14.svg",
-          "label": "Não sente gosto"
-        }
-      },
-      {
-        "porcentagem": 32.8,
-        "quantidade": 32,
-        "sintoma": {
-          "id": "1",
-          "reportadoEm": "2020-05-30 04:39",
-          "intensidade": "Pouco",
-          "imagem": "assets/assets/images/symptoms/1.svg",
-          "label": "Chiado no Peito"
-        }
-      },
-      {
-        "porcentagem": 82.1,
-        "quantidade": 88,
-        "sintoma": {
-          "id": "17",
-          "reportadoEm": "2020-11-04 11:45",
-          "intensidade": "Muito",
-          "imagem": "assets/assets/images/symptoms/17.svg",
-          "label": "Tremores"
-        }
-      },
-      {
-        "porcentagem": 61.9,
-        "quantidade": 21,
-        "sintoma": {
-          "id": "7",
-          "reportadoEm": "2020-10-08 17:00",
-          "intensidade": "Muito",
-          "imagem": "assets/assets/images/symptoms/7.svg",
-          "label": "Dores de Cabeça"
-        }
-      },
-      {
-        "porcentagem": 34.5,
-        "quantidade": 27,
-        "sintoma": {
-          "id": "10",
-          "reportadoEm": "2020-12-12 01:27",
-          "intensidade": "Extremo",
-          "imagem": "assets/assets/images/symptoms/10.svg",
-          "label": "Insonia"
-        }
-      }
-    ]
-  },
-  "agendadas_ultima_semana_periodo": {
-    "quantidade": 416,
-    "comparacao": "52.0%",
-    "valores": [
-      {
-        "comparacao": "D",
-        "valor": 87
-      },
-      {
-        "comparacao": "S",
-        "valor": 52
-      },
-      {
-        "comparacao": "T",
-        "valor": 82
-      },
-      {
-        "comparacao": "Q",
-        "valor": 15
-      },
-      {
-        "comparacao": "Q",
-        "valor": 20
-      },
-      {
-        "comparacao": "S",
-        "valor": 91
-      },
-      {
-        "comparacao": "S",
-        "valor": 56
-      }
-    ]
-  },
-  "classificacoes": {
-    "valores": [
+  "success": true,
+  "result": {
+    "pacientesAtivos": {
+      "valor": 21,
+      "comparacao": "+96%"
+    },
+    "sintomasReportados": {
+      "valor": 43,
+      "comparacao": "+91%"
+    },
+    "consultasPeriodo": {
+      "valor": 0,
+      "comparacao": "+0%"
+    },
+    "novosUsuarios": {
+      "valor": 21,
+      "comparacao": "4%"
+    },
+    "novosCasosPendentes": {
+      "valor": 20,
+      "comparacao": "5%"
+    },
+    "classificacoes": [
       {
         "label": "Pendente",
         "cor": "#6418C3",
-        "valor": 90,
-        "porcentagem": "32.0%"
+        "valor": 1,
+        "porcentagem": "100%"
       },
       {
         "label": "Não Urgente",
         "cor": "#34A8D9",
-        "valor": 71,
-        "porcentagem": "33.0%"
+        "valor": 0,
+        "porcentagem": "0%"
       },
       {
         "label": "Emergência",
         "cor": "#E23838",
-        "valor": 24,
-        "porcentagem": "34.0%"
+        "valor": 0,
+        "porcentagem": "0%"
       },
       {
         "label": "Urgente",
-        "cor": "#FFAB2D",
-        "valor": 70,
-        "porcentagem": "43.0%"
+        "cor": "#FFAB2E",
+        "valor": 0,
+        "porcentagem": "0%"
       },
       {
         "label": "Pouco Urgente",
         "cor": "#38E25D",
-        "valor": 82,
-        "porcentagem": "1.0%"
+        "valor": 0,
+        "porcentagem": "0%"
       }
-    ]
-  }
+    ],
+    "sintomasReportadosLista": {
+      "data": "5/4/2022",
+      "valores": [
+        {
+          "porcentagem": 25.0,
+          "quantidade": 11,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "Cansaço e/ou Fadiga"
+          }
+        },
+        {
+          "porcentagem": 16.0,
+          "quantidade": 7,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "Dores de cabeça"
+          }
+        },
+        {
+          "porcentagem": 6.0,
+          "quantidade": 3,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "Tosse"
+          }
+        },
+        {
+          "porcentagem": 2.0,
+          "quantidade": 1,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "dores"
+          }
+        },
+        {
+          "porcentagem": 4.0,
+          "quantidade": 2,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "Taquicardia "
+          }
+        },
+        {
+          "porcentagem": 4.0,
+          "quantidade": 2,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "Insônia "
+          }
+        },
+        {
+          "porcentagem": 6.0,
+          "quantidade": 3,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "Chiado no peito "
+          }
+        },
+        {
+          "porcentagem": 2.0,
+          "quantidade": 1,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "Falta de ar "
+          }
+        },
+        {
+          "porcentagem": 4.0,
+          "quantidade": 2,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "Diarreia "
+          }
+        },
+        {
+          "porcentagem": 2.0,
+          "quantidade": 1,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "Queda de cabelo"
+          }
+        },
+        {
+          "porcentagem": 2.0,
+          "quantidade": 1,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "Dificuldade de concentração e/ou esquecimento"
+          }
+        },
+        {
+          "porcentagem": 2.0,
+          "quantidade": 1,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "Cheiro"
+          }
+        },
+        {
+          "porcentagem": 2.0,
+          "quantidade": 1,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "Gosto e Paladar"
+          }
+        },
+        {
+          "porcentagem": 2.0,
+          "quantidade": 1,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "Pele"
+          }
+        },
+        {
+          "porcentagem": 2.0,
+          "quantidade": 1,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "Dor nas articulações"
+          }
+        },
+        {
+          "porcentagem": 2.0,
+          "quantidade": 1,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "Intestino preso (constipação)"
+          }
+        },
+        {
+          "porcentagem": 2.0,
+          "quantidade": 1,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "Tremores"
+          }
+        },
+        {
+          "porcentagem": 2.0,
+          "quantidade": 1,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "Tristeza e/ou ansiedade "
+          }
+        },
+        {
+          "porcentagem": 2.0,
+          "quantidade": 1,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "câncer"
+          }
+        },
+        {
+          "porcentagem": 2.0,
+          "quantidade": 1,
+          "sintoma": {
+            "id": "0",
+            "reportadoEm": "2022-05-04T00:00:00",
+            "intensidade": "",
+            "imagem": "assets/assets/images/symptoms/0.svg",
+            "label": "dor na perna"
+          }
+        }
+      ]
+    },
+    "agendadasUltimaSemanaPeriodo": {
+      "comparacao": "+100",
+      "quantidade": 1,
+      "valores": [
+        {
+          "valor": 1,
+          "comparacao": "Seg"
+        }
+      ]
+    }
+  },
+  "error": null
 }
