@@ -3,12 +3,10 @@ import 'package:either_dart/either.dart';
 
 import '../../../../shared/custom_dio/custom.dio.dart';
 import '../../../../utils/utils.dart';
-import '../../domain/entities/basic_value_data_chart.entity.dart';
 import '../../domain/entities/patient.entity.dart';
 import '../../domain/entities/reported_symptom_group.entity.dart';
 import '../../domain/repositories/repository.dart';
 import '../../errors/patient_details.errors.dart';
-import '../models/basic_value_data_chart.model.dart';
 import '../models/patient.model.dart';
 import '../models/reported_symptom_group.model.dart';
 
@@ -53,20 +51,19 @@ class ApiPatientDetailsRepository implements PatientDetailsRepository{
 
   @override
   Future<Either<PatientDetailsError, ReportedSymptomGroupEntity>> getReportedSymptomsOfPatient({required DateTime startDate, required DateTime endDate, required String idUserPatient, required String idPatient}) async{
-    // try{
+    try{
       Map<String, dynamic> data = {
         "dataInicial":startDate.toString(),
         "dataFinal":endDate.toString()
       };
-      // var response = await _customDio.client.get(getPatientDetailsInfo+idUserPatient+"/paciente/"+idPatient+"/perfil?code=$azureCode", options: Options(headers: _apiHeader));
-      var response = await _customDio.client.post(getPatientDetailsInfoEP+"6Dx7dtIHPEYeVcGuBwVp9FBQyYX2"+"/paciente/"+"zaxOATwkVGx6QZabswmF"+"/sintomas-reportados?code=$azureCode", data: data);
+      var response = await _customDio.client.post(getPatientDetailsInfoEP+idUserPatient+"/paciente/"+idPatient+"/sintomas-reportados?code=$azureCode&dataInicial=${patternDdMmmyyyy.format(startDate)}&dataFinal=${patternDdMmmyyyy.format(endDate)}", data: data);
       ReportedSymptomGroupEntity values = ReportedSymptomGroup.fromJson(response.data);
       return Right(values);
-    // }on DioError catch(e){
-    //   return Left(PatientDetailsRepositoryError(statusCode: e.response?.statusCode));
-    // }catch(e){
-    //   return Left(PatientDetailsRepositoryError(message: e.toString()));
-    // }
+    }on DioError catch(e){
+      return Left(PatientDetailsRepositoryError(statusCode: e.response?.statusCode));
+    }catch(e){
+      return Left(PatientDetailsRepositoryError(message: e.toString()));
+    }
   }
 
 }

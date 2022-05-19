@@ -7,7 +7,7 @@ import 'package:value_panel/app/shared/core/domain/entities/symptoms.entity.dart
 import 'package:value_panel/app/utils/utils.dart';
 
 class SymptomsHistoryDialog extends StatelessWidget {
-  List<SymptomEntity> symptoms;
+  final List<SymptomEntity> symptoms;
   final datePattern = DateFormat("dd/MM/yyyy 'às' hh:mm", "pt_BR");
 
   SymptomsHistoryDialog({required this.symptoms, Key? key}) : super(key: key);
@@ -31,47 +31,56 @@ class SymptomsHistoryDialog extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Container(
-                              width: 40,
-                              height: 40,
-                              padding: const EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    colors: gradientColors,
-                                    begin: Alignment.topRight,
-                                    end: Alignment.bottomLeft,
+                      Expanded(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                                width: 40,
+                                height: 40,
+                                padding: const EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: gradientColors,
+                                      begin: Alignment.topRight,
+                                      end: Alignment.bottomLeft,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Center(child: SvgPicture.network(symptoms[item].srcImage, color: Colors.white))),
+                            const SizedBox(width: 5,),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(symptoms[item].label,
+                                      style:GoogleFonts.openSans(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),
                                   ),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Center(child: SvgPicture.network(symptoms[item].srcImage, color: Colors.white))),
-                          const SizedBox(width: 5,),
-                          Column(
+                                  Text(symptoms[item].intensity,
+                                      style:GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.grey),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      IntrinsicWidth(
+                        child: Container(
+                          margin: EdgeInsets.only(left: 10),
+                          child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(symptoms[item].label,
+                              Text("Reportado em:",
                                   style:GoogleFonts.openSans(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black)
                               ),
-                              Text(symptoms[item].intensity,
+                              Text(datePattern.format(DateTime.parse(symptoms[item].dateReport)),
                                   style:GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.grey)
                               ),
                             ],
-                          )
-                        ],
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Reportado em:",
-                              style:GoogleFonts.openSans(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black)
                           ),
-                          Text(datePattern.format(DateTime.parse(symptoms[item].dateReport)),
-                              style:GoogleFonts.openSans(fontSize: 10, fontWeight: FontWeight.w600, color: Colors.grey)
-                          ),
-                        ],
+                        ),
                       )
                     ],
                   ),

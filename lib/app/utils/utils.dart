@@ -57,6 +57,7 @@ final List<Color> gradientColors = [HexColor("#4159D0"), HexColor("#4F01C4"), He
 
 final patternDdMm = DateFormat("dd/MM", "pt_BR");
 final patternDdMmm = DateFormat("dd/MMM/yy", "pt_BR");
+final patternDdMmmyyyy = DateFormat("dd/MM/yyyy", "pt_BR");
 final patternHHmm = DateFormat("HH:mm", "pt_BR");
 final patternWeekName = DateFormat("EEEE", "pt_BR");
 final patternExtensive = DateFormat("EEEE, d 'de' MMMM 'de' y'\nàs' HH'h'mm'", "pt_BR");

@@ -28,6 +28,7 @@ class _LeftMenuState extends State<LeftMenu> {
     if(widthScreen<=maxScreen){
       collapseDrawer(false);
     }
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -129,7 +130,7 @@ class _LeftMenuState extends State<LeftMenu> {
                       width: 5,
                       height: 50,
                       decoration: BoxDecoration(
-                        color: widget.actuallyRoute==item.route?primaryColor:Colors.white,
+                        color: widget.actuallyRoute=="/carregando/"&&item.route==DASHBOARD_ROUTE||widget.actuallyRoute==item.route?primaryColor:Colors.white,
                         borderRadius: BorderRadius.circular(100)
                       ),
                     )

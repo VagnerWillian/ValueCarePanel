@@ -139,7 +139,7 @@ class PatientDetailsPageState extends ModularState<PatientDetailsPage, PatientDe
                               ],
                             ):ListView(
                               scrollDirection: Axis.horizontal,
-                              children: store.patientDetails!.symptoms.map((v) => SymptomTile(urlImage: v.image, title: v.label, description: v.description)).toList(),
+                              children: store.patientDetails!.symptoms.map((v) => SymptomTile(urlImage: v.image, title: v.label, description: v.description, beforeCovid: v.beforeCovid)).toList(),
                             ),
                           ),
                         )

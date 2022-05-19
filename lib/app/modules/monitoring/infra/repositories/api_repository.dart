@@ -16,7 +16,7 @@ class ApiMonitoringRepository implements MonitoringRepository{
   @override
   Future<Either<MonitoringError, List<MonitoringDataEntity>>> fetchMonitoringFromIntervalDates({required DateTime startDate, required DateTime endDate}) async {
     try{
-      var response = await _customDio.client.get(getMonitoringEP);
+      var response = await _customDio.client.get("$getMonitoringEP&dataInicial=${patternDdMmmyyyy.format(startDate)}&dataFinal=${patternDdMmmyyyy.format(endDate)}");
       List<MonitoringDataEntity> monitoringDataItems = (response.data['result'] as List).map((i) => MonitoringData.fromJson(i)).toList();
       return Right(monitoringDataItems);
     }on DioError catch(e){

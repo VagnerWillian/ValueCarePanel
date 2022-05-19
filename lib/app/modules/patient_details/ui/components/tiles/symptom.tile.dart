@@ -10,7 +10,8 @@ class SymptomTile extends StatelessWidget {
   final String urlImage;
   final String title;
   final String description;
-  const SymptomTile({Key? key, required this.urlImage, required this.title, required this.description}) : super(key: key);
+  final bool beforeCovid;
+  const SymptomTile({Key? key, required this.urlImage, required this.title, required this.description, required this.beforeCovid}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +58,17 @@ class SymptomTile extends StatelessWidget {
               ),
             ),
           ),
+          !beforeCovid?Container():Positioned(
+              right: 0,
+              bottom: 0,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                decoration: const BoxDecoration(
+                    color: Colors.white10,
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(5), bottomRight: Radius.circular(5))
+                ),
+                child: Text("Antes do Covid", style: GoogleFonts.cairo(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold)),
+              )),
           const Positioned(
               left: 2,
               top: 2,

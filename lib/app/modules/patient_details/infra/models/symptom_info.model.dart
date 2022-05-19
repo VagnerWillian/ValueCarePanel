@@ -14,12 +14,15 @@ class SymptomInfo implements SymptomInfoEntity{
   @override
   late final String image;
 
+  @override
+  late final bool beforeCovid;
 
   SymptomInfo.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     label = json['label'];
     description = json['descricao'];
     image = json['imagem'];
+    beforeCovid = json['sintomaAntesCovid'];
   }
 
 }

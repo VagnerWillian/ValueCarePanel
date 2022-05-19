@@ -57,7 +57,7 @@ class Patient implements PatientEntity{
     gen = json['genero'];
     name = json['nome'];
     phone = json['telefone'];
-    photo = json['foto']??"";
+    photo = json['foto'];
     origin = json['origem'];
     score = json['score'];
     classification = Classification.fromJson(json['classificacao']);
