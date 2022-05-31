@@ -66,4 +66,20 @@ class ApiPatientDetailsRepository implements PatientDetailsRepository{
     }
   }
 
+  @override
+  Future<Either<PatientDetailsError, bool>> saveOriginOfUser(String newOrigin) async{
+    try{
+      Map<String, dynamic> data = {
+        "origem":newOrigin
+      };
+      print("alterando origem para $newOrigin");
+      var response = await _customDio.client.post(getPatientDetailsInfoEP, data: data);
+      return const Right(true);
+    }on DioError catch(e){
+      return Left(PatientDetailsRepositoryError(statusCode: e.response?.statusCode));
+    }catch(e){
+      return Left(PatientDetailsRepositoryError(message: e.toString()));
+    }
+  }
+
 }

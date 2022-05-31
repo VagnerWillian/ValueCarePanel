@@ -3,16 +3,10 @@ import 'package:value_panel/app/modules/history_chat/domain/entities/history_ite
 class HistoryItem implements HistoryItemEntity{
 
   @override
-  late final int? id;
-
-  @override
-  late final bool isAnswer;
+  late final int id;
 
   @override
   late final String name;
-
-  @override
-  late final String photo;
 
   @override
   late final String text;
@@ -20,25 +14,16 @@ class HistoryItem implements HistoryItemEntity{
   @override
   late final String data;
 
-  HistoryItem.send({this.isAnswer=true, required this.name, required this.photo, required this.text, required this.data});
+  @override
+  bool hasRead = true;
+
+  HistoryItem.send({required this.name, required this.text, required this.data});
 
   HistoryItem.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    isAnswer = json['resposta']??false;
     name = json['nome']??"";
-    photo = json['foto']??"";
     text = json['texto']??"";
     data = json['data']??"";
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['resposta'] = isAnswer;
-    data['nome'] = name;
-    data['foto'] = photo;
-    data['texto'] = text;
-    data['data'] = data;
-    return data;
+    hasRead = json['lido']??true;
   }
 }

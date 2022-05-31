@@ -1,11 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:either_dart/either.dart';
-import 'package:value_panel/app/modules/patient_details/domain/entities/basic_value_data_chart.entity.dart';
 import 'package:value_panel/app/modules/patient_details/domain/entities/patient.entity.dart';
 import 'package:value_panel/app/modules/patient_details/domain/entities/reported_symptom_group.entity.dart';
 import 'package:value_panel/app/modules/patient_details/domain/repositories/repository.dart';
 import 'package:value_panel/app/modules/patient_details/errors/patient_details.errors.dart';
-import 'package:value_panel/app/modules/patient_details/infra/models/basic_value_data_chart.model.dart';
 import 'package:value_panel/app/modules/patient_details/infra/models/patient.model.dart';
 import 'package:value_panel/app/modules/patient_details/infra/models/reported_symptom_group.model.dart';
 
@@ -55,6 +53,13 @@ class JsonGeneratorPatientDetailsRepository implements PatientDetailsRepository{
     }catch(e){
       return Left(PatientDetailsRepositoryError(message: e.toString()));
     }
+  }
+
+  @override
+  Future<Either<PatientDetailsError, bool>> saveOriginOfUser(String newOrigin) async{
+    print("alterando origem para $newOrigin");
+    await Future.delayed(const Duration(seconds: 1));
+    return const Right(true);
   }
 
 }

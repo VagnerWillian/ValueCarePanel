@@ -17,4 +17,16 @@ class APIHistoryRepository implements HistoryRepository{
 
   }
 
+  @override
+  Future<Either<HistoryError, bool>> deleteHistory({required int idHistoryItem})async {
+    await Future.delayed(const Duration(seconds: 1));
+    return const Right(true);
+  }
+
+  @override
+  Future<Either<HistoryError, bool>> markReadHistory({required int idHistoryItem}) async{
+    await Future.delayed(const Duration(seconds: 1));
+    return const Right(true);
+  }
+
 }

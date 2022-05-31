@@ -1,110 +1,98 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:image_network/image_network.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:value_panel/app/modules/history_chat/domain/entities/history_item.entity.dart';
+import 'package:value_panel/app/modules/history_chat/errors/history.errors.dart';
 import 'package:value_panel/app/utils/utils.dart';
 
-class Ballons extends StatelessWidget{
-  late final HistoryItemEntity historyItemEntity;
-  Ballons(this.historyItemEntity);
+class Balloon extends StatefulWidget {
+  final HistoryItemEntity historyItemEntity;
+  final Function(HistoryError failure) onError;
+  final Function(int idHistoryItem, Function onError) deleteHistoryItem;
+  final Function(int idHistoryItem, Function onError) markReadHistoryItem;
+  Balloon(this.historyItemEntity, {required this.onError, required this.deleteHistoryItem, required this.markReadHistoryItem});
+
+  @override
+  State<Balloon> createState() => _BalloonState();
+}
+
+class _BalloonState extends State<Balloon> {
+
+  bool readed = true;
+  bool loading = false;
+
+  void setLoading(bool value){
+    setState(() => loading = value);
+  }
+
+  @override
+  void initState() {
+    readed = widget.historyItemEntity.hasRead;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    if(historyItemEntity.isAnswer){
-      return answer();
-    }
-    return question();
+    return Column(
+      children: [
+        const Divider(height: 10),
+        Padding(
+          padding: const EdgeInsets.all(10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              readed?Container(): Container(
+                  margin: const EdgeInsets.only(bottom: 10),
+                  width: 10, height: 10, child: CircleAvatar(backgroundColor: primaryColor)),
+              Expanded(
+                child: Shimmer.fromColors(
+                  enabled: loading,
+                  baseColor: Colors.black,
+                  highlightColor: !loading?Colors.black:Colors.white,
+                  child: Text(
+                    widget.historyItemEntity.text,
+                    style: GoogleFonts.cairo(
+                        fontWeight: readed ? FontWeight.normal : FontWeight.bold, fontSize: 12, color: Colors.black),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(widget.historyItemEntity.data, style: const TextStyle(fontSize: 12, color: Colors.grey)),
+              readed
+                  ? InkWell(
+                      onTap: removeHistoryItem,
+                      child: const Text("Remover", style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 12)))
+                  : InkWell(
+                      onTap: readHistoryItem,
+                      child: Text("Marcar como lido", style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold, fontSize: 12)))
+            ],
+          ),
+        ),
+      ],
+    );
   }
 
-  Widget question()=>Container(
-    margin: const EdgeInsets.only(bottom: 20),
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Flexible(
-          child: Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: Column(
-              children: [
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(historyItemEntity.name, style: GoogleFonts.openSans(fontSize: 10, color: Colors.black, fontWeight: FontWeight.bold),textAlign: TextAlign.right),
-                      Text(historyItemEntity.data, style: GoogleFonts.openSans(fontSize: 10, color: Colors.black),textAlign: TextAlign.right,),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 15),
-                Text(historyItemEntity.text,
-                  textAlign: TextAlign.right,
-                  style: GoogleFonts.openSans(fontSize: 10, color: Colors.black),
-                ),
-              ],
-            ),
-          ),
-        ),
-        SizedBox(
-          width: 25,
-          height: 25,
-          child: ImageNetwork(
-            borderRadius: BorderRadius.circular(100),
-            height: 35,
-            width: 35,
-            onLoading: Container(),
-            imageCache: CachedNetworkImageProvider(historyItemEntity.photo),
-            image: historyItemEntity.photo,
-          ),
-        ),
-      ],
-    ),
-  );
+  removeHistoryItem()async{
+    setLoading(true);
+    await widget.deleteHistoryItem(widget.historyItemEntity.id, widget.onError);
+    setLoading(false);
+  }
 
-  Widget answer()=>Container(
-    margin: const EdgeInsets.only(bottom: 20),
-    child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: 25,
-          height: 25,
-          child: ImageNetwork(
-            borderRadius: BorderRadius.circular(100),
-            height: 35,
-            width: 35,
-            onLoading: Container(),
-            imageCache: CachedNetworkImageProvider(historyItemEntity.photo),
-            image: historyItemEntity.photo,
-          ),
-        ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(historyItemEntity.name, style: GoogleFonts.openSans(fontSize: 10, color: primaryColor, fontWeight: FontWeight.bold)),
-                      Text(historyItemEntity.data, style: GoogleFonts.openSans(fontSize: 10, color: primaryColor)),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 15),
-                Text(historyItemEntity.text,
-                  style: GoogleFonts.openSans(fontSize: 10, color: primaryColor),
-                ),
-              ],
-            ),
-          ),
-        )
-      ],
-    ),
-  );
-
+  readHistoryItem()async{
+    setLoading(true);
+    bool success = await widget.markReadHistoryItem(widget.historyItemEntity.id, widget.onError);
+    setState(() {
+      readed = success;
+    });
+    setLoading(false);
+  }
 }

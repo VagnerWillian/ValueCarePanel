@@ -9,4 +9,5 @@ abstract class PatientDetailsRepository{
   // Future<Either<PatientDetailsError, List<BasicValueChartDataEntity>>> getScoreGraphicOfDates({required DateTime startDate, required DateTime endDate});
   Future<Either<PatientDetailsError, PatientEntity>> getPatientDetails({required String idUserPatient, required String idPatient});
   Future<Either<PatientDetailsError, ReportedSymptomGroupEntity>> getReportedSymptomsOfPatient({required DateTime startDate, required DateTime endDate, required String idUserPatient, required String idPatient});
+  Future<Either<PatientDetailsError, bool>> saveOriginOfUser(String newOrigin);
 }

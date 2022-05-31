@@ -1,6 +1,7 @@
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,9 +33,9 @@ class PatientDetailsPageState extends ModularState<PatientDetailsPage, PatientDe
   @override
   void initState() {
     store.getPatientInfoDetails(onError: onError, idUserPatient: widget.idUserPatient, idPatient: widget.idPatient);
-   /* SchedulerBinding.instance!.addPostFrameCallback((_) {
+    SchedulerBinding.instance!.addPostFrameCallback((_) {
       Modular.get<HistoryChatStore>().open(idPatient: widget.idPatient, isFullHeight: true);
-    });*/
+    });
     super.initState();
   }
 
@@ -102,7 +103,11 @@ class PatientDetailsPageState extends ModularState<PatientDetailsPage, PatientDe
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
-                                InfoSession(patientEntity: store.patientDetails!, classifications: store.configManager.classifications),
+                                InfoSession(
+                                  patientEntity: store.patientDetails!,
+                                  classifications: store.configManager.classifications,
+                                  saveOriginOfUser: store.saveOriginOfUser,
+                                ),
                                 const SizedBox(height: 20),
                                 SequelsSession(values: store.patientDetails!.sequels),
                               ],

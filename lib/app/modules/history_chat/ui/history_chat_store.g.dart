@@ -170,6 +170,17 @@ mixin _$HistoryChatStore on _HistoryChatStoreBase, Store {
   }
 
   @override
+  dynamic _deleteItem(int value) {
+    final _$actionInfo = _$_HistoryChatStoreBaseActionController.startAction(
+        name: '_HistoryChatStoreBase._deleteItem');
+    try {
+      return super._deleteItem(value);
+    } finally {
+      _$_HistoryChatStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   dynamic _setLoading(bool value) {
     final _$actionInfo = _$_HistoryChatStoreBaseActionController.startAction(
         name: '_HistoryChatStoreBase._setLoading');

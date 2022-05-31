@@ -4,15 +4,43 @@ import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_network/image_network.dart';
+import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
 import 'package:value_panel/app/modules/patient_details/domain/entities/patient.entity.dart';
 import 'package:value_panel/app/modules/patient_details/ui/components/tiles/info_label.tile.dart';
 import 'package:value_panel/app/shared/core/domain/entities/classification.entity.dart';
 import 'package:value_panel/app/utils/utils.dart';
+import 'package:value_panel/app/utils/validators.dart';
 
-class InfoSession extends StatelessWidget {
+import '../../../../../shared/components/dialogs/another_error.dialog.dart';
+import '../../../../../shared/components/dialogs/repository_error.dialog.dart';
+import '../../../errors/patient_details.errors.dart';
+
+class InfoSession extends StatefulWidget {
   final PatientEntity patientEntity;
+  final Function(String newOrigin, Function(PatientDetailsError failure)) saveOriginOfUser;
   final List<ClassificationEntity> classifications;
-  const InfoSession({required this.patientEntity, required this.classifications, Key? key}) : super(key: key);
+  const InfoSession({required this.patientEntity, required this.saveOriginOfUser, required this.classifications, Key? key}) : super(key: key);
+
+  @override
+  State<InfoSession> createState() => _InfoSessionState();
+}
+
+class _InfoSessionState extends State<InfoSession> {
+  bool editOrigin = false;
+  final TextEditingController originEditingController = TextEditingController();
+  final formkey = GlobalKey<FormState>();
+
+  void collapseEditOrigin(){
+    setState(() {
+      editOrigin = !editOrigin;
+    });
+  }
+
+  showEditOrigin(bool value){
+    setState(() {
+      editOrigin = value;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,22 +73,22 @@ class InfoSession extends StatelessWidget {
                     SizedBox(
                       width: 100,
                       height: 100,
-                      child: patientEntity.photo.isEmpty?Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.grey.shade200)):ImageNetwork(
+                      child: widget.patientEntity.photo.isEmpty?Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.grey.shade200)):ImageNetwork(
                         borderRadius: BorderRadius.circular(10),
                         height: 100,
                         width: 100  ,
                         onLoading: Container(),
                         onError: Container(color: Colors.grey),
-                        imageCache: CachedNetworkImageProvider(patientEntity.photo),
-                        image: patientEntity.photo,
+                        imageCache: CachedNetworkImageProvider(widget.patientEntity.photo),
+                        image: widget.patientEntity.photo,
                       ),
                     ),
                     const SizedBox(width: 10),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(patientEntity.name, style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14), softWrap: true,),
-                        Text(patientEntity.phone, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 12, color: primaryColor), softWrap: true,),
+                        Text(widget.patientEntity.name, style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 14), softWrap: true,),
+                        Text(widget.patientEntity.phone, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 12, color: primaryColor), softWrap: true,),
                       ],
                     ),
                   ],
@@ -82,14 +110,14 @@ class InfoSession extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(100),
-                                  color: patientEntity.classification.color!.withOpacity(0.2)
+                                  color: widget.patientEntity.classification.color!.withOpacity(0.2)
                               ),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  SvgPicture.asset(patientEntity.classification.image, color: patientEntity.classification.color, width: 16),
+                                  SvgPicture.asset(widget.patientEntity.classification.image, color: widget.patientEntity.classification.color, width: 16),
                                   const SizedBox(width: 10),
-                                  Text(patientEntity.classification.label, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 10, color: patientEntity.classification.color)),
+                                  Text(widget.patientEntity.classification.label, style: GoogleFonts.openSans(fontWeight: FontWeight.bold, fontSize: 10, color: widget.patientEntity.classification.color)),
                                 ],
                               ),
                             ),
@@ -135,11 +163,41 @@ class InfoSession extends StatelessWidget {
           const SizedBox(height: 10),
           Wrap(
             children: [
-              InfoLabelTile(label: "CPF:", value: patientEntity.cpf),
-              InfoLabelTile(label: "Nascimento:", value: patientEntity.birthday),
-              InfoLabelTile(label: "Gênero:", value: patientEntity.gen),
-              InfoLabelTile(label: "Email:", value: patientEntity.email),
-              InfoLabelTile(label: "Origem:", value: patientEntity.origin),
+              InfoLabelTile(label: "CPF:", value: widget.patientEntity.cpf),
+              InfoLabelTile(label: "Nascimento:", value: widget.patientEntity.birthday),
+              InfoLabelTile(label: "Gênero:", value: widget.patientEntity.gen),
+              InfoLabelTile(label: "Email:", value: widget.patientEntity.email),
+              editOrigin?Row(
+                children: [
+                  SizedBox(
+                    width: 100,
+                    height: 30,
+                    child: Form(
+                      key: formkey,
+                      child: TextFormField(
+                      validator: (str)=>Validators.validateMinCaracters(str!, minLength: 3),
+                      style: GoogleFonts.cairo(fontSize: 12),
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                        hintText: "Alterar Origem",
+                        hintStyle: GoogleFonts.cairo(fontSize: 12),
+                        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: primaryColor)),
+                        focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: primaryColor))
+                      ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      child: InkWell(onTap: sendEditOrigin, child: const Icon(FontAwesomeIcons.check, size: 12, color: Colors.green))),
+                  InkWell(onTap: collapseEditOrigin, child: const Icon(FontAwesomeIcons.times, size: 12, color: Colors.red))
+                ],
+              ):Row(
+                children: [
+                  InfoLabelTile(label: "Origem:", value: widget.patientEntity.origin),
+                  IconButton(onPressed: collapseEditOrigin, icon: const Icon(FontAwesomeIcons.pen, size: 14, color: Colors.grey))
+                ],
+              ),
             ],
           ),
           const SizedBox(height: 10),
@@ -167,7 +225,7 @@ class InfoSession extends StatelessWidget {
                 ),
                 child: Text("Ver Exames", style: GoogleFonts.openSans(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12)),
               ),
-              const SizedBox(width: 5),
+              /*const SizedBox(width: 5),
               ElevatedButton(
                 onPressed: (){},
                 style: ButtonStyle(
@@ -177,11 +235,26 @@ class InfoSession extends StatelessWidget {
                     shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)))
                 ),
                 child: Text("Editar dados", style: GoogleFonts.openSans(color: Colors.grey.shade800, fontWeight: FontWeight.bold, fontSize: 12)),
-              )
+              )*/
             ],
           )
         ],
       ),
     );
+  }
+
+  Future onError(PatientDetailsError failure) async {
+    if (failure is PatientDetailsRepositoryError) {
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_) => RepositoryErrorDialog(repositoryError: failure));
+    } else if (failure is PatientDetailsUnknownError) {
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_) => UnknownErrorDialog(unknownError: failure));
+    }
+  }
+
+  Future sendEditOrigin()async{
+    if(formkey.currentState!.validate()){
+      await widget.saveOriginOfUser(originEditingController.text, onError);
+      collapseEditOrigin();
+    }
   }
 }

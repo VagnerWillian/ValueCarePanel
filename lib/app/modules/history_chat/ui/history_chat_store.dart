@@ -3,7 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';
 import 'package:value_panel/app/app_store.dart';
 import 'package:value_panel/app/modules/history_chat/domain/entities/history_item.entity.dart';
+import 'package:value_panel/app/modules/history_chat/domain/usecases/delete_history.usecase.dart';
 import 'package:value_panel/app/modules/history_chat/domain/usecases/get_all_history.usecase.dart';
+import 'package:value_panel/app/modules/history_chat/domain/usecases/mark_read_history.usecase.dart';
 import 'package:value_panel/app/modules/history_chat/errors/history.errors.dart';
 import 'package:value_panel/app/modules/history_chat/infra/models/history_item.model.dart';
 
@@ -14,6 +16,8 @@ abstract class _HistoryChatStoreBase with Store {
 
   //CaseUses
   final GetAllHistoryUseCase _getAllHistoryUseCase;
+  final DeleteHistoryUseCase _deleteHistoryUseCase;
+  final MarkedReadUseCase _markedReadUseCase;
 
   //Controllers
   late final TextEditingController textEditingController;
@@ -26,7 +30,7 @@ abstract class _HistoryChatStoreBase with Store {
   final formKey = GlobalKey<FormState>();
 
 
-  _HistoryChatStoreBase(this._getAllHistoryUseCase, this._appStore){
+  _HistoryChatStoreBase(this._getAllHistoryUseCase, this._deleteHistoryUseCase, this._markedReadUseCase,this._appStore){
    textEditingController = TextEditingController();
    scrollController = ScrollController();
   }
@@ -89,6 +93,9 @@ abstract class _HistoryChatStoreBase with Store {
   _addItem(HistoryItemEntity value)=>items.insert(0, value);
 
   @action
+  _deleteItem(int value)=>items.removeWhere((i) => i.id==value);
+
+  @action
   _setLoading(bool value)=>loading=value;
 
   @action
@@ -114,13 +121,39 @@ abstract class _HistoryChatStoreBase with Store {
     _setLoading(false);
   }
 
+  Future<bool> deleteHistory(int idHistoryItem, Function onError)async{
+    Either<HistoryError, bool> response = await _deleteHistoryUseCase(idHistoryItem: idHistoryItem);
+    bool deleted = false;
+    response.fold((HistoryError failure) {
+      onError(failure);
+      return failure;
+    }, (bool value) {
+      _deleteItem(idHistoryItem);
+      deleted = true;
+      return value;
+    });
+    return deleted;
+  }
+
+  Future<bool> markRead(int idHistoryItem, Function onError)async{
+    Either<HistoryError, bool> response = await _markedReadUseCase(idHistoryItem: idHistoryItem);
+    bool marked = false;
+    response.fold((HistoryError failure) {
+      onError(failure);
+      return failure;
+    }, (bool value) {
+      marked = true;
+      return value;
+    });
+    return marked;
+  }
+
   Future sendText()async{
     if(formKey.currentState!.validate()){
       setLoadingSend(true);
       HistoryItemEntity newHistory = HistoryItem.send(
-          data: DateTime.now().toString(),
+          data: "Agora",
           name: _appStore.loggedUser!.name,
-          photo: _appStore.loggedUser!.picture,
           text: textEditingController.text);
       _addItem(newHistory);
       scrollController.animateTo(-scrollController.offset, duration: const Duration(seconds: 1), curve: Curves.bounceIn);

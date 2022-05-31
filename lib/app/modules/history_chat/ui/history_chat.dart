@@ -4,10 +4,14 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:modern_form_line_awesome_icons/modern_form_line_awesome_icons.dart';
+import 'package:value_panel/app/modules/history_chat/errors/history.errors.dart';
 import 'package:value_panel/app/modules/history_chat/ui/components/ballons.component.dart';
 import 'package:value_panel/app/modules/history_chat/ui/history_chat_store.dart';
 import 'package:value_panel/app/utils/utils.dart';
 import 'package:value_panel/app/utils/validators.dart';
+
+import '../../../shared/components/dialogs/another_error.dialog.dart';
+import '../../../shared/components/dialogs/repository_error.dialog.dart';
 
 class HistoryChat extends StatefulWidget {
   const HistoryChat({Key? key}) : super(key: key);
@@ -77,7 +81,12 @@ class HistoryChatState extends ModularState<HistoryChat, HistoryChatStore> {
                                 reverse: true,
                                 shrinkWrap: true,
                                 itemCount: store.items.length,
-                                itemBuilder: (context, item)=>Ballons(store.items[item]),
+                                itemBuilder: (context, item)=>Balloon(
+                                    store.items[item],
+                                    deleteHistoryItem: store.deleteHistory,
+                                    markReadHistoryItem: store.markRead,
+                                    onError: onError,
+                                ),
                               ),
                             ),
                           ),
@@ -166,5 +175,13 @@ class HistoryChatState extends ModularState<HistoryChat, HistoryChatStore> {
             )),
       ),
     );
+  }
+
+  Future onError(HistoryError failure)async{
+    if(failure is HistoryRepositoryError){
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>RepositoryErrorDialog(repositoryError: failure));
+    }else if(failure is HistoryUnknownError){
+      await showDialog(barrierColor: Colors.white70, context: context, builder: (_)=>UnknownErrorDialog(unknownError: failure));
+    }
   }
 }

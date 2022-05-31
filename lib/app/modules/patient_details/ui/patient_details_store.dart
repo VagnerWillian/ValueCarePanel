@@ -5,6 +5,7 @@ import 'package:value_panel/app/modules/patient_details/domain/entities/patient.
 import 'package:value_panel/app/modules/patient_details/domain/usecases/get_patient_details.usecase.dart';
 import 'package:value_panel/app/modules/patient_details/domain/usecases/get_reported_symptoms_of_patient_from_date.usecase.dart';
 import 'package:value_panel/app/modules/patient_details/domain/usecases/get_score_graphic_of_dates.usecase.dart';
+import 'package:value_panel/app/modules/patient_details/domain/usecases/save_origin_of_user.usecase.dart';
 import 'package:value_panel/app/modules/patient_details/errors/patient_details.errors.dart';
 import 'package:value_panel/app/shared/core/managers/config.manager.dart';
 
@@ -23,8 +24,9 @@ abstract class _PatientDetailsStoreBase with Store {
   final GetScoreGraphicOfDatesUseCase _getScoreGraphicOfDatesUseCase;
   final GetReportedSymptomsOfPatientFromDateUseCase _getReportedSymptomsOfPatientFromDateUseCase;
   final GetPatientDetailsUseCase _getPatientDetailsUseCase;
+  final SaveOriginOfUserUseCase _saveOriginOfUserUseCase;
 
-  _PatientDetailsStoreBase(this.configManager, this._getScoreGraphicOfDatesUseCase, this._getPatientDetailsUseCase, this._getReportedSymptomsOfPatientFromDateUseCase);
+  _PatientDetailsStoreBase(this.configManager, this._saveOriginOfUserUseCase, this._getScoreGraphicOfDatesUseCase, this._getPatientDetailsUseCase, this._getReportedSymptomsOfPatientFromDateUseCase);
 
   //Observable
 
@@ -88,6 +90,19 @@ abstract class _PatientDetailsStoreBase with Store {
       setReportedSymptomGroup(value);
       return value;
     });
+  }
+
+  Future<bool> saveOriginOfUser(String newOrigin, Function onError)async{
+    Either<PatientDetailsError, bool> success = await _saveOriginOfUserUseCase(newOrigin);
+    bool isSuccess = false;
+    success.fold((PatientDetailsError failure) {
+      onError(failure);
+      return failure;
+    }, (bool value) {
+      isSuccess = true;
+      return value;
+    });
+    return isSuccess;
   }
 
 }
