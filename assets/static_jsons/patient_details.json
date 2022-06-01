@@ -1,0 +1,187 @@
+{
+  "success": true,
+  "result": {
+    "nome": "Jupira Maria Bittencourt da Silva",
+    "telefone": "51982614434",
+    "score": 0,
+    "cpf": "",
+    "nascimento": "14/01/1965",
+    "genero": "Feminino",
+    "email": "jupiradasilva@hotmail.com",
+    "origem": "",
+    "foto": "",
+    "classificacao": {
+      "id": 4,
+      "cor": "#FFAB2E",
+      "imagem": "assets/images/classifications/4.svg",
+      "nome": "Urgente"
+    },
+    "sequelas": [
+      {
+        "label": "Uso oxigênio em casa?",
+        "valor": "NÃO"
+      },
+      {
+        "label": "Embolia que precise de tratamento?",
+        "valor": "NÃO"
+      },
+      {
+        "label": "Paralisia ou fraqueza em um lado?",
+        "valor": "NÃO"
+      },
+      {
+        "label": "Pressão alta?",
+        "valor": "NÃO"
+      },
+      {
+        "label": "Dor generalizada?",
+        "valor": "NÃO"
+      },
+      {
+        "label": "Problema nos rins(hemodiálise)?",
+        "valor": "NÃO"
+      },
+      {
+        "label": "Problemas no coração(insuficiência, arritmia) que precise de tratamento?",
+        "valor": "NÃO"
+      }
+    ],
+    "adicionais": [
+      {
+        "title": "Tem plano de saúde",
+        "valor": "Não"
+      },
+      {
+        "title": "Convid desde",
+        "valor": "05/05/2022"
+      },
+      {
+        "title": "Perdeu peso ? ",
+        "valor": "NÃO"
+      },
+      {
+        "title": "Sintomas após duas semanas",
+        "valor": "NÃO"
+      },
+      {
+        "title": "Doenças Prévias",
+        "valor": "Depressão, Enxaqueca, Diabetes"
+      }
+    ],
+    "sintomasCadastrados": [
+      {
+        "id": 1,
+        "label": "Cansaço e/ou Fadiga",
+        "descricao": "Melhorando",
+        "imagem": "assets/assets/images/symptoms/1.svg",
+        "sintomaAntesCovid": false
+      },
+      {
+        "id": 10,
+        "label": "Dificuldade de concentração e/ou esquecimento",
+        "descricao": "Piorando",
+        "imagem": "assets/assets/images/symptoms/10.svg",
+        "sintomaAntesCovid": false
+      },
+      {
+        "id": 11,
+        "label": "Cheiro",
+        "descricao": "Piorando",
+        "imagem": "assets/assets/images/symptoms/11.svg",
+        "sintomaAntesCovid": false
+      },
+      {
+        "id": 12,
+        "label": "Gosto e Paladar",
+        "descricao": "Piorando",
+        "imagem": "assets/assets/images/symptoms/12.svg",
+        "sintomaAntesCovid": false
+      },
+      {
+        "id": 13,
+        "label": "Pele",
+        "descricao": "Piorando",
+        "imagem": "assets/assets/images/symptoms/13.svg",
+        "sintomaAntesCovid": false
+      },
+      {
+        "id": 14,
+        "label": "Dor nas articulações",
+        "descricao": "Piorando",
+        "imagem": "assets/assets/images/symptoms/14.svg",
+        "sintomaAntesCovid": false
+      },
+      {
+        "id": 17,
+        "label": "Tremores",
+        "descricao": "Piorando",
+        "imagem": "assets/assets/images/symptoms/17.svg",
+        "sintomaAntesCovid": false
+      },
+      {
+        "id": 18,
+        "label": "Tristeza e/ou ansiedade ",
+        "descricao": "",
+        "imagem": "assets/assets/images/symptoms/18.svg",
+        "sintomaAntesCovid": false
+      },
+      {
+        "id": 19,
+        "label": "Dores de cabeça",
+        "descricao": "",
+        "imagem": "assets/assets/images/symptoms/19.svg",
+        "sintomaAntesCovid": false
+      },
+      {
+        "id": 2,
+        "label": "Tosse",
+        "descricao": "Tosse com catarro claro",
+        "imagem": "assets/assets/images/symptoms/2.svg",
+        "sintomaAntesCovid": false
+      },
+      {
+        "id": 4,
+        "label": "Falta de ar ",
+        "descricao": "Melhorando",
+        "imagem": "assets/assets/images/symptoms/4.svg",
+        "sintomaAntesCovid": false
+      },
+      {
+        "id": 5,
+        "label": "Insônia ",
+        "descricao": "",
+        "imagem": "assets/assets/images/symptoms/5.svg",
+        "sintomaAntesCovid": false
+      },
+      {
+        "id": 6,
+        "label": "Febre ",
+        "descricao": "",
+        "imagem": "assets/assets/images/symptoms/6.svg",
+        "sintomaAntesCovid": false
+      },
+      {
+        "id": 7,
+        "label": "Dor no corpo ",
+        "descricao": "Piorando",
+        "imagem": "assets/assets/images/symptoms/7.svg",
+        "sintomaAntesCovid": false
+      },
+      {
+        "id": 8,
+        "label": "Taquicardia ",
+        "descricao": "Piorando",
+        "imagem": "assets/assets/images/symptoms/8.svg",
+        "sintomaAntesCovid": false
+      },
+      {
+        "id": 9,
+        "label": "Queda de cabelo",
+        "descricao": "",
+        "imagem": "assets/assets/images/symptoms/9.svg",
+        "sintomaAntesCovid": false
+      }
+    ]
+  },
+  "error": null
+}

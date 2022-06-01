@@ -6,17 +6,15 @@ import 'package:value_panel/app/modules/history_chat/errors/history.errors.dart'
 import 'package:value_panel/app/modules/history_chat/infra/models/history_item.model.dart';
 import 'package:value_panel/app/shared/custom_dio/custom.dio.dart';
 
-class JsonGeneratorHistoryRepository implements HistoryRepository{
+class ApiHistoryRepository implements HistoryRepository{
 
   final CustomDio _customDio;
-  JsonGeneratorHistoryRepository(this._customDio);
-
-  final _header = {"Authorization":"Bearer lib361fjoaiy06cib24z0fub3531yhpzxv214iro"};
+  ApiHistoryRepository(this._customDio);
 
   @override
   Future<Either<HistoryError, List<HistoryItemEntity>>> getAllHistoryItems({required String idPatient}) async {
     try{
-      var response = await _customDio.client.get("https://api.json-generator.com/templates/pFY0RJfVv9iG/data", options: Options(headers: _header));
+      var response = await _customDio.client.get("https://api.json-generator.com/templates/pFY0RJfVv9iG/data");
       List<HistoryItemEntity> historyItems = (response.data as List).map((i) => HistoryItem.fromJson(i)).toList();
       return Right(historyItems);
     }on DioError catch(e){
@@ -27,13 +25,13 @@ class JsonGeneratorHistoryRepository implements HistoryRepository{
   }
 
   @override
-  Future<Either<HistoryError, bool>> deleteHistory({required int idHistoryItem}) async{
+  Future<Either<HistoryError, bool>> deleteHistory({required String idHistoryItem}) async{
     await Future.delayed(const Duration(seconds: 1));
     return const Right(true);
   }
 
   @override
-  Future<Either<HistoryError, bool>> markReadHistory({required int idHistoryItem}) async{
+  Future<Either<HistoryError, bool>> markReadHistory({required String idHistoryItem}) async{
     await Future.delayed(const Duration(seconds: 1));
     return const Right(true);
   }

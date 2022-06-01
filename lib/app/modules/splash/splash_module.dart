@@ -2,12 +2,14 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:value_panel/app/modules/splash/domain/repositories/splash.repository.dart';
 import 'package:value_panel/app/modules/splash/domain/usecases/get_user_token.usecase.dart';
 import 'package:value_panel/app/modules/splash/infra/repositories/api.repository.dart';
+import 'package:value_panel/app/modules/splash/infra/repositories/asset.repository.dart';
 import 'package:value_panel/app/modules/splash/ui/splash_page.dart';
 import 'package:value_panel/app/modules/splash/ui/splash_store.dart';
 import 'package:value_panel/app/shared/core/managers/config.manager.dart';
 import 'package:value_panel/app/shared/custom_dio/custom.dio.dart';
 
 import '../../app_store.dart';
+import '../../utils/utils.dart';
 
 class SplashModule extends Module {
   @override
@@ -20,8 +22,12 @@ class SplashModule extends Module {
     Bind.lazySingleton((i) => GetUseWithTokenUseCase(i.get<SplashRepository>())),
 
     //Repositories
-    // Bind.lazySingleton((i) => JsonGeneratorHomeRepository(i.get<CustomDio>())),
-    Bind.lazySingleton((i) => ApiSplashRepository(i.get<CustomDio>())),
+    Bind.lazySingleton((i) {
+      if(MOCK){
+        return AssetSplashRepository();
+      }
+      return ApiSplashRepository(i.get<CustomDio>());
+    }),
 
   ];
 

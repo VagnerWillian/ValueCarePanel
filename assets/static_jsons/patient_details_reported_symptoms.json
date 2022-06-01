@@ -1,0 +1,127 @@
+{
+  "success": true,
+  "result": [
+    {
+      "cor": "#6418C3",
+      "novo": true,
+      "aviso": false,
+      "imagem": "assets/images/symptoms/1.svg",
+      "momento": "4 dias atrás",
+      "sintoma": "Cansaço e/ou Fadiga",
+      "situacao": "Canso ao caminhar pequenos trechos Melhorando",
+      "comparacao": "",
+      "comparacao_data": "sexta-feira, 27 maio 2022"
+    },
+    {
+      "cor": "#6418C3",
+      "novo": true,
+      "aviso": false,
+      "imagem": "assets/images/symptoms/10.svg",
+      "momento": "4 dias atrás",
+      "sintoma": "Dificuldade de concentração e/ou esquecimento",
+      "situacao": " Piorando",
+      "comparacao": "",
+      "comparacao_data": "sexta-feira, 27 maio 2022"
+    },
+    {
+      "cor": "#6418C3",
+      "novo": true,
+      "aviso": false,
+      "imagem": "assets/images/symptoms/13.svg",
+      "momento": "4 dias atrás",
+      "sintoma": "Pele",
+      "situacao": " Igual",
+      "comparacao": "",
+      "comparacao_data": "sexta-feira, 27 maio 2022"
+    },
+    {
+      "cor": "#6418C3",
+      "novo": true,
+      "aviso": false,
+      "imagem": "assets/images/symptoms/14.svg",
+      "momento": "4 dias atrás",
+      "sintoma": "Dor nas articulações",
+      "situacao": " Melhorando",
+      "comparacao": "",
+      "comparacao_data": "sexta-feira, 27 maio 2022"
+    },
+    {
+      "cor": "#6418C3",
+      "novo": true,
+      "aviso": false,
+      "imagem": "assets/images/symptoms/17.svg",
+      "momento": "4 dias atrás",
+      "sintoma": "Tremores",
+      "situacao": " Melhorando",
+      "comparacao": "",
+      "comparacao_data": "sexta-feira, 27 maio 2022"
+    },
+    {
+      "cor": "#6418C3",
+      "novo": true,
+      "aviso": false,
+      "imagem": "assets/images/symptoms/19.svg",
+      "momento": "4 dias atrás",
+      "sintoma": "Dores de cabeça",
+      "situacao": " Melhorando",
+      "comparacao": "",
+      "comparacao_data": "sexta-feira, 27 maio 2022"
+    },
+    {
+      "cor": "#6418C3",
+      "novo": true,
+      "aviso": false,
+      "imagem": "assets/images/symptoms/3.svg",
+      "momento": "4 dias atrás",
+      "sintoma": "Chiado no peito ",
+      "situacao": " Igual",
+      "comparacao": "",
+      "comparacao_data": "sexta-feira, 27 maio 2022"
+    },
+    {
+      "cor": "#6418C3",
+      "novo": true,
+      "aviso": false,
+      "imagem": "assets/images/symptoms/4.svg",
+      "momento": "4 dias atrás",
+      "sintoma": "Falta de ar ",
+      "situacao": "Tenho falta de ar para tarefas simples Igual",
+      "comparacao": "",
+      "comparacao_data": "sexta-feira, 27 maio 2022"
+    },
+    {
+      "cor": "#6418C3",
+      "novo": true,
+      "aviso": false,
+      "imagem": "assets/images/symptoms/7.svg",
+      "momento": "4 dias atrás",
+      "sintoma": "Dor no corpo ",
+      "situacao": " Melhorando",
+      "comparacao": "Não tinha antes do Covid",
+      "comparacao_data": "sexta-feira, 27 maio 2022"
+    },
+    {
+      "cor": "#6418C3",
+      "novo": true,
+      "aviso": false,
+      "imagem": "assets/images/symptoms/9.svg",
+      "momento": "4 dias atrás",
+      "sintoma": "Queda de cabelo",
+      "situacao": " Melhorando",
+      "comparacao": "",
+      "comparacao_data": "sexta-feira, 27 maio 2022"
+    },
+    {
+      "cor": "#6418C3",
+      "novo": true,
+      "aviso": false,
+      "imagem": "assets/images/symptoms/PdQIghiT7SpEYU9oPLsf.svg",
+      "momento": "4 dias atrás",
+      "sintoma": "Tenho problema com excesso de peso e estamos investigando a causa. Não é por comida. Tenho isso há anos. A nutricionista pediu dezenas de exames para investigarmos uma possível síndrome de Cushing. Tomei corticoides a vida toda. Pra terem ideia, fiquei 75 dias no hospital ( mais de 60 em UTI e coma induzido) e perdi apenas uns 15 kg. Nao é nada para 75 dias!!! Depois tive que fazer um tratamento com 30 dias de corticoide e inchei novamente. Estava com 124 qd daí da UTI. Agora 144. Meus exames de sangue são perfeitos. tenho comido inclusive menos, sentido menos fome. Temos uma alimentação super balanceada e parece que tá piorando.",
+      "situacao": " Piorando",
+      "comparacao": "Não tinha antes do Covid",
+      "comparacao_data": "sexta-feira, 27 maio 2022"
+    }
+  ],
+  "error": null
+}

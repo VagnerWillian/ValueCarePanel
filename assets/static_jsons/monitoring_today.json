@@ -54,7 +54,7 @@
     "paciente": "Janie Harris Bolton Delaney",
     "classificacaoId": 1,
     "confirmado": false,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "7",
@@ -99,7 +99,7 @@
     "dataSolicitacao": "2020-01-22 14:07",
     "dataAgendamento": null,
     "paciente": "Melinda Blackburn Gallegos Garrison",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
     "especialidadeId": 2,
     "sintomas": [
@@ -193,7 +193,7 @@
     "paciente": "Lynette Mooney Barlow Baldwin",
     "classificacaoId": 4,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "14",
@@ -238,7 +238,7 @@
     "dataSolicitacao": "2020-05-16 12:42",
     "dataAgendamento": null,
     "paciente": "Leticia Franklin Klein Benson",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": 4,
     "sintomas": [
@@ -264,7 +264,7 @@
     "dataSolicitacao": "2020-02-19 07:29",
     "dataAgendamento": null,
     "paciente": "Annabelle Freeman Merritt Stanley",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": null,
     "sintomas": [
@@ -323,7 +323,7 @@
     "dataSolicitacao": "2020-11-23 15:21",
     "dataAgendamento": null,
     "paciente": "Baker Clark Neal Watson",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
     "especialidadeId": null,
     "sintomas": [
@@ -462,9 +462,9 @@
     "dataSolicitacao": "2020-06-13 18:26",
     "dataAgendamento": null,
     "paciente": "Austin Cervantes Rosales Cherry",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "7",
@@ -511,7 +511,7 @@
     "paciente": "Forbes Lawrence Bridges Knight",
     "classificacaoId": 4,
     "confirmado": true,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "12",
@@ -634,7 +634,7 @@
     "dataSolicitacao": "2020-10-18 20:40",
     "dataAgendamento": null,
     "paciente": "Hunt Howe Miranda Flowers",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": null,
     "sintomas": [
@@ -667,9 +667,9 @@
     "dataSolicitacao": "2020-07-20 17:33",
     "dataAgendamento": null,
     "paciente": "Joseph Brock Walters Macias",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "6",
@@ -842,7 +842,7 @@
     "especialidadeId": null,
     "sintomas": [
       {
-        "id": "0",
+        "id": "8",
         "reportadoEm": "2020-03-13 11:59",
         "intensidade": "Muito",
         "imagem": "assets/assets/images/symptoms/0.svg",
@@ -908,7 +908,7 @@
     "especialidadeId": null,
     "sintomas": [
       {
-        "id": "0",
+        "id": "8",
         "reportadoEm": "2020-06-22 09:25",
         "intensidade": "Pouco",
         "imagem": "assets/assets/images/symptoms/0.svg",
@@ -929,7 +929,7 @@
     "dataSolicitacao": "2020-11-26 19:16",
     "dataAgendamento": null,
     "paciente": "Mcmillan Bernard Tran Head",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
     "especialidadeId": 4,
     "sintomas": [
@@ -1018,7 +1018,7 @@
     "paciente": "Foreman Armstrong Combs Donovan",
     "classificacaoId": 2,
     "confirmado": false,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "13",
@@ -1169,7 +1169,7 @@
     "dataSolicitacao": "2020-06-23 18:19",
     "dataAgendamento": null,
     "paciente": "Viola Pacheco Lloyd Castro",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
     "especialidadeId": 2,
     "sintomas": [
@@ -1454,7 +1454,7 @@
     "paciente": "Hart Cross Herman Powers",
     "classificacaoId": 3,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "7",
@@ -1520,7 +1520,7 @@
     "paciente": "Bullock Fischer Horn Justice",
     "classificacaoId": 2,
     "confirmado": true,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "2",
@@ -1697,7 +1697,7 @@
     "especialidadeId": null,
     "sintomas": [
       {
-        "id": "0",
+        "id": "8",
         "reportadoEm": "2020-01-23 08:10",
         "intensidade": "Muito",
         "imagem": "assets/assets/images/symptoms/0.svg",
@@ -1727,7 +1727,7 @@
     "paciente": "Holland Olsen Soto Glover",
     "classificacaoId": 2,
     "confirmado": true,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "7",
@@ -1866,7 +1866,7 @@
     "paciente": "Alvarado Decker Hoffman Wiley",
     "classificacaoId": 2,
     "confirmado": false,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "14",
@@ -1913,7 +1913,7 @@
     "paciente": "Santana Hawkins Norton Best",
     "classificacaoId": 3,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "11",
@@ -1958,7 +1958,7 @@
     "dataSolicitacao": "2020-05-05 20:00",
     "dataAgendamento": null,
     "paciente": "Barton Fowler Forbes Cardenas",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": null,
     "sintomas": [
@@ -2026,7 +2026,7 @@
     "paciente": "Jefferson Delgado Terry Oneal",
     "classificacaoId": 4,
     "confirmado": false,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "16",
@@ -2130,9 +2130,9 @@
     "dataSolicitacao": "2020-09-03 13:13",
     "dataAgendamento": null,
     "paciente": "Floyd Edwards Christensen Holt",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "3",
@@ -2189,9 +2189,9 @@
     "dataSolicitacao": "2020-05-31 12:26",
     "dataAgendamento": null,
     "paciente": "Kerri Henderson Contreras Holden",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "18",
@@ -2241,9 +2241,9 @@
     "dataSolicitacao": "2020-11-19 00:11",
     "dataAgendamento": null,
     "paciente": "Crawford Ball Cortez Buck",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "4",
@@ -2342,7 +2342,7 @@
     "paciente": "Casey Quinn Puckett Haley",
     "classificacaoId": 1,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "4",
@@ -2366,7 +2366,7 @@
     "dataSolicitacao": "2020-10-17 22:07",
     "dataAgendamento": null,
     "paciente": "Theresa Brennan Valenzuela Mills",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": 4,
     "sintomas": [
@@ -2385,7 +2385,7 @@
     "dataSolicitacao": "2020-01-23 13:26",
     "dataAgendamento": null,
     "paciente": "Young Dixon Wilkins Hamilton",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
     "especialidadeId": null,
     "sintomas": [
@@ -2425,7 +2425,7 @@
     "dataSolicitacao": "2020-05-14 03:42",
     "dataAgendamento": null,
     "paciente": "Candy Valentine Sheppard Peck",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": 4,
     "sintomas": [
@@ -2779,7 +2779,7 @@
     "dataSolicitacao": "2020-03-21 05:36",
     "dataAgendamento": null,
     "paciente": "Sherri Arnold Hunt Alvarado",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": null,
     "sintomas": [
@@ -2826,7 +2826,7 @@
     "dataSolicitacao": "2020-09-27 21:02",
     "dataAgendamento": null,
     "paciente": "Bobbi Cantu Jenkins Hurley",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": 2,
     "sintomas": [
@@ -2864,7 +2864,7 @@
     "especialidadeId": null,
     "sintomas": [
       {
-        "id": "0",
+        "id": "8",
         "reportadoEm": "2020-07-23 22:07",
         "intensidade": "Muito",
         "imagem": "assets/assets/images/symptoms/0.svg",
@@ -2963,7 +2963,7 @@
     "paciente": "Britt Coleman Hull Parsons",
     "classificacaoId": 2,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "2",
@@ -2982,7 +2982,7 @@
     "paciente": "Randi Wiggins Britt Johnston",
     "classificacaoId": 1,
     "confirmado": true,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "5",
@@ -3008,7 +3008,7 @@
     "paciente": "Estrada Curry Holland Robbins",
     "classificacaoId": 1,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "11",
@@ -3048,7 +3048,7 @@
     "paciente": "Glenda Mcneil Mathis Park",
     "classificacaoId": 1,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "4",
@@ -3065,7 +3065,7 @@
     "dataSolicitacao": "2020-12-18 19:18",
     "dataAgendamento": null,
     "paciente": "Owens Wong Flores Whitney",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
     "especialidadeId": null,
     "sintomas": [
@@ -3105,7 +3105,7 @@
     "dataSolicitacao": "2020-03-07 19:17",
     "dataAgendamento": null,
     "paciente": "Thornton Mendez Boyer Monroe",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
     "especialidadeId": null,
     "sintomas": [
@@ -3173,7 +3173,7 @@
     "paciente": "Duncan Reid Estrada Lester",
     "classificacaoId": 4,
     "confirmado": false,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "5",
@@ -3204,9 +3204,9 @@
     "dataSolicitacao": "2020-03-27 05:50",
     "dataAgendamento": null,
     "paciente": "Kelli Mcintosh Key Sweeney",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "1",
@@ -3237,9 +3237,9 @@
     "dataSolicitacao": "2020-01-28 22:33",
     "dataAgendamento": null,
     "paciente": "Edna Rodriquez Harrington Chapman",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "10",
@@ -3279,7 +3279,7 @@
     "paciente": "Erna Horton Shannon Rivas",
     "classificacaoId": 2,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "12",
@@ -3602,7 +3602,7 @@
     "dataSolicitacao": "2020-05-13 02:20",
     "dataAgendamento": null,
     "paciente": "Penny Byers Cook Jackson",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
     "especialidadeId": null,
     "sintomas": [
@@ -3677,7 +3677,7 @@
     "paciente": "Cain Cleveland West Chan",
     "classificacaoId": 4,
     "confirmado": true,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "15",
@@ -3701,7 +3701,7 @@
     "dataSolicitacao": "2020-04-11 13:20",
     "dataAgendamento": null,
     "paciente": "Drake Weber Harding Beach",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": null,
     "sintomas": [
@@ -3936,7 +3936,7 @@
     "paciente": "Wynn Camacho Witt Odom",
     "classificacaoId": 1,
     "confirmado": true,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "3",
@@ -3967,7 +3967,7 @@
     "dataSolicitacao": "2020-09-21 19:38",
     "dataAgendamento": null,
     "paciente": "Susie Townsend Cox Perry",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": 2,
     "sintomas": [
@@ -4108,7 +4108,7 @@
     "paciente": "Anthony Huff Donaldson Vaughan",
     "classificacaoId": 1,
     "confirmado": false,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "18",
@@ -4144,7 +4144,7 @@
     "dataSolicitacao": "2020-02-03 09:05",
     "dataAgendamento": null,
     "paciente": "Delia Barnett Hudson Bradley",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
     "especialidadeId": null,
     "sintomas": [
@@ -4257,7 +4257,7 @@
     "dataSolicitacao": "2020-09-18 05:57",
     "dataAgendamento": null,
     "paciente": "Mccray Swanson Wheeler Evans",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
     "especialidadeId": 4,
     "sintomas": [
@@ -4337,7 +4337,7 @@
     "paciente": "Walton Holman Snider Leonard",
     "classificacaoId": 3,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "4",
@@ -4363,7 +4363,7 @@
     "paciente": "Marlene Carroll Marsh Payne",
     "classificacaoId": 3,
     "confirmado": false,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "1",
@@ -4382,7 +4382,7 @@
     "paciente": "May Castaneda Dickerson Haney",
     "classificacaoId": 2,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "9",
@@ -4401,7 +4401,7 @@
     "paciente": "Conrad Bell May Adams",
     "classificacaoId": 1,
     "confirmado": false,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "18",
@@ -4481,7 +4481,7 @@
     "paciente": "Mollie Hanson Schroeder Gaines",
     "classificacaoId": 3,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "8",
@@ -4653,7 +4653,7 @@
     "paciente": "Williamson Wyatt Vance Williams",
     "classificacaoId": 4,
     "confirmado": false,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "15",
@@ -4830,7 +4830,7 @@
     "especialidadeId": null,
     "sintomas": [
       {
-        "id": "0",
+        "id": "8",
         "reportadoEm": "2020-01-06 06:33",
         "intensidade": "Muito",
         "imagem": "assets/assets/images/symptoms/0.svg",
@@ -4903,7 +4903,7 @@
     "especialidadeId": null,
     "sintomas": [
       {
-        "id": "0",
+        "id": "8",
         "reportadoEm": "2020-10-12 20:45",
         "intensidade": "Muito",
         "imagem": "assets/assets/images/symptoms/0.svg",
@@ -5009,7 +5009,7 @@
     "dataSolicitacao": "2020-11-27 15:22",
     "dataAgendamento": null,
     "paciente": "Rose Melendez Lowery Glenn",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
     "especialidadeId": 4,
     "sintomas": [
@@ -5056,7 +5056,7 @@
     "dataSolicitacao": "2020-08-19 17:46",
     "dataAgendamento": null,
     "paciente": "Miller Young Lopez Hess",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
     "especialidadeId": null,
     "sintomas": [
@@ -5082,7 +5082,7 @@
     "dataSolicitacao": "2020-09-24 12:28",
     "dataAgendamento": null,
     "paciente": "Bettie Bray Sargent Burch",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": null,
     "sintomas": [
@@ -5268,7 +5268,7 @@
     "paciente": "Georgina Robles Harrison Finch",
     "classificacaoId": 2,
     "confirmado": true,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "15",
@@ -5443,9 +5443,9 @@
     "dataSolicitacao": "2020-05-12 01:47",
     "dataAgendamento": null,
     "paciente": "Angeline Patel Mcknight Price",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "13",
@@ -5469,7 +5469,7 @@
     "dataSolicitacao": "2020-12-03 01:11",
     "dataAgendamento": null,
     "paciente": "Lora Lyons Luna Solomon",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": null,
     "sintomas": [
@@ -5556,7 +5556,7 @@
     "paciente": "Colette Durham Herring Crane",
     "classificacaoId": 2,
     "confirmado": true,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "5",
@@ -5596,7 +5596,7 @@
     "paciente": "Jeannie Hendrix Lott Clay",
     "classificacaoId": 2,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "18",
@@ -5683,7 +5683,7 @@
     "paciente": "Nieves Sampson Moreno Lowe",
     "classificacaoId": 4,
     "confirmado": true,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "3",
@@ -5815,7 +5815,7 @@
     "paciente": "Callahan Emerson Schultz Rich",
     "classificacaoId": 1,
     "confirmado": true,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "12",
@@ -5858,7 +5858,7 @@
     "especialidadeId": 2,
     "sintomas": [
       {
-        "id": "0",
+        "id": "8",
         "reportadoEm": "2020-09-17 06:10",
         "intensidade": "Pouco",
         "imagem": "assets/assets/images/symptoms/0.svg",
@@ -6277,7 +6277,7 @@
     "paciente": "Leah Mcpherson Erickson Scott",
     "classificacaoId": 4,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "13",
@@ -6303,7 +6303,7 @@
     "paciente": "Kate Talley Willis Good",
     "classificacaoId": 3,
     "confirmado": false,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "17",
@@ -6320,9 +6320,9 @@
     "dataSolicitacao": "2020-08-20 03:27",
     "dataAgendamento": null,
     "paciente": "Jordan Burke Nash Keith",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "1",
@@ -6393,7 +6393,7 @@
     "dataSolicitacao": "2020-03-19 12:48",
     "dataAgendamento": null,
     "paciente": "Hickman Oneil Nielsen Hutchinson",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": null,
     "sintomas": [
@@ -6475,7 +6475,7 @@
     "paciente": "Cabrera Montoya Gordon Ochoa",
     "classificacaoId": 4,
     "confirmado": false,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "4",
@@ -6506,7 +6506,7 @@
     "dataSolicitacao": "2020-06-21 04:38",
     "dataAgendamento": null,
     "paciente": "Patterson Newman Baker Johns",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": null,
     "sintomas": [
@@ -6530,7 +6530,7 @@
     "especialidadeId": 3,
     "sintomas": [
       {
-        "id": "0",
+        "id": "8",
         "reportadoEm": "2020-01-09 01:40",
         "intensidade": "Extremo",
         "imagem": "assets/assets/images/symptoms/0.svg",
@@ -6598,7 +6598,7 @@
     "dataSolicitacao": "2020-02-21 13:48",
     "dataAgendamento": null,
     "paciente": "Maldonado Osborne Savage Wilkinson",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
     "especialidadeId": null,
     "sintomas": [
@@ -6640,7 +6640,7 @@
     "paciente": "Rosanna Sears Zamora Long",
     "classificacaoId": 2,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "8",
@@ -6659,7 +6659,7 @@
     "paciente": "Garrison Schmidt Osborn Crawford",
     "classificacaoId": 4,
     "confirmado": false,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "8",
@@ -6709,7 +6709,7 @@
     "dataSolicitacao": "2020-12-11 05:37",
     "dataAgendamento": null,
     "paciente": "Harvey Hughes Mcmillan Alvarez",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
     "especialidadeId": null,
     "sintomas": [
@@ -6850,7 +6850,7 @@
     "paciente": "Krista Delacruz Aguilar Dillard",
     "classificacaoId": 3,
     "confirmado": true,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "14",
@@ -6895,10 +6895,10 @@
     "paciente": "Watts Franks Walls Maynard",
     "classificacaoId": 3,
     "confirmado": true,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
-        "id": "0",
+        "id": "8",
         "reportadoEm": "2020-08-19 16:03",
         "intensidade": "Extremo",
         "imagem": "assets/assets/images/symptoms/0.svg",
@@ -6935,7 +6935,7 @@
     "paciente": "Nichole Kirk Mckay Floyd",
     "classificacaoId": 1,
     "confirmado": true,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "7",
@@ -7039,7 +7039,7 @@
     "paciente": "Dena Wells Morris Carey",
     "classificacaoId": 3,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "16",
@@ -7082,7 +7082,7 @@
     "especialidadeId": null,
     "sintomas": [
       {
-        "id": "0",
+        "id": "8",
         "reportadoEm": "2020-09-24 14:22",
         "intensidade": "Muito",
         "imagem": "assets/assets/images/symptoms/0.svg",
@@ -7306,7 +7306,7 @@
     "dataSolicitacao": "2020-05-20 01:36",
     "dataAgendamento": null,
     "paciente": "Edwina Bender Salazar Bowman",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": 4,
     "sintomas": [
@@ -7330,7 +7330,7 @@
     "especialidadeId": null,
     "sintomas": [
       {
-        "id": "0",
+        "id": "8",
         "reportadoEm": "2020-12-28 13:19",
         "intensidade": "Pouco",
         "imagem": "assets/assets/images/symptoms/0.svg",
@@ -7377,7 +7377,7 @@
     "dataSolicitacao": "2020-04-02 00:43",
     "dataAgendamento": null,
     "paciente": "Janice Stafford Barry Marshall",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": null,
     "sintomas": [
@@ -7688,7 +7688,7 @@
     "dataSolicitacao": "2020-01-23 03:45",
     "dataAgendamento": null,
     "paciente": "Griffin Stevenson Mcfadden Boyle",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": false,
     "especialidadeId": null,
     "sintomas": [
@@ -7709,7 +7709,7 @@
     "paciente": "Marcia Russo Hopkins Whitaker",
     "classificacaoId": 3,
     "confirmado": true,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "13",
@@ -7754,7 +7754,7 @@
     "dataSolicitacao": "2020-05-03 07:27",
     "dataAgendamento": null,
     "paciente": "Manning Briggs Finley Moon",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": null,
     "sintomas": [
@@ -7794,10 +7794,10 @@
     "paciente": "Martina Nicholson Burt Albert",
     "classificacaoId": 4,
     "confirmado": false,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
-        "id": "0",
+        "id": "8",
         "reportadoEm": "2020-05-07 19:57",
         "intensidade": "Extremo",
         "imagem": "assets/assets/images/symptoms/0.svg",
@@ -7834,7 +7834,7 @@
     "paciente": "Ruth Waters Fletcher Kennedy",
     "classificacaoId": 1,
     "confirmado": true,
-    "especialidadeId": 1,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "8",
@@ -7940,7 +7940,7 @@
     "paciente": "Norman Houston King Chambers",
     "classificacaoId": 1,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
         "id": "18",
@@ -7971,12 +7971,12 @@
     "dataSolicitacao": "2020-04-02 22:52",
     "dataAgendamento": null,
     "paciente": "Kent Blevins Myers Webb",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": 4,
     "sintomas": [
       {
-        "id": "0",
+        "id": "8",
         "reportadoEm": "2020-02-29 03:49",
         "intensidade": "Muito",
         "imagem": "assets/assets/images/symptoms/0.svg",
@@ -7990,7 +7990,7 @@
     "dataSolicitacao": "2020-01-12 01:46",
     "dataAgendamento": null,
     "paciente": "Hardy Henson Michael Yates",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": 2,
     "sintomas": [
@@ -8037,7 +8037,7 @@
     "dataSolicitacao": "2020-09-29 03:05",
     "dataAgendamento": null,
     "paciente": "Boone Stein Martinez Wood",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
     "especialidadeId": null,
     "sintomas": [
@@ -8117,12 +8117,12 @@
     "dataSolicitacao": "2020-12-26 11:10",
     "dataAgendamento": null,
     "paciente": "Mcconnell Noel Mason Hubbard",
-    "classificacaoId": 0,
+    "classificacaoId": 1,
     "confirmado": true,
-    "especialidadeId": 0,
+    "especialidadeId": null,
     "sintomas": [
       {
-        "id": "0",
+        "id": "8",
         "reportadoEm": "2020-02-18 10:53",
         "intensidade": "Pouco",
         "imagem": "assets/assets/images/symptoms/0.svg",

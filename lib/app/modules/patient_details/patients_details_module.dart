@@ -6,10 +6,12 @@ import 'package:value_panel/app/modules/patient_details/domain/usecases/get_pati
 import 'package:value_panel/app/modules/patient_details/domain/usecases/get_reported_symptoms_of_patient_from_date.usecase.dart';
 import 'package:value_panel/app/modules/patient_details/domain/usecases/get_score_graphic_of_dates.usecase.dart';
 import 'package:value_panel/app/modules/patient_details/domain/usecases/save_origin_of_user.usecase.dart';
+import 'package:value_panel/app/modules/patient_details/infra/repositories/asset.repository.dart';
 import 'package:value_panel/app/modules/patient_details/ui/patient_details_page.dart';
 import 'package:value_panel/app/modules/patient_details/ui/patient_details_store.dart';
 import 'package:value_panel/app/shared/core/managers/config.manager.dart';
 import 'package:value_panel/app/shared/custom_dio/custom.dio.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 import 'domain/services/get_patient_details.service.dart';
 import 'domain/services/get_score_graphic_of_dates.service.dart';
@@ -36,7 +38,12 @@ class PatientsDetailsModule extends Module {
     Bind.lazySingleton((i) => GetReportedSymptomsOfPatientFromDate(i.get<PatientDetailsRepository>())),
 
     //Repositories
-    Bind.lazySingleton((i) => ApiPatientDetailsRepository(i.get<CustomDio>())),
+    Bind.lazySingleton((i) {
+      if(MOCK){
+        return AssetPatientDetailsRepository();
+      }
+      return ApiPatientDetailsRepository(i.get<CustomDio>());
+    }),
     // Bind.lazySingleton((i) => JsonGeneratorPatientDetailsRepository(i.get<CustomDio>())),
 
   ];

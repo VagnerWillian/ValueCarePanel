@@ -1,7 +1,11 @@
 abstract class HistoryItemEntity{
-  late final int id;
+  late final String id;
   bool hasRead = true;
-  late final String name;
+  late final String operator;
   late final String text;
   late final String data;
+  int? idNewClassification;
+  String? newAppointmentDate;
+  int? idNewSpecialty;
+  bool? newStatusConfirmation;
 }

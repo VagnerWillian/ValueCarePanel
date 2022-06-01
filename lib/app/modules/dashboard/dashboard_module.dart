@@ -11,10 +11,10 @@ import 'package:value_panel/app/modules/dashboard/domain/usecases/fetch_report_d
 import 'package:value_panel/app/modules/dashboard/domain/usecases/get_comparison_data.usecase.dart';
 import 'package:value_panel/app/modules/dashboard/domain/usecases/update_monitoring_item.usecase.dart';
 import 'package:value_panel/app/modules/dashboard/infra/repositories/asset.repository.dart';
-import 'package:value_panel/app/modules/dashboard/infra/repositories/json_generator.repository.dart';
 import 'package:value_panel/app/modules/dashboard/ui/dashboard_page.dart';
 import 'package:value_panel/app/modules/dashboard/ui/dashboard_store.dart';
 import 'package:value_panel/app/modules/home/ui/home_store.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 import '../../shared/custom_dio/custom.dio.dart';
 import 'infra/repositories/api.repository.dart';
@@ -39,9 +39,13 @@ class DashboardModule extends Module {
     Bind.lazySingleton((i) => DownloadArchive()),
 
     // Repositories
-    Bind.lazySingleton((i) => ApiDashboardRepository(i.get<CustomDio>())),
-    // Bind.lazySingleton((i) => JsonGeneratorDashboardRepository(i.get<CustomDio>())),
-    // Bind.lazySingleton((i) => AssetDashBoardRepository())
+    Bind.lazySingleton((i) {
+      if(MOCK){
+        return AssetDashBoardRepository();
+      }else{
+        return ApiDashboardRepository(i.get<CustomDio>());
+      }
+    })
   ];
 
   @override

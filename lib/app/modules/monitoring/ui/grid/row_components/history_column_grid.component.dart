@@ -16,7 +16,7 @@ class HistoryColumnGrid extends StatelessWidget {
             padding: MaterialStateProperty.all(const EdgeInsets.all(5)),
             shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)))
           ),
-          onPressed: ()=>openHistoryFloating(),
+          onPressed: ()=>openHistoryFloating(idPatient: value),
           child: SvgPicture.network("assets/assets/images/menu/history.svg", width: 20,)),
     ));
   }

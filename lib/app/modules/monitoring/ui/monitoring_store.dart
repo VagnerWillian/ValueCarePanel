@@ -1,7 +1,7 @@
 import 'dart:async';
-import 'dart:html' as html;
 
 import 'package:either_dart/either.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:mobx/mobx.dart';
@@ -51,10 +51,12 @@ abstract class _MonitoringStoreBase with Store {
   }){
     monitoringDataSource = MonitoringDataSource(updateMonitoringItem: updateMonitoringItem, openHistoryFloating: openHistoryFloating, openPatientDetails: openPatientDetails, specialties: configManager.specialties, classifications: configManager.classifications);
     preDatesLogic();
-    Timer.periodic(const Duration(seconds: 30), (timer) {
-      onChangedSelectorDate(dateSelector!, (){});
-      print("Lista de Monitoramento Atualizado.");
-    });
+    if(!kDebugMode){
+      Timer.periodic(const Duration(seconds: 30), (timer) {
+        onChangedSelectorDate(dateSelector!, (){});
+        print("Lista de Monitoramento Atualizado.");
+      });
+    }
   }
 
   //OTHERS
@@ -130,8 +132,8 @@ abstract class _MonitoringStoreBase with Store {
     return response;
   }
 
-  void openHistoryFloating() {
-    historyChatStore.open(idPatient: "");
+  void openHistoryFloating({required String idPatient}) {
+    historyChatStore.open(idPatient: idPatient);
   }
 
   void openPatientDetails(String idUserPatient, String idPatient)async{

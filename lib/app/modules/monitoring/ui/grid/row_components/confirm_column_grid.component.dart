@@ -1,5 +1,7 @@
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:value_panel/app/modules/history_chat/ui/history_chat_store.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
 import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
 import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
@@ -18,6 +20,7 @@ class ConfirmColumnGrid extends StatefulWidget {
 class _ConfirmColumnGridState extends State<ConfirmColumnGrid> {
   late bool checkStatus;
   bool loading = false;
+  final HistoryChatStore _historyChatStore = Modular.get();
 
   @override
   void initState() {
@@ -60,6 +63,7 @@ class _ConfirmColumnGridState extends State<ConfirmColumnGrid> {
     if (response.isRight) {
       setState(() {
         checkStatus = check;
+        _historyChatStore.sendWarningSetter(newStatusConfirmation: check, idPatient: widget.value.idPatient);
       });
     }else{
       widget.value.confirm = backupConfirm;

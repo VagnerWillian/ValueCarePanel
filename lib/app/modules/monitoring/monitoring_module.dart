@@ -10,10 +10,11 @@ import 'package:value_panel/app/modules/monitoring/domain/usecases/download_arch
 import 'package:value_panel/app/modules/monitoring/domain/usecases/fetch_monitoring_from_interval_dates.usecase.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/fetch_report_doc_src.usecase.dart.dart';
 import 'package:value_panel/app/modules/monitoring/domain/usecases/update_monitoring_item.usecase.dart';
-import 'package:value_panel/app/modules/monitoring/infra/repositories/json_generator.repository.dart';
+import 'package:value_panel/app/modules/monitoring/infra/repositories/asset.repository.dart';
 import 'package:value_panel/app/modules/monitoring/ui/monitoring_page.dart';
 import 'package:value_panel/app/modules/monitoring/ui/monitoring_store.dart';
 import 'package:value_panel/app/shared/core/managers/config.manager.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 import '../../shared/custom_dio/custom.dio.dart';
 import 'infra/repositories/api_repository.dart';
@@ -42,7 +43,12 @@ class MonitoringModule extends Module {
     // Repositories
     // Bind.lazySingleton((i) => JsonGeneratorMonitoringRepository(i.get<CustomDio>())),
     // Bind.lazySingleton((i) => AssetMonitoringRepository()),
-    Bind.lazySingleton((i) => ApiMonitoringRepository(i.get<CustomDio>())),
+    Bind.lazySingleton((i) {
+      if(MOCK){
+        return AssetMonitoringRepository();
+      }
+      return ApiMonitoringRepository(i.get<CustomDio>());
+    }),
   ];
 
   @override

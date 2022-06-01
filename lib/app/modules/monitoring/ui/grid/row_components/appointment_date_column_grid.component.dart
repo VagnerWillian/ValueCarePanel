@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:value_panel/app/modules/history_chat/ui/history_chat_store.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
 import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
 import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
@@ -22,7 +23,7 @@ class AppointmentDateColumnGrid extends StatefulWidget {
 class _AppointmentDateColumnGridState extends State<AppointmentDateColumnGrid> {
   DateTime? selectedDate;
   bool loading = false;
-  final datePattern = DateFormat("dd/MM/yyyy", "pt_BR");
+  final HistoryChatStore _historyChatStore = Modular.get();
 
   @override
   void initState() {
@@ -68,7 +69,7 @@ class _AppointmentDateColumnGridState extends State<AppointmentDateColumnGrid> {
                 size: 18,
               ),
               label: Text(
-                selectedDate == null ? "Selecionar..." : datePattern.format(selectedDate!),
+                selectedDate == null ? "Selecionar..." : patternDdMmmyyyy.format(selectedDate!),
                 style: GoogleFonts.cairo(fontWeight: FontWeight.bold, fontSize: 12, color: Colors.black),
               )),
     );
@@ -136,6 +137,7 @@ class _AppointmentDateColumnGridState extends State<AppointmentDateColumnGrid> {
     if (response.isRight) {
       setState(() {
         selectedDate = value;
+        _historyChatStore.sendWarningSetter(newAppointmentDate: patternDdMmmyyyy.format(value), idPatient: widget.value.idPatient);
       });
     }else{
       widget.value.appointmentDate = backupDate;

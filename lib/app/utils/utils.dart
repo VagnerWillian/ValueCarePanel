@@ -9,6 +9,8 @@ import 'package:value_panel/app/shared/core/infra/models/classification.model.da
 import '../shared/core/domain/entities/classification.entity.dart';
 import '../shared/core/domain/entities/level.entity.dart';
 
+bool MOCK = true;
+
 //////////////// ROUTES ////////////////////////////
 const String SPLASH_ROUTE = "/carregando/";
 const String LOGIN_ROUTE = "/login/";

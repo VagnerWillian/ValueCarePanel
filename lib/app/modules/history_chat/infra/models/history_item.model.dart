@@ -1,12 +1,12 @@
 import 'package:value_panel/app/modules/history_chat/domain/entities/history_item.entity.dart';
+import 'package:value_panel/app/shared/core/domain/entities/specialty.entity.dart';
 
-class HistoryItem implements HistoryItemEntity{
+class HistoryItem implements HistoryItemEntity {
+  @override
+  late final String id;
 
   @override
-  late final int id;
-
-  @override
-  late final String name;
+  late final String operator;
 
   @override
   late final String text;
@@ -15,15 +15,39 @@ class HistoryItem implements HistoryItemEntity{
   late final String data;
 
   @override
+  int? idNewClassification;
+
+  @override
+  String? newAppointmentDate;
+
+  @override
+  int? idNewSpecialty;
+
+  @override
+  bool? newStatusConfirmation;
+
+  @override
   bool hasRead = true;
 
-  HistoryItem.send({required this.name, required this.text, required this.data});
+  HistoryItem.sendText({required this.operator, required this.text, required this.data, this.hasRead = true});
+  HistoryItem.sendWarningSetter(
+      {required this.operator,
+      required this.idNewClassification,
+      required this.newAppointmentDate,
+      required this.idNewSpecialty,
+      required this.newStatusConfirmation,
+      required this.data,
+      this.hasRead = true});
 
   HistoryItem.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    name = json['nome']??"";
-    text = json['texto']??"";
-    data = json['data']??"";
-    hasRead = json['lido']??true;
+    operator = json['nome'] ?? "";
+    text = json['texto'] ?? "";
+    data = json['data'] ?? "";
+    idNewClassification = json['idNovaClassificacao'];
+    newAppointmentDate = json['dataNovoAgendamento'];
+    idNewSpecialty = json['idNovaEspecialidade'];
+    newStatusConfirmation = json['novoStatusConfirmacao'];
+    hasRead = json['lido'] ?? true;
   }
 }

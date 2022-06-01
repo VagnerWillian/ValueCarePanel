@@ -10,7 +10,7 @@ class DeleteHistory implements DeleteHistoryUseCase{
   DeleteHistory(this._historyRepository);
 
   @override
-  Future<Either<HistoryError, bool>> call({required int idHistoryItem})async{
+  Future<Either<HistoryError, bool>> call({required String idHistoryItem})async{
     return await _historyRepository.deleteHistory(idHistoryItem: idHistoryItem);
   }
 }

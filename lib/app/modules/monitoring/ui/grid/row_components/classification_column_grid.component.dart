@@ -1,7 +1,9 @@
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:value_panel/app/modules/history_chat/ui/history_chat_store.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
 import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
 import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
@@ -21,8 +23,10 @@ class ClassificationColumnGrid extends StatefulWidget {
 
 class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
 
+  final HistoryChatStore _historyChatStore = Modular.get();
   ClassificationEntity? selectedClassification;
   bool loading = false;
+
 
   @override
   void initState() {
@@ -93,6 +97,7 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
     if(response.isRight){
       setState(() {
         selectedClassification = classificationEntity;
+        _historyChatStore.sendWarningSetter(idNewClassification: classificationEntity.id, idPatient: widget.value.idPatient);
       });
     }else{
       widget.value.classificationId = backupId;

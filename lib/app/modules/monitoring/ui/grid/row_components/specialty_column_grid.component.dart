@@ -1,7 +1,9 @@
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:value_panel/app/modules/history_chat/ui/history_chat_store.dart';
 import 'package:value_panel/app/modules/monitoring/domain/entities/monitoring_data.entity.dart';
 import 'package:value_panel/app/modules/monitoring/errors/monitoring.errors.dart';
 import 'package:value_panel/app/shared/components/dialogs/another_error.dialog.dart';
@@ -23,7 +25,7 @@ class SpecialtyColumnGrid extends StatefulWidget {
 }
 
 class _SpecialtyColumnGridState extends State<SpecialtyColumnGrid> {
-
+  final HistoryChatStore _historyChatStore = Modular.get();
   SpecialtyEntity? selectedSpecialty;
   bool loading = false;
 
@@ -98,6 +100,7 @@ class _SpecialtyColumnGridState extends State<SpecialtyColumnGrid> {
     if(response.isRight){
       setState(() {
         selectedSpecialty = specialtyEntity;
+        _historyChatStore.sendWarningSetter(idNewSpecialty: specialtyEntity.id, idPatient: widget.value.idPatient);
       });
     }else{
       widget.value.specialtyId = backupId;

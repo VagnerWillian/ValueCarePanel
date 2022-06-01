@@ -7,9 +7,11 @@ import 'package:value_panel/app/modules/users/domain/usecases/create_user.usecas
 import 'package:value_panel/app/modules/users/domain/usecases/deactivate_user.usecase.dart';
 import 'package:value_panel/app/modules/users/domain/usecases/delete_user.usecase.dart';
 import 'package:value_panel/app/modules/users/domain/usecases/get_users.usecase.dart';
+import 'package:value_panel/app/modules/users/infra/repositories/asset.repository.dart';
 import 'package:value_panel/app/modules/users/ui/users_page.dart';
 import 'package:value_panel/app/modules/users/ui/users_store.dart';
 import 'package:value_panel/app/shared/custom_dio/custom.dio.dart';
+import 'package:value_panel/app/utils/utils.dart';
 
 import '../scheduling/infra/repositories/json_generator.repository.dart';
 import 'domain/services/activate_user.service.dart';
@@ -29,8 +31,12 @@ class UsersModule extends Module {
     Bind.lazySingleton((i) => DeleteUserService(Modular.get<UsersRepository>())),
 
     // Repositories
-    Bind.lazySingleton((i) => ApiUsersRepository(i.get<CustomDio>())),
-    // Bind.lazySingleton((i) => JsonGeneratorRepository(Modular.get<CustomDio>())),
+    Bind.lazySingleton((i) {
+      if(MOCK){
+        return AssetUsersRepository();
+      }
+      return ApiUsersRepository(i.get<CustomDio>());
+    }),
   ];
 
   @override
