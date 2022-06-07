@@ -153,7 +153,7 @@ class HistoryChatState extends ModularState<HistoryChat, HistoryChatStore> {
                                           ),
                                         ),*/
                                         ElevatedButton.icon(
-                                              onPressed: store.sendText,
+                                              onPressed: ()=>store.sendText(onError),
                                               style: ButtonStyle(
                                                   backgroundColor: MaterialStateProperty.all(primaryColor),
                                                   shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))

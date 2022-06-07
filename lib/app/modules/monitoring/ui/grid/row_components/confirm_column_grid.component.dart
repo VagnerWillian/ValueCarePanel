@@ -63,7 +63,7 @@ class _ConfirmColumnGridState extends State<ConfirmColumnGrid> {
     if (response.isRight) {
       setState(() {
         checkStatus = check;
-        _historyChatStore.sendWarningSetter(newStatusConfirmation: check, idPatient: widget.value.idPatient);
+        _historyChatStore.sendWarningSetter(newStatusConfirmation: check, idPatient: widget.value.idPatient, onError: onError);
       });
     }else{
       widget.value.confirm = backupConfirm;

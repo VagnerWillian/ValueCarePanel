@@ -129,13 +129,14 @@ abstract class _HistoryChatStoreBase with Store {
    }
   }
 
-  Future sendHistory(Map<String, dynamic> data)async{
+  Future sendHistory(Map<String, dynamic> data, Function onError)async{
    if(selectedPatient.isNotEmpty){
      setLoadingSend(true);
      Either<HistoryError, HistoryItemEntity> response = await _sendHistoryUseCase(idUserPatient: selectedPatient[0], idPatient: selectedPatient[1], data: data);
-     response.fold((HistoryError failure) {
+      await response.fold((HistoryError failure) async{
+       await onError(failure);
        return failure;
-     }, (HistoryItemEntity value) {
+     }, (HistoryItemEntity value) async{
        _addItem(value);
        return items;
      });
@@ -173,18 +174,18 @@ abstract class _HistoryChatStoreBase with Store {
     return marked;
   }
 
-  Future sendText()async{
+  Future sendText(Function onError)async{
     if(formKey.currentState!.validate()){
       HistoryItemEntity newHistory = HistoryItem.sendText(
           data: "Agora",
           operator: _appStore.loggedUser!.name,
           text: "${_appStore.loggedUser!.name}: "+ textEditingController.text
       );
-      await sendHistory(newHistory.toJson);
+      await sendHistory(newHistory.toJson, onError);
     }
   }
 
-  Future sendWarningSetter({required String idPatient, int? idNewClassification, String? newAppointmentDate, int? idNewSpecialty, bool? newStatusConfirmation})async{
+  Future sendWarningSetter({required String idPatient, int? idNewClassification, String? newAppointmentDate, int? idNewSpecialty, bool? newStatusConfirmation, required Function onError})async{
       if(selectedPatient.isNotEmpty){
         HistoryItemEntity newHistory = HistoryItem.sendWarningSetter(
             data: "Agora",
@@ -203,7 +204,7 @@ abstract class _HistoryChatStoreBase with Store {
         }else if(newStatusConfirmation!=null){
           newHistory.text = "${newHistory.operator} alterou o status para ${newStatusConfirmation?"confirmado":"não confirmado"}";
         }
-        await sendHistory(newHistory.toJson);
+        await sendHistory(newHistory.toJson, onError);
       }
   }
 

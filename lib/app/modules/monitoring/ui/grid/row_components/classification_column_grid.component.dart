@@ -97,7 +97,7 @@ class _ClassificationColumnGridState extends State<ClassificationColumnGrid> {
     if(response.isRight){
       setState(() {
         selectedClassification = classificationEntity;
-        _historyChatStore.sendWarningSetter(idNewClassification: classificationEntity.id, idPatient: widget.value.idPatient);
+        _historyChatStore.sendWarningSetter(idNewClassification: classificationEntity.id, idPatient: widget.value.idPatient, onError: onError);
       });
     }else{
       widget.value.classificationId = backupId;

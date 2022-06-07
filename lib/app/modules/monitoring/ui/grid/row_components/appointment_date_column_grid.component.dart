@@ -137,7 +137,7 @@ class _AppointmentDateColumnGridState extends State<AppointmentDateColumnGrid> {
     if (response.isRight) {
       setState(() {
         selectedDate = value;
-        _historyChatStore.sendWarningSetter(newAppointmentDate: patternDdMmmyyyy.format(value), idPatient: widget.value.idPatient);
+        _historyChatStore.sendWarningSetter(newAppointmentDate: patternDdMmmyyyy.format(value), idPatient: widget.value.idPatient, onError: onError);
       });
     }else{
       widget.value.appointmentDate = backupDate;

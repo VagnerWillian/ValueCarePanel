@@ -100,7 +100,7 @@ class _SpecialtyColumnGridState extends State<SpecialtyColumnGrid> {
     if(response.isRight){
       setState(() {
         selectedSpecialty = specialtyEntity;
-        _historyChatStore.sendWarningSetter(idNewSpecialty: specialtyEntity.id, idPatient: widget.value.idPatient);
+        _historyChatStore.sendWarningSetter(idNewSpecialty: specialtyEntity.id, idPatient: widget.value.idPatient, onError: onError);
       });
     }else{
       widget.value.specialtyId = backupId;
