@@ -29,9 +29,9 @@ class LoginModule extends Module {
 
     //Repositories
     Bind.lazySingleton((i) {
-      if(MOCK){
-        return AssetLoginRepository();
-      }
+      // if(MOCK){
+      //   return AssetLoginRepository();
+      // }
       return ApiLoginRepository(i.get<CustomDio>());
     }),
     Bind.lazySingleton((i) => LocalLoginRepository(i.get<LocalPreferences>()))

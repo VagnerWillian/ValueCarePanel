@@ -8,4 +8,6 @@ abstract class HistoryItemEntity{
   String? newAppointmentDate;
   int? idNewSpecialty;
   bool? newStatusConfirmation;
+
+  Map<String, dynamic> get toJson;
 }

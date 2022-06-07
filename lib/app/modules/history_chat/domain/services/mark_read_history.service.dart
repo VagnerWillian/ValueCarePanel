@@ -3,13 +3,13 @@ import 'package:value_panel/app/modules/history_chat/domain/repositories/reposit
 import 'package:value_panel/app/modules/history_chat/domain/usecases/mark_read_history.usecase.dart';
 import 'package:value_panel/app/modules/history_chat/errors/history.errors.dart';
 
-class MarkedReadService implements MarkedReadUseCase{
+class MarkedRead implements MarkedReadUseCase{
 
   final HistoryRepository _historyRepository;
-  MarkedReadService(this._historyRepository);
+  MarkedRead(this._historyRepository);
 
   @override
-  Future<Either<HistoryError, bool>> call({required String idHistoryItem})async{
-    return await _historyRepository.markReadHistory(idHistoryItem: idHistoryItem);
+  Future<Either<HistoryError, bool>> call({required String idUserPatient, required String idPatient, required String idHistoryItem})async{
+    return await _historyRepository.markReadHistory(idUserPatient: idUserPatient, idPatient: idPatient, idHistoryItem: idHistoryItem);
   }
 }

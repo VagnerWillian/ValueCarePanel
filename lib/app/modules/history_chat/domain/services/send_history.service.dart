@@ -4,13 +4,15 @@ import 'package:value_panel/app/modules/history_chat/domain/repositories/reposit
 import 'package:value_panel/app/modules/history_chat/domain/usecases/get_all_history.usecase.dart';
 import 'package:value_panel/app/modules/history_chat/errors/history.errors.dart';
 
-class GetAllHistory implements GetAllHistoryUseCase{
+import '../usecases/send_history.usecase.dart';
+
+class SendHistory implements SendHistoryUseCase{
 
   final HistoryRepository _historyRepository;
-  GetAllHistory(this._historyRepository);
+  SendHistory(this._historyRepository);
 
   @override
-  Future<Either<HistoryError, List<HistoryItemEntity>>> call({required String idUserPatient, required String idPatient})async{
-    return await _historyRepository.getAllHistoryItems(idUserPatient: idUserPatient, idPatient: idPatient);
+  Future<Either<HistoryError, HistoryItemEntity>> call({required String idUserPatient, required String idPatient, required Map<String, dynamic> data})async{
+    return await _historyRepository.sendHistory(idUserPatient: idUserPatient, idPatient: idPatient, data: data);
   }
 }

@@ -25,7 +25,7 @@ class HistoryChatState extends ModularState<HistoryChat, HistoryChatStore> {
   Widget build(BuildContext context) {
     return Observer(
       builder: (_)=> Visibility(
-        visible: store.selectedIdPatient!=null,
+        visible: store.selectedPatient.isNotEmpty,
         child: Container(
             height: !store.isExpanded?77:store.isFullHeight?MediaQuery.of(context).size.height-120:500,
             width: 320,
@@ -78,9 +78,9 @@ class HistoryChatState extends ModularState<HistoryChat, HistoryChatStore> {
                               padding: const EdgeInsets.symmetric(horizontal: 10),
                               child: ListView.builder(
                                 controller: store.scrollController,
-                                reverse: true,
                                 shrinkWrap: true,
                                 itemCount: store.items.length,
+                                reverse: true,
                                 itemBuilder: (context, item)=>Balloon(
                                     store.items[item],
                                     deleteHistoryItem: store.deleteHistory,
@@ -144,14 +144,14 @@ class HistoryChatState extends ModularState<HistoryChat, HistoryChatStore> {
                                   ):Row(
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
-                                        Container(
+                                        /*Container(
                                           margin: const EdgeInsets.symmetric(horizontal: 10),
                                           child: Row(
                                             children: [
                                               Icon(LineAwesomeIcons.paperclip, color: primaryColor, size: 18,)
                                             ],
                                           ),
-                                        ),
+                                        ),*/
                                         ElevatedButton.icon(
                                               onPressed: store.sendText,
                                               style: ButtonStyle(

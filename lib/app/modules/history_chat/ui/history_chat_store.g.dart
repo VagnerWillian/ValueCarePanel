@@ -43,15 +43,15 @@ mixin _$HistoryChatStore on _HistoryChatStoreBase, Store {
       Atom(name: '_HistoryChatStoreBase.selectedIdPatient');
 
   @override
-  String? get selectedIdPatient {
+  List<String> get selectedPatient {
     _$selectedIdPatientAtom.reportRead();
-    return super.selectedIdPatient;
+    return super.selectedPatient;
   }
 
   @override
-  set selectedIdPatient(String? value) {
-    _$selectedIdPatientAtom.reportWrite(value, super.selectedIdPatient, () {
-      super.selectedIdPatient = value;
+  set selectedPatient(List<String> values) {
+    _$selectedIdPatientAtom.reportWrite(values, super.selectedPatient, () {
+      super.selectedPatient = values;
     });
   }
 
@@ -137,11 +137,11 @@ mixin _$HistoryChatStore on _HistoryChatStoreBase, Store {
   }
 
   @override
-  void open({required String idPatient, dynamic isFullHeight = false}) {
+  void open({required String idUserPatient, required String idPatient, dynamic isFullHeight = false}) {
     final _$actionInfo = _$_HistoryChatStoreBaseActionController.startAction(
         name: '_HistoryChatStoreBase.open');
     try {
-      return super.open(idPatient: idPatient, isFullHeight: isFullHeight);
+      return super.open(idUserPatient: idUserPatient, idPatient: idPatient, isFullHeight: isFullHeight);
     } finally {
       _$_HistoryChatStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -218,7 +218,7 @@ mixin _$HistoryChatStore on _HistoryChatStoreBase, Store {
     return '''
 isExpanded: ${isExpanded},
 isFullHeight: ${isFullHeight},
-selectedIdPatient: ${selectedIdPatient},
+selectedIdPatient: ${selectedPatient},
 loading: ${loading},
 loadingSend: ${loadingSend},
 items: ${items}

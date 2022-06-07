@@ -1,5 +1,4 @@
 import 'package:value_panel/app/modules/history_chat/domain/entities/history_item.entity.dart';
-import 'package:value_panel/app/shared/core/domain/entities/specialty.entity.dart';
 
 class HistoryItem implements HistoryItemEntity {
   @override
@@ -41,7 +40,7 @@ class HistoryItem implements HistoryItemEntity {
 
   HistoryItem.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    operator = json['nome'] ?? "";
+    operator = json['operador'] ?? "";
     text = json['texto'] ?? "";
     data = json['data'] ?? "";
     idNewClassification = json['idNovaClassificacao'];
@@ -50,4 +49,15 @@ class HistoryItem implements HistoryItemEntity {
     newStatusConfirmation = json['novoStatusConfirmacao'];
     hasRead = json['lido'] ?? true;
   }
+
+  @override
+  Map<String, dynamic> get toJson => {
+    "operador": operator,
+    "data": data,
+    "texto":text,
+    "dataNovoAgendamento": newAppointmentDate,
+    "idNovaClassificacao": idNewClassification,
+    "idNovaEspecialidade": idNewSpecialty,
+    "statusConfirmacao": newStatusConfirmation
+  };
 }

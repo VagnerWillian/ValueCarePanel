@@ -9,7 +9,7 @@ import 'package:value_panel/app/shared/core/infra/models/classification.model.da
 import '../shared/core/domain/entities/classification.entity.dart';
 import '../shared/core/domain/entities/level.entity.dart';
 
-bool MOCK = true;
+bool MOCK = false;
 
 //////////////// ROUTES ////////////////////////////
 const String SPLASH_ROUTE = "/carregando/";

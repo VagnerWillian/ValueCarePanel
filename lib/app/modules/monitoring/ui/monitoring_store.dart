@@ -132,8 +132,8 @@ abstract class _MonitoringStoreBase with Store {
     return response;
   }
 
-  void openHistoryFloating({required String idPatient}) {
-    historyChatStore.open(idPatient: idPatient);
+  void openHistoryFloating({required List<String> idUserAndPatient}) {
+    historyChatStore.open(idUserPatient: idUserAndPatient[0], idPatient: idUserAndPatient[1]);
   }
 
   void openPatientDetails(String idUserPatient, String idPatient)async{

@@ -6,10 +6,9 @@ import 'package:value_panel/app/modules/history_chat/domain/entities/history_ite
 import 'package:value_panel/app/modules/history_chat/domain/usecases/delete_history.usecase.dart';
 import 'package:value_panel/app/modules/history_chat/domain/usecases/get_all_history.usecase.dart';
 import 'package:value_panel/app/modules/history_chat/domain/usecases/mark_read_history.usecase.dart';
+import 'package:value_panel/app/modules/history_chat/domain/usecases/send_history.usecase.dart';
 import 'package:value_panel/app/modules/history_chat/errors/history.errors.dart';
 import 'package:value_panel/app/modules/history_chat/infra/models/history_item.model.dart';
-import 'package:value_panel/app/shared/core/domain/entities/classification.entity.dart';
-import 'package:value_panel/app/shared/core/domain/entities/specialty.entity.dart';
 import 'package:value_panel/app/shared/core/managers/config.manager.dart';
 
 part 'history_chat_store.g.dart';
@@ -21,6 +20,7 @@ abstract class _HistoryChatStoreBase with Store {
   final GetAllHistoryUseCase _getAllHistoryUseCase;
   final DeleteHistoryUseCase _deleteHistoryUseCase;
   final MarkedReadUseCase _markedReadUseCase;
+  final SendHistoryUseCase _sendHistoryUseCase;
 
   //Controllers
   late final TextEditingController textEditingController;
@@ -34,7 +34,7 @@ abstract class _HistoryChatStoreBase with Store {
   final formKey = GlobalKey<FormState>();
 
 
-  _HistoryChatStoreBase(this._appStore, this._configManager, this._getAllHistoryUseCase, this._deleteHistoryUseCase, this._markedReadUseCase){
+  _HistoryChatStoreBase(this._appStore, this._configManager, this._sendHistoryUseCase, this._getAllHistoryUseCase, this._deleteHistoryUseCase, this._markedReadUseCase){
    textEditingController = TextEditingController();
    scrollController = ScrollController();
   }
@@ -48,7 +48,7 @@ abstract class _HistoryChatStoreBase with Store {
   bool isFullHeight = false;
 
   @observable
-  String? selectedIdPatient;
+  List<String> selectedPatient = [];
 
   @observable
   bool loading = false;
@@ -63,28 +63,30 @@ abstract class _HistoryChatStoreBase with Store {
 
   @action
   void expand() {
-    if(selectedIdPatient!=null) {
+    if(selectedPatient.isNotEmpty) {
       isExpanded = true;
     }
   }
 
   @action
   void shrink(){
-    if(selectedIdPatient!=null) {
+    if(selectedPatient.isNotEmpty) {
       isExpanded = false;
     }
   }
 
   @action
   void collapse(){
-    if(selectedIdPatient!=null) {
+    if(selectedPatient.isNotEmpty) {
       isExpanded = !isExpanded;
     }
   }
 
   @action
-  void open({required String idPatient, isFullHeight = false}) {
-    selectedIdPatient = idPatient;
+  void open({required String idUserPatient, required String idPatient, isFullHeight = false}) {
+    selectedPatient = [idUserPatient, idPatient];
+    items.clear();
+    loadingSend = false;
     updateHistory();
     isExpanded = true;
     this.isFullHeight = isFullHeight;
@@ -107,16 +109,16 @@ abstract class _HistoryChatStoreBase with Store {
 
   @action
   void close() {
-    selectedIdPatient = null;
+    selectedPatient.clear();
     isExpanded=false;
   }
 
   //Voids
 
   void updateHistory()async{
-   if(selectedIdPatient!=null){
+   if(selectedPatient.isNotEmpty){
      _setLoading(true);
-     Either<HistoryError, List<HistoryItemEntity>> response = await _getAllHistoryUseCase(idPatient: selectedIdPatient!);
+     Either<HistoryError, List<HistoryItemEntity>> response = await _getAllHistoryUseCase(idUserPatient: selectedPatient[0], idPatient: selectedPatient[1]);
      response.fold((HistoryError failure) {
        return failure;
      }, (List<HistoryItemEntity> items) {
@@ -127,8 +129,25 @@ abstract class _HistoryChatStoreBase with Store {
    }
   }
 
+  Future sendHistory(Map<String, dynamic> data)async{
+   if(selectedPatient.isNotEmpty){
+     setLoadingSend(true);
+     Either<HistoryError, HistoryItemEntity> response = await _sendHistoryUseCase(idUserPatient: selectedPatient[0], idPatient: selectedPatient[1], data: data);
+     response.fold((HistoryError failure) {
+       return failure;
+     }, (HistoryItemEntity value) {
+       _addItem(value);
+       return items;
+     });
+     await Future.delayed(const Duration(milliseconds: 500));
+     await scrollController.animateTo(scrollController.position.minScrollExtent, duration: const Duration(milliseconds: 500), curve: Curves.bounceIn);
+     textEditingController.clear();
+     setLoadingSend(false);
+   }
+  }
+
   Future<bool> deleteHistory(String idHistoryItem, Function onError)async{
-    Either<HistoryError, bool> response = await _deleteHistoryUseCase(idHistoryItem: idHistoryItem);
+    Either<HistoryError, bool> response = await _deleteHistoryUseCase(idUserPatient: selectedPatient[0], idPatient: selectedPatient[1], idHistoryItem: idHistoryItem);
     bool deleted = false;
     response.fold((HistoryError failure) {
       onError(failure);
@@ -142,7 +161,7 @@ abstract class _HistoryChatStoreBase with Store {
   }
 
   Future<bool> markRead(String idHistoryItem, Function onError)async{
-    Either<HistoryError, bool> response = await _markedReadUseCase(idHistoryItem: idHistoryItem);
+    Either<HistoryError, bool> response = await _markedReadUseCase(idUserPatient: selectedPatient[0], idPatient: selectedPatient[1], idHistoryItem: idHistoryItem);
     bool marked = false;
     response.fold((HistoryError failure) {
       onError(failure);
@@ -156,29 +175,24 @@ abstract class _HistoryChatStoreBase with Store {
 
   Future sendText()async{
     if(formKey.currentState!.validate()){
-      setLoadingSend(true);
       HistoryItemEntity newHistory = HistoryItem.sendText(
           data: "Agora",
           operator: _appStore.loggedUser!.name,
           text: "${_appStore.loggedUser!.name}: "+ textEditingController.text
       );
-      _addItem(newHistory);
-      scrollController.animateTo(-scrollController.offset, duration: const Duration(seconds: 1), curve: Curves.bounceIn);
-      textEditingController.clear();
-      setLoadingSend(false);
+      await sendHistory(newHistory.toJson);
     }
   }
 
   Future sendWarningSetter({required String idPatient, int? idNewClassification, String? newAppointmentDate, int? idNewSpecialty, bool? newStatusConfirmation})async{
-      if(selectedIdPatient!=null&&selectedIdPatient==idPatient){
-        setLoadingSend(true);
+      if(selectedPatient.isNotEmpty){
         HistoryItemEntity newHistory = HistoryItem.sendWarningSetter(
             data: "Agora",
             operator: _appStore.loggedUser!.name,
             idNewClassification: idNewClassification,
             newAppointmentDate: newAppointmentDate,
             idNewSpecialty: idNewSpecialty,
-            newStatusConfirmation: newStatusConfirmation
+            newStatusConfirmation: newStatusConfirmation,
         );
         if(idNewClassification!=null){
           newHistory.text = "${newHistory.operator} alterou a classificação para ${_configManager.classifications.singleWhere((i) => i.id==idNewClassification).label}.";
@@ -189,10 +203,7 @@ abstract class _HistoryChatStoreBase with Store {
         }else if(newStatusConfirmation!=null){
           newHistory.text = "${newHistory.operator} alterou o status para ${newStatusConfirmation?"confirmado":"não confirmado"}";
         }
-        _addItem(newHistory);
-        scrollController.animateTo(-scrollController.offset, duration: const Duration(seconds: 1), curve: Curves.bounceIn);
-        textEditingController.clear();
-        setLoadingSend(false);
+        await sendHistory(newHistory.toJson);
       }
   }
 

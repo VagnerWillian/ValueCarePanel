@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class HistoryColumnGrid extends StatelessWidget {
-  final String value;
-  final Function openHistoryFloating;
-  const HistoryColumnGrid({required this.openHistoryFloating, Key? key, required this.value}) : super(key: key);
+  final List<String> idUserAndPatient;
+  final Function({required List<String> idUserAndPatient}) openHistoryFloating;
+  const HistoryColumnGrid({required this.openHistoryFloating, Key? key, required this.idUserAndPatient}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +16,8 @@ class HistoryColumnGrid extends StatelessWidget {
             padding: MaterialStateProperty.all(const EdgeInsets.all(5)),
             shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)))
           ),
-          onPressed: ()=>openHistoryFloating(idPatient: value),
-          child: SvgPicture.network("assets/assets/images/menu/history.svg", width: 20,)),
+          onPressed: ()=>openHistoryFloating(idUserAndPatient: idUserAndPatient),
+          child: SvgPicture.network("assets/assets/images/menu/history.svg", width: 20)),
     ));
   }
 }

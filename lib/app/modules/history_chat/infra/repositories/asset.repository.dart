@@ -7,8 +7,9 @@ import 'package:value_panel/app/modules/history_chat/errors/history.errors.dart'
 import 'package:value_panel/app/modules/history_chat/infra/models/history_item.model.dart';
 
 class AssetHistoryRepository implements HistoryRepository{
+
   @override
-  Future<Either<HistoryError, List<HistoryItemEntity>>> getAllHistoryItems({required String idPatient}) async{
+  Future<Either<HistoryError, List<HistoryItemEntity>>> getAllHistoryItems({required String idUserPatient, required String idPatient}) async{
     await Future.delayed(const Duration(seconds: 2));
     String data = await rootBundle.loadString('assets/static_jsons/historic_items.json');
     var jsonResult = json.decode(data);
@@ -18,13 +19,23 @@ class AssetHistoryRepository implements HistoryRepository{
   }
 
   @override
-  Future<Either<HistoryError, bool>> deleteHistory({required String idHistoryItem})async {
+  Future<Either<HistoryError, HistoryItemEntity>> sendHistory({required String idUserPatient, required String idPatient, required Map<String, dynamic> data}) async{
+    await Future.delayed(const Duration(seconds: 2));
+    String data = await rootBundle.loadString('assets/static_jsons/historic_items.json');
+    var jsonResult = json.decode(data);
+    List<HistoryItemEntity> historyItems = (jsonResult as List).map((i) => HistoryItem.fromJson(i)).toList();
+    return Right(historyItems[0]);
+
+  }
+
+  @override
+  Future<Either<HistoryError, bool>> deleteHistory({required String idUserPatient, required String idPatient, required String idHistoryItem})async {
     await Future.delayed(const Duration(seconds: 1));
     return const Right(true);
   }
 
   @override
-  Future<Either<HistoryError, bool>> markReadHistory({required String idHistoryItem}) async{
+  Future<Either<HistoryError, bool>> markReadHistory({required String idUserPatient, required String idPatient, required String idHistoryItem}) async{
     await Future.delayed(const Duration(seconds: 1));
     return const Right(true);
   }

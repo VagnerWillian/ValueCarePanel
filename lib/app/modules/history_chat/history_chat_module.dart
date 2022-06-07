@@ -5,8 +5,10 @@ import 'package:value_panel/app/modules/history_chat/domain/repositories/reposit
 import 'package:value_panel/app/modules/history_chat/domain/services/delete_history.service.dart';
 import 'package:value_panel/app/modules/history_chat/domain/services/get_all_history.service.dart';
 import 'package:value_panel/app/modules/history_chat/domain/services/mark_read_history.service.dart';
+import 'package:value_panel/app/modules/history_chat/domain/services/send_history.service.dart';
 import 'package:value_panel/app/modules/history_chat/domain/usecases/get_all_history.usecase.dart';
 import 'package:value_panel/app/modules/history_chat/domain/usecases/mark_read_history.usecase.dart';
+import 'package:value_panel/app/modules/history_chat/domain/usecases/send_history.usecase.dart';
 import 'package:value_panel/app/modules/history_chat/infra/repositories/api.repository.dart';
 import 'package:value_panel/app/modules/history_chat/infra/repositories/asset.repository.dart';
 import 'package:value_panel/app/modules/history_chat/ui/history_chat.dart';
@@ -26,6 +28,7 @@ class HistoryChatModule extends WidgetModule {
     Bind.lazySingleton((i) => HistoryChatStore(
         i.get<AppStore>(),
         i.get<ConfigManager>(),
+        i.get<SendHistory>(),
         i.get<GetAllHistoryUseCase>(),
         i.get<DeleteHistoryUseCase>(),
         i.get<MarkedReadUseCase>(),
@@ -34,14 +37,15 @@ class HistoryChatModule extends WidgetModule {
     //Usecases
     Bind.lazySingleton((i) => GetAllHistory(i.get<HistoryRepository>())),
     Bind.lazySingleton((i) => DeleteHistory(i.get<HistoryRepository>())),
-    Bind.lazySingleton((i) => MarkedReadService(i.get<HistoryRepository>())),
+    Bind.lazySingleton((i) => MarkedRead(i.get<HistoryRepository>())),
+    Bind.lazySingleton((i) => SendHistory(i.get<HistoryRepository>())),
 
     // Repositories
     Bind.lazySingleton((i) {
-      // if(MOCK){
+      if(MOCK){
         return AssetHistoryRepository();
-      // }
-      // return ApiHistoryRepository(i.get<CustomDio>());
+      }
+      return ApiHistoryRepository(i.get<CustomDio>());
     }),
 
   ];

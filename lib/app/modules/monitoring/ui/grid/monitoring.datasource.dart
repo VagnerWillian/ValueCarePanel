@@ -21,7 +21,7 @@ class ColumnConfig{
 class MonitoringDataSource extends DataGridSource {
 
   final Function updateMonitoringItem;
-  final Function openHistoryFloating;
+  final Function({required List<String> idUserAndPatient}) openHistoryFloating;
   final Function openPatientDetails;
   final List<ClassificationEntity> classifications;
   final List<SpecialtyEntity> specialties;
@@ -57,7 +57,7 @@ class MonitoringDataSource extends DataGridSource {
       DataGridCell<MonitoringDataEntity>(columnName: columnNames[4].label, value: m),
       DataGridCell<MonitoringDataEntity>(columnName: columnNames[5].label, value: m),
       DataGridCell<MonitoringDataEntity>(columnName: columnNames[6].label, value: m),
-      DataGridCell<String>(columnName: columnNames[7].label, value: m.idPatient),
+      DataGridCell<List<String>>(columnName: columnNames[7].label, value: [m.idUserPatient, m.idPatient]),
     ])).toList(growable: false);
   }
 
@@ -80,7 +80,7 @@ class MonitoringDataSource extends DataGridSource {
           }else if(dataGridCell.columnName==columnNames[6].label){
             return ConfirmColumnGrid(value: dataGridCell.value, updateMonitoringItem: updateMonitoringItem);
           }else if(dataGridCell.columnName==columnNames[7].label){
-            return HistoryColumnGrid(value: dataGridCell.value, openHistoryFloating: openHistoryFloating);
+            return HistoryColumnGrid(idUserAndPatient: dataGridCell.value, openHistoryFloating: openHistoryFloating);
           }
           return Container(
             alignment: Alignment.center,
